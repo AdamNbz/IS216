@@ -42,9 +42,8 @@
 
 ## SEMINAR
 <a name="seminar"></a>
-Seminar nhóm: ...
-
+Seminar nhóm: Spring Boot & Microservices trong Java. Giới thiệu về kiến trúc microservices, cách xây dựng ứng dụng với Spring Boot. Thực hiện demo một ứng dụng microservices đơn giản
 
 ## ĐỒ ÁN MÔN HỌC
 <a name="doan"></a>
-Đồ án Nhóm: ...
+Đồ án Nhóm: Hệ thống quản lý dược phẩm cho cá nhân
