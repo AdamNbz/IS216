@@ -13,6 +13,7 @@
 * [ Giới thiệu môn học](#gioithieumonhoc)
 * [ Giảng viên hướng dẫn](#giangvien)
 * [ Thành viên nhóm](#thanhvien)
+* [ Seminar](#seminar)
 * [ Đồ án môn học](#doan)
 
 
@@ -26,7 +27,7 @@
 
 ## GIẢNG VIÊN HƯỚNG DẪN
 <a name="giangvien"></a>
-* TS. **Tạ Việt Phương** - *phuongtv@uit.edu.vn*
+* ThS. **Tạ Việt Phương** - *phuongtv@uit.edu.vn*
 
 
 ## THÀNH VIÊN NHÓM
@@ -39,6 +40,11 @@
 | 2      | 23521341      | Huỳnh Thanh Sang       |[htsang1811](https://github.com/htsang1811)           |23521341@gm.uit.edu.vn   |
 
 
+## SEMINAR
+<a name="seminar"></a>
+Seminar nhóm: ...
+
+
 ## ĐỒ ÁN MÔN HỌC
 <a name="doan"></a>
-Đồ án Nhóm: Recurrent Neural Networks (RNNs), and the Exploding and Vanishing Gradient Problems
+Đồ án Nhóm: ...
