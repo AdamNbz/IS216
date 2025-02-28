@@ -35,7 +35,6 @@
 | STT    | MSSV          | Họ và Tên              | Github                                               | Email                   |
 | ------ |:-------------:| ----------------------:|-----------------------------------------------------:|-------------------------:
 | 1      | 23520131      | Nguyễn Võ Ngọc Bảo     |[AdamNbz](https://github.com/AdamNbz)                 |23520131@gm.uit.edu.vn   |
-| 2      | 23520356      | Thái Bình Dương        |[DuongThai2712](https://github.com/DuongThai2712)     |23520356@gm.uit.edu.vn   |
 | 3      | 23520588      | Nguyễn Lan Hương       |[Hiinnoo](https://github.com/Hiinnoo)                 |23520588@gm.uit.edu.vn   |
 | 2      | 23521341      | Huỳnh Thanh Sang       |[1811htsang](https://github.com/1811htsang)           |23521341@gm.uit.edu.vn   |
 
