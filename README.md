@@ -41,7 +41,7 @@
 
 ## SEMINAR
 <a name="seminar"></a>
-Seminar nhóm: Spring Boot & Microservices trong Java. Giới thiệu về kiến trúc microservices, cách xây dựng ứng dụng với Spring Boot. Thực hiện demo một ứng dụng microservices đơn giản
+Seminar nhóm: Vaadin Framework: Xây dựng ứng dụng Java Web mà không cần sử dụng trực tiếp HTML, CSS, hoặc JavaScript. Xây dựng web thương mại điện tử đơn giản sử dụng Vaadin Framework.
 
 ## ĐỒ ÁN MÔN HỌC
 <a name="doan"></a>
