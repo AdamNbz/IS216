@@ -282,6 +282,22 @@ public class AuthenticationFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void checkConnection() {
+        Connection con = null;
+        try {
+            String dbURL = "jdbc:oracle:thin:@localhost:32772:XE";
+            String username = "system";
+            String password = "P@ssw0rd!";
+            con = DriverManager.getConnection(dbURL, username, password);
+
+            if (con != null) {
+                System.out.println("Connected");
+            }
+        } catch(SQLException se) {
+            System.out.println(se.getMessage());
+        }
+    }
+    
     private void AF_DangNhap_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AF_DangNhap_JButtonActionPerformed
         // TODO add your handling code here:
         String TenDangNhapVariableHolder = AF_TenDangNhap_JTextField.getText();
@@ -292,22 +308,14 @@ public class AuthenticationFrame extends javax.swing.JFrame {
                 TenDangNhapVariableHolder.equals("HuynhThanhSang") &&
                 MatKhauVariableHolder.equals("181105")
         ) {
-//            String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=master;user=sa;password=password;encrypt=true;trustServerCertificate=true";
-//            try {
-//               Connection con = DriverManager.getConnection(connectionUrl); 
-//            } // Handle any errors that may have occurred.
-//            catch (SQLException se) {
-//                System.out.println(se.getMessage());
-//                this.dispose();
-//            }
-            
-            
+            checkConnection();
             JOptionPane.showMessageDialog(this, "Đăng nhập người dùng hợp lệ");
             this.dispose();
             MainFrame MF = new MainFrame();
         } else if (TenDangNhapVariableHolder.equals("admin") &&
                 MatKhauVariableHolder.equals("admin")
         ) {
+            checkConnection();
             JOptionPane.showMessageDialog(this, "Đăng nhập giám sát viên hợp lệ");
             this.dispose();
             MainSupervisorFrame MSF = new MainSupervisorFrame();
