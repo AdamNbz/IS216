@@ -1,0 +1,7 @@
+- Bổ sung kết nối tới CSDL và server
+- Bổ sung frame "quên mật khẩu", tùy ý thiết kế, có thể dùng google smtp server và cho check OTP ngẫu nhiên
+- Bổ sung frame "về phần mềm", tùy ý thiết kế, có thể cho link đến github
+- Đối với các frame có cho phép mở kèm 1 frame con thì hãy dùng đa luồng để xử lý 
+- Đối với phần tra cứu trực tuyến có thể sử dụng drugbank.vn hoặc https://docs.drugbank.com/v1/#introduction 
+- Đối với phần kiểm tra tương tác thuốc và tác dụng phụ của thuốc có thể sử dụng api từ https://www.drugbank.com/clinical/drug_drug_interaction_checker
+- Nếu các thông tin trả về là tiếng anh thì google cloud api translation 
