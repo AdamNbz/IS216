@@ -285,7 +285,7 @@ public class AuthenticationFrame extends javax.swing.JFrame {
     private void checkConnection() {
         Connection con = null;
         try {
-            String dbURL = "jdbc:oracle:thin:@localhost:32772:XE";
+            String dbURL = "jdbc:oracle:thin:@192.168.124.180:32772:XE";
             String username = "system";
             String password = "P@ssw0rd!";
             con = DriverManager.getConnection(dbURL, username, password);
