@@ -7,13 +7,16 @@ import javax.swing.*;
 import java.sql.*;
 import java.awt.Toolkit;
 import java.awt.Dimension;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import supervisorview.*;
+import javamail.EmailUtil;
 /**
  *
  * @author shanghuang
  */
 public class AuthenticationFrame extends javax.swing.JFrame {
-
+    int DEBUG = 1;
     /**
      * Creates new form AuthenticationFrame
      */
@@ -282,19 +285,56 @@ public class AuthenticationFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void checkConnection() {
+//    private void checkConnection() {
+//        Connection con = null;
+//        try {
+//            String dbURL = "jdbc:oracle:thin:@192.168.124.180:32772:XE";
+//            String username = "c##shanghuang";
+//            String password = "181105";
+//            con = DriverManager.getConnection(dbURL, username, password);
+//
+//            if (con != null) {
+//                System.out.println("Connected");
+//            }
+//        } catch(SQLException se) {
+//            System.out.println(se.getMessage());
+//        }
+//    }
+    
+    // connector for jdbc
+    private Connection connect() {
+        // connection parameter
+        String dbURL = "jdbc:oracle:thin:@192.168.124.180:32772:XE";
+        String driver = "oracle.jdbc.OracleDriver";
         Connection con = null;
+        
+        // catching error in connection
         try {
-            String dbURL = "jdbc:oracle:thin:@192.168.124.180:32772:XE";
-            String username = "system";
-            String password = "P@ssw0rd!";
-            con = DriverManager.getConnection(dbURL, username, password);
+            // class loader
+            Class.forName(driver);
+            
+            // connection
+            con = DriverManager.getConnection(dbURL, "c##shanghuang", "181105");
 
+            // debug block
             if (con != null) {
-                System.out.println("Connected");
+                if (DEBUG == 1) {
+                    System.out.println("Kết nối đến cơ sử dữ liệu thành công");
+                }
             }
-        } catch(SQLException se) {
+        } catch(SQLException se) { 
+            // sql exception
             System.out.println(se.getMessage());
+        } catch (ClassNotFoundException ex) { 
+            // class exception
+            Logger.getLogger(AuthenticationFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        // Return connection
+        if (con != null) {
+            return con;
+        } else {
+            return null;
         }
     }
     
@@ -303,32 +343,58 @@ public class AuthenticationFrame extends javax.swing.JFrame {
         String TenDangNhapVariableHolder = AF_TenDangNhap_JTextField.getText();
         String MatKhauVariableHolder = new String(AF_MatKhau_JPasswordField.getPassword());
         
-        // Mau code de test hoat dong chuc nang
         if (
-                TenDangNhapVariableHolder.equals("HuynhThanhSang") &&
-                MatKhauVariableHolder.equals("181105")
+            TenDangNhapVariableHolder.equals("") &&
+            MatKhauVariableHolder.equals("")
         ) {
-            checkConnection();
-            JOptionPane.showMessageDialog(this, "Đăng nhập người dùng hợp lệ");
-            this.dispose();
-            MainFrame MF = new MainFrame();
-        } else if (TenDangNhapVariableHolder.equals("admin") &&
-                MatKhauVariableHolder.equals("admin")
-        ) {
-            checkConnection();
-            JOptionPane.showMessageDialog(this, "Đăng nhập giám sát viên hợp lệ");
-            this.dispose();
-            MainSupervisorFrame MSF = new MainSupervisorFrame();
+            JOptionPane.showMessageDialog(this, "Thông tin đăng nhập không được bỏ trống");
         } else {
-            if (
-                TenDangNhapVariableHolder.equals("") &&
-                MatKhauVariableHolder.equals("")
-            ) {
-                JOptionPane.showMessageDialog(this, "Thông tin đăng nhập không được bỏ trống");
+            // Create connection
+            Connection con = connect();
+
+            if (con == null) {
+                // debug block
+                if (DEBUG == 1) {
+                    System.out.println("Không thể kết nối đến cơ sử dữ liệu");
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Đăng nhập không hợp lệ");
-                AF_TenDangNhap_JTextField.setText("");
-                AF_MatKhau_JPasswordField.setText("");
+                // query parameter
+                boolean result = false;
+                String query = "SELECT * FROM CANHAN WHERE USERNAME = ? AND MATKHAU = ?";
+
+                // catching error in query execution
+                try {
+                    // load parameter in to query
+                    PreparedStatement ps = con.prepareStatement(query);
+                    ps.setString(1, TenDangNhapVariableHolder);
+                    ps.setString(2, MatKhauVariableHolder);
+
+                    // execute and return boolean value to confirm connection
+                    result = ps.execute();
+                    con.close();
+                } catch (SQLException se) {
+                    // SQL Exception
+                    System.out.println(se.getMessage());
+                }
+
+                // checking connection confirm
+                if (result == false) {
+                    // error display
+                    JOptionPane.showMessageDialog(this, "Đăng nhập không thành công. Vui lòng nhập lại", "Error", JOptionPane.ERROR_MESSAGE);
+
+                    // debug block
+                    if (DEBUG == 1) {
+                        System.out.println("No user found");
+                    }
+                } else {
+                    // success display
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                    // debug block
+                    if (DEBUG == 1) {
+                        System.out.println("User found");
+                    }
+                }
             }
         }
     }//GEN-LAST:event_AF_DangNhap_JButtonActionPerformed

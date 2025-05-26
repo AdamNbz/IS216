@@ -6,7 +6,11 @@ package userview;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-
+import java.util.Properties;
+import javax.mail.*;
+import javax.activation.*;
+import javax.swing.JOptionPane;
+import javamail.EmailUtil;
 /**
  *
  * @author shanghuang
@@ -81,16 +85,25 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
         FPF_NewPasswordConfirmInput_JTextField = new javax.swing.JTextField();
         FPF_Finish_JButton = new javax.swing.JButton();
         FPF_Return_JButton = new javax.swing.JButton();
+        FPF_Email_JLabel = new javax.swing.JLabel();
+        FPF_Email_JTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         FPF_NhapMaOTPTuEmail_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 30)); // NOI18N
         FPF_NhapMaOTPTuEmail_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         FPF_NhapMaOTPTuEmail_JLabel.setText("Nhập mã OTP từ Email đăng ký");
 
         FPF_OTPInput_JTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        FPF_OTPInput_JTextField.setText("OTP");
 
         FPF_OTPResend_JLabel.setText("Chưa nhận được? Hãy nhấn vào đây!");
+        FPF_OTPResend_JLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FPF_OTPResend_JLabelMouseClicked(evt);
+            }
+        });
 
         FPF_TimeCountBackward_JLabel.setText("120s");
 
@@ -111,6 +124,16 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
 
         FPF_Return_JButton.setText("Trở về");
 
+        FPF_Email_JLabel.setText("Email");
+
+        FPF_Email_JTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        FPF_Email_JTextField.setText("Email");
+        FPF_Email_JTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FPF_Email_JTextFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout FPF_IntermidiateContainer_JPanelLayout = new javax.swing.GroupLayout(FPF_IntermidiateContainer_JPanel);
         FPF_IntermidiateContainer_JPanel.setLayout(FPF_IntermidiateContainer_JPanelLayout);
         FPF_IntermidiateContainer_JPanelLayout.setHorizontalGroup(
@@ -120,7 +143,6 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
                 .addGroup(FPF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(FPF_Separator_JSeparator)
                     .addComponent(FPF_NhapMaOTPTuEmail_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FPF_OTPInput_JTextField)
                     .addComponent(FPF_NewPassword_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(FPF_NewPasswordInput_JTextField)
                     .addComponent(FPF_NewPasswordConfirm_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -131,12 +153,15 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
                         .addComponent(FPF_Finish_JButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FPF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(FPF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FPF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
-                                .addComponent(FPF_OTPResend_JLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(FPF_TimeCountBackward_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(FPF_XacNhanOTP_JButton, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addComponent(FPF_XacNhanOTP_JButton))
+                    .addComponent(FPF_Email_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FPF_Email_JTextField)
+                    .addComponent(FPF_OTPInput_JTextField)
+                    .addGroup(FPF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
+                        .addComponent(FPF_OTPResend_JLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(FPF_TimeCountBackward_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         FPF_IntermidiateContainer_JPanelLayout.setVerticalGroup(
@@ -144,6 +169,10 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
             .addGroup(FPF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
                 .addComponent(FPF_NhapMaOTPTuEmail_JLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FPF_Email_JLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FPF_Email_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(FPF_OTPInput_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(FPF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -165,7 +194,7 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
                 .addGroup(FPF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FPF_Finish_JButton)
                     .addComponent(FPF_Return_JButton))
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -181,12 +210,33 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(FPF_IntermidiateContainer_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(FPF_IntermidiateContainer_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void FPF_OTPResend_JLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FPF_OTPResend_JLabelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FPF_OTPResend_JLabelMouseClicked
+
+    private void FPF_Email_JTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FPF_Email_JTextFieldActionPerformed
+        String EmailVariableHolder = FPF_Email_JTextField.getText();
+        if (EmailVariableHolder == null) {
+            JOptionPane.showMessageDialog(this, "Email không được bỏ trống");
+        } else {
+            String smtpHostServer = "smtp.gmail.com";
+            
+            Properties props = System.getProperties();
+
+	    props.put("mail.smtp.host", smtpHostServer);
+            props.put("mail.smtp.starttls.enable", "true");
+
+	    Session session = Session.getInstance(props, null);
+	    
+	    EmailUtil.sendEmail(session, EmailVariableHolder,"SimpleEmail Testing Subject", "SimpleEmail Testing Body");
+        }
+    }//GEN-LAST:event_FPF_Email_JTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,6 +274,8 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel FPF_Email_JLabel;
+    private javax.swing.JTextField FPF_Email_JTextField;
     private javax.swing.JButton FPF_Finish_JButton;
     private javax.swing.JPanel FPF_IntermidiateContainer_JPanel;
     private javax.swing.JTextField FPF_NewPasswordConfirmInput_JTextField;
