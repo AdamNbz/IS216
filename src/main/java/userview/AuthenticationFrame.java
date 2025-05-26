@@ -284,22 +284,6 @@ public class AuthenticationFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-//    private void checkConnection() {
-//        Connection con = null;
-//        try {
-//            String dbURL = "jdbc:oracle:thin:@192.168.124.180:32772:XE";
-//            String username = "c##shanghuang";
-//            String password = "181105";
-//            con = DriverManager.getConnection(dbURL, username, password);
-//
-//            if (con != null) {
-//                System.out.println("Connected");
-//            }
-//        } catch(SQLException se) {
-//            System.out.println(se.getMessage());
-//        }
-//    }
     
     // connector for jdbc
     private Connection connect() {
@@ -401,8 +385,8 @@ public class AuthenticationFrame extends javax.swing.JFrame {
 
     private void AF_KhongTaiKhoan_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AF_KhongTaiKhoan_JButtonActionPerformed
         // TODO add your handling code here:
+        CreateAccountFrame CAF = new CreateAccountFrame(AuthenticationFrame.this);
         this.dispose();
-        CreateAccountFrame CAF = new CreateAccountFrame();
     }//GEN-LAST:event_AF_KhongTaiKhoan_JButtonActionPerformed
 
     private void AF_QuenMatKhau_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AF_QuenMatKhau_JButtonActionPerformed
