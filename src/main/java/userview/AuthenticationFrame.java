@@ -407,7 +407,8 @@ public class AuthenticationFrame extends javax.swing.JFrame {
 
     private void AF_QuenMatKhau_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AF_QuenMatKhau_JButtonActionPerformed
         // TODO add your handling code here:
-        ForgotPasswordFrame FPF = new ForgotPasswordFrame();
+        ForgotPasswordFrame FPF = new ForgotPasswordFrame(AuthenticationFrame.this);
+        this.dispose();
     }//GEN-LAST:event_AF_QuenMatKhau_JButtonActionPerformed
 
     /**
