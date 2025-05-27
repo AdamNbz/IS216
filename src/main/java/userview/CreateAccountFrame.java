@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +23,8 @@ import javax.swing.JOptionPane;
 public class CreateAccountFrame extends javax.swing.JFrame {
     int DEBUG = 1;
     public static AuthenticationFrame af;
+	public String charset = "<>?/.,:\";'{}|\\[\\]\\\\()!@#$%^&*\\-_+=~`";
+	Pattern patt = Pattern.compile("[" + charset + "]");
     /**
      * Creates new form CreateAccountFrame
      */
@@ -56,10 +60,8 @@ public class CreateAccountFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AuthenticationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         initComponents();
-//        CAF_Tuoi_JSpinner.setValue(15);
-        this.setVisible(true);
         this.setFrameInCenter();
-        
+        this.setVisible(true);
     }
     
     public void setFrameInCenter() {
@@ -69,6 +71,16 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         final int y = (screenSize.height - this.getHeight()) / 2;
         this.setLocation(x, y);
     }
+	
+	public boolean checkIllegalCharacter(String inp, Pattern pat) {
+		Matcher match = pat.matcher(inp);
+		return match.find();
+	}
+	
+	public boolean checkEmailValid(String email) {
+		final Pattern EMAIL_REGEX = Pattern.compile("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", Pattern.CASE_INSENSITIVE);
+		return EMAIL_REGEX.matcher(email).matches();
+	}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -160,6 +172,11 @@ public class CreateAccountFrame extends javax.swing.JFrame {
 
         CAF_HoTen_JTextField.setFont(new java.awt.Font("SF Mono SemiBold", 0, 14)); // NOI18N
         CAF_HoTen_JTextField.setPreferredSize(new java.awt.Dimension(385, 30));
+        CAF_HoTen_JTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CAF_HoTen_JTextFieldActionPerformed(evt);
+            }
+        });
         CAF_HoTen_JL_JTF_JPanel.add(CAF_HoTen_JTextField);
 
         CAF_Email_JL_JTF_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
@@ -171,6 +188,11 @@ public class CreateAccountFrame extends javax.swing.JFrame {
 
         CAF_Email_JTextField.setFont(new java.awt.Font("SF Mono SemiBold", 0, 14)); // NOI18N
         CAF_Email_JTextField.setPreferredSize(new java.awt.Dimension(385, 30));
+        CAF_Email_JTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CAF_Email_JTextFieldActionPerformed(evt);
+            }
+        });
         CAF_Email_JL_JTF_JPanel.add(CAF_Email_JTextField);
 
         CAF_Tuoi_JL_JS_JPanel.setPreferredSize(new java.awt.Dimension(670, 40));
@@ -237,51 +259,52 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         CAF_IntermidiateContainer_JPanelLayout.setHorizontalGroup(
             CAF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CAF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
-                .addGroup(CAF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(CAF_TenTaiKhoan_JL_JTF_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CAF_MatKhau_JlL_JTF_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CAF_XacNhanMatKhau_JL_JTF_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CAF_HoTen_JL_JTF_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CAF_Tuoi_JL_JS_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CAF_KhuVucSinhSong_JL_JCB_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CAF_Email_JL_JTF_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CAF_TienSuBenhLy_JL_JTA_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(CAF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CAF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(CAF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(CAF_TaoTaiKhoan_JLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(CAF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
-                                .addComponent(CAF_TroLai_JButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CAF_XacNhan_JButton)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(CAF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CAF_TaoTaiKhoan_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CAF_TenTaiKhoan_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CAF_MatKhau_JlL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CAF_XacNhanMatKhau_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CAF_HoTen_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CAF_Email_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CAF_Tuoi_JL_JS_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CAF_TienSuBenhLy_JL_JTA_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CAF_KhuVucSinhSong_JL_JCB_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CAF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
+                        .addComponent(CAF_TroLai_JButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CAF_XacNhan_JButton)))
+                .addContainerGap())
         );
         CAF_IntermidiateContainer_JPanelLayout.setVerticalGroup(
             CAF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CAF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(CAF_TaoTaiKhoan_JLabel)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CAF_TenTaiKhoan_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CAF_MatKhau_JlL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CAF_XacNhanMatKhau_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CAF_HoTen_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CAF_Email_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CAF_Tuoi_JL_JS_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CAF_TienSuBenhLy_JL_JTA_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CAF_KhuVucSinhSong_JL_JCB_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CAF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(CAF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CAF_XacNhan_JButton)
                     .addComponent(CAF_TroLai_JButton))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(CAF_IntermidiateContainer_JPanel);
@@ -433,7 +456,24 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Độ dài giới hạn trong 10 ký tự", "Error", JOptionPane.ERROR_MESSAGE);
         }
+		
+		if (checkIllegalCharacter(CAF_TenTaiKhoan_JTextField.getText(), patt)) {
+				JOptionPane.showMessageDialog(this, "Username không được phép tồn tại ký tự đặc biệt. Vui lòng nhập lại", "Error", JOptionPane.ERROR_MESSAGE);
+		}
     }//GEN-LAST:event_CAF_TenTaiKhoan_JTextFieldActionPerformed
+
+    private void CAF_HoTen_JTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAF_HoTen_JTextFieldActionPerformed
+        if (checkIllegalCharacter(CAF_HoTen_JTextField.getText(), patt)) {
+				JOptionPane.showMessageDialog(this, "Họ tên không được phép tồn tại ký tự đặc biệt. Vui lòng nhập lại", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+    }//GEN-LAST:event_CAF_HoTen_JTextFieldActionPerformed
+
+    private void CAF_Email_JTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAF_Email_JTextFieldActionPerformed
+        
+		if (!checkEmailValid(CAF_Email_JTextField.getText())) {
+				JOptionPane.showMessageDialog(this, "Email không đúng định dạng. Vui lòng nhập lại", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+    }//GEN-LAST:event_CAF_Email_JTextFieldActionPerformed
 
     /**
      * @param args the command line arguments

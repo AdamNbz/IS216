@@ -9,6 +9,8 @@ import java.awt.Toolkit;
 import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import supervisorview.*;
 import javamail.EmailUtil;
 /**
@@ -17,6 +19,8 @@ import javamail.EmailUtil;
  */
 public class AuthenticationFrame extends javax.swing.JFrame {
     int DEBUG = 1;
+	public String charset = "<>?/.,:\";'{}|\\[\\]\\\\()!@#$%^&*\\-_+=~`";
+	Pattern patt = Pattern.compile("[" + charset + "]");
     /**
      * Creates new form AuthenticationFrame
      */
@@ -71,16 +75,15 @@ public class AuthenticationFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         AF_Title_JLabel = new javax.swing.JLabel();
         AF_Subtitle_JLabel = new javax.swing.JLabel();
         AF_TenDangNhap_JTF_JL_JPanel = new javax.swing.JPanel();
-        AF_TenDangNhap_JTextField = new javax.swing.JTextField();
         AF_TenDangNhap_JLabel = new javax.swing.JLabel();
+        AF_TenDangNhap_JTextField = new javax.swing.JTextField();
         AF_MatKhau_JTF_JL_JPanel = new javax.swing.JPanel();
-        AF_MatKhau_JPasswordField = new javax.swing.JPasswordField();
         AF_MatKhau_JLabel = new javax.swing.JLabel();
+        AF_MatKhau_JPasswordField = new javax.swing.JPasswordField();
         AF_QuenMatKhau_JL_JB_JPanel = new javax.swing.JPanel();
         AF_QuenMatKhau_JLabel = new javax.swing.JLabel();
         AF_QuenMatKhau_JButton = new javax.swing.JButton();
@@ -91,105 +94,37 @@ public class AuthenticationFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         AF_Title_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 1, 36)); // NOI18N
+        AF_Title_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AF_Title_JLabel.setText("ỨNG DỤNG QUẢN LÝ DƯỢC PHẨM CÁ NHÂN");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipady = 21;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(54, 133, 0, 143);
-        getContentPane().add(AF_Title_JLabel, gridBagConstraints);
 
         AF_Subtitle_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 30)); // NOI18N
+        AF_Subtitle_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AF_Subtitle_JLabel.setText("Đăng nhập tài khoản");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(86, 326, 0, 0);
-        getContentPane().add(AF_Subtitle_JLabel, gridBagConstraints);
-
-        AF_TenDangNhap_JTextField.setFont(new java.awt.Font("SF Mono SemiBold", 0, 30)); // NOI18N
 
         AF_TenDangNhap_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 30)); // NOI18N
         AF_TenDangNhap_JLabel.setText("Tên đăng nhập:");
+        AF_TenDangNhap_JTF_JL_JPanel.add(AF_TenDangNhap_JLabel);
 
-        javax.swing.GroupLayout AF_TenDangNhap_JTF_JL_JPanelLayout = new javax.swing.GroupLayout(AF_TenDangNhap_JTF_JL_JPanel);
-        AF_TenDangNhap_JTF_JL_JPanel.setLayout(AF_TenDangNhap_JTF_JL_JPanelLayout);
-        AF_TenDangNhap_JTF_JL_JPanelLayout.setHorizontalGroup(
-            AF_TenDangNhap_JTF_JL_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AF_TenDangNhap_JTF_JL_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AF_TenDangNhap_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AF_TenDangNhap_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        AF_TenDangNhap_JTF_JL_JPanelLayout.setVerticalGroup(
-            AF_TenDangNhap_JTF_JL_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AF_TenDangNhap_JTF_JL_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AF_TenDangNhap_JTF_JL_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AF_TenDangNhap_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AF_TenDangNhap_JLabel))
-                .addContainerGap())
-        );
-
-        AF_TenDangNhap_JTF_JL_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AF_TenDangNhap_JLabel, AF_TenDangNhap_JTextField});
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 29;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(49, 133, 0, 143);
-        getContentPane().add(AF_TenDangNhap_JTF_JL_JPanel, gridBagConstraints);
-
-        AF_MatKhau_JPasswordField.setFont(new java.awt.Font("SF Mono SemiBold", 0, 30)); // NOI18N
+        AF_TenDangNhap_JTextField.setFont(new java.awt.Font("SF Mono SemiBold", 0, 30)); // NOI18N
+        AF_TenDangNhap_JTextField.setPreferredSize(new java.awt.Dimension(300, 43));
+        AF_TenDangNhap_JTF_JL_JPanel.add(AF_TenDangNhap_JTextField);
 
         AF_MatKhau_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 30)); // NOI18N
         AF_MatKhau_JLabel.setText("Mật khẩu:");
+        AF_MatKhau_JLabel.setPreferredSize(new java.awt.Dimension(266, 37));
+        AF_MatKhau_JTF_JL_JPanel.add(AF_MatKhau_JLabel);
 
-        javax.swing.GroupLayout AF_MatKhau_JTF_JL_JPanelLayout = new javax.swing.GroupLayout(AF_MatKhau_JTF_JL_JPanel);
-        AF_MatKhau_JTF_JL_JPanel.setLayout(AF_MatKhau_JTF_JL_JPanelLayout);
-        AF_MatKhau_JTF_JL_JPanelLayout.setHorizontalGroup(
-            AF_MatKhau_JTF_JL_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AF_MatKhau_JTF_JL_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AF_MatKhau_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AF_MatKhau_JPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        AF_MatKhau_JTF_JL_JPanelLayout.setVerticalGroup(
-            AF_MatKhau_JTF_JL_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AF_MatKhau_JTF_JL_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AF_MatKhau_JTF_JL_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AF_MatKhau_JPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AF_MatKhau_JLabel))
-                .addContainerGap())
-        );
+        AF_MatKhau_JPasswordField.setFont(new java.awt.Font("SF Mono SemiBold", 0, 30)); // NOI18N
+        AF_MatKhau_JPasswordField.setPreferredSize(new java.awt.Dimension(300, 43));
+        AF_MatKhau_JTF_JL_JPanel.add(AF_MatKhau_JPasswordField);
 
-        AF_MatKhau_JTF_JL_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AF_MatKhau_JLabel, AF_MatKhau_JPasswordField});
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 124;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(42, 133, 0, 143);
-        getContentPane().add(AF_MatKhau_JTF_JL_JPanel, gridBagConstraints);
-
-        AF_QuenMatKhau_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        AF_QuenMatKhau_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         AF_QuenMatKhau_JLabel.setText("Quên mật khẩu");
         AF_QuenMatKhau_JLabel.setToolTipText("");
+        AF_QuenMatKhau_JLabel.setPreferredSize(new java.awt.Dimension(200, 30));
+        AF_QuenMatKhau_JL_JB_JPanel.add(AF_QuenMatKhau_JLabel);
 
         AF_QuenMatKhau_JButton.setText("Nhấn vào đây");
         AF_QuenMatKhau_JButton.addActionListener(new java.awt.event.ActionListener() {
@@ -197,41 +132,13 @@ public class AuthenticationFrame extends javax.swing.JFrame {
                 AF_QuenMatKhau_JButtonActionPerformed(evt);
             }
         });
+        AF_QuenMatKhau_JL_JB_JPanel.add(AF_QuenMatKhau_JButton);
 
-        javax.swing.GroupLayout AF_QuenMatKhau_JL_JB_JPanelLayout = new javax.swing.GroupLayout(AF_QuenMatKhau_JL_JB_JPanel);
-        AF_QuenMatKhau_JL_JB_JPanel.setLayout(AF_QuenMatKhau_JL_JB_JPanelLayout);
-        AF_QuenMatKhau_JL_JB_JPanelLayout.setHorizontalGroup(
-            AF_QuenMatKhau_JL_JB_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AF_QuenMatKhau_JL_JB_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AF_QuenMatKhau_JLabel)
-                .addGap(39, 39, 39)
-                .addComponent(AF_QuenMatKhau_JButton)
-                .addContainerGap())
-        );
-        AF_QuenMatKhau_JL_JB_JPanelLayout.setVerticalGroup(
-            AF_QuenMatKhau_JL_JB_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AF_QuenMatKhau_JL_JB_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AF_QuenMatKhau_JL_JB_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AF_QuenMatKhau_JLabel)
-                    .addComponent(AF_QuenMatKhau_JButton))
-                .addContainerGap())
-        );
-
-        AF_QuenMatKhau_JL_JB_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AF_QuenMatKhau_JButton, AF_QuenMatKhau_JLabel});
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(43, 550, 0, 143);
-        getContentPane().add(AF_QuenMatKhau_JL_JB_JPanel, gridBagConstraints);
-
-        AF_KhongTaiKhoan_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        AF_KhongTaiKhoan_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         AF_KhongTaiKhoan_JLabel.setText("Chưa có tài khoản?");
         AF_KhongTaiKhoan_JLabel.setToolTipText("");
+        AF_KhongTaiKhoan_JLabel.setPreferredSize(new java.awt.Dimension(200, 30));
+        AF_KhongTaiKhoan_DangNhap_JL_JB_JPanel.add(AF_KhongTaiKhoan_JLabel);
 
         AF_KhongTaiKhoan_JButton.setText("Nhấn vào đây");
         AF_KhongTaiKhoan_JButton.addActionListener(new java.awt.event.ActionListener() {
@@ -239,6 +146,7 @@ public class AuthenticationFrame extends javax.swing.JFrame {
                 AF_KhongTaiKhoan_JButtonActionPerformed(evt);
             }
         });
+        AF_KhongTaiKhoan_DangNhap_JL_JB_JPanel.add(AF_KhongTaiKhoan_JButton);
 
         AF_DangNhap_JButton.setText("ĐĂNG NHẬP");
         AF_DangNhap_JButton.addActionListener(new java.awt.event.ActionListener() {
@@ -247,40 +155,46 @@ public class AuthenticationFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout AF_KhongTaiKhoan_DangNhap_JL_JB_JPanelLayout = new javax.swing.GroupLayout(AF_KhongTaiKhoan_DangNhap_JL_JB_JPanel);
-        AF_KhongTaiKhoan_DangNhap_JL_JB_JPanel.setLayout(AF_KhongTaiKhoan_DangNhap_JL_JB_JPanelLayout);
-        AF_KhongTaiKhoan_DangNhap_JL_JB_JPanelLayout.setHorizontalGroup(
-            AF_KhongTaiKhoan_DangNhap_JL_JB_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AF_KhongTaiKhoan_DangNhap_JL_JB_JPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(500, 500, 500)
+                .addComponent(AF_KhongTaiKhoan_DangNhap_JL_JB_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(AF_KhongTaiKhoan_JLabel)
-                .addGap(39, 39, 39)
-                .addGroup(AF_KhongTaiKhoan_DangNhap_JL_JB_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AF_Title_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AF_Subtitle_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AF_TenDangNhap_JTF_JL_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AF_MatKhau_JTF_JL_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(AF_DangNhap_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AF_KhongTaiKhoan_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(AF_QuenMatKhau_JL_JB_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        AF_KhongTaiKhoan_DangNhap_JL_JB_JPanelLayout.setVerticalGroup(
-            AF_KhongTaiKhoan_DangNhap_JL_JB_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AF_KhongTaiKhoan_DangNhap_JL_JB_JPanelLayout.createSequentialGroup()
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(AF_KhongTaiKhoan_DangNhap_JL_JB_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AF_KhongTaiKhoan_JLabel)
-                    .addComponent(AF_KhongTaiKhoan_JButton))
+                .addComponent(AF_Title_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AF_Subtitle_JLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(AF_TenDangNhap_JTF_JL_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AF_MatKhau_JTF_JL_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(AF_QuenMatKhau_JL_JB_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AF_KhongTaiKhoan_DangNhap_JL_JB_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(AF_DangNhap_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        AF_KhongTaiKhoan_DangNhap_JL_JB_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AF_KhongTaiKhoan_JButton, AF_KhongTaiKhoan_JLabel});
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(3, 500, 0, 143);
-        getContentPane().add(AF_KhongTaiKhoan_DangNhap_JL_JB_JPanel, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -322,64 +236,79 @@ public class AuthenticationFrame extends javax.swing.JFrame {
         }
     }
     
+	public boolean checkIllegalCharacter(String inp, Pattern pat) {
+		Matcher match = pat.matcher(inp);
+		return match.find();
+	}
+	
     private void AF_DangNhap_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AF_DangNhap_JButtonActionPerformed
         // TODO add your handling code here:
         String TenDangNhapVariableHolder = AF_TenDangNhap_JTextField.getText();
         String MatKhauVariableHolder = new String(AF_MatKhau_JPasswordField.getPassword());
         
         if (
-            TenDangNhapVariableHolder.equals("") &&
+            TenDangNhapVariableHolder.equals("") ||
             MatKhauVariableHolder.equals("")
         ) {
             JOptionPane.showMessageDialog(this, "Thông tin đăng nhập không được bỏ trống");
         } else {
-            // Create connection
-            Connection con = connect();
+            if (checkIllegalCharacter(TenDangNhapVariableHolder, patt)) {
+				JOptionPane.showMessageDialog(this, "Username không được phép tồn tại ký tự đặc biệt. Vui lòng nhập lại", "Error", JOptionPane.ERROR_MESSAGE);
+			} else {
+				// Create connection
+				Connection con = connect();
 
-            if (con == null) {
-                // debug block
-                if (DEBUG == 1) {
-                    System.out.println("Không thể kết nối đến cơ sử dữ liệu");
-                }
-            } else {
-                // query parameter
-                boolean result = false;
-                String query = "SELECT * FROM CANHAN WHERE USERNAME = ? AND MATKHAU = ?";
+				if (con == null) {
+					// debug block
+					if (DEBUG == 1) {
+					System.out.println("Không thể kết nối đến cơ sử dữ liệu");
+					}
+				} else {
+					// query parameter
+					boolean result = false;
+					ResultSet rs = null;
+					String query = "SELECT CANHAN.USERNAME FROM CANHAN WHERE CANHAN.USERNAME = ? AND CANHAN.MATKHAU = ?";
 
-                // catching error in query execution
-                try {
-                    // load parameter in to query
-                    PreparedStatement ps = con.prepareStatement(query);
-                    ps.setString(1, TenDangNhapVariableHolder);
-                    ps.setString(2, MatKhauVariableHolder);
+					// catching error in query execution
+					try {
+						// load parameter in to query
+						PreparedStatement ps = con.prepareStatement(query);
+						ps.setString(1, TenDangNhapVariableHolder);
+						ps.setString(2, MatKhauVariableHolder);
 
-                    // execute and return boolean value to confirm connection
-                    result = ps.execute();
-                    con.close();
-                } catch (SQLException se) {
-                    // SQL Exception
-                    System.out.println(se.getMessage());
-                }
+						// execute and return boolean value to confirm connection
+						rs = ps.executeQuery();
+						if (rs.next()) {
+							result = true;
+						} else {
+							result = false;
+						}
+						con.close();
+					} catch (SQLException se) {
+						// SQL Exception
+						System.out.println(se.getMessage());
+					}
 
-                // checking connection confirm
-                if (result == false) {
-                    // error display
-                    JOptionPane.showMessageDialog(this, "Đăng nhập không thành công. Vui lòng nhập lại", "Error", JOptionPane.ERROR_MESSAGE);
+					// checking connection confirm
+					if (result == false) {
+						// error display
+						JOptionPane.showMessageDialog(this, "Đăng nhập không thành công. Vui lòng nhập lại", "Error", JOptionPane.ERROR_MESSAGE);
 
-                    // debug block
-                    if (DEBUG == 1) {
-                        System.out.println("No user found");
-                    }
-                } else {
-                    // success display
-                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
+						// debug block
+						if (DEBUG == 1) {
+							System.out.println("No user found");
+						}
+					} else {
+						// success display
+						JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-                    // debug block
-                    if (DEBUG == 1) {
-                        System.out.println("User found");
-                    }
-                }
-            }
+						// debug block
+						if (DEBUG == 1) {
+							System.out.println("User found");
+						}
+					}
+				}
+			}
         }
     }//GEN-LAST:event_AF_DangNhap_JButtonActionPerformed
 
