@@ -4,6 +4,7 @@
  */
 package userview;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -15,6 +16,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -29,36 +31,19 @@ public class CreateAccountFrame extends javax.swing.JFrame {
      * Creates new form CreateAccountFrame
      */
     public CreateAccountFrame(AuthenticationFrame af) {
-       this.af = af;
-        try {
-            String osName = System.getProperty("os.name").toLowerCase();
-    
-            if (osName.contains("linux")) {
-                // Sử dụng GTK trên Linux
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("GTK+".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            } else if (osName.contains("windows")) {
-                // Sử dụng giao diện Windows trên Windows
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Windows".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+		this.af = af;
+        FlatIntelliJLaf.setup();
+		try {
+			UIManager.setLookAndFeel( new FlatIntelliJLaf() );
+		} catch( Exception ex ) {
+			System.err.println( "Failed to initialize LaF" );
+		}
+		UIManager.put( "Button.arc", 50 );
+		UIManager.put( "Component.arc", 50 );
+		UIManager.put( "ProgressBar.arc", 50 );
+		UIManager.put( "TextComponent.arc", 50 );
+		UIManager.put( "TextArea.border", 50 );
+		UIManager.put( "ScrollPane.TextComponent.arc", 50 );
         initComponents();
         this.setFrameInCenter();
         this.setVisible(true);
@@ -116,9 +101,11 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         CAF_KhuVucSinhSong_JComboBox = new javax.swing.JComboBox<>();
         CAF_TienSuBenhLy_JL_JTA_JPanel = new javax.swing.JPanel();
         CAF_TienSuBenhLy_JLabel = new javax.swing.JLabel();
+        CAF_TienSuBenhLy_JScrollPane = new javax.swing.JScrollPane();
         CAF_TienSuBenhLy_JTextArea = new javax.swing.JTextArea();
-        CAF_XacNhan_JButton = new javax.swing.JButton();
+        CAF_Button_JPanel = new javax.swing.JPanel();
         CAF_TroLai_JButton = new javax.swing.JButton();
+        CAF_XacNhan_JButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -226,25 +213,27 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         CAF_KhuVucSinhSong_JL_JCB_JPanel.add(CAF_KhuVucSinhSong_JComboBox);
 
         CAF_TienSuBenhLy_JL_JTA_JPanel.setPreferredSize(new java.awt.Dimension(670, 110));
-        CAF_TienSuBenhLy_JL_JTA_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         CAF_TienSuBenhLy_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 25)); // NOI18N
         CAF_TienSuBenhLy_JLabel.setText("Tiền sử bệnh lý:");
         CAF_TienSuBenhLy_JLabel.setPreferredSize(new java.awt.Dimension(270, 30));
         CAF_TienSuBenhLy_JL_JTA_JPanel.add(CAF_TienSuBenhLy_JLabel);
 
-        CAF_TienSuBenhLy_JTextArea.setColumns(20);
-        CAF_TienSuBenhLy_JTextArea.setRows(5);
-        CAF_TienSuBenhLy_JTextArea.setPreferredSize(new java.awt.Dimension(385, 100));
-        CAF_TienSuBenhLy_JL_JTA_JPanel.add(CAF_TienSuBenhLy_JTextArea);
+        CAF_TienSuBenhLy_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        CAF_TienSuBenhLy_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        CAF_TienSuBenhLy_JScrollPane.setMaximumSize(new java.awt.Dimension(385, 100));
+        CAF_TienSuBenhLy_JScrollPane.setMinimumSize(new java.awt.Dimension(385, 100));
+        CAF_TienSuBenhLy_JScrollPane.setPreferredSize(new java.awt.Dimension(385, 100));
 
-        CAF_XacNhan_JButton.setFont(new java.awt.Font("SF Mono SemiBold", 0, 25)); // NOI18N
-        CAF_XacNhan_JButton.setText("Xác nhận");
-        CAF_XacNhan_JButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CAF_XacNhan_JButtonActionPerformed(evt);
-            }
-        });
+        CAF_TienSuBenhLy_JTextArea.setColumns(20);
+        CAF_TienSuBenhLy_JTextArea.setRows(10);
+        CAF_TienSuBenhLy_JTextArea.setMaximumSize(new java.awt.Dimension(385, 100));
+        CAF_TienSuBenhLy_JTextArea.setMinimumSize(new java.awt.Dimension(385, 100));
+        CAF_TienSuBenhLy_JScrollPane.setViewportView(CAF_TienSuBenhLy_JTextArea);
+
+        CAF_TienSuBenhLy_JL_JTA_JPanel.add(CAF_TienSuBenhLy_JScrollPane);
+
+        CAF_Button_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         CAF_TroLai_JButton.setFont(new java.awt.Font("SF Mono SemiBold", 0, 25)); // NOI18N
         CAF_TroLai_JButton.setText("Trở lại");
@@ -253,6 +242,16 @@ public class CreateAccountFrame extends javax.swing.JFrame {
                 CAF_TroLai_JButtonActionPerformed(evt);
             }
         });
+        CAF_Button_JPanel.add(CAF_TroLai_JButton);
+
+        CAF_XacNhan_JButton.setFont(new java.awt.Font("SF Mono SemiBold", 0, 25)); // NOI18N
+        CAF_XacNhan_JButton.setText("Xác nhận");
+        CAF_XacNhan_JButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CAF_XacNhan_JButtonActionPerformed(evt);
+            }
+        });
+        CAF_Button_JPanel.add(CAF_XacNhan_JButton);
 
         javax.swing.GroupLayout CAF_IntermidiateContainer_JPanelLayout = new javax.swing.GroupLayout(CAF_IntermidiateContainer_JPanel);
         CAF_IntermidiateContainer_JPanel.setLayout(CAF_IntermidiateContainer_JPanelLayout);
@@ -273,10 +272,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
                             .addComponent(CAF_TienSuBenhLy_JL_JTA_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CAF_KhuVucSinhSong_JL_JCB_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CAF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
-                        .addComponent(CAF_TroLai_JButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CAF_XacNhan_JButton)))
+                    .addComponent(CAF_Button_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         CAF_IntermidiateContainer_JPanelLayout.setVerticalGroup(
@@ -301,9 +297,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CAF_KhuVucSinhSong_JL_JCB_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CAF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CAF_XacNhan_JButton)
-                    .addComponent(CAF_TroLai_JButton))
+                .addComponent(CAF_Button_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -525,6 +519,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CAF_Button_JPanel;
     private javax.swing.JPanel CAF_Email_JL_JTF_JPanel;
     private javax.swing.JLabel CAF_Email_JLabel;
     private javax.swing.JTextField CAF_Email_JTextField;
@@ -544,6 +539,7 @@ public class CreateAccountFrame extends javax.swing.JFrame {
     private javax.swing.JTextField CAF_TenTaiKhoan_JTextField;
     private javax.swing.JPanel CAF_TienSuBenhLy_JL_JTA_JPanel;
     private javax.swing.JLabel CAF_TienSuBenhLy_JLabel;
+    private javax.swing.JScrollPane CAF_TienSuBenhLy_JScrollPane;
     private javax.swing.JTextArea CAF_TienSuBenhLy_JTextArea;
     private javax.swing.JButton CAF_TroLai_JButton;
     private javax.swing.JPanel CAF_Tuoi_JL_JS_JPanel;

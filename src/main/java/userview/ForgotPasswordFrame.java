@@ -4,6 +4,8 @@
  */
 package userview;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -22,6 +24,7 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 /**
  *
  * @author shanghuang
@@ -36,36 +39,20 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
      */
     public ForgotPasswordFrame(AuthenticationFrame af) {
         this.af = af;
-        try {
-            String osName = System.getProperty("os.name").toLowerCase();
-    
-            if (osName.contains("linux")) {
-                // Sử dụng GTK trên Linux
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("GTK+".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            } else if (osName.contains("windows")) {
-                // Sử dụng giao diện Windows trên Windows
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Windows".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ForgotPasswordFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ForgotPasswordFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ForgotPasswordFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ForgotPasswordFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        FlatIntelliJLaf.setup();
+		try {
+			UIManager.setLookAndFeel( new FlatIntelliJLaf() );
+		} catch( Exception ex ) {
+			System.err.println( "Failed to initialize LaF" );
+		}
+		UIManager.put( "Button.arc", 50 );
+		UIManager.put( "Component.arc", 50 );
+		UIManager.put( "ProgressBar.arc", 50 );
+		UIManager.put( "TextComponent.arc", 50 );
+		UIManager.put( "TextArea.border", 50 );
+		UIManager.put( "ScrollPane.TextComponent.arc", 50 );
         initComponents();
+		FPF_IntermidiateContainer_JPanel.putClientProperty(FlatClientProperties.STYLE, "arc: 10" );
         this.setFrameInCenter();
         this.setVisible(true);
     }

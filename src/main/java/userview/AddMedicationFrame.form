@@ -60,13 +60,13 @@
             </Property>
             <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[90, 40]"/>
+              <Dimension value="[120, 40]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[90, 40]"/>
+              <Dimension value="[120, 40]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[90, 40]"/>
+              <Dimension value="[120, 40]"/>
             </Property>
           </Properties>
           <Events>
@@ -80,8 +80,14 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Th&#xea;m &#x111;&#x1a1;n thu&#x1ed1;c m&#x1edb;i"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[425, 40]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[425, 40]"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[480, 40]"/>
+              <Dimension value="[425, 40]"/>
             </Property>
           </Properties>
         </Component>
@@ -92,13 +98,13 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[90, 40]"/>
+              <Dimension value="[120, 40]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[90, 40]"/>
+              <Dimension value="[120, 40]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[90, 40]"/>
+              <Dimension value="[120, 40]"/>
             </Property>
           </Properties>
           <Events>
@@ -109,6 +115,9 @@
     </Container>
     <Container class="javax.swing.JScrollPane" name="AMF_NoiDungThemThuoc_JScrollPane">
       <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
         <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
         <Property name="verticalScrollBarPolicy" type="int" value="22"/>
       </Properties>
@@ -206,6 +215,9 @@
                       <Dimension value="[385, 30]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_DonVi_JTextFieldActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -247,6 +259,9 @@
                       <Dimension value="[385, 30]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_GhiChu_JTextFieldActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -298,7 +313,6 @@
                   </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="AMF_TanSuatSuDung_JComboBoxItemStateChanged"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_TanSuatSuDung_JComboBoxActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -455,9 +469,16 @@
                       <Dimension value="[70, 30]"/>
                     </Property>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
+                    <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="5" type="code"/>
+                    </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_KhoangThoiGianLapThongBao_JSpinnerStateChanged"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js10 = AMF_KhoangThoiGianLapThongBao_JSpinner.getEditor();&#xa;JFormattedTextField tf_js10 = ((JSpinner.DefaultEditor) editor_js10).getTextField();&#xa;tf_js10.setEditable(false);&#xa;tf_js10.setColumns(3);&#xa;tf_js10.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_KhoangThoiGianLapThongBao_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_KhoangThoiGianLapThongBao = AMF_KhoangThoiGianLapThongBao_JSpinner.getEditor();&#xa;JFormattedTextField tf_KhoangThoiGianLapThongBao = ((JSpinner.DefaultEditor) editor_KhoangThoiGianLapThongBao).getTextField();&#xa;tf_KhoangThoiGianLapThongBao.setEditable(false);&#xa;tf_KhoangThoiGianLapThongBao.setColumns(3);&#xa;tf_KhoangThoiGianLapThongBao.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_KhoangThoiGianLapThongBao_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel KhoangThoiGianLapThongBao_model = new SpinnerNumberModel(5, 5, 60, 5);&#xa;AMF_KhoangThoiGianLapThongBao_JSpinner.setModel(KhoangThoiGianLapThongBao_model);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -521,9 +542,16 @@
                       <Dimension value="[70, 30]"/>
                     </Property>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
+                    <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="1" type="code"/>
+                    </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_HienCo_JSpinnerStateChanged"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js11 = AMF_HienCo_JSpinner.getEditor();&#xa;JFormattedTextField tf_js11 = ((JSpinner.DefaultEditor) editor_js11).getTextField();&#xa;tf_js11.setEditable(false);&#xa;tf_js11.setColumns(3);&#xa;tf_js11.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_HienCo_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_HienCo = AMF_HienCo_JSpinner.getEditor();&#xa;JFormattedTextField tf_HienCo = ((JSpinner.DefaultEditor) editor_HienCo).getTextField();&#xa;tf_HienCo.setEditable(false);&#xa;tf_HienCo.setColumns(3);&#xa;tf_HienCo.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_HienCo_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel HienCo_model = new SpinnerNumberModel(1, 1, 100, 1);&#xa;AMF_HienCo_JSpinner.setModel(HienCo_model);"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="AMF_NhacNho_JLabel">
@@ -562,9 +590,16 @@
                       <Dimension value="[70, 30]"/>
                     </Property>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
+                    <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="1" type="code"/>
+                    </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_NhacNho_JSpinnerStateChanged"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js12 = AMF_NhacNho_JSpinner.getEditor();&#xa;JFormattedTextField tf_js12 = ((JSpinner.DefaultEditor) editor_js12).getTextField();&#xa;tf_js12.setEditable(false);&#xa;tf_js12.setColumns(3);&#xa;tf_js12.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_NhacNho_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_NhacNho = AMF_NhacNho_JSpinner.getEditor();&#xa;JFormattedTextField tf_NhacNho = ((JSpinner.DefaultEditor) editor_NhacNho).getTextField();&#xa;tf_NhacNho.setEditable(false);&#xa;tf_NhacNho.setColumns(3);&#xa;tf_NhacNho.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_NhacNho_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel NhacNho_model = new SpinnerNumberModel(1, 1, 100, 1);&#xa;AMF_NhacNho_JSpinner.setModel(NhacNho_model);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -593,7 +628,6 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AMF_MocThoiGianSuDungThuoc_Them_JButtonMouseClicked"/>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_MocThoiGianSuDungThuoc_Them_JButtonActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="AMF_MocThoiGianSuDungThuoc_Gio_JSpinner">
@@ -616,8 +650,12 @@
                     </Property>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_MocThoiGianSuDungThuoc_Gio_JSpinnerStateChanged"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js7 = AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.getEditor();&#xa;JFormattedTextField tf_js7 = ((JSpinner.DefaultEditor) editor_js7).getTextField();&#xa;tf_js7.setEditable(false);&#xa;tf_js7.setColumns(3);&#xa;tf_js7.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_Gio = AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.getEditor();&#xa;JFormattedTextField tf_Gio = ((JSpinner.DefaultEditor) editor_Gio).getTextField();&#xa;tf_Gio.setEditable(false);&#xa;tf_Gio.setColumns(3);&#xa;tf_Gio.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel Gio_model = new SpinnerNumberModel(0, 0, 12, 1);&#xa;AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setModel(Gio_model);"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="AMF_MocThoiGianSuDungThuoc_Phut_JSpinner">
@@ -640,8 +678,12 @@
                     </Property>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_MocThoiGianSuDungThuoc_Phut_JSpinnerStateChanged"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js8 = AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.getEditor();&#xa;JFormattedTextField tf_js8 = ((JSpinner.DefaultEditor) editor_js8).getTextField();&#xa;tf_js8.setEditable(false);&#xa;tf_js8.setColumns(3);&#xa;tf_js8.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_Phut = AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.getEditor();&#xa;JFormattedTextField tf_Phut = ((JSpinner.DefaultEditor) editor_Phut).getTextField();&#xa;tf_Phut.setEditable(false);&#xa;tf_Phut.setColumns(3);&#xa;tf_Phut.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel Phut_model = new SpinnerNumberModel(0, 0, 60, 1);&#xa;AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setModel(Phut_model);"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="AMF_AM_PM_JComboBox">
@@ -705,9 +747,16 @@
                       <Dimension value="[90, 30]"/>
                     </Property>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
+                    <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="1" type="code"/>
+                    </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_LieuSuDung_JSpinnerStateChanged"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js9 = AMF_LieuSuDung_JSpinner.getEditor();&#xa;JFormattedTextField tf_js9 = ((JSpinner.DefaultEditor) editor_js9).getTextField();&#xa;tf_js9.setEditable(false);&#xa;tf_js9.setColumns(3);&#xa;tf_js9.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_LieuSuDung_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_LieuSuDung = AMF_LieuSuDung_JSpinner.getEditor();&#xa;JFormattedTextField tf_LieuSuDung = ((JSpinner.DefaultEditor) editor_LieuSuDung).getTextField();&#xa;tf_LieuSuDung.setEditable(false);&#xa;tf_LieuSuDung.setColumns(3);&#xa;tf_LieuSuDung.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_LieuSuDung_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel LieuSuDung_model = new SpinnerNumberModel(1, 1, 100, 1);&#xa;AMF_LieuSuDung_JSpinner.setModel(LieuSuDung_model);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>

@@ -3,7 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package userview;
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.*;
 
 /**
@@ -12,43 +21,31 @@ import javax.swing.*;
  */
 public class AddMedicationFrame extends javax.swing.JFrame {
 	public static MainFrame mf;
+	public String charset = "<>?/.,:\";'{}|\\[\\]\\\\()!@#$%^&*\\-_+=~`";
+	Pattern patt = Pattern.compile("[" + charset + "]");
+	int DEBUG = 1;
+	String Specific_data = "";
+	
     /**
      * Creates new form AddingMedFrame
      */
     public AddMedicationFrame(MainFrame mf) {
 		this.mf = mf;
-        try {
-            String osName = System.getProperty("os.name").toLowerCase();
-    
-            if (osName.contains("linux")) {
-                // Sử dụng GTK trên Linux
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("GTK+".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            } else if (osName.contains("windows")) {
-                // Sử dụng giao diện Windows trên Windows
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Windows".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddMedicationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddMedicationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddMedicationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddMedicationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        
+        FlatIntelliJLaf.setup();
+		try {
+			UIManager.setLookAndFeel( new FlatIntelliJLaf() );
+		} catch( Exception ex ) {
+			System.err.println( "Failed to initialize LaF" );
+		}
+		UIManager.put( "Button.arc", 50 );
+		UIManager.put( "Component.arc", 50 );
+		UIManager.put( "ProgressBar.arc", 50 );
+		UIManager.put( "TextComponent.arc", 50 );
+		UIManager.put( "TextArea.border", 50 );
+		UIManager.put( "ScrollPane.TextComponent.arc", 50 );
         initComponents();
 		AMF_TanSuatSuDung_JButton.setEnabled(false);
+		AMF_ThanhChucNang_JPanel.putClientProperty(FlatClientProperties.STYLE, "arc: 10" );
 		this.setFrameInCenter();
         this.setVisible(true);
     }
@@ -60,6 +57,52 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         final int y = (screenSize.height - this.getHeight()) / 2;
         this.setLocation(x, y);
     }
+	
+	public boolean checkUnit(String unit) {
+		final Pattern UNIT_REGEX = Pattern.compile("^\\s*(\\d+(\\.\\d+)?)\\s*(viên|chiếc|tuýp|gói|lọ|vỉ|ống|chai|m[gG]|g|ml|cc)\\s*$", Pattern.CASE_INSENSITIVE);
+		return UNIT_REGEX.matcher(unit).matches();
+	}
+	
+	private Connection connect() {
+        // connection parameter
+        String dbURL = "jdbc:oracle:thin:@192.168.124.180:32772:XE";
+        String driver = "oracle.jdbc.OracleDriver";
+        Connection con = null;
+        
+        // catching error in connection
+        try {
+            // class loader
+            Class.forName(driver);
+            
+            // connection
+            con = DriverManager.getConnection(dbURL, "c##shanghuang", "181105");
+
+            // debug block
+            if (con != null) {
+                if (DEBUG == 1) {
+                    System.out.println("Kết nối đến cơ sử dữ liệu thành công");
+                }
+            }
+        } catch(SQLException se) { 
+            // sql exception
+            System.out.println(se.getMessage());
+        } catch (ClassNotFoundException ex) { 
+            // class exception
+            Logger.getLogger(AddMedicationFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        // Return connection
+        if (con != null) {
+            return con;
+        } else {
+            return null;
+        }
+    }
+	
+	public boolean checkIllegalCharacter(String inp, Pattern pat) {
+		Matcher match = pat.matcher(inp);
+		return match.find();
+	}
     
     public int get_JPanel2_height() {
         return this.AMF_MocThoiGianSuDungThuoc_JPanel.getSize().height;
@@ -125,9 +168,9 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 
         AMF_Huy_JButton.setFont(new java.awt.Font("SF Mono", 0, 24)); // NOI18N
         AMF_Huy_JButton.setText("Hủy");
-        AMF_Huy_JButton.setMaximumSize(new java.awt.Dimension(90, 40));
-        AMF_Huy_JButton.setMinimumSize(new java.awt.Dimension(90, 40));
-        AMF_Huy_JButton.setPreferredSize(new java.awt.Dimension(90, 40));
+        AMF_Huy_JButton.setMaximumSize(new java.awt.Dimension(120, 40));
+        AMF_Huy_JButton.setMinimumSize(new java.awt.Dimension(120, 40));
+        AMF_Huy_JButton.setPreferredSize(new java.awt.Dimension(120, 40));
         AMF_Huy_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AMF_Huy_JButtonActionPerformed(evt);
@@ -138,14 +181,16 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_ThemDonThuocMoi_JLabel.setFont(new java.awt.Font("SF Mono", 0, 36)); // NOI18N
         AMF_ThemDonThuocMoi_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AMF_ThemDonThuocMoi_JLabel.setText("Thêm đơn thuốc mới");
-        AMF_ThemDonThuocMoi_JLabel.setPreferredSize(new java.awt.Dimension(480, 40));
+        AMF_ThemDonThuocMoi_JLabel.setMaximumSize(new java.awt.Dimension(425, 40));
+        AMF_ThemDonThuocMoi_JLabel.setMinimumSize(new java.awt.Dimension(425, 40));
+        AMF_ThemDonThuocMoi_JLabel.setPreferredSize(new java.awt.Dimension(425, 40));
         AMF_ThanhChucNang_JPanel.add(AMF_ThemDonThuocMoi_JLabel);
 
         AMF_Them_JButton.setFont(new java.awt.Font("SF Mono", 0, 24)); // NOI18N
         AMF_Them_JButton.setText("Thêm");
-        AMF_Them_JButton.setMaximumSize(new java.awt.Dimension(90, 40));
-        AMF_Them_JButton.setMinimumSize(new java.awt.Dimension(90, 40));
-        AMF_Them_JButton.setPreferredSize(new java.awt.Dimension(90, 40));
+        AMF_Them_JButton.setMaximumSize(new java.awt.Dimension(120, 40));
+        AMF_Them_JButton.setMinimumSize(new java.awt.Dimension(120, 40));
+        AMF_Them_JButton.setPreferredSize(new java.awt.Dimension(120, 40));
         AMF_Them_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AMF_Them_JButtonActionPerformed(evt);
@@ -153,6 +198,7 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         });
         AMF_ThanhChucNang_JPanel.add(AMF_Them_JButton);
 
+        AMF_NoiDungThemThuoc_JScrollPane.setBorder(null);
         AMF_NoiDungThemThuoc_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         AMF_NoiDungThemThuoc_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
@@ -193,6 +239,11 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_DonVi_JTextField.setMaximumSize(new java.awt.Dimension(385, 30));
         AMF_DonVi_JTextField.setMinimumSize(new java.awt.Dimension(385, 30));
         AMF_DonVi_JTextField.setPreferredSize(new java.awt.Dimension(385, 30));
+        AMF_DonVi_JTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AMF_DonVi_JTextFieldActionPerformed(evt);
+            }
+        });
         AMF_DonVi_JPanel.add(AMF_DonVi_JTextField);
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_DonVi_JPanel);
@@ -210,6 +261,11 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_GhiChu_JTextField.setMaximumSize(new java.awt.Dimension(385, 30));
         AMF_GhiChu_JTextField.setMinimumSize(new java.awt.Dimension(385, 30));
         AMF_GhiChu_JTextField.setPreferredSize(new java.awt.Dimension(385, 30));
+        AMF_GhiChu_JTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AMF_GhiChu_JTextFieldActionPerformed(evt);
+            }
+        });
         AMF_GhiChu_JPanel.add(AMF_GhiChu_JTextField);
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_GhiChu_JPanel);
@@ -231,11 +287,6 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_TanSuatSuDung_JComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 AMF_TanSuatSuDung_JComboBoxItemStateChanged(evt);
-            }
-        });
-        AMF_TanSuatSuDung_JComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AMF_TanSuatSuDung_JComboBoxActionPerformed(evt);
             }
         });
         AMF_TanSuatSuDung_JPanel.add(AMF_TanSuatSuDung_JComboBox);
@@ -315,12 +366,20 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_KhoangThoiGianLapThongBao_JSpinner.setMinimumSize(new java.awt.Dimension(70, 30));
         AMF_KhoangThoiGianLapThongBao_JSpinner.setPreferredSize(new java.awt.Dimension(70, 30));
         AMF_KhoangThoiGianLapThongBao_JSpinner.setRequestFocusEnabled(false);
+        AMF_KhoangThoiGianLapThongBao_JSpinner.setValue(5);
+        AMF_KhoangThoiGianLapThongBao_JSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                AMF_KhoangThoiGianLapThongBao_JSpinnerStateChanged(evt);
+            }
+        });
+        SpinnerNumberModel KhoangThoiGianLapThongBao_model = new SpinnerNumberModel(5, 5, 60, 5);
+        AMF_KhoangThoiGianLapThongBao_JSpinner.setModel(KhoangThoiGianLapThongBao_model);
         AMF_KhoangThoiGianLapThongBao_JPanel.add(AMF_KhoangThoiGianLapThongBao_JSpinner);
-        JComponent editor_js10 = AMF_KhoangThoiGianLapThongBao_JSpinner.getEditor();
-        JFormattedTextField tf_js10 = ((JSpinner.DefaultEditor) editor_js10).getTextField();
-        tf_js10.setEditable(false);
-        tf_js10.setColumns(3);
-        tf_js10.setHorizontalAlignment(JTextField.CENTER);
+        JComponent editor_KhoangThoiGianLapThongBao = AMF_KhoangThoiGianLapThongBao_JSpinner.getEditor();
+        JFormattedTextField tf_KhoangThoiGianLapThongBao = ((JSpinner.DefaultEditor) editor_KhoangThoiGianLapThongBao).getTextField();
+        tf_KhoangThoiGianLapThongBao.setEditable(false);
+        tf_KhoangThoiGianLapThongBao.setColumns(3);
+        tf_KhoangThoiGianLapThongBao.setHorizontalAlignment(JTextField.CENTER);
         AMF_KhoangThoiGianLapThongBao_JSpinner.setSize(64, 32);
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_KhoangThoiGianLapThongBao_JPanel);
@@ -348,12 +407,20 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_HienCo_JSpinner.setMinimumSize(new java.awt.Dimension(70, 30));
         AMF_HienCo_JSpinner.setPreferredSize(new java.awt.Dimension(70, 30));
         AMF_HienCo_JSpinner.setRequestFocusEnabled(false);
+        AMF_HienCo_JSpinner.setValue(1);
+        AMF_HienCo_JSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                AMF_HienCo_JSpinnerStateChanged(evt);
+            }
+        });
+        SpinnerNumberModel HienCo_model = new SpinnerNumberModel(1, 1, 100, 1);
+        AMF_HienCo_JSpinner.setModel(HienCo_model);
         AMF_QuanLySoLuongThuoc_JPanel.add(AMF_HienCo_JSpinner);
-        JComponent editor_js11 = AMF_HienCo_JSpinner.getEditor();
-        JFormattedTextField tf_js11 = ((JSpinner.DefaultEditor) editor_js11).getTextField();
-        tf_js11.setEditable(false);
-        tf_js11.setColumns(3);
-        tf_js11.setHorizontalAlignment(JTextField.CENTER);
+        JComponent editor_HienCo = AMF_HienCo_JSpinner.getEditor();
+        JFormattedTextField tf_HienCo = ((JSpinner.DefaultEditor) editor_HienCo).getTextField();
+        tf_HienCo.setEditable(false);
+        tf_HienCo.setColumns(3);
+        tf_HienCo.setHorizontalAlignment(JTextField.CENTER);
         AMF_HienCo_JSpinner.setSize(64, 32);
 
         AMF_NhacNho_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
@@ -370,12 +437,20 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_NhacNho_JSpinner.setMinimumSize(new java.awt.Dimension(70, 30));
         AMF_NhacNho_JSpinner.setPreferredSize(new java.awt.Dimension(70, 30));
         AMF_NhacNho_JSpinner.setRequestFocusEnabled(false);
+        AMF_NhacNho_JSpinner.setValue(1);
+        AMF_NhacNho_JSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                AMF_NhacNho_JSpinnerStateChanged(evt);
+            }
+        });
+        SpinnerNumberModel NhacNho_model = new SpinnerNumberModel(1, 1, 100, 1);
+        AMF_NhacNho_JSpinner.setModel(NhacNho_model);
         AMF_QuanLySoLuongThuoc_JPanel.add(AMF_NhacNho_JSpinner);
-        JComponent editor_js12 = AMF_NhacNho_JSpinner.getEditor();
-        JFormattedTextField tf_js12 = ((JSpinner.DefaultEditor) editor_js12).getTextField();
-        tf_js12.setEditable(false);
-        tf_js12.setColumns(3);
-        tf_js12.setHorizontalAlignment(JTextField.CENTER);
+        JComponent editor_NhacNho = AMF_NhacNho_JSpinner.getEditor();
+        JFormattedTextField tf_NhacNho = ((JSpinner.DefaultEditor) editor_NhacNho).getTextField();
+        tf_NhacNho.setEditable(false);
+        tf_NhacNho.setColumns(3);
+        tf_NhacNho.setHorizontalAlignment(JTextField.CENTER);
         AMF_NhacNho_JSpinner.setSize(64, 32);
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_QuanLySoLuongThuoc_JPanel);
@@ -392,11 +467,6 @@ public class AddMedicationFrame extends javax.swing.JFrame {
                 AMF_MocThoiGianSuDungThuoc_Them_JButtonMouseClicked(evt);
             }
         });
-        AMF_MocThoiGianSuDungThuoc_Them_JButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AMF_MocThoiGianSuDungThuoc_Them_JButtonActionPerformed(evt);
-            }
-        });
         AMF_MocThoiGianSuDungThuoc_JPanel.add(AMF_MocThoiGianSuDungThuoc_Them_JButton);
 
         AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
@@ -406,12 +476,19 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
         AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
         AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setRequestFocusEnabled(false);
+        AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                AMF_MocThoiGianSuDungThuoc_Gio_JSpinnerStateChanged(evt);
+            }
+        });
+        SpinnerNumberModel Gio_model = new SpinnerNumberModel(0, 0, 12, 1);
+        AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setModel(Gio_model);
         AMF_MocThoiGianSuDungThuoc_JPanel.add(AMF_MocThoiGianSuDungThuoc_Gio_JSpinner);
-        JComponent editor_js7 = AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.getEditor();
-        JFormattedTextField tf_js7 = ((JSpinner.DefaultEditor) editor_js7).getTextField();
-        tf_js7.setEditable(false);
-        tf_js7.setColumns(3);
-        tf_js7.setHorizontalAlignment(JTextField.CENTER);
+        JComponent editor_Gio = AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.getEditor();
+        JFormattedTextField tf_Gio = ((JSpinner.DefaultEditor) editor_Gio).getTextField();
+        tf_Gio.setEditable(false);
+        tf_Gio.setColumns(3);
+        tf_Gio.setHorizontalAlignment(JTextField.CENTER);
         AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setSize(64, 32);
 
         AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
@@ -421,12 +498,19 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
         AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
         AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setRequestFocusEnabled(false);
+        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                AMF_MocThoiGianSuDungThuoc_Phut_JSpinnerStateChanged(evt);
+            }
+        });
+        SpinnerNumberModel Phut_model = new SpinnerNumberModel(0, 0, 60, 1);
+        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setModel(Phut_model);
         AMF_MocThoiGianSuDungThuoc_JPanel.add(AMF_MocThoiGianSuDungThuoc_Phut_JSpinner);
-        JComponent editor_js8 = AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.getEditor();
-        JFormattedTextField tf_js8 = ((JSpinner.DefaultEditor) editor_js8).getTextField();
-        tf_js8.setEditable(false);
-        tf_js8.setColumns(3);
-        tf_js8.setHorizontalAlignment(JTextField.CENTER);
+        JComponent editor_Phut = AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.getEditor();
+        JFormattedTextField tf_Phut = ((JSpinner.DefaultEditor) editor_Phut).getTextField();
+        tf_Phut.setEditable(false);
+        tf_Phut.setColumns(3);
+        tf_Phut.setHorizontalAlignment(JTextField.CENTER);
         AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setSize(64, 32);
 
         AMF_AM_PM_JComboBox.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
@@ -450,12 +534,20 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_LieuSuDung_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
         AMF_LieuSuDung_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
         AMF_LieuSuDung_JSpinner.setRequestFocusEnabled(false);
+        AMF_LieuSuDung_JSpinner.setValue(1);
+        AMF_LieuSuDung_JSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                AMF_LieuSuDung_JSpinnerStateChanged(evt);
+            }
+        });
+        SpinnerNumberModel LieuSuDung_model = new SpinnerNumberModel(1, 1, 100, 1);
+        AMF_LieuSuDung_JSpinner.setModel(LieuSuDung_model);
         AMF_MocThoiGianSuDungThuoc_JPanel.add(AMF_LieuSuDung_JSpinner);
-        JComponent editor_js9 = AMF_LieuSuDung_JSpinner.getEditor();
-        JFormattedTextField tf_js9 = ((JSpinner.DefaultEditor) editor_js9).getTextField();
-        tf_js9.setEditable(false);
-        tf_js9.setColumns(3);
-        tf_js9.setHorizontalAlignment(JTextField.CENTER);
+        JComponent editor_LieuSuDung = AMF_LieuSuDung_JSpinner.getEditor();
+        JFormattedTextField tf_LieuSuDung = ((JSpinner.DefaultEditor) editor_LieuSuDung).getTextField();
+        tf_LieuSuDung.setEditable(false);
+        tf_LieuSuDung.setColumns(3);
+        tf_LieuSuDung.setHorizontalAlignment(JTextField.CENTER);
         AMF_LieuSuDung_JSpinner.setSize(64, 32);
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_MocThoiGianSuDungThuoc_JPanel);
@@ -493,29 +585,37 @@ public class AddMedicationFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_AMF_Huy_JButtonActionPerformed
 
     private void AMF_Them_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_Them_JButtonActionPerformed
-        // TODO add your handling code here:
+        String TenThuocVariableHolder = AMF_Ten_JTextField.getText();
+		String DonViVariableHolder = AMF_DonVi_JTextField.getText();
+		String GhiChuVariableHolder = AMF_GhiChu_JTextField.getText();
+		String TanSuatChungVariableHolder = AMF_TanSuatSuDung_JComboBox.getSelectedItem().toString();
+		String TanSuatCuTheVariableHolder = Specific_data;
+		String UuTienThongBaoVariableHolder = null;
+		
+		if (AMF_UuTienThongBao_JToggleButton.isEnabled() == true) {
+			UuTienThongBaoVariableHolder = AMF_UuTienThongBao_JToggleButton.getSelectedIcon().toString();
+		}
+		String AutoConfirmVariableHolder = null;
+		
+		if (AMF_TuDongXacNhanSuDung_JToggleButton.isEnabled() == true) {
+			AutoConfirmVariableHolder = AMF_TuDongXacNhanSuDung_JToggleButton.getSelectedIcon().toString();
+		}
+		
+		int KhoangThongBaoVariableHolder = Integer.parseInt(AMF_KhoangThoiGianLapThongBao_JSpinner.getValue().toString());
+		int SLHienCoVariableHolder = Integer.parseInt(AMF_HienCo_JSpinner.getValue().toString());
+		int SLNhacNhoVariableHolder = Integer.parseInt(AMF_NhacNho_JSpinner.getValue().toString());
     }//GEN-LAST:event_AMF_Them_JButtonActionPerformed
 
     private void AMF_Ten_JTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_Ten_JTextFieldActionPerformed
-        // TODO add your handling code here:
+        if (checkIllegalCharacter(AMF_Ten_JTextField.getText(), patt)) {
+				JOptionPane.showMessageDialog(this, "Tên thuốc không được phép tồn tại ký tự đặc biệt. Vui lòng nhập lại", "Error", JOptionPane.ERROR_MESSAGE);
+				AMF_Ten_JTextField.setText("");
+		}
     }//GEN-LAST:event_AMF_Ten_JTextFieldActionPerformed
 
     private void AMF_UuTienThongBao_JToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_UuTienThongBao_JToggleButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AMF_UuTienThongBao_JToggleButtonActionPerformed
-
-    private void AMF_TanSuatSuDung_JComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_TanSuatSuDung_JComboBoxActionPerformed
-        // TODO add your handling code here:
-        if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Mỗi ngày")) {
-            AMF_TanSuatSuDung_JButton.setEnabled(false);
-        } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tuần")) {
-            AMF_TanSuatSuDung_JButton.setEnabled(true);
-        } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tháng")) {
-            AMF_TanSuatSuDung_JButton.setEnabled(true);
-        } else {
-            AMF_TanSuatSuDung_JButton.setEnabled(true);
-        }
-    }//GEN-LAST:event_AMF_TanSuatSuDung_JComboBoxActionPerformed
 
     private void AMF_TuDongXacNhanSuDung_JToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_TuDongXacNhanSuDung_JToggleButtonActionPerformed
         // TODO add your handling code here:
@@ -540,13 +640,12 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 
     private void AMF_TanSuatSuDung_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_TanSuatSuDung_JButtonActionPerformed
         // TODO add your handling code here:
-		var data= "";
         if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Mỗi ngày")) {
             AMF_TanSuatSuDung_JButton.setEnabled(false); 
         } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tuần")) {
-            data = JOptionPane.showInputDialog(this, "Nhập các ngày trong tuần bạn muốn\n(phân cách bằng dấu \",\"):\n" + "2: Thứ Hai, 3: Thứ Ba, 4: Thứ Tư\n5: Thứ Năm, 6: Thứ Sáu, 7: Thứ Bảy\n8: Chủ Nhật", "Lựa chọn ngày trong tuần", JOptionPane.QUESTION_MESSAGE);
+            Specific_data = JOptionPane.showInputDialog(this, "Nhập các ngày trong tuần bạn muốn\n(phân cách bằng dấu \",\"):\n" + "2: Thứ Hai, 3: Thứ Ba, 4: Thứ Tư\n5: Thứ Năm, 6: Thứ Sáu, 7: Thứ Bảy\n8: Chủ Nhật", "Lựa chọn ngày trong tuần", JOptionPane.QUESTION_MESSAGE);
         } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tháng")) {
-            data = JOptionPane.showInputDialog(this, "Nhập các ngày trong tháng bạn muốn\n(phân cách bằng dấu \",\"): ", "Lựa chọn ngày trong tháng", JOptionPane.QUESTION_MESSAGE);
+            Specific_data = JOptionPane.showInputDialog(this, "Nhập các ngày trong tháng bạn muốn\n(phân cách bằng dấu \",\"): ", "Lựa chọn ngày trong tháng", JOptionPane.QUESTION_MESSAGE);
         } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Khi cần thiết")) {
 			AMF_TanSuatSuDung_JButton.setEnabled(false); 
         }
@@ -555,13 +654,24 @@ public class AddMedicationFrame extends javax.swing.JFrame {
     private void AMF_TanSuatSuDung_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMF_TanSuatSuDung_JComboBoxItemStateChanged
         // TODO add your handling code here:
 		AMF_TanSuatSuDung_JButton.setEnabled(false);
-		var data= "";
+		AMF_UuTienThongBao_JToggleButton.setSelected(false);
+		AMF_TuDongXacNhanSuDung_JToggleButton.setSelected(false);
+		AMF_KhoangThoiGianLapThongBao_JSpinner.setValue(5);
         if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Mỗi ngày")) {
-            AMF_TanSuatSuDung_JButton.setEnabled(false); 
+            AMF_TanSuatSuDung_JButton.setEnabled(false);
+			AMF_UuTienThongBao_JToggleButton.setEnabled(true);
+			AMF_TuDongXacNhanSuDung_JToggleButton.setEnabled(true);
+			AMF_KhoangThoiGianLapThongBao_JSpinner.setEnabled(true);
         } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tuần")) {
 			AMF_TanSuatSuDung_JButton.setEnabled(true);
+			AMF_UuTienThongBao_JToggleButton.setEnabled(true);
+			AMF_TuDongXacNhanSuDung_JToggleButton.setEnabled(true);
+			AMF_KhoangThoiGianLapThongBao_JSpinner.setEnabled(true);
         } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tháng")) {
 			AMF_TanSuatSuDung_JButton.setEnabled(true);
+			AMF_UuTienThongBao_JToggleButton.setEnabled(true);
+			AMF_TuDongXacNhanSuDung_JToggleButton.setEnabled(true);
+			AMF_KhoangThoiGianLapThongBao_JSpinner.setEnabled(true);
         } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Khi cần thiết")) {
             AMF_TanSuatSuDung_JButton.setEnabled(false);
 			AMF_UuTienThongBao_JToggleButton.setEnabled(false);
@@ -570,19 +680,67 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AMF_TanSuatSuDung_JComboBoxItemStateChanged
 
-    private void AMF_MocThoiGianSuDungThuoc_Them_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_MocThoiGianSuDungThuoc_Them_JButtonActionPerformed
-//        // TODO add your handling code here:
-//		LayoutManager layout = AMF_KhungNoiDungThemThuoc_JPanel.getLayout();
-//		JPanel jp = AMF_MocThoiGianSuDungThuoc_JPanel;
-//		if (layout instanceof GridLayout) {
-//            ((GridLayout) layout).setColumns(1);
-//            ((GridLayout) layout).setRows(((GridLayout) layout).getRows() + 1);
-//            AMF_KhungNoiDungThemThuoc_JPanel.setLayout(layout);
-//            AMF_KhungNoiDungThemThuoc_JPanel.add(jp, -1);
-//            AMF_KhungNoiDungThemThuoc_JPanel.revalidate();
-//            AMF_KhungNoiDungThemThuoc_JPanel.repaint();
-//        }
-    }//GEN-LAST:event_AMF_MocThoiGianSuDungThuoc_Them_JButtonActionPerformed
+    private void AMF_DonVi_JTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_DonVi_JTextFieldActionPerformed
+        if (!checkUnit(AMF_DonVi_JTextField.getText())) {
+			JOptionPane.showMessageDialog(this, "Đơn vị không đúng định dạng. Vui lòng nhập lại", "Error", JOptionPane.ERROR_MESSAGE);
+			AMF_DonVi_JTextField.setText("");
+		}
+    }//GEN-LAST:event_AMF_DonVi_JTextFieldActionPerformed
+
+    private void AMF_GhiChu_JTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_GhiChu_JTextFieldActionPerformed
+        if (checkIllegalCharacter(AMF_GhiChu_JTextField.getText(), patt)) {
+			JOptionPane.showMessageDialog(this, "Ghi chú không được phép tồn tại ký tự đặc biệt. Vui lòng nhập lại", "Error", JOptionPane.ERROR_MESSAGE);
+			AMF_GhiChu_JTextField.setText("");
+		}
+    }//GEN-LAST:event_AMF_GhiChu_JTextFieldActionPerformed
+
+    private void AMF_KhoangThoiGianLapThongBao_JSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_AMF_KhoangThoiGianLapThongBao_JSpinnerStateChanged
+        if (Integer.parseInt(AMF_KhoangThoiGianLapThongBao_JSpinner.getValue().toString()) < 0) {
+			JOptionPane.showMessageDialog(this, "Khoảng thời gian phải là số dương. Vui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+			AMF_KhoangThoiGianLapThongBao_JSpinner.setValue(5);
+		}
+    }//GEN-LAST:event_AMF_KhoangThoiGianLapThongBao_JSpinnerStateChanged
+
+    private void AMF_HienCo_JSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_AMF_HienCo_JSpinnerStateChanged
+        if (Integer.parseInt(AMF_HienCo_JSpinner.getValue().toString()) < 0) {
+			JOptionPane.showMessageDialog(this, "Lượng thuốc hiện có phải là số dương. Vui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+			AMF_HienCo_JSpinner.setValue(1);
+		}
+    }//GEN-LAST:event_AMF_HienCo_JSpinnerStateChanged
+
+    private void AMF_NhacNho_JSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_AMF_NhacNho_JSpinnerStateChanged
+		if (Integer.parseInt(AMF_NhacNho_JSpinner.getValue().toString()) < 0) {
+			JOptionPane.showMessageDialog(this, "Lượng thuốc nhắc nhở bổ sung phải là số dương. Vui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+			AMF_NhacNho_JSpinner.setValue(1);
+		}
+    }//GEN-LAST:event_AMF_NhacNho_JSpinnerStateChanged
+
+    private void AMF_MocThoiGianSuDungThuoc_Gio_JSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_AMF_MocThoiGianSuDungThuoc_Gio_JSpinnerStateChanged
+        if (Integer.parseInt(AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.getValue().toString()) < 0) {
+			JOptionPane.showMessageDialog(this, "Mốc giờ phải là số dương.\nVui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+			AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setValue(0);
+		} else if (Integer.parseInt(AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.getValue().toString()) > 12) {
+			JOptionPane.showMessageDialog(this, "Mốc giờ phải nằm trong khoảng 0 đến 12.\nVui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+			AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setValue(12);
+		}
+    }//GEN-LAST:event_AMF_MocThoiGianSuDungThuoc_Gio_JSpinnerStateChanged
+
+    private void AMF_MocThoiGianSuDungThuoc_Phut_JSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_AMF_MocThoiGianSuDungThuoc_Phut_JSpinnerStateChanged
+        if (Integer.parseInt(AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.getValue().toString()) < 0) {
+			JOptionPane.showMessageDialog(this, "Mốc phút phải là số dương.\nVui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+			AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setValue(0);
+		} else if (Integer.parseInt(AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.getValue().toString()) > 60) {
+			JOptionPane.showMessageDialog(this, "Mốc phút phải nằm trong khoảng 0 đến 60.\nVui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+			AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setValue(60);
+		}
+    }//GEN-LAST:event_AMF_MocThoiGianSuDungThuoc_Phut_JSpinnerStateChanged
+
+    private void AMF_LieuSuDung_JSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_AMF_LieuSuDung_JSpinnerStateChanged
+        if (Integer.parseInt(AMF_LieuSuDung_JSpinner.getValue().toString()) < 0) {
+			JOptionPane.showMessageDialog(this, "Lượng thuốc nhắc nhở bổ sung phải là số dương. Vui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+			AMF_LieuSuDung_JSpinner.setValue(1);
+		}
+    }//GEN-LAST:event_AMF_LieuSuDung_JSpinnerStateChanged
 
     /**
      * @param args the command line arguments

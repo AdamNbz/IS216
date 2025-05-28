@@ -5,6 +5,8 @@
 package userview;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.*;
 /**
  *
@@ -12,6 +14,8 @@ import javax.swing.*;
  */
 public class TimeStoneAdditionPanel extends javax.swing.JPanel {
 	public static JPanel parentPanel;
+	public String charset = "<>?/.,:\";'{}|\\[\\]\\\\()!@#$%^&*\\-_+=~`";
+	Pattern patt = Pattern.compile("[" + charset + "]");
     /**
      * Creates new form TimeStoneAdditionPanel
      */
@@ -61,12 +65,19 @@ public class TimeStoneAdditionPanel extends javax.swing.JPanel {
         TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
         TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
         TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setRequestFocusEnabled(false);
+        TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinnerStateChanged(evt);
+            }
+        });
+        SpinnerNumberModel GioP_model = new SpinnerNumberModel(0, 0, 12, 1);
+        TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setModel(GioP_model);
         add(TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner);
-        JComponent editor_js7 = TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.getEditor();
-        JFormattedTextField tf_js7 = ((JSpinner.DefaultEditor) editor_js7).getTextField();
-        tf_js7.setEditable(false);
-        tf_js7.setColumns(3);
-        tf_js7.setHorizontalAlignment(JTextField.CENTER);
+        JComponent editor_GioP = TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.getEditor();
+        JFormattedTextField tf_GioP = ((JSpinner.DefaultEditor) editor_GioP).getTextField();
+        tf_GioP.setEditable(false);
+        tf_GioP.setColumns(3);
+        tf_GioP.setHorizontalAlignment(JTextField.CENTER);
         TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setSize(64, 32);
 
         TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
@@ -76,12 +87,19 @@ public class TimeStoneAdditionPanel extends javax.swing.JPanel {
         TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
         TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
         TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setRequestFocusEnabled(false);
+        TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinnerStateChanged(evt);
+            }
+        });
+        SpinnerNumberModel PhutP_model = new SpinnerNumberModel(0, 0, 60, 1);
+        TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setModel(PhutP_model);
         add(TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner);
-        JComponent editor_js8 = TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.getEditor();
-        JFormattedTextField tf_js8 = ((JSpinner.DefaultEditor) editor_js8).getTextField();
-        tf_js8.setEditable(false);
-        tf_js8.setColumns(3);
-        tf_js8.setHorizontalAlignment(JTextField.CENTER);
+        JComponent editor_PhutP = TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.getEditor();
+        JFormattedTextField tf_PhutP = ((JSpinner.DefaultEditor) editor_PhutP).getTextField();
+        tf_PhutP.setEditable(false);
+        tf_PhutP.setColumns(3);
+        tf_PhutP.setHorizontalAlignment(JTextField.CENTER);
         TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setSize(64, 32);
 
         TSAP_AM_PM_JComboBox.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
@@ -105,6 +123,14 @@ public class TimeStoneAdditionPanel extends javax.swing.JPanel {
         TSAP_LieuSuDung_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
         TSAP_LieuSuDung_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
         TSAP_LieuSuDung_JSpinner.setRequestFocusEnabled(false);
+        TSAP_LieuSuDung_JSpinner.setValue(1);
+        TSAP_LieuSuDung_JSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TSAP_LieuSuDung_JSpinnerStateChanged(evt);
+            }
+        });
+        SpinnerNumberModel LieuSuDungP_model = new SpinnerNumberModel(1, 1, 100, 1);
+        TSAP_LieuSuDung_JSpinner.setModel(LieuSuDungP_model);
         add(TSAP_LieuSuDung_JSpinner);
         JComponent editor_js9 = TSAP_LieuSuDung_JSpinner.getEditor();
         JFormattedTextField tf_js9 = ((JSpinner.DefaultEditor) editor_js9).getTextField();
@@ -114,6 +140,11 @@ public class TimeStoneAdditionPanel extends javax.swing.JPanel {
         TSAP_LieuSuDung_JSpinner.setSize(64, 32);
     }// </editor-fold>//GEN-END:initComponents
 
+	public boolean checkIllegalCharacter(String inp, Pattern pat) {
+		Matcher match = pat.matcher(inp);
+		return match.find();
+	}
+	
     private void TSAP_MocThoiGianSuDungThuocThem_Xoa_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TSAP_MocThoiGianSuDungThuocThem_Xoa_JButtonActionPerformed
         if (this.parentPanel != null) {
 			LayoutManager layout = parentPanel.getLayout();
@@ -128,6 +159,28 @@ public class TimeStoneAdditionPanel extends javax.swing.JPanel {
             System.err.println("Lỗi: parentPanel là null!");
         }
     }//GEN-LAST:event_TSAP_MocThoiGianSuDungThuocThem_Xoa_JButtonActionPerformed
+
+    private void TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinnerStateChanged
+        if (Integer.parseInt(TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.getValue().toString()) < 0) {
+			JOptionPane.showMessageDialog(this, "Mốc giờ phải là số dương.\nVui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+		} else if (Integer.parseInt(TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.getValue().toString()) > 12) {
+			JOptionPane.showMessageDialog(this, "Mốc giờ phải nằm trong khoảng 0 đến 12.\nVui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+    }//GEN-LAST:event_TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinnerStateChanged
+
+    private void TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinnerStateChanged
+        if (Integer.parseInt(TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.getValue().toString()) < 0) {
+			JOptionPane.showMessageDialog(this, "Mốc phút phải là số dương.\nVui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+		} else if (Integer.parseInt(TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.getValue().toString()) > 60) {
+			JOptionPane.showMessageDialog(this, "Mốc phút phải nằm trong khoảng 0 đến 60.\nVui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+    }//GEN-LAST:event_TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinnerStateChanged
+
+    private void TSAP_LieuSuDung_JSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TSAP_LieuSuDung_JSpinnerStateChanged
+        if (Integer.parseInt(TSAP_LieuSuDung_JSpinner.getValue().toString()) <= 0) {
+			JOptionPane.showMessageDialog(this, "Liều sử dụng phải là số dương lớn hơn 0.\nVui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+    }//GEN-LAST:event_TSAP_LieuSuDung_JSpinnerStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
