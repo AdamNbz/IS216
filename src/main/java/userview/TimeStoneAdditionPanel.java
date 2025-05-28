@@ -5,6 +5,8 @@
 package userview;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.*;
@@ -143,6 +145,15 @@ public class TimeStoneAdditionPanel extends javax.swing.JPanel {
 	public boolean checkIllegalCharacter(String inp, Pattern pat) {
 		Matcher match = pat.matcher(inp);
 		return match.find();
+	}
+	
+	public List<Object> loadValue() {
+		List<Object> ls = new ArrayList<>();
+		ls.add((Object) Integer.parseInt(TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.getValue().toString()));
+		ls.add((Object) Integer.parseInt(TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.getValue().toString()));
+		ls.add((Object) TSAP_AM_PM_JComboBox.getSelectedItem().toString());
+		ls.add((Object) Integer.parseInt(TSAP_LieuSuDung_JSpinner.getValue().toString()));
+		return ls;
 	}
 	
     private void TSAP_MocThoiGianSuDungThuocThem_Xoa_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TSAP_MocThoiGianSuDungThuocThem_Xoa_JButtonActionPerformed

@@ -9,11 +9,14 @@ import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.*;
+import object.MedicineObject;
 
 /**
  *
@@ -24,7 +27,7 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 	public String charset = "<>?/.,:\";'{}|\\[\\]\\\\()!@#$%^&*\\-_+=~`";
 	Pattern patt = Pattern.compile("[" + charset + "]");
 	int DEBUG = 1;
-	String Specific_data = "";
+	String Specific_data = null;
 	
     /**
      * Creates new form AddingMedFrame
@@ -590,20 +593,75 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 		String GhiChuVariableHolder = AMF_GhiChu_JTextField.getText();
 		String TanSuatChungVariableHolder = AMF_TanSuatSuDung_JComboBox.getSelectedItem().toString();
 		String TanSuatCuTheVariableHolder = Specific_data;
-		String UuTienThongBaoVariableHolder = null;
 		
+		boolean UuTienThongBaoVariableHolder = false;
 		if (AMF_UuTienThongBao_JToggleButton.isEnabled() == true) {
-			UuTienThongBaoVariableHolder = AMF_UuTienThongBao_JToggleButton.getSelectedIcon().toString();
+			UuTienThongBaoVariableHolder = AMF_UuTienThongBao_JToggleButton.isSelected();
 		}
-		String AutoConfirmVariableHolder = null;
 		
+		boolean AutoConfirmVariableHolder = false;
 		if (AMF_TuDongXacNhanSuDung_JToggleButton.isEnabled() == true) {
-			AutoConfirmVariableHolder = AMF_TuDongXacNhanSuDung_JToggleButton.getSelectedIcon().toString();
+			AutoConfirmVariableHolder = AMF_TuDongXacNhanSuDung_JToggleButton.isSelected();
 		}
 		
-		int KhoangThongBaoVariableHolder = Integer.parseInt(AMF_KhoangThoiGianLapThongBao_JSpinner.getValue().toString());
-		int SLHienCoVariableHolder = Integer.parseInt(AMF_HienCo_JSpinner.getValue().toString());
-		int SLNhacNhoVariableHolder = Integer.parseInt(AMF_NhacNho_JSpinner.getValue().toString());
+		int KhoangThongBaoVariableHolder = Integer.parseInt(
+				AMF_KhoangThoiGianLapThongBao_JSpinner.getValue().toString()
+		);
+		int SLHienCoVariableHolder = Integer.parseInt(
+				AMF_HienCo_JSpinner.getValue().toString()
+		);
+		int SLNhacNhoVariableHolder = Integer.parseInt(
+				AMF_NhacNho_JSpinner.getValue().toString()
+		);
+		
+		List<List<Object>> MocThoiGianVariableHolder = new ArrayList<>();
+		
+		for (Component cpm: AMF_KhungNoiDungThemThuoc_JPanel.getComponents()) {
+			if (cpm instanceof TimeStoneAdditionPanel timeStoneAdditionPanel) {
+				MocThoiGianVariableHolder.add(timeStoneAdditionPanel.loadValue());
+			}
+		}
+		
+		List<Object> ls = new ArrayList<>();
+		ls.add(AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.getValue());
+		ls.add(AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.getValue());
+		ls.add(AMF_AM_PM_JComboBox.getSelectedItem());
+		ls.add(AMF_LieuSuDung_JSpinner.getValue());
+		MocThoiGianVariableHolder.addFirst(ls);
+		
+		if (DEBUG == 1) {
+			System.out.println(TenThuocVariableHolder);
+			System.out.println(DonViVariableHolder);
+			System.out.println(GhiChuVariableHolder);
+			System.out.println(TanSuatChungVariableHolder);
+			System.out.println(TanSuatCuTheVariableHolder);
+			System.out.println(UuTienThongBaoVariableHolder);
+			System.out.println(AutoConfirmVariableHolder);
+			System.out.println(KhoangThongBaoVariableHolder);
+			System.out.println(SLHienCoVariableHolder);
+			System.out.println(SLNhacNhoVariableHolder);
+			
+			for (List<Object> ll: MocThoiGianVariableHolder) {
+				for (Object o: ll) {
+					System.out.println(o + " ");
+				}
+				System.out.println();
+			}
+		}
+		MedicineObject mo = new MedicineObject(
+				TenThuocVariableHolder,
+				DonViVariableHolder, 
+				GhiChuVariableHolder, 
+				TanSuatChungVariableHolder, 
+				TanSuatCuTheVariableHolder, 
+				UuTienThongBaoVariableHolder,
+				AutoConfirmVariableHolder, 
+				KhoangThongBaoVariableHolder, 
+				SLHienCoVariableHolder, 
+				SLNhacNhoVariableHolder, 
+				MocThoiGianVariableHolder
+		);
+		mo.writeJSON();
     }//GEN-LAST:event_AMF_Them_JButtonActionPerformed
 
     private void AMF_Ten_JTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_Ten_JTextFieldActionPerformed
@@ -643,9 +701,12 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Mỗi ngày")) {
             AMF_TanSuatSuDung_JButton.setEnabled(false); 
         } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tuần")) {
-            Specific_data = JOptionPane.showInputDialog(this, "Nhập các ngày trong tuần bạn muốn\n(phân cách bằng dấu \",\"):\n" + "2: Thứ Hai, 3: Thứ Ba, 4: Thứ Tư\n5: Thứ Năm, 6: Thứ Sáu, 7: Thứ Bảy\n8: Chủ Nhật", "Lựa chọn ngày trong tuần", JOptionPane.QUESTION_MESSAGE);
+			String previousData = Specific_data;
+			
+            Specific_data = JOptionPane.showInputDialog(this, "Nhập các ngày trong tuần bạn muốn\n(phân cách bằng dấu \",\"):\n" + "2: Thứ Hai, 3: Thứ Ba, 4: Thứ Tư\n5: Thứ Năm, 6: Thứ Sáu, 7: Thứ Bảy\n8: Chủ Nhật", "Lựa chọn ngày trong tuần", JOptionPane.QUESTION_MESSAGE, null, null, previousData).toString();
         } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tháng")) {
-            Specific_data = JOptionPane.showInputDialog(this, "Nhập các ngày trong tháng bạn muốn\n(phân cách bằng dấu \",\"): ", "Lựa chọn ngày trong tháng", JOptionPane.QUESTION_MESSAGE);
+			String previousData = Specific_data;
+            Specific_data = JOptionPane.showInputDialog(this, "Nhập các ngày trong tháng bạn muốn\n(phân cách bằng dấu \",\"): ", "Lựa chọn ngày trong tháng", JOptionPane.QUESTION_MESSAGE, null, null, previousData).toString();
         } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Khi cần thiết")) {
 			AMF_TanSuatSuDung_JButton.setEnabled(false); 
         }

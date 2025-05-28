@@ -18,7 +18,7 @@ import java.util.Random;
 import javax.mail.*;
 import javax.activation.*;
 import javax.swing.JOptionPane;
-import javamail.EmailUtil;
+import object.EmailUtil;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;

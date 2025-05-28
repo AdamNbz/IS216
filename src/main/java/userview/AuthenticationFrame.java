@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import supervisorview.*;
-import javamail.EmailUtil;
+import object.EmailUtil;
 /**
  *
  * @author shanghuang
