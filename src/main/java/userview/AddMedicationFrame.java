@@ -11,11 +11,12 @@ import javax.swing.*;
  * @author Tina
  */
 public class AddMedicationFrame extends javax.swing.JFrame {
-
+	public static MainFrame mf;
     /**
      * Creates new form AddingMedFrame
      */
-    public AddMedicationFrame() {
+    public AddMedicationFrame(MainFrame mf) {
+		this.mf = mf;
         try {
             String osName = System.getProperty("os.name").toLowerCase();
     
@@ -47,6 +48,8 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         }
         
         initComponents();
+		AMF_TanSuatSuDung_JButton.setEnabled(false);
+		this.setFrameInCenter();
         this.setVisible(true);
     }
     
@@ -76,8 +79,8 @@ public class AddMedicationFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         AMF_ThanhChucNang_JPanel = new javax.swing.JPanel();
-        AMF_ThemDonThuocMoi_JLabel = new javax.swing.JLabel();
         AMF_Huy_JButton = new javax.swing.JButton();
+        AMF_ThemDonThuocMoi_JLabel = new javax.swing.JLabel();
         AMF_Them_JButton = new javax.swing.JButton();
         AMF_NoiDungThemThuoc_JScrollPane = new javax.swing.JScrollPane();
         AMF_KhungNoiDungThemThuoc_JPanel = new javax.swing.JPanel();
@@ -100,16 +103,15 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_TuDongXacNhanSuDung_JPanel = new javax.swing.JPanel();
         AMF_TuDongXacNhanSuDung_JLabel = new javax.swing.JLabel();
         AMF_TuDongXacNhanSuDung_JToggleButton = new javax.swing.JToggleButton();
+        AMF_KhoangThoiGianLapThongBao_JPanel = new javax.swing.JPanel();
+        AMF_KhoangThoiGianLapThongBao_JLabel = new javax.swing.JLabel();
+        AMF_KhoangThoiGianLapThongBao_JSpinner = new javax.swing.JSpinner();
         AMF_QuanLySoLuongThuoc_JPanel = new javax.swing.JPanel();
         AMF_QuanLySoLuongThuoc_JLabel = new javax.swing.JLabel();
         AMF_HienCo_JLabel = new javax.swing.JLabel();
         AMF_HienCo_JSpinner = new javax.swing.JSpinner();
         AMF_NhacNho_JLabel = new javax.swing.JLabel();
         AMF_NhacNho_JSpinner = new javax.swing.JSpinner();
-        AMF_KhoangThoiGianLapThongBao_JPanel = new javax.swing.JPanel();
-        AMF_KhoangThoiGianLapThongBao_JLabel = new javax.swing.JLabel();
-        AMF_KhoangThoiGianLapThongBao_JToggleButton = new javax.swing.JToggleButton();
-        AMF_KhoangThoiGianLapThongBao_JSpinner = new javax.swing.JSpinner();
         AMF_MocThoiGianSuDungThuoc_JPanel = new javax.swing.JPanel();
         AMF_MocThoiGianSuDungThuoc_Them_JButton = new javax.swing.JButton();
         AMF_MocThoiGianSuDungThuoc_Gio_JSpinner = new javax.swing.JSpinner();
@@ -121,377 +123,199 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        AMF_ThemDonThuocMoi_JLabel.setFont(new java.awt.Font("SF Mono", 0, 36)); // NOI18N
-        AMF_ThemDonThuocMoi_JLabel.setText("Thêm đơn thuốc mới");
-
         AMF_Huy_JButton.setFont(new java.awt.Font("SF Mono", 0, 24)); // NOI18N
         AMF_Huy_JButton.setText("Hủy");
+        AMF_Huy_JButton.setMaximumSize(new java.awt.Dimension(90, 40));
+        AMF_Huy_JButton.setMinimumSize(new java.awt.Dimension(90, 40));
+        AMF_Huy_JButton.setPreferredSize(new java.awt.Dimension(90, 40));
         AMF_Huy_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AMF_Huy_JButtonActionPerformed(evt);
             }
         });
+        AMF_ThanhChucNang_JPanel.add(AMF_Huy_JButton);
+
+        AMF_ThemDonThuocMoi_JLabel.setFont(new java.awt.Font("SF Mono", 0, 36)); // NOI18N
+        AMF_ThemDonThuocMoi_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        AMF_ThemDonThuocMoi_JLabel.setText("Thêm đơn thuốc mới");
+        AMF_ThemDonThuocMoi_JLabel.setPreferredSize(new java.awt.Dimension(480, 40));
+        AMF_ThanhChucNang_JPanel.add(AMF_ThemDonThuocMoi_JLabel);
 
         AMF_Them_JButton.setFont(new java.awt.Font("SF Mono", 0, 24)); // NOI18N
         AMF_Them_JButton.setText("Thêm");
+        AMF_Them_JButton.setMaximumSize(new java.awt.Dimension(90, 40));
+        AMF_Them_JButton.setMinimumSize(new java.awt.Dimension(90, 40));
+        AMF_Them_JButton.setPreferredSize(new java.awt.Dimension(90, 40));
         AMF_Them_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AMF_Them_JButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout AMF_ThanhChucNang_JPanelLayout = new javax.swing.GroupLayout(AMF_ThanhChucNang_JPanel);
-        AMF_ThanhChucNang_JPanel.setLayout(AMF_ThanhChucNang_JPanelLayout);
-        AMF_ThanhChucNang_JPanelLayout.setHorizontalGroup(
-            AMF_ThanhChucNang_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_ThanhChucNang_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AMF_Huy_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(AMF_ThemDonThuocMoi_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(AMF_Them_JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        AMF_ThanhChucNang_JPanelLayout.setVerticalGroup(
-            AMF_ThanhChucNang_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_ThanhChucNang_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AMF_ThanhChucNang_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AMF_ThemDonThuocMoi_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AMF_Them_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AMF_Huy_JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        AMF_ThanhChucNang_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMF_Huy_JButton, AMF_ThemDonThuocMoi_JLabel, AMF_Them_JButton});
+        AMF_ThanhChucNang_JPanel.add(AMF_Them_JButton);
 
         AMF_NoiDungThemThuoc_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         AMF_NoiDungThemThuoc_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        AMF_KhungNoiDungThemThuoc_JPanel.setLayout(new java.awt.GridLayout(9, 1));
+        AMF_KhungNoiDungThemThuoc_JPanel.setLayout(new java.awt.GridLayout(9, 1, 5, 5));
+
+        AMF_Ten_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         AMF_Ten_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         AMF_Ten_JLabel.setText("Tên:");
+        AMF_Ten_JLabel.setMaximumSize(new java.awt.Dimension(270, 30));
+        AMF_Ten_JLabel.setMinimumSize(new java.awt.Dimension(270, 30));
+        AMF_Ten_JLabel.setPreferredSize(new java.awt.Dimension(270, 30));
+        AMF_Ten_JPanel.add(AMF_Ten_JLabel);
 
         AMF_Ten_JTextField.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        AMF_Ten_JTextField.setMaximumSize(new java.awt.Dimension(385, 30));
+        AMF_Ten_JTextField.setMinimumSize(new java.awt.Dimension(385, 30));
+        AMF_Ten_JTextField.setPreferredSize(new java.awt.Dimension(385, 30));
         AMF_Ten_JTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AMF_Ten_JTextFieldActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout AMF_Ten_JPanelLayout = new javax.swing.GroupLayout(AMF_Ten_JPanel);
-        AMF_Ten_JPanel.setLayout(AMF_Ten_JPanelLayout);
-        AMF_Ten_JPanelLayout.setHorizontalGroup(
-            AMF_Ten_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_Ten_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AMF_Ten_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AMF_Ten_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        AMF_Ten_JPanelLayout.setVerticalGroup(
-            AMF_Ten_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_Ten_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AMF_Ten_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AMF_Ten_JLabel)
-                    .addComponent(AMF_Ten_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        AMF_Ten_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMF_Ten_JLabel, AMF_Ten_JTextField});
+        AMF_Ten_JPanel.add(AMF_Ten_JTextField);
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_Ten_JPanel);
 
+        AMF_DonVi_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         AMF_DonVi_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         AMF_DonVi_JLabel.setText("Đơn vị:");
+        AMF_DonVi_JLabel.setMaximumSize(new java.awt.Dimension(270, 30));
+        AMF_DonVi_JLabel.setMinimumSize(new java.awt.Dimension(270, 30));
+        AMF_DonVi_JLabel.setPreferredSize(new java.awt.Dimension(270, 30));
+        AMF_DonVi_JPanel.add(AMF_DonVi_JLabel);
 
         AMF_DonVi_JTextField.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-
-        javax.swing.GroupLayout AMF_DonVi_JPanelLayout = new javax.swing.GroupLayout(AMF_DonVi_JPanel);
-        AMF_DonVi_JPanel.setLayout(AMF_DonVi_JPanelLayout);
-        AMF_DonVi_JPanelLayout.setHorizontalGroup(
-            AMF_DonVi_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_DonVi_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AMF_DonVi_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AMF_DonVi_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        AMF_DonVi_JPanelLayout.setVerticalGroup(
-            AMF_DonVi_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_DonVi_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AMF_DonVi_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AMF_DonVi_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AMF_DonVi_JLabel))
-                .addContainerGap())
-        );
-
-        AMF_DonVi_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMF_DonVi_JLabel, AMF_DonVi_JTextField});
+        AMF_DonVi_JTextField.setMaximumSize(new java.awt.Dimension(385, 30));
+        AMF_DonVi_JTextField.setMinimumSize(new java.awt.Dimension(385, 30));
+        AMF_DonVi_JTextField.setPreferredSize(new java.awt.Dimension(385, 30));
+        AMF_DonVi_JPanel.add(AMF_DonVi_JTextField);
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_DonVi_JPanel);
 
+        AMF_GhiChu_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         AMF_GhiChu_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         AMF_GhiChu_JLabel.setText("Ghi chú:");
+        AMF_GhiChu_JLabel.setMaximumSize(new java.awt.Dimension(270, 30));
+        AMF_GhiChu_JLabel.setMinimumSize(new java.awt.Dimension(270, 30));
+        AMF_GhiChu_JLabel.setPreferredSize(new java.awt.Dimension(270, 30));
+        AMF_GhiChu_JPanel.add(AMF_GhiChu_JLabel);
 
         AMF_GhiChu_JTextField.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-
-        javax.swing.GroupLayout AMF_GhiChu_JPanelLayout = new javax.swing.GroupLayout(AMF_GhiChu_JPanel);
-        AMF_GhiChu_JPanel.setLayout(AMF_GhiChu_JPanelLayout);
-        AMF_GhiChu_JPanelLayout.setHorizontalGroup(
-            AMF_GhiChu_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_GhiChu_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AMF_GhiChu_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AMF_GhiChu_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        AMF_GhiChu_JPanelLayout.setVerticalGroup(
-            AMF_GhiChu_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_GhiChu_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AMF_GhiChu_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AMF_GhiChu_JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AMF_GhiChu_JLabel))
-                .addContainerGap())
-        );
-
-        AMF_GhiChu_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMF_GhiChu_JLabel, AMF_GhiChu_JTextField});
+        AMF_GhiChu_JTextField.setMaximumSize(new java.awt.Dimension(385, 30));
+        AMF_GhiChu_JTextField.setMinimumSize(new java.awt.Dimension(385, 30));
+        AMF_GhiChu_JTextField.setPreferredSize(new java.awt.Dimension(385, 30));
+        AMF_GhiChu_JPanel.add(AMF_GhiChu_JTextField);
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_GhiChu_JPanel);
 
+        AMF_TanSuatSuDung_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         AMF_TanSuatSuDung_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         AMF_TanSuatSuDung_JLabel.setText("Tần suất sử dụng thuốc:");
+        AMF_TanSuatSuDung_JLabel.setMaximumSize(new java.awt.Dimension(270, 30));
+        AMF_TanSuatSuDung_JLabel.setMinimumSize(new java.awt.Dimension(270, 30));
+        AMF_TanSuatSuDung_JLabel.setPreferredSize(new java.awt.Dimension(270, 30));
+        AMF_TanSuatSuDung_JPanel.add(AMF_TanSuatSuDung_JLabel);
 
         AMF_TanSuatSuDung_JComboBox.setFont(new java.awt.Font("SF Mono", 0, 16)); // NOI18N
         AMF_TanSuatSuDung_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mỗi ngày", "Ngày trong tuần", "Ngày trong tháng", "Khi cần thiết" }));
+        AMF_TanSuatSuDung_JComboBox.setMaximumSize(new java.awt.Dimension(250, 30));
+        AMF_TanSuatSuDung_JComboBox.setMinimumSize(new java.awt.Dimension(250, 30));
+        AMF_TanSuatSuDung_JComboBox.setPreferredSize(new java.awt.Dimension(250, 30));
+        AMF_TanSuatSuDung_JComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                AMF_TanSuatSuDung_JComboBoxItemStateChanged(evt);
+            }
+        });
         AMF_TanSuatSuDung_JComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AMF_TanSuatSuDung_JComboBoxActionPerformed(evt);
             }
         });
+        AMF_TanSuatSuDung_JPanel.add(AMF_TanSuatSuDung_JComboBox);
 
         AMF_TanSuatSuDung_JButton.setText("...");
+        AMF_TanSuatSuDung_JButton.setMaximumSize(new java.awt.Dimension(40, 30));
+        AMF_TanSuatSuDung_JButton.setMinimumSize(new java.awt.Dimension(40, 30));
+        AMF_TanSuatSuDung_JButton.setPreferredSize(new java.awt.Dimension(40, 30));
         AMF_TanSuatSuDung_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AMF_TanSuatSuDung_JButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout AMF_TanSuatSuDung_JPanelLayout = new javax.swing.GroupLayout(AMF_TanSuatSuDung_JPanel);
-        AMF_TanSuatSuDung_JPanel.setLayout(AMF_TanSuatSuDung_JPanelLayout);
-        AMF_TanSuatSuDung_JPanelLayout.setHorizontalGroup(
-            AMF_TanSuatSuDung_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_TanSuatSuDung_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AMF_TanSuatSuDung_JLabel)
-                .addGap(18, 18, 18)
-                .addComponent(AMF_TanSuatSuDung_JComboBox, 0, 330, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(AMF_TanSuatSuDung_JButton)
-                .addContainerGap())
-        );
-        AMF_TanSuatSuDung_JPanelLayout.setVerticalGroup(
-            AMF_TanSuatSuDung_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_TanSuatSuDung_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AMF_TanSuatSuDung_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AMF_TanSuatSuDung_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AMF_TanSuatSuDung_JLabel)
-                    .addComponent(AMF_TanSuatSuDung_JButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        AMF_TanSuatSuDung_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMF_TanSuatSuDung_JButton, AMF_TanSuatSuDung_JComboBox, AMF_TanSuatSuDung_JLabel});
+        AMF_TanSuatSuDung_JPanel.add(AMF_TanSuatSuDung_JButton);
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_TanSuatSuDung_JPanel);
 
+        AMF_UuTienThongBao_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         AMF_UuTienThongBao_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         AMF_UuTienThongBao_JLabel.setText("Đặt mức độ ưu tiên thông báo cao hơn:");
+        AMF_UuTienThongBao_JLabel.setMaximumSize(new java.awt.Dimension(410, 30));
+        AMF_UuTienThongBao_JLabel.setMinimumSize(new java.awt.Dimension(410, 30));
+        AMF_UuTienThongBao_JLabel.setPreferredSize(new java.awt.Dimension(410, 30));
+        AMF_UuTienThongBao_JPanel.add(AMF_UuTienThongBao_JLabel);
 
         AMF_UuTienThongBao_JToggleButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         AMF_UuTienThongBao_JToggleButton.setText("Y/N");
+        AMF_UuTienThongBao_JToggleButton.setMaximumSize(new java.awt.Dimension(70, 30));
+        AMF_UuTienThongBao_JToggleButton.setMinimumSize(new java.awt.Dimension(70, 30));
+        AMF_UuTienThongBao_JToggleButton.setPreferredSize(new java.awt.Dimension(70, 30));
         AMF_UuTienThongBao_JToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AMF_UuTienThongBao_JToggleButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout AMF_UuTienThongBao_JPanelLayout = new javax.swing.GroupLayout(AMF_UuTienThongBao_JPanel);
-        AMF_UuTienThongBao_JPanel.setLayout(AMF_UuTienThongBao_JPanelLayout);
-        AMF_UuTienThongBao_JPanelLayout.setHorizontalGroup(
-            AMF_UuTienThongBao_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_UuTienThongBao_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AMF_UuTienThongBao_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AMF_UuTienThongBao_JToggleButton)
-                .addContainerGap())
-        );
-        AMF_UuTienThongBao_JPanelLayout.setVerticalGroup(
-            AMF_UuTienThongBao_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_UuTienThongBao_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AMF_UuTienThongBao_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AMF_UuTienThongBao_JLabel)
-                    .addComponent(AMF_UuTienThongBao_JToggleButton))
-                .addContainerGap())
-        );
-
-        AMF_UuTienThongBao_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMF_UuTienThongBao_JLabel, AMF_UuTienThongBao_JToggleButton});
+        AMF_UuTienThongBao_JPanel.add(AMF_UuTienThongBao_JToggleButton);
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_UuTienThongBao_JPanel);
 
+        AMF_TuDongXacNhanSuDung_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         AMF_TuDongXacNhanSuDung_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         AMF_TuDongXacNhanSuDung_JLabel.setText("Tự động xác nhận sử dụng thuốc:");
+        AMF_TuDongXacNhanSuDung_JLabel.setMaximumSize(new java.awt.Dimension(410, 30));
+        AMF_TuDongXacNhanSuDung_JLabel.setMinimumSize(new java.awt.Dimension(410, 30));
+        AMF_TuDongXacNhanSuDung_JLabel.setPreferredSize(new java.awt.Dimension(410, 30));
+        AMF_TuDongXacNhanSuDung_JPanel.add(AMF_TuDongXacNhanSuDung_JLabel);
 
         AMF_TuDongXacNhanSuDung_JToggleButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         AMF_TuDongXacNhanSuDung_JToggleButton.setText("Y/N");
+        AMF_TuDongXacNhanSuDung_JToggleButton.setMaximumSize(new java.awt.Dimension(70, 30));
+        AMF_TuDongXacNhanSuDung_JToggleButton.setMinimumSize(new java.awt.Dimension(70, 30));
+        AMF_TuDongXacNhanSuDung_JToggleButton.setPreferredSize(new java.awt.Dimension(70, 30));
         AMF_TuDongXacNhanSuDung_JToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AMF_TuDongXacNhanSuDung_JToggleButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout AMF_TuDongXacNhanSuDung_JPanelLayout = new javax.swing.GroupLayout(AMF_TuDongXacNhanSuDung_JPanel);
-        AMF_TuDongXacNhanSuDung_JPanel.setLayout(AMF_TuDongXacNhanSuDung_JPanelLayout);
-        AMF_TuDongXacNhanSuDung_JPanelLayout.setHorizontalGroup(
-            AMF_TuDongXacNhanSuDung_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_TuDongXacNhanSuDung_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AMF_TuDongXacNhanSuDung_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AMF_TuDongXacNhanSuDung_JToggleButton)
-                .addContainerGap())
-        );
-        AMF_TuDongXacNhanSuDung_JPanelLayout.setVerticalGroup(
-            AMF_TuDongXacNhanSuDung_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_TuDongXacNhanSuDung_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AMF_TuDongXacNhanSuDung_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AMF_TuDongXacNhanSuDung_JLabel)
-                    .addComponent(AMF_TuDongXacNhanSuDung_JToggleButton))
-                .addContainerGap())
-        );
-
-        AMF_TuDongXacNhanSuDung_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMF_TuDongXacNhanSuDung_JLabel, AMF_TuDongXacNhanSuDung_JToggleButton});
+        AMF_TuDongXacNhanSuDung_JPanel.add(AMF_TuDongXacNhanSuDung_JToggleButton);
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_TuDongXacNhanSuDung_JPanel);
 
-        AMF_QuanLySoLuongThuoc_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        AMF_QuanLySoLuongThuoc_JLabel.setText("Quản lý số lượng thuốc:");
-
-        AMF_HienCo_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        AMF_HienCo_JLabel.setText("Hiện có");
-
-        AMF_HienCo_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        AMF_HienCo_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        AMF_HienCo_JSpinner.setFocusable(false);
-        AMF_HienCo_JSpinner.setRequestFocusEnabled(false);
-
-        AMF_NhacNho_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        AMF_NhacNho_JLabel.setText("Nhắc nhở");
-
-        AMF_NhacNho_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        AMF_NhacNho_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        AMF_NhacNho_JSpinner.setFocusable(false);
-        AMF_NhacNho_JSpinner.setRequestFocusEnabled(false);
-
-        javax.swing.GroupLayout AMF_QuanLySoLuongThuoc_JPanelLayout = new javax.swing.GroupLayout(AMF_QuanLySoLuongThuoc_JPanel);
-        AMF_QuanLySoLuongThuoc_JPanel.setLayout(AMF_QuanLySoLuongThuoc_JPanelLayout);
-        AMF_QuanLySoLuongThuoc_JPanelLayout.setHorizontalGroup(
-            AMF_QuanLySoLuongThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_QuanLySoLuongThuoc_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AMF_QuanLySoLuongThuoc_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AMF_HienCo_JLabel)
-                .addGap(18, 18, 18)
-                .addComponent(AMF_HienCo_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(AMF_NhacNho_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AMF_NhacNho_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        AMF_QuanLySoLuongThuoc_JPanelLayout.setVerticalGroup(
-            AMF_QuanLySoLuongThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_QuanLySoLuongThuoc_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AMF_QuanLySoLuongThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AMF_NhacNho_JLabel)
-                    .addComponent(AMF_HienCo_JLabel)
-                    .addComponent(AMF_QuanLySoLuongThuoc_JLabel)
-                    .addComponent(AMF_HienCo_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AMF_NhacNho_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        AMF_QuanLySoLuongThuoc_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMF_HienCo_JLabel, AMF_HienCo_JSpinner, AMF_NhacNho_JLabel, AMF_NhacNho_JSpinner, AMF_QuanLySoLuongThuoc_JLabel});
-
-        JComponent editor_js11 = AMF_HienCo_JSpinner.getEditor();
-        JFormattedTextField tf_js11 = ((JSpinner.DefaultEditor) editor_js11).getTextField();
-        tf_js11.setEditable(false);
-        tf_js11.setColumns(3);
-        tf_js11.setHorizontalAlignment(JTextField.CENTER);
-        AMF_HienCo_JSpinner.setSize(64, 32);
-        JComponent editor_js12 = AMF_NhacNho_JSpinner.getEditor();
-        JFormattedTextField tf_js12 = ((JSpinner.DefaultEditor) editor_js12).getTextField();
-        tf_js12.setEditable(false);
-        tf_js12.setColumns(3);
-        tf_js12.setHorizontalAlignment(JTextField.CENTER);
-        AMF_NhacNho_JSpinner.setSize(64, 32);
-
-        AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_QuanLySoLuongThuoc_JPanel);
+        AMF_KhoangThoiGianLapThongBao_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         AMF_KhoangThoiGianLapThongBao_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         AMF_KhoangThoiGianLapThongBao_JLabel.setText("Khoảng thời gian lặp thông báo: ");
-
-        AMF_KhoangThoiGianLapThongBao_JToggleButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        AMF_KhoangThoiGianLapThongBao_JToggleButton.setText("Y/N");
-        AMF_KhoangThoiGianLapThongBao_JToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AMF_KhoangThoiGianLapThongBao_JToggleButtonActionPerformed(evt);
-            }
-        });
+        AMF_KhoangThoiGianLapThongBao_JLabel.setMaximumSize(new java.awt.Dimension(410, 30));
+        AMF_KhoangThoiGianLapThongBao_JLabel.setMinimumSize(new java.awt.Dimension(410, 30));
+        AMF_KhoangThoiGianLapThongBao_JLabel.setPreferredSize(new java.awt.Dimension(410, 30));
+        AMF_KhoangThoiGianLapThongBao_JPanel.add(AMF_KhoangThoiGianLapThongBao_JLabel);
 
         AMF_KhoangThoiGianLapThongBao_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         AMF_KhoangThoiGianLapThongBao_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         AMF_KhoangThoiGianLapThongBao_JSpinner.setFocusable(false);
+        AMF_KhoangThoiGianLapThongBao_JSpinner.setMaximumSize(new java.awt.Dimension(70, 30));
+        AMF_KhoangThoiGianLapThongBao_JSpinner.setMinimumSize(new java.awt.Dimension(70, 30));
+        AMF_KhoangThoiGianLapThongBao_JSpinner.setPreferredSize(new java.awt.Dimension(70, 30));
         AMF_KhoangThoiGianLapThongBao_JSpinner.setRequestFocusEnabled(false);
-
-        javax.swing.GroupLayout AMF_KhoangThoiGianLapThongBao_JPanelLayout = new javax.swing.GroupLayout(AMF_KhoangThoiGianLapThongBao_JPanel);
-        AMF_KhoangThoiGianLapThongBao_JPanel.setLayout(AMF_KhoangThoiGianLapThongBao_JPanelLayout);
-        AMF_KhoangThoiGianLapThongBao_JPanelLayout.setHorizontalGroup(
-            AMF_KhoangThoiGianLapThongBao_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_KhoangThoiGianLapThongBao_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AMF_KhoangThoiGianLapThongBao_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AMF_KhoangThoiGianLapThongBao_JToggleButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AMF_KhoangThoiGianLapThongBao_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        AMF_KhoangThoiGianLapThongBao_JPanelLayout.setVerticalGroup(
-            AMF_KhoangThoiGianLapThongBao_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_KhoangThoiGianLapThongBao_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AMF_KhoangThoiGianLapThongBao_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AMF_KhoangThoiGianLapThongBao_JToggleButton)
-                    .addComponent(AMF_KhoangThoiGianLapThongBao_JLabel)
-                    .addComponent(AMF_KhoangThoiGianLapThongBao_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        AMF_KhoangThoiGianLapThongBao_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMF_KhoangThoiGianLapThongBao_JLabel, AMF_KhoangThoiGianLapThongBao_JSpinner, AMF_KhoangThoiGianLapThongBao_JToggleButton});
-
+        AMF_KhoangThoiGianLapThongBao_JPanel.add(AMF_KhoangThoiGianLapThongBao_JSpinner);
         JComponent editor_js10 = AMF_KhoangThoiGianLapThongBao_JSpinner.getEditor();
         JFormattedTextField tf_js10 = ((JSpinner.DefaultEditor) editor_js10).getTextField();
         tf_js10.setEditable(false);
@@ -501,82 +325,132 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 
         AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_KhoangThoiGianLapThongBao_JPanel);
 
+        AMF_QuanLySoLuongThuoc_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        AMF_QuanLySoLuongThuoc_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        AMF_QuanLySoLuongThuoc_JLabel.setText("Quản lý số lượng thuốc:");
+        AMF_QuanLySoLuongThuoc_JLabel.setMaximumSize(new java.awt.Dimension(315, 30));
+        AMF_QuanLySoLuongThuoc_JLabel.setMinimumSize(new java.awt.Dimension(315, 30));
+        AMF_QuanLySoLuongThuoc_JLabel.setPreferredSize(new java.awt.Dimension(315, 30));
+        AMF_QuanLySoLuongThuoc_JPanel.add(AMF_QuanLySoLuongThuoc_JLabel);
+
+        AMF_HienCo_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        AMF_HienCo_JLabel.setText("Hiện có");
+        AMF_HienCo_JLabel.setMaximumSize(new java.awt.Dimension(90, 30));
+        AMF_HienCo_JLabel.setMinimumSize(new java.awt.Dimension(90, 30));
+        AMF_HienCo_JLabel.setPreferredSize(new java.awt.Dimension(90, 30));
+        AMF_QuanLySoLuongThuoc_JPanel.add(AMF_HienCo_JLabel);
+
+        AMF_HienCo_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        AMF_HienCo_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AMF_HienCo_JSpinner.setFocusable(false);
+        AMF_HienCo_JSpinner.setMaximumSize(new java.awt.Dimension(70, 30));
+        AMF_HienCo_JSpinner.setMinimumSize(new java.awt.Dimension(70, 30));
+        AMF_HienCo_JSpinner.setPreferredSize(new java.awt.Dimension(70, 30));
+        AMF_HienCo_JSpinner.setRequestFocusEnabled(false);
+        AMF_QuanLySoLuongThuoc_JPanel.add(AMF_HienCo_JSpinner);
+        JComponent editor_js11 = AMF_HienCo_JSpinner.getEditor();
+        JFormattedTextField tf_js11 = ((JSpinner.DefaultEditor) editor_js11).getTextField();
+        tf_js11.setEditable(false);
+        tf_js11.setColumns(3);
+        tf_js11.setHorizontalAlignment(JTextField.CENTER);
+        AMF_HienCo_JSpinner.setSize(64, 32);
+
+        AMF_NhacNho_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        AMF_NhacNho_JLabel.setText("Nhắc nhở");
+        AMF_NhacNho_JLabel.setMaximumSize(new java.awt.Dimension(90, 30));
+        AMF_NhacNho_JLabel.setMinimumSize(new java.awt.Dimension(90, 30));
+        AMF_NhacNho_JLabel.setPreferredSize(new java.awt.Dimension(90, 30));
+        AMF_QuanLySoLuongThuoc_JPanel.add(AMF_NhacNho_JLabel);
+
+        AMF_NhacNho_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        AMF_NhacNho_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AMF_NhacNho_JSpinner.setFocusable(false);
+        AMF_NhacNho_JSpinner.setMaximumSize(new java.awt.Dimension(70, 30));
+        AMF_NhacNho_JSpinner.setMinimumSize(new java.awt.Dimension(70, 30));
+        AMF_NhacNho_JSpinner.setPreferredSize(new java.awt.Dimension(70, 30));
+        AMF_NhacNho_JSpinner.setRequestFocusEnabled(false);
+        AMF_QuanLySoLuongThuoc_JPanel.add(AMF_NhacNho_JSpinner);
+        JComponent editor_js12 = AMF_NhacNho_JSpinner.getEditor();
+        JFormattedTextField tf_js12 = ((JSpinner.DefaultEditor) editor_js12).getTextField();
+        tf_js12.setEditable(false);
+        tf_js12.setColumns(3);
+        tf_js12.setHorizontalAlignment(JTextField.CENTER);
+        AMF_NhacNho_JSpinner.setSize(64, 32);
+
+        AMF_KhungNoiDungThemThuoc_JPanel.add(AMF_QuanLySoLuongThuoc_JPanel);
+
+        AMF_MocThoiGianSuDungThuoc_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         AMF_MocThoiGianSuDungThuoc_Them_JButton.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         AMF_MocThoiGianSuDungThuoc_Them_JButton.setText("Thêm");
+        AMF_MocThoiGianSuDungThuoc_Them_JButton.setMaximumSize(new java.awt.Dimension(90, 30));
+        AMF_MocThoiGianSuDungThuoc_Them_JButton.setMinimumSize(new java.awt.Dimension(90, 30));
+        AMF_MocThoiGianSuDungThuoc_Them_JButton.setPreferredSize(new java.awt.Dimension(90, 30));
         AMF_MocThoiGianSuDungThuoc_Them_JButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AMF_MocThoiGianSuDungThuoc_Them_JButtonMouseClicked(evt);
             }
         });
+        AMF_MocThoiGianSuDungThuoc_Them_JButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AMF_MocThoiGianSuDungThuoc_Them_JButtonActionPerformed(evt);
+            }
+        });
+        AMF_MocThoiGianSuDungThuoc_JPanel.add(AMF_MocThoiGianSuDungThuoc_Them_JButton);
 
         AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setFocusable(false);
+        AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setMaximumSize(new java.awt.Dimension(90, 30));
+        AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
+        AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
         AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setRequestFocusEnabled(false);
-
-        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setFocusable(false);
-        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setRequestFocusEnabled(false);
-
-        AMF_AM_PM_JComboBox.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        AMF_AM_PM_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AM", "PM" }));
-
-        AMF_LieuSuDung_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        AMF_LieuSuDung_JLabel.setText("Liều sử dụng");
-
-        AMF_LieuSuDung_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        AMF_LieuSuDung_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        AMF_LieuSuDung_JSpinner.setFocusable(false);
-        AMF_LieuSuDung_JSpinner.setRequestFocusEnabled(false);
-
-        javax.swing.GroupLayout AMF_MocThoiGianSuDungThuoc_JPanelLayout = new javax.swing.GroupLayout(AMF_MocThoiGianSuDungThuoc_JPanel);
-        AMF_MocThoiGianSuDungThuoc_JPanel.setLayout(AMF_MocThoiGianSuDungThuoc_JPanelLayout);
-        AMF_MocThoiGianSuDungThuoc_JPanelLayout.setHorizontalGroup(
-            AMF_MocThoiGianSuDungThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_MocThoiGianSuDungThuoc_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AMF_MocThoiGianSuDungThuoc_Them_JButton)
-                .addGap(12, 12, 12)
-                .addComponent(AMF_MocThoiGianSuDungThuoc_Gio_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AMF_MocThoiGianSuDungThuoc_Phut_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AMF_AM_PM_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AMF_LieuSuDung_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AMF_LieuSuDung_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        AMF_MocThoiGianSuDungThuoc_JPanelLayout.setVerticalGroup(
-            AMF_MocThoiGianSuDungThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AMF_MocThoiGianSuDungThuoc_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AMF_MocThoiGianSuDungThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AMF_AM_PM_JComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AMF_LieuSuDung_JLabel)
-                    .addComponent(AMF_MocThoiGianSuDungThuoc_Phut_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AMF_LieuSuDung_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AMF_MocThoiGianSuDungThuoc_Gio_JSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AMF_MocThoiGianSuDungThuoc_Them_JButton))
-                .addContainerGap())
-        );
-
-        AMF_MocThoiGianSuDungThuoc_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {AMF_AM_PM_JComboBox, AMF_LieuSuDung_JLabel, AMF_LieuSuDung_JSpinner, AMF_MocThoiGianSuDungThuoc_Gio_JSpinner, AMF_MocThoiGianSuDungThuoc_Phut_JSpinner, AMF_MocThoiGianSuDungThuoc_Them_JButton});
-
+        AMF_MocThoiGianSuDungThuoc_JPanel.add(AMF_MocThoiGianSuDungThuoc_Gio_JSpinner);
         JComponent editor_js7 = AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.getEditor();
         JFormattedTextField tf_js7 = ((JSpinner.DefaultEditor) editor_js7).getTextField();
         tf_js7.setEditable(false);
         tf_js7.setColumns(3);
         tf_js7.setHorizontalAlignment(JTextField.CENTER);
         AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setSize(64, 32);
+
+        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setFocusable(false);
+        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setMaximumSize(new java.awt.Dimension(90, 30));
+        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
+        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
+        AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setRequestFocusEnabled(false);
+        AMF_MocThoiGianSuDungThuoc_JPanel.add(AMF_MocThoiGianSuDungThuoc_Phut_JSpinner);
         JComponent editor_js8 = AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.getEditor();
         JFormattedTextField tf_js8 = ((JSpinner.DefaultEditor) editor_js8).getTextField();
         tf_js8.setEditable(false);
         tf_js8.setColumns(3);
         tf_js8.setHorizontalAlignment(JTextField.CENTER);
         AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setSize(64, 32);
+
+        AMF_AM_PM_JComboBox.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        AMF_AM_PM_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AM", "PM" }));
+        AMF_AM_PM_JComboBox.setMaximumSize(new java.awt.Dimension(90, 30));
+        AMF_AM_PM_JComboBox.setMinimumSize(new java.awt.Dimension(90, 30));
+        AMF_AM_PM_JComboBox.setPreferredSize(new java.awt.Dimension(90, 30));
+        AMF_MocThoiGianSuDungThuoc_JPanel.add(AMF_AM_PM_JComboBox);
+
+        AMF_LieuSuDung_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        AMF_LieuSuDung_JLabel.setText("Liều sử dụng");
+        AMF_LieuSuDung_JLabel.setMaximumSize(new java.awt.Dimension(140, 30));
+        AMF_LieuSuDung_JLabel.setMinimumSize(new java.awt.Dimension(140, 30));
+        AMF_LieuSuDung_JLabel.setPreferredSize(new java.awt.Dimension(180, 30));
+        AMF_MocThoiGianSuDungThuoc_JPanel.add(AMF_LieuSuDung_JLabel);
+
+        AMF_LieuSuDung_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        AMF_LieuSuDung_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AMF_LieuSuDung_JSpinner.setFocusable(false);
+        AMF_LieuSuDung_JSpinner.setMaximumSize(new java.awt.Dimension(90, 30));
+        AMF_LieuSuDung_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
+        AMF_LieuSuDung_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
+        AMF_LieuSuDung_JSpinner.setRequestFocusEnabled(false);
+        AMF_MocThoiGianSuDungThuoc_JPanel.add(AMF_LieuSuDung_JSpinner);
         JComponent editor_js9 = AMF_LieuSuDung_JSpinner.getEditor();
         JFormattedTextField tf_js9 = ((JSpinner.DefaultEditor) editor_js9).getTextField();
         tf_js9.setEditable(false);
@@ -595,9 +469,10 @@ public class AddMedicationFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AMF_NoiDungThemThuoc_JScrollPane)
-                    .addComponent(AMF_ThanhChucNang_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(AMF_ThanhChucNang_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(AMF_NoiDungThemThuoc_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -605,7 +480,7 @@ public class AddMedicationFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(AMF_ThanhChucNang_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(AMF_NoiDungThemThuoc_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+                .addComponent(AMF_NoiDungThemThuoc_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -613,7 +488,8 @@ public class AddMedicationFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AMF_Huy_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_Huy_JButtonActionPerformed
-        // TODO add your handling code here:
+        this.mf.setVisible(true);
+		this.dispose();
     }//GEN-LAST:event_AMF_Huy_JButtonActionPerformed
 
     private void AMF_Them_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_Them_JButtonActionPerformed
@@ -627,10 +503,6 @@ public class AddMedicationFrame extends javax.swing.JFrame {
     private void AMF_UuTienThongBao_JToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_UuTienThongBao_JToggleButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AMF_UuTienThongBao_JToggleButtonActionPerformed
-
-    private void AMF_KhoangThoiGianLapThongBao_JToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_KhoangThoiGianLapThongBao_JToggleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AMF_KhoangThoiGianLapThongBao_JToggleButtonActionPerformed
 
     private void AMF_TanSuatSuDung_JComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_TanSuatSuDung_JComboBoxActionPerformed
         // TODO add your handling code here:
@@ -650,16 +522,8 @@ public class AddMedicationFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_AMF_TuDongXacNhanSuDung_JToggleButtonActionPerformed
 
     private void AMF_MocThoiGianSuDungThuoc_Them_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AMF_MocThoiGianSuDungThuoc_Them_JButtonMouseClicked
-        // TODO add your handling code here:
-        int JPanel2_height = get_JPanel2_height();
-        int Previous_JPanel10_size = get_JPanel10_height();
-        
-        this.AMF_KhungNoiDungThemThuoc_JPanel.setPreferredSize(new Dimension(this.AMF_KhungNoiDungThemThuoc_JPanel.getWidth(), Previous_JPanel10_size + 6 + JPanel2_height));
-        this.AMF_NoiDungThemThuoc_JScrollPane.revalidate();
-        
-        System.out.println("jp2 location: " + this.AMF_MocThoiGianSuDungThuoc_JPanel.getLocation().x + ", " + this.AMF_MocThoiGianSuDungThuoc_JPanel.getLocation().y);
-        
-        TimeStoneAdditionPanel a = new TimeStoneAdditionPanel();
+      	TimeStoneAdditionPanel JP = new TimeStoneAdditionPanel(AMF_KhungNoiDungThemThuoc_JPanel);
+		JP.setSize(AMF_MocThoiGianSuDungThuoc_JPanel.getSize());
         
         LayoutManager layout = AMF_KhungNoiDungThemThuoc_JPanel.getLayout();
         
@@ -667,29 +531,58 @@ public class AddMedicationFrame extends javax.swing.JFrame {
             ((GridLayout) layout).setColumns(1);
             ((GridLayout) layout).setRows(((GridLayout) layout).getRows() + 1);
             AMF_KhungNoiDungThemThuoc_JPanel.setLayout(layout);
-            AMF_KhungNoiDungThemThuoc_JPanel.add(a, -1);
+            AMF_KhungNoiDungThemThuoc_JPanel.add(JP, -1);
             AMF_KhungNoiDungThemThuoc_JPanel.revalidate();
             AMF_KhungNoiDungThemThuoc_JPanel.repaint();
         }
         
-//        
-//        System.out.println("after size: " + this.jPanel10.getSize().height + ", " + this.jPanel10.getSize().width);
     }//GEN-LAST:event_AMF_MocThoiGianSuDungThuoc_Them_JButtonMouseClicked
 
     private void AMF_TanSuatSuDung_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_TanSuatSuDung_JButtonActionPerformed
         // TODO add your handling code here:
+		var data= "";
         if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Mỗi ngày")) {
-            
+            AMF_TanSuatSuDung_JButton.setEnabled(false); 
         } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tuần")) {
-            SpecificFrequencyUsageInformationFrame SFIUF = new SpecificFrequencyUsageInformationFrame();
-//            SFIUF.addDayOfWeekPanel();
+            data = JOptionPane.showInputDialog(this, "Nhập các ngày trong tuần bạn muốn\n(phân cách bằng dấu \",\"):\n" + "2: Thứ Hai, 3: Thứ Ba, 4: Thứ Tư\n5: Thứ Năm, 6: Thứ Sáu, 7: Thứ Bảy\n8: Chủ Nhật", "Lựa chọn ngày trong tuần", JOptionPane.QUESTION_MESSAGE);
         } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tháng")) {
-            SpecificFrequencyUsageInformationFrame SFIUF = new SpecificFrequencyUsageInformationFrame();
-//            SFIUF.addDayOfMonthPanel();
-        } else {
-            AMF_TanSuatSuDung_JButton.setEnabled(true);
+            data = JOptionPane.showInputDialog(this, "Nhập các ngày trong tháng bạn muốn\n(phân cách bằng dấu \",\"): ", "Lựa chọn ngày trong tháng", JOptionPane.QUESTION_MESSAGE);
+        } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Khi cần thiết")) {
+			AMF_TanSuatSuDung_JButton.setEnabled(false); 
         }
     }//GEN-LAST:event_AMF_TanSuatSuDung_JButtonActionPerformed
+
+    private void AMF_TanSuatSuDung_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AMF_TanSuatSuDung_JComboBoxItemStateChanged
+        // TODO add your handling code here:
+		AMF_TanSuatSuDung_JButton.setEnabled(false);
+		var data= "";
+        if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Mỗi ngày")) {
+            AMF_TanSuatSuDung_JButton.setEnabled(false); 
+        } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tuần")) {
+			AMF_TanSuatSuDung_JButton.setEnabled(true);
+        } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tháng")) {
+			AMF_TanSuatSuDung_JButton.setEnabled(true);
+        } else if (AMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Khi cần thiết")) {
+            AMF_TanSuatSuDung_JButton.setEnabled(false);
+			AMF_UuTienThongBao_JToggleButton.setEnabled(false);
+			AMF_TuDongXacNhanSuDung_JToggleButton.setEnabled(false);
+			AMF_KhoangThoiGianLapThongBao_JSpinner.setEnabled(false);
+        }
+    }//GEN-LAST:event_AMF_TanSuatSuDung_JComboBoxItemStateChanged
+
+    private void AMF_MocThoiGianSuDungThuoc_Them_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_MocThoiGianSuDungThuoc_Them_JButtonActionPerformed
+//        // TODO add your handling code here:
+//		LayoutManager layout = AMF_KhungNoiDungThemThuoc_JPanel.getLayout();
+//		JPanel jp = AMF_MocThoiGianSuDungThuoc_JPanel;
+//		if (layout instanceof GridLayout) {
+//            ((GridLayout) layout).setColumns(1);
+//            ((GridLayout) layout).setRows(((GridLayout) layout).getRows() + 1);
+//            AMF_KhungNoiDungThemThuoc_JPanel.setLayout(layout);
+//            AMF_KhungNoiDungThemThuoc_JPanel.add(jp, -1);
+//            AMF_KhungNoiDungThemThuoc_JPanel.revalidate();
+//            AMF_KhungNoiDungThemThuoc_JPanel.repaint();
+//        }
+    }//GEN-LAST:event_AMF_MocThoiGianSuDungThuoc_Them_JButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -749,7 +642,7 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddMedicationFrame().setVisible(true);
+                new AddMedicationFrame(mf).setVisible(true);
             }
         });
     }
@@ -768,7 +661,6 @@ public class AddMedicationFrame extends javax.swing.JFrame {
     private javax.swing.JLabel AMF_KhoangThoiGianLapThongBao_JLabel;
     private javax.swing.JPanel AMF_KhoangThoiGianLapThongBao_JPanel;
     private javax.swing.JSpinner AMF_KhoangThoiGianLapThongBao_JSpinner;
-    private javax.swing.JToggleButton AMF_KhoangThoiGianLapThongBao_JToggleButton;
     private javax.swing.JPanel AMF_KhungNoiDungThemThuoc_JPanel;
     private javax.swing.JLabel AMF_LieuSuDung_JLabel;
     private javax.swing.JSpinner AMF_LieuSuDung_JSpinner;

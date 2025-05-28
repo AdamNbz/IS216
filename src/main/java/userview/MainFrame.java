@@ -138,7 +138,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         MF_KhungNoiDungHomNay_JPanelLayout.setVerticalGroup(
             MF_KhungNoiDungHomNay_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 573, Short.MAX_VALUE)
+            .addGap(0, 585, Short.MAX_VALUE)
         );
 
         MF_NoiDungHomNay_JScrollPane.setViewportView(MF_KhungNoiDungHomNay_JPanel);
@@ -168,17 +168,17 @@ public class MainFrame extends javax.swing.JFrame {
         MF_HomNay_JPanel.setLayout(MF_HomNay_JPanelLayout);
         MF_HomNay_JPanelLayout.setHorizontalGroup(
             MF_HomNay_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MF_NoiDungHomNay_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MF_HomNay_JPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(MF_ThanhChucNangHomNay_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(304, 304, 304))
+            .addComponent(MF_NoiDungHomNay_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         MF_HomNay_JPanelLayout.setVerticalGroup(
             MF_HomNay_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MF_HomNay_JPanelLayout.createSequentialGroup()
-                .addComponent(MF_NoiDungHomNay_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(MF_NoiDungHomNay_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(MF_ThanhChucNangHomNay_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -223,13 +223,10 @@ public class MainFrame extends javax.swing.JFrame {
         MF_DanhMucThuoc_JPanel.setLayout(MF_DanhMucThuoc_JPanelLayout);
         MF_DanhMucThuoc_JPanelLayout.setHorizontalGroup(
             MF_DanhMucThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MF_DanhMucThuoc_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(MF_NoiDungDanhMucThuoc_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1053, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(MF_DanhMucThuoc_JPanelLayout.createSequentialGroup()
                 .addComponent(MF_ThanhChucNangDanhMucThuoc_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 395, Short.MAX_VALUE))
+            .addComponent(MF_NoiDungDanhMucThuoc_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         MF_DanhMucThuoc_JPanelLayout.setVerticalGroup(
             MF_DanhMucThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,18 +268,16 @@ public class MainFrame extends javax.swing.JFrame {
         MF_LichSu_JPanelLayout.setHorizontalGroup(
             MF_LichSu_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MF_LichSu_JPanelLayout.createSequentialGroup()
-                .addComponent(MF_ThanhChucNangLichSu_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(MF_LichSu_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(MF_ThanhChucNangLichSu_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MF_NoiDungLichSu_JScrollPane))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MF_LichSu_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(MF_NoiDungLichSu_JScrollPane)
-                .addContainerGap())
         );
         MF_LichSu_JPanelLayout.setVerticalGroup(
             MF_LichSu_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MF_LichSu_JPanelLayout.createSequentialGroup()
-                .addComponent(MF_NoiDungLichSu_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(MF_NoiDungLichSu_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(MF_ThanhChucNangLichSu_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -296,7 +291,7 @@ public class MainFrame extends javax.swing.JFrame {
         MF_KhungNoiDungTraCuuOnline_JPanel.setLayout(MF_KhungNoiDungTraCuuOnline_JPanelLayout);
         MF_KhungNoiDungTraCuuOnline_JPanelLayout.setHorizontalGroup(
             MF_KhungNoiDungTraCuuOnline_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1041, Short.MAX_VALUE)
+            .addGap(0, 1053, Short.MAX_VALUE)
         );
         MF_KhungNoiDungTraCuuOnline_JPanelLayout.setVerticalGroup(
             MF_KhungNoiDungTraCuuOnline_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,10 +332,9 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(MF_ThanhChucNangTraCuuOnline_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(MF_TraCuuOnline_JPanelLayout.createSequentialGroup()
-                        .addGroup(MF_TraCuuOnline_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(MF_JSeparator)
-                            .addComponent(MF_NoiDungTraCuuOnline_JScrollPane))
+                        .addComponent(MF_JSeparator)
                         .addContainerGap())))
+            .addComponent(MF_NoiDungTraCuuOnline_JScrollPane)
         );
         MF_TraCuuOnline_JPanelLayout.setVerticalGroup(
             MF_TraCuuOnline_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,8 +344,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(MF_JSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MF_NoiDungTraCuuOnline_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(MF_NoiDungTraCuuOnline_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
         );
 
         MF_IntermidiateContainer_JTabbedPane.addTab("Tra cứu trực tuyến", MF_TraCuuOnline_JPanel);
@@ -500,7 +493,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void MF_Them_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_Them_JButtonActionPerformed
         // TODO add your handling code here:
-        AddMedicationFrame AMF = new AddMedicationFrame();
+        AddMedicationFrame AMF = new AddMedicationFrame(MainFrame.this);
+		this.dispose();
     }//GEN-LAST:event_MF_Them_JButtonActionPerformed
 
     private void MF_GuiYKien_JMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_GuiYKien_JMenuItemActionPerformed

@@ -3,17 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package userview;
+import java.awt.GridLayout;
+import java.awt.LayoutManager;
 import javax.swing.*;
 /**
  *
  * @author shanghuang
  */
 public class TimeStoneAdditionPanel extends javax.swing.JPanel {
-
+	public static JPanel parentPanel;
     /**
      * Creates new form TimeStoneAdditionPanel
      */
-    public TimeStoneAdditionPanel() {
+    public TimeStoneAdditionPanel(JPanel AMF_KhungNoiDungThemThuoc_JPanel) {
+		this.parentPanel = AMF_KhungNoiDungThemThuoc_JPanel;
         initComponents();
     }
 
@@ -26,111 +29,114 @@ public class TimeStoneAdditionPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
-        jSpinner7 = new javax.swing.JSpinner();
-        jSpinner8 = new javax.swing.JSpinner();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
-        jSpinner9 = new javax.swing.JSpinner();
+        AMF_MocThoiGianSuDungThuocThem_JPanel = new javax.swing.JPanel();
+        TSAP_MocThoiGianSuDungThuocThem_Xoa_JButton = new javax.swing.JButton();
+        TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner = new javax.swing.JSpinner();
+        TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner = new javax.swing.JSpinner();
+        TSAP_AM_PM_JComboBox = new javax.swing.JComboBox<>();
+        TSAP_LieuSuDung_JLabel = new javax.swing.JLabel();
+        TSAP_LieuSuDung_JSpinner = new javax.swing.JSpinner();
+
+        AMF_MocThoiGianSuDungThuocThem_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         setPreferredSize(new java.awt.Dimension(530, 41));
+        setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jButton3.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        jButton3.setText("Xóa");
-        jButton3.setPreferredSize(new java.awt.Dimension(73, 29));
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+        TSAP_MocThoiGianSuDungThuocThem_Xoa_JButton.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        TSAP_MocThoiGianSuDungThuocThem_Xoa_JButton.setText("Xóa");
+        TSAP_MocThoiGianSuDungThuocThem_Xoa_JButton.setMaximumSize(new java.awt.Dimension(90, 30));
+        TSAP_MocThoiGianSuDungThuocThem_Xoa_JButton.setMinimumSize(new java.awt.Dimension(90, 30));
+        TSAP_MocThoiGianSuDungThuocThem_Xoa_JButton.setPreferredSize(new java.awt.Dimension(90, 30));
+        TSAP_MocThoiGianSuDungThuocThem_Xoa_JButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TSAP_MocThoiGianSuDungThuocThem_Xoa_JButtonActionPerformed(evt);
             }
         });
+        add(TSAP_MocThoiGianSuDungThuocThem_Xoa_JButton);
 
-        jSpinner7.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        jSpinner7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jSpinner7.setFocusable(false);
-        jSpinner7.setRequestFocusEnabled(false);
-
-        jSpinner8.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        jSpinner8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jSpinner8.setFocusable(false);
-        jSpinner8.setRequestFocusEnabled(false);
-
-        jComboBox2.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AM", "PM" }));
-
-        jLabel10.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        jLabel10.setText("Liều sử dụng");
-
-        jSpinner9.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        jSpinner9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jSpinner9.setFocusable(false);
-        jSpinner9.setRequestFocusEnabled(false);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSpinner9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jSpinner8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton3, jComboBox2, jLabel10, jSpinner7, jSpinner8, jSpinner9});
-
-        JComponent editor_js7 = jSpinner7.getEditor();
+        TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setFocusable(false);
+        TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setMaximumSize(new java.awt.Dimension(90, 30));
+        TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
+        TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
+        TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setRequestFocusEnabled(false);
+        add(TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner);
+        JComponent editor_js7 = TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.getEditor();
         JFormattedTextField tf_js7 = ((JSpinner.DefaultEditor) editor_js7).getTextField();
         tf_js7.setEditable(false);
         tf_js7.setColumns(3);
         tf_js7.setHorizontalAlignment(JTextField.CENTER);
-        jSpinner7.setSize(64, 32);
-        JComponent editor_js8 = jSpinner8.getEditor();
+        TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setSize(64, 32);
+
+        TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setFocusable(false);
+        TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setMaximumSize(new java.awt.Dimension(90, 30));
+        TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
+        TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
+        TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setRequestFocusEnabled(false);
+        add(TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner);
+        JComponent editor_js8 = TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.getEditor();
         JFormattedTextField tf_js8 = ((JSpinner.DefaultEditor) editor_js8).getTextField();
         tf_js8.setEditable(false);
         tf_js8.setColumns(3);
         tf_js8.setHorizontalAlignment(JTextField.CENTER);
-        jSpinner8.setSize(64, 32);
-        JComponent editor_js9 = jSpinner9.getEditor();
+        TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setSize(64, 32);
+
+        TSAP_AM_PM_JComboBox.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        TSAP_AM_PM_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AM", "PM" }));
+        TSAP_AM_PM_JComboBox.setMaximumSize(new java.awt.Dimension(90, 30));
+        TSAP_AM_PM_JComboBox.setMinimumSize(new java.awt.Dimension(90, 30));
+        TSAP_AM_PM_JComboBox.setPreferredSize(new java.awt.Dimension(90, 30));
+        add(TSAP_AM_PM_JComboBox);
+
+        TSAP_LieuSuDung_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        TSAP_LieuSuDung_JLabel.setText("Liều sử dụng");
+        TSAP_LieuSuDung_JLabel.setMaximumSize(new java.awt.Dimension(140, 30));
+        TSAP_LieuSuDung_JLabel.setMinimumSize(new java.awt.Dimension(140, 30));
+        TSAP_LieuSuDung_JLabel.setPreferredSize(new java.awt.Dimension(180, 30));
+        add(TSAP_LieuSuDung_JLabel);
+
+        TSAP_LieuSuDung_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        TSAP_LieuSuDung_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TSAP_LieuSuDung_JSpinner.setFocusable(false);
+        TSAP_LieuSuDung_JSpinner.setMaximumSize(new java.awt.Dimension(90, 30));
+        TSAP_LieuSuDung_JSpinner.setMinimumSize(new java.awt.Dimension(90, 30));
+        TSAP_LieuSuDung_JSpinner.setPreferredSize(new java.awt.Dimension(90, 30));
+        TSAP_LieuSuDung_JSpinner.setRequestFocusEnabled(false);
+        add(TSAP_LieuSuDung_JSpinner);
+        JComponent editor_js9 = TSAP_LieuSuDung_JSpinner.getEditor();
         JFormattedTextField tf_js9 = ((JSpinner.DefaultEditor) editor_js9).getTextField();
         tf_js9.setEditable(false);
         tf_js9.setColumns(3);
         tf_js9.setHorizontalAlignment(JTextField.CENTER);
-        jSpinner9.setSize(64, 32);
+        TSAP_LieuSuDung_JSpinner.setSize(64, 32);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here
-    }//GEN-LAST:event_jButton3MouseClicked
+    private void TSAP_MocThoiGianSuDungThuocThem_Xoa_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TSAP_MocThoiGianSuDungThuocThem_Xoa_JButtonActionPerformed
+        if (this.parentPanel != null) {
+			LayoutManager layout = parentPanel.getLayout();
+			if (layout instanceof GridLayout) {
+				this.parentPanel.remove(this);
+				((GridLayout) layout).setColumns(1);
+				((GridLayout) layout).setRows(((GridLayout) layout).getRows() - 1);
+				this.parentPanel.revalidate(); // Cập nhật layout
+				this.parentPanel.repaint();    // Vẽ lại panel
+			}            
+        } else {
+            System.err.println("Lỗi: parentPanel là null!");
+        }
+    }//GEN-LAST:event_TSAP_MocThoiGianSuDungThuocThem_Xoa_JButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JSpinner jSpinner7;
-    private javax.swing.JSpinner jSpinner8;
-    private javax.swing.JSpinner jSpinner9;
+    private javax.swing.JPanel AMF_MocThoiGianSuDungThuocThem_JPanel;
+    private javax.swing.JComboBox<String> TSAP_AM_PM_JComboBox;
+    private javax.swing.JLabel TSAP_LieuSuDung_JLabel;
+    private javax.swing.JSpinner TSAP_LieuSuDung_JSpinner;
+    private javax.swing.JSpinner TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner;
+    private javax.swing.JSpinner TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner;
+    private javax.swing.JButton TSAP_MocThoiGianSuDungThuocThem_Xoa_JButton;
     // End of variables declaration//GEN-END:variables
 }
