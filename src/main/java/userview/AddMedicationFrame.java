@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package userview;
+import elementpanel.TimeStoneAdditionPanel;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.*;
@@ -26,7 +27,7 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 	public static MainFrame mf;
 	public String charset = "<>?/.,:\";'{}|\\[\\]\\\\()!@#$%^&*\\-_+=~`";
 	Pattern patt = Pattern.compile("[" + charset + "]");
-	int DEBUG = 1;
+	int DEBUG = 0;
 	String Specific_data = null;
 	
     /**
@@ -166,7 +167,7 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_LieuSuDung_JLabel = new javax.swing.JLabel();
         AMF_LieuSuDung_JSpinner = new javax.swing.JSpinner();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         AMF_Huy_JButton.setFont(new java.awt.Font("SF Mono", 0, 24)); // NOI18N
@@ -217,6 +218,7 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         AMF_Ten_JPanel.add(AMF_Ten_JLabel);
 
         AMF_Ten_JTextField.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        AMF_Ten_JTextField.setToolTipText("Không điền đơn vị vào tên thuốc\nViết liền tên thuốc (không dấu cách \" \")");
         AMF_Ten_JTextField.setMaximumSize(new java.awt.Dimension(385, 30));
         AMF_Ten_JTextField.setMinimumSize(new java.awt.Dimension(385, 30));
         AMF_Ten_JTextField.setPreferredSize(new java.awt.Dimension(385, 30));
@@ -662,6 +664,9 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 				MocThoiGianVariableHolder
 		);
 		mo.writeJSON();
+		
+		this.mf.setVisible(true);
+		this.dispose();
     }//GEN-LAST:event_AMF_Them_JButtonActionPerformed
 
     private void AMF_Ten_JTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_Ten_JTextFieldActionPerformed

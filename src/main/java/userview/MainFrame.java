@@ -3,7 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package userview;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import elementpanel.MedicineItemPanel;
 import java.awt.*;
+import java.io.File;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JViewport;
+import javax.swing.UIManager;
+import object.MedicineObject;
 /**
  *
  * @author shanghuang
@@ -14,35 +22,18 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form MainFrame
      */
     public MainFrame() {
-        try {
-            String osName = System.getProperty("os.name").toLowerCase();
-    
-            if (osName.contains("linux")) {
-                // Sử dụng GTK trên Linux
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("GTK+".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            } else if (osName.contains("windows")) {
-                // Sử dụng giao diện Windows trên Windows
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Windows".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        FlatIntelliJLaf.setup();
+		try {
+			UIManager.setLookAndFeel( new FlatIntelliJLaf() );
+		} catch( Exception ex ) {
+			System.err.println( "Failed to initialize LaF" );
+		}
+		UIManager.put( "Button.arc", 50 );
+		UIManager.put( "Component.arc", 50 );
+		UIManager.put( "ProgressBar.arc", 50 );
+		UIManager.put( "TextComponent.arc", 50 );
+		UIManager.put( "TextArea.border", 50 );
+		UIManager.put( "ScrollPane.TextComponent.arc", 50 );
         initComponents();
         this.setVisible(true);
         this.setFrameInCenter();
@@ -83,6 +74,7 @@ public class MainFrame extends javax.swing.JFrame {
         MF_Xoa_JButton = new javax.swing.JButton();
         MF_TraCuu_JButton = new javax.swing.JButton();
         MF_TraCuu_JTextField = new javax.swing.JTextField();
+        MF_LamMoi_JButton = new javax.swing.JButton();
         MF_LichSu_JPanel = new javax.swing.JPanel();
         MF_NoiDungLichSu_JScrollPane = new javax.swing.JScrollPane();
         MF_KhungNoiDungLichSu_JPanel = new javax.swing.JPanel();
@@ -188,14 +180,23 @@ public class MainFrame extends javax.swing.JFrame {
         MF_NoiDungDanhMucThuoc_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         MF_NoiDungDanhMucThuoc_JScrollPane.setToolTipText("");
         MF_NoiDungDanhMucThuoc_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        MF_NoiDungDanhMucThuoc_JScrollPane.setMaximumSize(new java.awt.Dimension(1065, 564));
+        MF_NoiDungDanhMucThuoc_JScrollPane.setMinimumSize(new java.awt.Dimension(1065, 564));
+        MF_NoiDungDanhMucThuoc_JScrollPane.setPreferredSize(new java.awt.Dimension(1065, 564));
 
-        MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(new java.awt.GridLayout(1, 1, 5, 5));
+        MF_KhungNoiDungDanhMucThuoc_JPanel.setMaximumSize(new java.awt.Dimension(1053, 1054));
+        MF_KhungNoiDungDanhMucThuoc_JPanel.setMinimumSize(new java.awt.Dimension(1053, 582));
+        MF_KhungNoiDungDanhMucThuoc_JPanel.setPreferredSize(new java.awt.Dimension(1053, 582));
+        MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(new java.awt.GridLayout(0, 1, 10, 10));
         MF_NoiDungDanhMucThuoc_JScrollPane.setViewportView(MF_KhungNoiDungDanhMucThuoc_JPanel);
 
         MF_ThanhChucNangDanhMucThuoc_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
 
         MF_Them_JButton.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         MF_Them_JButton.setText("Thêm");
+        MF_Them_JButton.setMaximumSize(new java.awt.Dimension(80, 30));
+        MF_Them_JButton.setMinimumSize(new java.awt.Dimension(80, 30));
+        MF_Them_JButton.setPreferredSize(new java.awt.Dimension(80, 30));
         MF_Them_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MF_Them_JButtonActionPerformed(evt);
@@ -205,10 +206,16 @@ public class MainFrame extends javax.swing.JFrame {
 
         MF_Xoa_JButton.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         MF_Xoa_JButton.setText("Xóa");
+        MF_Xoa_JButton.setMaximumSize(new java.awt.Dimension(80, 30));
+        MF_Xoa_JButton.setMinimumSize(new java.awt.Dimension(80, 30));
+        MF_Xoa_JButton.setPreferredSize(new java.awt.Dimension(80, 30));
         MF_ThanhChucNangDanhMucThuoc_JPanel.add(MF_Xoa_JButton);
 
         MF_TraCuu_JButton.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         MF_TraCuu_JButton.setText("Tra cứu");
+        MF_TraCuu_JButton.setMaximumSize(new java.awt.Dimension(150, 30));
+        MF_TraCuu_JButton.setMinimumSize(new java.awt.Dimension(150, 30));
+        MF_TraCuu_JButton.setPreferredSize(new java.awt.Dimension(150, 30));
         MF_TraCuu_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MF_TraCuu_JButtonActionPerformed(evt);
@@ -216,22 +223,33 @@ public class MainFrame extends javax.swing.JFrame {
         });
         MF_ThanhChucNangDanhMucThuoc_JPanel.add(MF_TraCuu_JButton);
 
-        MF_TraCuu_JTextField.setPreferredSize(new java.awt.Dimension(350, 29));
+        MF_TraCuu_JTextField.setMaximumSize(new java.awt.Dimension(350, 30));
+        MF_TraCuu_JTextField.setMinimumSize(new java.awt.Dimension(350, 30));
+        MF_TraCuu_JTextField.setPreferredSize(new java.awt.Dimension(350, 30));
         MF_ThanhChucNangDanhMucThuoc_JPanel.add(MF_TraCuu_JTextField);
+
+        MF_LamMoi_JButton.setText("Làm mới");
+        MF_LamMoi_JButton.setMaximumSize(new java.awt.Dimension(150, 30));
+        MF_LamMoi_JButton.setMinimumSize(new java.awt.Dimension(150, 30));
+        MF_LamMoi_JButton.setPreferredSize(new java.awt.Dimension(150, 30));
+        MF_LamMoi_JButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MF_LamMoi_JButtonActionPerformed(evt);
+            }
+        });
+        MF_ThanhChucNangDanhMucThuoc_JPanel.add(MF_LamMoi_JButton);
 
         javax.swing.GroupLayout MF_DanhMucThuoc_JPanelLayout = new javax.swing.GroupLayout(MF_DanhMucThuoc_JPanel);
         MF_DanhMucThuoc_JPanel.setLayout(MF_DanhMucThuoc_JPanelLayout);
         MF_DanhMucThuoc_JPanelLayout.setHorizontalGroup(
             MF_DanhMucThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MF_DanhMucThuoc_JPanelLayout.createSequentialGroup()
-                .addComponent(MF_ThanhChucNangDanhMucThuoc_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 395, Short.MAX_VALUE))
-            .addComponent(MF_NoiDungDanhMucThuoc_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(MF_NoiDungDanhMucThuoc_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(MF_ThanhChucNangDanhMucThuoc_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         MF_DanhMucThuoc_JPanelLayout.setVerticalGroup(
             MF_DanhMucThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MF_DanhMucThuoc_JPanelLayout.createSequentialGroup()
-                .addComponent(MF_NoiDungDanhMucThuoc_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 584, Short.MAX_VALUE)
+                .addComponent(MF_NoiDungDanhMucThuoc_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(MF_ThanhChucNangDanhMucThuoc_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -344,7 +362,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(MF_JSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MF_NoiDungTraCuuOnline_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
+                .addComponent(MF_NoiDungTraCuuOnline_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE))
         );
 
         MF_IntermidiateContainer_JTabbedPane.addTab("Tra cứu trực tuyến", MF_TraCuuOnline_JPanel);
@@ -401,7 +419,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPane2_JPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(MF_NoiDungKiemTraTuongTacThuoc_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .addComponent(MF_NoiDungKiemTraTuongTacThuoc_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -494,12 +512,55 @@ public class MainFrame extends javax.swing.JFrame {
     private void MF_Them_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_Them_JButtonActionPerformed
         // TODO add your handling code here:
         AddMedicationFrame AMF = new AddMedicationFrame(MainFrame.this);
-		this.dispose();
     }//GEN-LAST:event_MF_Them_JButtonActionPerformed
 
     private void MF_GuiYKien_JMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_GuiYKien_JMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MF_GuiYKien_JMenuItemActionPerformed
+
+    private void MF_LamMoi_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_LamMoi_JButtonActionPerformed
+        String directory = "/home/shanghuang/Videos";
+		File f_dir = new File(directory);
+		File[] files = f_dir.listFiles(
+            // filter to select only JSON files with name contain "MO_" prefix
+            (file) -> file.isFile() && 
+            file.getName().endsWith(".json") && 
+            file.getName().startsWith("MO_")
+		);
+		
+		JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		Temporal_Panel.setPreferredSize(MF_KhungNoiDungDanhMucThuoc_JPanel.getMaximumSize());
+		Temporal_Panel.add(MF_KhungNoiDungDanhMucThuoc_JPanel);
+		MF_NoiDungDanhMucThuoc_JScrollPane.setViewportView(Temporal_Panel);
+		
+		MF_KhungNoiDungDanhMucThuoc_JPanel.removeAll();
+		LayoutManager lm = MF_KhungNoiDungDanhMucThuoc_JPanel.getLayout();
+		if (lm instanceof GridLayout) {
+			((GridLayout) lm).setColumns(1);
+			((GridLayout) lm).setRows(0);
+			MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
+			MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
+			MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
+		}
+		
+		for (File f: files) {
+			MedicineObject mo = new MedicineObject();
+			mo.readJSON(f.getPath());
+			MedicineItemPanel mip = new MedicineItemPanel();
+			mip.loadData(mo);
+			if (lm instanceof GridLayout) {
+				((GridLayout) lm).setColumns(1);
+				((GridLayout) lm).setRows(((GridLayout) lm).getRows() + 1);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.add(mip, -1);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
+				MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
+			}
+		}
+		
+		MF_NoiDungDanhMucThuoc_JScrollPane.revalidate();
+		MF_NoiDungDanhMucThuoc_JScrollPane.repaint();
+    }//GEN-LAST:event_MF_LamMoi_JButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -568,6 +629,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel MF_KhungNoiDungTraCuuOnline_JPanel;
     private javax.swing.JPanel MF_KiemTraTuongTacThuoc_JPanel;
     private javax.swing.JButton MF_KiemTra_JButton;
+    private javax.swing.JButton MF_LamMoi_JButton;
     private javax.swing.JPanel MF_LichSu_JPanel;
     private javax.swing.JScrollPane MF_NoiDungDanhMucThuoc_JScrollPane;
     private javax.swing.JScrollPane MF_NoiDungHomNay_JScrollPane;

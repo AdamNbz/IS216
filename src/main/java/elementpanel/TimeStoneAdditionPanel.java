@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package userview;
+package elementpanel;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.util.ArrayList;
@@ -154,6 +154,13 @@ public class TimeStoneAdditionPanel extends javax.swing.JPanel {
 		ls.add((Object) TSAP_AM_PM_JComboBox.getSelectedItem().toString());
 		ls.add((Object) Integer.parseInt(TSAP_LieuSuDung_JSpinner.getValue().toString()));
 		return ls;
+	}
+	
+	public void setValue(List<Object> ls) {
+		TSAP_MocThoiGianSuDungThuocThem_Gio_JSpinner.setValue(ls.get(0));
+		TSAP_MocThoiGianSuDungThuocThem_Phut_JSpinner.setValue(ls.get(1));
+		TSAP_AM_PM_JComboBox.setSelectedItem(ls.get(2));
+		TSAP_LieuSuDung_JSpinner.setValue(ls.get(3));
 	}
 	
     private void TSAP_MocThoiGianSuDungThuocThem_Xoa_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TSAP_MocThoiGianSuDungThuocThem_Xoa_JButtonActionPerformed

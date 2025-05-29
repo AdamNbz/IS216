@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.json.simple.*;
 import java.io.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 /**
  *
  * @author shanghuang
@@ -19,7 +21,7 @@ public class MedicineObject {
 	private List<List<Object>> DSMocThoiGian; 
 	private List<Object> DSTanSuatCuThe;
 	
-	public void MedicineObject() {
+	public MedicineObject() {
 		this.TenThuoc = null;
 		this.DonVi = null;
 		this.GhiChu = null;
@@ -165,7 +167,7 @@ public class MedicineObject {
 		jo.put("DSMocThoiGian", this.DSMocThoiGian);
 		jo.put("DSTanSuatCuThe", this.DSTanSuatCuThe);
 		try {
-			FileWriter file = new FileWriter("/home/shanghuang/Videos/" + this.TenThuoc + ".json");
+			FileWriter file = new FileWriter("/home/shanghuang/Videos/MO_" + this.TenThuoc + ".json");
 			file.write(jo.toJSONString());
 			file.close();
 		} catch (IOException e) {
@@ -173,22 +175,50 @@ public class MedicineObject {
 		}
 	}
 	
-	public void readJSON() {
-		
+	public void readJSON(String filePath) {
+		JSONParser jp = new JSONParser();
+		try {
+			FileReader fr = new FileReader(filePath);
+			JSONObject jo = (JSONObject) jp.parse(fr);
+			this.TenThuoc = (String) jo.get("TenThuoc");
+			this.DonVi = (String) jo.get("DonVi");
+			this.GhiChu = (String) jo.get("GhiChu");
+			this.TanSuatChung = (String) jo.get("TanSuatChung");
+			this.TanSuatCuThe = (String) jo.get("TanSuatCuThe");
+			this.UuTienThongBao = (boolean) jo.get("UuTienThongBao");
+			this.TuDongXacNhan = (boolean) jo.get("TuDongXacNhan");
+			this.KhoangThongBao = Integer.parseInt(String.valueOf(jo.get("KhoangThongBao")));
+			this.SLHienCo = Integer.parseInt(String.valueOf(jo.get("SLHienCo")));
+			this.SLNhacNho = Integer.parseInt(String.valueOf(jo.get("SLNhacNho")));
+			this.DSMocThoiGian = (List<List<Object>>) jo.get("DSMocThoiGian");
+			this.DSTanSuatCuThe = parseSpecificFrequency(this.TanSuatCuThe);
+		} catch (FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} catch (ParseException pe) {
+			pe.printStackTrace();
+		}
 	}
 	
 	private List<Object> parseSpecificFrequency(String TanSuatCuThe) {
-		String[] num = TanSuatCuThe.split(",");
 		List<Object> ls = new ArrayList<>();
-		
-		for (String i: num) {
-			try {
-				int n = Integer.parseInt(i.trim());
-				ls.add(n);
-			} catch (NumberFormatException nfe) {
-				nfe.printStackTrace();
+		if (TanSuatCuThe == null) {
+			
+		} else {
+			String[] num = TanSuatCuThe.split(",");
+			ls = new ArrayList<>();
+
+			for (String i: num) {
+				try {
+					int n = Integer.parseInt(i.trim());
+					ls.add(n);
+				} catch (NumberFormatException nfe) {
+					nfe.printStackTrace();
+				}
 			}
 		}
+		
 		return ls;
 	}
 	
@@ -196,14 +226,42 @@ public class MedicineObject {
 		String[] num = TanSuatCuThe.split(",");
 		List<Object> ls = new ArrayList<>();
 		
-		for (String i: num) {
-			try {
-				int n = Integer.parseInt(i.trim());
-				ls.add(n);
-			} catch (NumberFormatException nfe) {
-				nfe.printStackTrace();
+		if (TanSuatCuThe == null) {
+			
+		} else {
+			for (String i: num) {
+				try {
+					int n = Integer.parseInt(i.trim());
+					ls.add(n);
+				} catch (NumberFormatException nfe) {
+					nfe.printStackTrace();
+				}
 			}
 		}
 		return ls;
+	}
+	
+	public void print() {
+		System.out.println(this.TenThuoc);
+		System.out.println(this.DonVi);
+		System.out.println(this.GhiChu);
+		System.out.println(this.TanSuatChung);
+		System.out.println(this.TanSuatCuThe);
+		System.out.println(this.UuTienThongBao);
+		System.out.println(this.TuDongXacNhan);
+		System.out.println(this.KhoangThongBao);
+		System.out.println(this.SLHienCo);
+		System.out.println(this.SLNhacNho);
+		System.out.println("---");
+		for (List<Object> ll: this.DSMocThoiGian) {
+			for (Object o: ll) {
+				System.out.println(o + " ");
+			}
+			System.out.println();
+		}
+		System.out.println("---");
+		for (Object o: this.DSTanSuatCuThe) {
+			System.out.println(o);
+		}
 	}
 }

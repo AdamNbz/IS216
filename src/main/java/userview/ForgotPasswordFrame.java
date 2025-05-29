@@ -93,7 +93,7 @@ public class ForgotPasswordFrame extends javax.swing.JFrame {
         FPF_NewPassword_JPasswordField = new javax.swing.JPasswordField();
         FPF_NewPasswordConfirm_JPasswordField = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         FPF_NhapMaOTPTuEmail_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 30)); // NOI18N
