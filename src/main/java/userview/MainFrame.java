@@ -189,7 +189,7 @@ public class MainFrame extends javax.swing.JFrame {
         MF_NoiDungDanhMucThuoc_JScrollPane.setToolTipText("");
         MF_NoiDungDanhMucThuoc_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(new java.awt.GridLayout(1, 1));
+        MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(new java.awt.GridLayout(1, 1, 5, 5));
         MF_NoiDungDanhMucThuoc_JScrollPane.setViewportView(MF_KhungNoiDungDanhMucThuoc_JPanel);
 
         MF_ThanhChucNangDanhMucThuoc_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 15, 5));
