@@ -167,7 +167,7 @@ public class MedicineObject {
 		jo.put("DSMocThoiGian", this.DSMocThoiGian);
 		jo.put("DSTanSuatCuThe", this.DSTanSuatCuThe);
 		try {
-			FileWriter file = new FileWriter("/home/shanghuang/Videos/MO_" + this.TenThuoc + ".json");
+			FileWriter file = new FileWriter("/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO/MO_" + this.TenThuoc + ".json");
 			file.write(jo.toJSONString());
 			file.close();
 		} catch (IOException e) {
@@ -263,5 +263,9 @@ public class MedicineObject {
 		for (Object o: this.DSTanSuatCuThe) {
 			System.out.println(o);
 		}
+	}
+	
+	public void refill(int SL) {
+		this.SLHienCo += SL;
 	}
 }

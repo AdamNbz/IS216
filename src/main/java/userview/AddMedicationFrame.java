@@ -698,7 +698,7 @@ public class AddMedicationFrame extends javax.swing.JFrame {
             AMF_KhungNoiDungThemThuoc_JPanel.revalidate();
             AMF_KhungNoiDungThemThuoc_JPanel.repaint();
         }
-        
+        mf.refresh_call();
     }//GEN-LAST:event_AMF_MocThoiGianSuDungThuoc_Them_JButtonMouseClicked
 
     private void AMF_TanSuatSuDung_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AMF_TanSuatSuDung_JButtonActionPerformed

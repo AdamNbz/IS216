@@ -36,8 +36,9 @@ public class EditMedicationFrame extends javax.swing.JFrame {
     /**
      * Creates new form AddingMedFrame
      */
-    public EditMedicationFrame(MedicineItemPanel mip) {
+    public EditMedicationFrame(MedicineItemPanel mip, MainFrame mf) {
 		this.mip = mip;
+		this.mf = mf;
 		this.mo = mip.getMedicineObject();
         FlatIntelliJLaf.setup();
 		try {
@@ -916,7 +917,7 @@ public class EditMedicationFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditMedicationFrame(mip).setVisible(true);
+                new EditMedicationFrame(mip, mip.mf).setVisible(true);
             }
         });
     }

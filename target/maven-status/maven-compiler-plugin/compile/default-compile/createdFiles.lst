@@ -1,5 +1,5 @@
-userview/AddMedicationFrame$15.class
 userview/MainFrame$6.class
+userview/AddMedicationFrame$15.class
 userview/CreateAccountFrame$6.class
 userview/ForgotPasswordFrame$4.class
 userview/PreferencesFrame$6.class
@@ -8,8 +8,8 @@ userview/EditMedicationFrame$10.class
 userview/EditMedicationFrame$9.class
 elementpanel/TodayEntryPanel.class
 userview/AddMedicationFrame$6.class
-userview/AddMedicationFrame$9.class
 userview/MainFrame$9.class
+userview/AddMedicationFrame$9.class
 userview/ForgotPasswordFrame$1.class
 userview/PreferencesFrame$3.class
 elementpanel/TimeStoneAdditionPanel$2.class
@@ -37,7 +37,6 @@ userview/MainFrame$4.class
 supervisorview/MainSupervisorFrame$1.class
 userview/AddMedicationFrame$1.class
 object/MedicineObject.class
-elementpanel/MedicineItemPanel$4.class
 userview/ApplicationInformationFrame$1.class
 userview/EditMedicationFrame$4.class
 userview/EditMedicationFrame$15.class

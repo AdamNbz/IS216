@@ -7,6 +7,7 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import elementpanel.MedicineItemPanel;
 import java.awt.*;
 import java.io.File;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
@@ -21,6 +22,7 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
+	private Dimension DMThuocDimension = new Dimension();
     public MainFrame() {
         FlatIntelliJLaf.setup();
 		try {
@@ -37,6 +39,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         this.setFrameInCenter();
+        this.refresh_call();
     }
     
     public void setFrameInCenter() {
@@ -71,7 +74,6 @@ public class MainFrame extends javax.swing.JFrame {
         MF_KhungNoiDungDanhMucThuoc_JPanel = new javax.swing.JPanel();
         MF_ThanhChucNangDanhMucThuoc_JPanel = new javax.swing.JPanel();
         MF_Them_JButton = new javax.swing.JButton();
-        MF_Xoa_JButton = new javax.swing.JButton();
         MF_TraCuu_JButton = new javax.swing.JButton();
         MF_TraCuu_JTextField = new javax.swing.JTextField();
         MF_LamMoi_JButton = new javax.swing.JButton();
@@ -203,13 +205,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         MF_ThanhChucNangDanhMucThuoc_JPanel.add(MF_Them_JButton);
-
-        MF_Xoa_JButton.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
-        MF_Xoa_JButton.setText("Xóa");
-        MF_Xoa_JButton.setMaximumSize(new java.awt.Dimension(80, 30));
-        MF_Xoa_JButton.setMinimumSize(new java.awt.Dimension(80, 30));
-        MF_Xoa_JButton.setPreferredSize(new java.awt.Dimension(80, 30));
-        MF_ThanhChucNangDanhMucThuoc_JPanel.add(MF_Xoa_JButton);
 
         MF_TraCuu_JButton.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         MF_TraCuu_JButton.setText("Tra cứu");
@@ -502,7 +497,53 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MF_SuDung1Lan_JButtonActionPerformed
 
     private void MF_TraCuu_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_TraCuu_JButtonActionPerformed
-        // TODO add your handling code here:
+        String TenTraCuuVariableHolder = MF_TraCuu_JTextField.getText();
+		
+		if (TenTraCuuVariableHolder.isEmpty()) {
+			JOptionPane.showMessageDialog(this, "Không thể tra cứu với tên thuốc rỗng", "Error", JOptionPane.ERROR_MESSAGE);
+		} else {
+			String directory = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO/MO_" + TenTraCuuVariableHolder + ".json";
+			File f = new File(directory);
+
+			MF_KhungNoiDungDanhMucThuoc_JPanel.removeAll();
+			LayoutManager lm = MF_KhungNoiDungDanhMucThuoc_JPanel.getLayout();
+			if (lm instanceof GridLayout) {
+				((GridLayout) lm).setColumns(1);
+				((GridLayout) lm).setRows(0);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
+				MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
+			}
+
+			MedicineObject mo = new MedicineObject();
+			mo.readJSON(f.getPath());
+			MedicineItemPanel mip = new MedicineItemPanel(MainFrame.this);
+			mip.loadData(mo);
+			if (lm instanceof GridLayout) {
+				((GridLayout) lm).setColumns(1);
+				((GridLayout) lm).setRows(((GridLayout) lm).getRows() + 1);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.add(mip, -1);
+				Dimension d = new Dimension((int) MF_KhungNoiDungDanhMucThuoc_JPanel.getSize().getWidth()
+						, (int) mip.getPreferredSize().getHeight() + 20);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.setPreferredSize(d);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
+				MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
+			}
+
+			JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			Dimension d = new Dimension(MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize());
+			d.setSize(
+				MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getWidth(), 
+				MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getHeight() + 10
+			);
+			Temporal_Panel.setPreferredSize(d);
+			Temporal_Panel.add(MF_KhungNoiDungDanhMucThuoc_JPanel);
+			MF_NoiDungDanhMucThuoc_JScrollPane.setViewportView(Temporal_Panel);
+
+			MF_NoiDungDanhMucThuoc_JScrollPane.revalidate();
+			MF_NoiDungDanhMucThuoc_JScrollPane.repaint();
+		}
     }//GEN-LAST:event_MF_TraCuu_JButtonActionPerformed
 
     private void MF_TraCuuOnline_JTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_TraCuuOnline_JTextFieldActionPerformed
@@ -519,7 +560,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MF_GuiYKien_JMenuItemActionPerformed
 
     private void MF_LamMoi_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_LamMoi_JButtonActionPerformed
-        String directory = "/home/shanghuang/Videos";
+        String directory = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO";
 		File f_dir = new File(directory);
 		File[] files = f_dir.listFiles(
             // filter to select only JSON files with name contain "MO_" prefix
@@ -528,10 +569,58 @@ public class MainFrame extends javax.swing.JFrame {
             file.getName().startsWith("MO_")
 		);
 		
+		MF_KhungNoiDungDanhMucThuoc_JPanel.removeAll();
+		MF_KhungNoiDungDanhMucThuoc_JPanel.setPreferredSize(DMThuocDimension);
+		LayoutManager lm = MF_KhungNoiDungDanhMucThuoc_JPanel.getLayout();
+		if (lm instanceof GridLayout) {
+			((GridLayout) lm).setColumns(1);
+			((GridLayout) lm).setRows(0);
+			MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
+			MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
+			MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
+		}
+		
+		for (File f: files) {
+			MedicineObject mo = new MedicineObject();
+			mo.readJSON(f.getPath());
+			MedicineItemPanel mip = new MedicineItemPanel(MainFrame.this);
+			mip.loadData(mo);
+			if (lm instanceof GridLayout) {
+				((GridLayout) lm).setColumns(1);
+				((GridLayout) lm).setRows(((GridLayout) lm).getRows() + 1);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.add(mip, -1);
+				Dimension d = new Dimension((int) DMThuocDimension.getSize().getWidth()
+						, (int) DMThuocDimension.getSize().getHeight() + 
+								(int) mip.getPreferredSize().getHeight() + 10);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.setPreferredSize(d);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
+				MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
+			}
+		}
 		JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		Temporal_Panel.setPreferredSize(MF_KhungNoiDungDanhMucThuoc_JPanel.getMaximumSize());
+		Dimension d = new Dimension(MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize());
+		d.setSize(
+			MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getWidth(), 
+			MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getHeight() + 10);
+		Temporal_Panel.setPreferredSize(d);
 		Temporal_Panel.add(MF_KhungNoiDungDanhMucThuoc_JPanel);
 		MF_NoiDungDanhMucThuoc_JScrollPane.setViewportView(Temporal_Panel);
+		
+		MF_NoiDungDanhMucThuoc_JScrollPane.revalidate();
+		MF_NoiDungDanhMucThuoc_JScrollPane.repaint();
+    }//GEN-LAST:event_MF_LamMoi_JButtonActionPerformed
+
+	public void refresh_call() {
+		String directory = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO";
+		File f_dir = new File(directory);
+		File[] files = f_dir.listFiles(
+            // filter to select only JSON files with name contain "MO_" prefix
+            (file) -> file.isFile() && 
+            file.getName().endsWith(".json") && 
+            file.getName().startsWith("MO_")
+		);
+		
 		
 		MF_KhungNoiDungDanhMucThuoc_JPanel.removeAll();
 		LayoutManager lm = MF_KhungNoiDungDanhMucThuoc_JPanel.getLayout();
@@ -546,22 +635,36 @@ public class MainFrame extends javax.swing.JFrame {
 		for (File f: files) {
 			MedicineObject mo = new MedicineObject();
 			mo.readJSON(f.getPath());
-			MedicineItemPanel mip = new MedicineItemPanel();
+			MedicineItemPanel mip = new MedicineItemPanel(MainFrame.this);
 			mip.loadData(mo);
 			if (lm instanceof GridLayout) {
 				((GridLayout) lm).setColumns(1);
 				((GridLayout) lm).setRows(((GridLayout) lm).getRows() + 1);
 				MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
 				MF_KhungNoiDungDanhMucThuoc_JPanel.add(mip, -1);
+				Dimension d = new Dimension((int) MF_KhungNoiDungDanhMucThuoc_JPanel.getSize().getWidth()
+						, (int) MF_KhungNoiDungDanhMucThuoc_JPanel.getSize().getHeight() + 
+								(int) mip.getPreferredSize().getHeight() + 10);
+				MF_KhungNoiDungDanhMucThuoc_JPanel.setPreferredSize(d);
 				MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
 				MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
 			}
 		}
+		JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		Dimension d = new Dimension(MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize());
+		d.setSize(
+			MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getWidth(), 
+			MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getHeight() + 10);
+		Temporal_Panel.setPreferredSize(d);
+		Temporal_Panel.add(MF_KhungNoiDungDanhMucThuoc_JPanel);
+		MF_NoiDungDanhMucThuoc_JScrollPane.setViewportView(Temporal_Panel);
 		
 		MF_NoiDungDanhMucThuoc_JScrollPane.revalidate();
 		MF_NoiDungDanhMucThuoc_JScrollPane.repaint();
-    }//GEN-LAST:event_MF_LamMoi_JButtonActionPerformed
-
+		
+		DMThuocDimension.setSize(MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize());
+	}
+	
     /**
      * @param args the command line arguments
      */
@@ -662,7 +765,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem MF_VePhanMem_JMenuItem;
     private javax.swing.JButton MF_XacNhan_JButton;
     private javax.swing.JButton MF_XoaTatCa_JButton;
-    private javax.swing.JButton MF_Xoa_JButton;
     private javax.swing.JButton MF_XuatLichSu_JButton;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;

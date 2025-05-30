@@ -5,9 +5,12 @@
 package elementpanel;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import java.io.File;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import object.MedicineObject;
 import userview.EditMedicationFrame;
+import userview.MainFrame;
 
 /**
  *
@@ -15,10 +18,12 @@ import userview.EditMedicationFrame;
  */
 public class MedicineItemPanel extends javax.swing.JPanel {
 	private MedicineObject mo;
+	public MainFrame mf;
 	/**
 	 * Creates new form MedicineItemPanel
 	 */
-	public MedicineItemPanel() {
+	public MedicineItemPanel(MainFrame mf) {
+		this.mf = mf;
 		FlatIntelliJLaf.setup();
 		try {
 			UIManager.setLookAndFeel( new FlatIntelliJLaf() );
@@ -52,18 +57,18 @@ public class MedicineItemPanel extends javax.swing.JPanel {
         MIP_SL_JLabel = new javax.swing.JLabel();
         MIP_Right_JPanel = new javax.swing.JPanel();
         MIP_Edit_JButton = new javax.swing.JButton();
-        MIP_Duplicate_JButton = new javax.swing.JButton();
         MIP_Delete_JButton = new javax.swing.JButton();
         MIP_Refill_JButton = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
-        setMaximumSize(new java.awt.Dimension(1041, 90));
-        setMinimumSize(new java.awt.Dimension(1041, 90));
-        setPreferredSize(new java.awt.Dimension(1041, 90));
+        setMaximumSize(new java.awt.Dimension(1041, 140));
+        setMinimumSize(new java.awt.Dimension(1041, 140));
+        setPreferredSize(new java.awt.Dimension(1041, 140));
         setLayout(new java.awt.GridLayout(2, 1, 0, 5));
 
         MIP_TenThuoc_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 24)); // NOI18N
         MIP_TenThuoc_JLabel.setText("TenThuoc");
+        MIP_TenThuoc_JLabel.setToolTipText("Tên thuốc");
         MIP_TenThuoc_JLabel.setMaximumSize(new java.awt.Dimension(1029, 54));
         MIP_TenThuoc_JLabel.setMinimumSize(new java.awt.Dimension(1029, 54));
         MIP_TenThuoc_JLabel.setPreferredSize(new java.awt.Dimension(1029, 54));
@@ -81,6 +86,7 @@ public class MedicineItemPanel extends javax.swing.JPanel {
 
         MIP_DViThuoc_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         MIP_DViThuoc_JLabel.setText("DonViThuoc");
+        MIP_DViThuoc_JLabel.setToolTipText("Đơn vị thuốc");
         MIP_DViThuoc_JLabel.setMaximumSize(new java.awt.Dimension(150, 30));
         MIP_DViThuoc_JLabel.setMinimumSize(new java.awt.Dimension(150, 30));
         MIP_DViThuoc_JLabel.setPreferredSize(new java.awt.Dimension(150, 30));
@@ -88,6 +94,7 @@ public class MedicineItemPanel extends javax.swing.JPanel {
 
         MIP_GCThuoc_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         MIP_GCThuoc_JLabel.setText("GhiChuThuoc");
+        MIP_GCThuoc_JLabel.setToolTipText("Ghi chú sử dụng thuốc");
         MIP_GCThuoc_JLabel.setMaximumSize(new java.awt.Dimension(300, 30));
         MIP_GCThuoc_JLabel.setMinimumSize(new java.awt.Dimension(300, 30));
         MIP_GCThuoc_JLabel.setPreferredSize(new java.awt.Dimension(300, 30));
@@ -95,6 +102,7 @@ public class MedicineItemPanel extends javax.swing.JPanel {
 
         MIP_UuTien_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         MIP_UuTien_JLabel.setText("UuTien");
+        MIP_UuTien_JLabel.setToolTipText("Mức độ ưu tiên thông báo");
         MIP_UuTien_JLabel.setMaximumSize(new java.awt.Dimension(180, 30));
         MIP_UuTien_JLabel.setMinimumSize(new java.awt.Dimension(180, 30));
         MIP_UuTien_JLabel.setPreferredSize(new java.awt.Dimension(180, 30));
@@ -102,6 +110,7 @@ public class MedicineItemPanel extends javax.swing.JPanel {
 
         MIP_SL_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         MIP_SL_JLabel.setText("SL");
+        MIP_SL_JLabel.setToolTipText("Số lượng thuốc hiện có");
         MIP_SL_JLabel.setMaximumSize(new java.awt.Dimension(90, 30));
         MIP_SL_JLabel.setMinimumSize(new java.awt.Dimension(90, 30));
         MIP_SL_JLabel.setPreferredSize(new java.awt.Dimension(90, 30));
@@ -109,14 +118,14 @@ public class MedicineItemPanel extends javax.swing.JPanel {
 
         MIP_Info_JPanel.add(MIP_Left_JPanel);
 
-        MIP_Right_JPanel.setMaximumSize(new java.awt.Dimension(186, 42));
-        MIP_Right_JPanel.setMinimumSize(new java.awt.Dimension(186, 42));
-        MIP_Right_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 5));
+        MIP_Right_JPanel.setMaximumSize(new java.awt.Dimension(280, 40));
+        MIP_Right_JPanel.setMinimumSize(new java.awt.Dimension(280, 40));
+        MIP_Right_JPanel.setPreferredSize(new java.awt.Dimension(280, 40));
+        MIP_Right_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 5));
 
         MIP_Edit_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/edit.png"))); // NOI18N
-        MIP_Edit_JButton.setMaximumSize(new java.awt.Dimension(40, 40));
-        MIP_Edit_JButton.setMinimumSize(new java.awt.Dimension(40, 40));
-        MIP_Edit_JButton.setPreferredSize(new java.awt.Dimension(40, 40));
+        MIP_Edit_JButton.setToolTipText("Chỉnh sửa thuốc");
+        MIP_Edit_JButton.setBorder(null);
         MIP_Edit_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MIP_Edit_JButtonActionPerformed(evt);
@@ -124,21 +133,9 @@ public class MedicineItemPanel extends javax.swing.JPanel {
         });
         MIP_Right_JPanel.add(MIP_Edit_JButton);
 
-        MIP_Duplicate_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/duplicate.png"))); // NOI18N
-        MIP_Duplicate_JButton.setMaximumSize(new java.awt.Dimension(40, 40));
-        MIP_Duplicate_JButton.setMinimumSize(new java.awt.Dimension(40, 40));
-        MIP_Duplicate_JButton.setPreferredSize(new java.awt.Dimension(40, 40));
-        MIP_Duplicate_JButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MIP_Duplicate_JButtonActionPerformed(evt);
-            }
-        });
-        MIP_Right_JPanel.add(MIP_Duplicate_JButton);
-
         MIP_Delete_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
-        MIP_Delete_JButton.setMaximumSize(new java.awt.Dimension(40, 40));
-        MIP_Delete_JButton.setMinimumSize(new java.awt.Dimension(40, 40));
-        MIP_Delete_JButton.setPreferredSize(new java.awt.Dimension(40, 40));
+        MIP_Delete_JButton.setToolTipText("Xóa thuốc");
+        MIP_Delete_JButton.setBorder(null);
         MIP_Delete_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MIP_Delete_JButtonActionPerformed(evt);
@@ -147,9 +144,8 @@ public class MedicineItemPanel extends javax.swing.JPanel {
         MIP_Right_JPanel.add(MIP_Delete_JButton);
 
         MIP_Refill_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refill.png"))); // NOI18N
-        MIP_Refill_JButton.setMaximumSize(new java.awt.Dimension(40, 40));
-        MIP_Refill_JButton.setMinimumSize(new java.awt.Dimension(40, 40));
-        MIP_Refill_JButton.setPreferredSize(new java.awt.Dimension(40, 40));
+        MIP_Refill_JButton.setToolTipText("Bổ sung số lượng thuốc");
+        MIP_Refill_JButton.setBorder(null);
         MIP_Refill_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MIP_Refill_JButtonActionPerformed(evt);
@@ -164,19 +160,31 @@ public class MedicineItemPanel extends javax.swing.JPanel {
 
     private void MIP_Edit_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIP_Edit_JButtonActionPerformed
         // TODO add your handling code here:
-		EditMedicationFrame emf = new EditMedicationFrame(MedicineItemPanel.this);
+		EditMedicationFrame emf = new EditMedicationFrame(MedicineItemPanel.this, this.mf);
     }//GEN-LAST:event_MIP_Edit_JButtonActionPerformed
 
-    private void MIP_Duplicate_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIP_Duplicate_JButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MIP_Duplicate_JButtonActionPerformed
-
     private void MIP_Delete_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIP_Delete_JButtonActionPerformed
-        // TODO add your handling code here:
+        String filePath = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO/MO_" + MIP_TenThuoc_JLabel.getText() + ".json" ;
+		File fileToDelete = new File(filePath);
+		if (fileToDelete.exists()) { // Kiểm tra xem file có tồn tại hay không
+            boolean isDeleted = fileToDelete.delete(); // Xóa file
+
+            if (isDeleted) {
+                System.out.println("File '" + filePath + "' đã được xóa thành công.");
+            } else {
+                System.err.println("Không thể xóa file '" + filePath + "'.");
+            }
+        } else {
+            System.err.println("File '" + filePath + "' không tồn tại.");
+        }
+		this.mf.refresh_call();
     }//GEN-LAST:event_MIP_Delete_JButtonActionPerformed
 
     private void MIP_Refill_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIP_Refill_JButtonActionPerformed
-        // TODO add your handling code here:
+		int SL = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập số lượng muốn bổ sung: ", "Lựa chọn ngày trong tuần", JOptionPane.QUESTION_MESSAGE, null, null, String.valueOf(0)).toString());
+		this.mo.refill(SL);
+		this.mo.writeJSON();
+		this.mf.refresh_call();
     }//GEN-LAST:event_MIP_Refill_JButtonActionPerformed
 
 	public void loadData(
@@ -203,7 +211,6 @@ public class MedicineItemPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel MIP_DViThuoc_JLabel;
     private javax.swing.JButton MIP_Delete_JButton;
-    private javax.swing.JButton MIP_Duplicate_JButton;
     private javax.swing.JButton MIP_Edit_JButton;
     private javax.swing.JLabel MIP_GCThuoc_JLabel;
     private javax.swing.JPanel MIP_Info_JPanel;
