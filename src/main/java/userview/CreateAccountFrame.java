@@ -17,6 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import object.UserObject;
 
 /**
  *
@@ -350,7 +351,8 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         String HoTenVariableHolder = CAF_HoTen_JTextField.getText();
         String EmailVariableHolder = CAF_Email_JTextField.getText();
         int AgeVariableHolder = Integer.parseInt(CAF_Tuoi_JSpinner.getValue().toString());
-        String TienSuVariableHolder = CAF_TienSuBenhLy_JTextArea.getText();
+		CAF_TienSuBenhLy_JTextArea.selectAll();
+        String TienSuVariableHolder = CAF_TienSuBenhLy_JTextArea.getSelectedText();
         String KhuVucVariableHolder = CAF_KhuVucSinhSong_JComboBox.getSelectedItem().toString();
         
         if (!PasswordVariableHolder.contentEquals(PasswordConfirmVariableHolder)) {
@@ -412,7 +414,16 @@ public class CreateAccountFrame extends javax.swing.JFrame {
                 } else {
                     // success display
                     JOptionPane.showMessageDialog(this, "Tạo tài khoản thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
-
+					UserObject uo = new UserObject(
+						UsernameVariableHolder, 
+						HoTenVariableHolder, 
+						EmailVariableHolder, 
+						KhuVucVariableHolder, 
+						TienSuVariableHolder, 
+						AgeVariableHolder
+					);
+					uo.writeJSON();
+					
                     // debug block
                     if (DEBUG == 1) {
                         System.out.println("userview.CreateAccountFrame.CAF_XacNhan_JButtonActionPerformed(): Success to create account");

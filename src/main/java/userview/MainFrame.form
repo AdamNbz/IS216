@@ -53,6 +53,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="V&#x1ec1; c&#xe1; nh&#xe2;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MF_VeCaNhan_JMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MF_GuiYKien_JMenuItem">
               <Properties>

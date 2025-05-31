@@ -293,6 +293,8 @@ public class AuthenticationFrame extends javax.swing.JFrame {
 					} else {
 						// success display
 						JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
+						MainFrame mf = new MainFrame();
+						this.dispose();
 
 						// debug block
 						if (DEBUG == 1) {

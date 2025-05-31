@@ -432,6 +432,11 @@ public class MainFrame extends javax.swing.JFrame {
         MF_CaiDat_VePhanMem_Thoat_JMI_JMenu.add(MF_VePhanMem_JMenuItem);
 
         MF_VeCaNhan_JMenuItem.setText("Về cá nhân");
+        MF_VeCaNhan_JMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MF_VeCaNhan_JMenuItemActionPerformed(evt);
+            }
+        });
         MF_CaiDat_VePhanMem_Thoat_JMI_JMenu.add(MF_VeCaNhan_JMenuItem);
 
         MF_GuiYKien_JMenuItem.setText("Gửi ý kiến");
@@ -701,6 +706,11 @@ public class MainFrame extends javax.swing.JFrame {
     private void MF_BoQua_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_BoQua_JButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MF_BoQua_JButtonActionPerformed
+
+    private void MF_VeCaNhan_JMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_VeCaNhan_JMenuItemActionPerformed
+        // TODO add your handling code here:
+		AccountInformationFrame aif = new AccountInformationFrame(this);
+    }//GEN-LAST:event_MF_VeCaNhan_JMenuItemActionPerformed
 
 	// Hàm tải file từ URL
     private static Path downloadFile(String fileURL, String fileName) throws IOException, InterruptedException {
