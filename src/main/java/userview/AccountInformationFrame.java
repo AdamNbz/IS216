@@ -4,8 +4,10 @@
  */
 package userview;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.UIManager;
 
 /**
  *
@@ -17,38 +19,21 @@ public class AccountInformationFrame extends javax.swing.JFrame {
      * Creates new form CreateAccountFrame
      */
     public AccountInformationFrame() {
-        try {
-            String osName = System.getProperty("os.name").toLowerCase();
-    
-            if (osName.contains("linux")) {
-                // Sử dụng GTK trên Linux
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("GTK+".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            } else if (osName.contains("windows")) {
-                // Sử dụng giao diện Windows trên Windows
-                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Windows".equals(info.getName())) {
-                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                        break;
-                    }
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AuthenticationFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        FlatIntelliJLaf.setup();
+		try {
+			UIManager.setLookAndFeel( new FlatIntelliJLaf() );
+		} catch( Exception ex ) {
+			System.err.println( "Failed to initialize LaF" );
+		}
+		UIManager.put( "Button.arc", 50 );
+		UIManager.put( "Component.arc", 50 );
+		UIManager.put( "ProgressBar.arc", 50 );
+		UIManager.put( "TextComponent.arc", 50 );
+		UIManager.put( "TextArea.border", 50 );
+		UIManager.put( "ScrollPane.TextComponent.arc", 50 );
         initComponents();
-        this.setVisible(true);
         this.setFrameInCenter();
+        this.setVisible(true);
     }
     
     public void setFrameInCenter() {
@@ -68,7 +53,6 @@ public class AccountInformationFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        AIF_IntermidiateContainer_JPanel = new javax.swing.JPanel();
         AIF_TaoTaiKhoan_JLabel = new javax.swing.JLabel();
         AIF_TenTaiKhoan_JL_JTF_JPanel = new javax.swing.JPanel();
         CAF_TenTaiKhoan_JLabel = new javax.swing.JLabel();
@@ -87,135 +71,183 @@ public class AccountInformationFrame extends javax.swing.JFrame {
         CAF_KhuVucSinhSong_JComboBox = new javax.swing.JComboBox<>();
         AIF_TienSuBenhLy_JL_JTA_JPanel = new javax.swing.JPanel();
         CAF_TienSuBenhLy_JLabel = new javax.swing.JLabel();
+        CAF_TienSuBenhLy_JScrollPane = new javax.swing.JScrollPane();
         CAF_TienSuBenhLy_JTextArea = new javax.swing.JTextArea();
+        AIF_ThanhChucNang_JPanel = new javax.swing.JPanel();
+        AIF_CapNhat_JButton = new javax.swing.JButton();
         AIF_XacNhan_JButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(630, 600));
+        setMinimumSize(new java.awt.Dimension(630, 600));
+        setPreferredSize(new java.awt.Dimension(630, 600));
         setResizable(false);
-        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         AIF_TaoTaiKhoan_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 36)); // NOI18N
         AIF_TaoTaiKhoan_JLabel.setText("TÀI KHOẢN");
+        AIF_TaoTaiKhoan_JLabel.setPreferredSize(new java.awt.Dimension(200, 50));
 
         AIF_TenTaiKhoan_JL_JTF_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        CAF_TenTaiKhoan_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 25)); // NOI18N
+        CAF_TenTaiKhoan_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         CAF_TenTaiKhoan_JLabel.setText("Tên tài khoản:");
+        CAF_TenTaiKhoan_JLabel.setMaximumSize(new java.awt.Dimension(200, 30));
+        CAF_TenTaiKhoan_JLabel.setMinimumSize(new java.awt.Dimension(200, 30));
+        CAF_TenTaiKhoan_JLabel.setPreferredSize(new java.awt.Dimension(200, 30));
         AIF_TenTaiKhoan_JL_JTF_JPanel.add(CAF_TenTaiKhoan_JLabel);
 
         CAF_TenTaiKhoan_JTextField.setFont(new java.awt.Font("SF Mono SemiBold", 0, 14)); // NOI18N
-        CAF_TenTaiKhoan_JTextField.setPreferredSize(new java.awt.Dimension(420, 30));
+        CAF_TenTaiKhoan_JTextField.setMaximumSize(new java.awt.Dimension(400, 30));
+        CAF_TenTaiKhoan_JTextField.setMinimumSize(new java.awt.Dimension(400, 30));
+        CAF_TenTaiKhoan_JTextField.setPreferredSize(new java.awt.Dimension(400, 30));
         AIF_TenTaiKhoan_JL_JTF_JPanel.add(CAF_TenTaiKhoan_JTextField);
 
         AIF_HoTen_JL_JTF_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        CAF_HoTen_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 25)); // NOI18N
+        CAF_HoTen_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         CAF_HoTen_JLabel.setText("Họ tên:");
+        CAF_HoTen_JLabel.setMaximumSize(new java.awt.Dimension(200, 30));
+        CAF_HoTen_JLabel.setMinimumSize(new java.awt.Dimension(200, 30));
+        CAF_HoTen_JLabel.setPreferredSize(new java.awt.Dimension(200, 30));
         AIF_HoTen_JL_JTF_JPanel.add(CAF_HoTen_JLabel);
 
         CAF_HoTen_JTextField.setFont(new java.awt.Font("SF Mono SemiBold", 0, 14)); // NOI18N
-        CAF_HoTen_JTextField.setPreferredSize(new java.awt.Dimension(525, 30));
+        CAF_HoTen_JTextField.setMaximumSize(new java.awt.Dimension(400, 30));
+        CAF_HoTen_JTextField.setMinimumSize(new java.awt.Dimension(400, 30));
+        CAF_HoTen_JTextField.setPreferredSize(new java.awt.Dimension(400, 30));
         AIF_HoTen_JL_JTF_JPanel.add(CAF_HoTen_JTextField);
 
         AIF_Email_JL_JTF_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        CAF_Email_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 25)); // NOI18N
+        CAF_Email_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         CAF_Email_JLabel.setText("Email:");
+        CAF_Email_JLabel.setMaximumSize(new java.awt.Dimension(200, 30));
+        CAF_Email_JLabel.setMinimumSize(new java.awt.Dimension(200, 30));
+        CAF_Email_JLabel.setPreferredSize(new java.awt.Dimension(200, 30));
         AIF_Email_JL_JTF_JPanel.add(CAF_Email_JLabel);
 
         CAF_Email_JTextField.setFont(new java.awt.Font("SF Mono SemiBold", 0, 14)); // NOI18N
-        CAF_Email_JTextField.setPreferredSize(new java.awt.Dimension(540, 30));
+        CAF_Email_JTextField.setMaximumSize(new java.awt.Dimension(400, 30));
+        CAF_Email_JTextField.setMinimumSize(new java.awt.Dimension(400, 30));
+        CAF_Email_JTextField.setPreferredSize(new java.awt.Dimension(400, 30));
         AIF_Email_JL_JTF_JPanel.add(CAF_Email_JTextField);
 
         AIF_Tuoi_JL_JS_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        CAF_Tuoi_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 25)); // NOI18N
+        CAF_Tuoi_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         CAF_Tuoi_JLabel.setText("Tuổi:");
+        CAF_Tuoi_JLabel.setMaximumSize(new java.awt.Dimension(200, 30));
+        CAF_Tuoi_JLabel.setMinimumSize(new java.awt.Dimension(200, 30));
+        CAF_Tuoi_JLabel.setPreferredSize(new java.awt.Dimension(200, 30));
         AIF_Tuoi_JL_JS_JPanel.add(CAF_Tuoi_JLabel);
 
         CAF_Tuoi_JSpinner.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
-        CAF_Tuoi_JSpinner.setPreferredSize(new java.awt.Dimension(82, 30));
+        CAF_Tuoi_JSpinner.setMaximumSize(new java.awt.Dimension(100, 30));
+        CAF_Tuoi_JSpinner.setMinimumSize(new java.awt.Dimension(100, 30));
+        CAF_Tuoi_JSpinner.setPreferredSize(new java.awt.Dimension(100, 30));
         AIF_Tuoi_JL_JS_JPanel.add(CAF_Tuoi_JSpinner);
 
         AIF_KhuVucSinhSong_JL_JCB_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        CAF_KhuVucSinhSong_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 25)); // NOI18N
+        CAF_KhuVucSinhSong_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         CAF_KhuVucSinhSong_JLabel.setText("Khu vực sinh sống:");
+        CAF_KhuVucSinhSong_JLabel.setMaximumSize(new java.awt.Dimension(200, 30));
+        CAF_KhuVucSinhSong_JLabel.setMinimumSize(new java.awt.Dimension(200, 30));
+        CAF_KhuVucSinhSong_JLabel.setPreferredSize(new java.awt.Dimension(200, 30));
         AIF_KhuVucSinhSong_JL_JCB_JPanel.add(CAF_KhuVucSinhSong_JLabel);
 
         CAF_KhuVucSinhSong_JComboBox.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         CAF_KhuVucSinhSong_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Miền Bắc", "Miền Trung", "Miền Nam", " " }));
+        CAF_KhuVucSinhSong_JComboBox.setMaximumSize(new java.awt.Dimension(170, 30));
+        CAF_KhuVucSinhSong_JComboBox.setMinimumSize(new java.awt.Dimension(170, 30));
         CAF_KhuVucSinhSong_JComboBox.setPreferredSize(new java.awt.Dimension(170, 30));
         AIF_KhuVucSinhSong_JL_JCB_JPanel.add(CAF_KhuVucSinhSong_JComboBox);
 
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT);
-        flowLayout1.setAlignOnBaseline(true);
-        AIF_TienSuBenhLy_JL_JTA_JPanel.setLayout(flowLayout1);
+        AIF_TienSuBenhLy_JL_JTA_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        CAF_TienSuBenhLy_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 25)); // NOI18N
+        CAF_TienSuBenhLy_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         CAF_TienSuBenhLy_JLabel.setText("Tiền sử bệnh lý:");
+        CAF_TienSuBenhLy_JLabel.setMaximumSize(new java.awt.Dimension(200, 30));
+        CAF_TienSuBenhLy_JLabel.setMinimumSize(new java.awt.Dimension(200, 30));
+        CAF_TienSuBenhLy_JLabel.setPreferredSize(new java.awt.Dimension(200, 30));
         AIF_TienSuBenhLy_JL_JTA_JPanel.add(CAF_TienSuBenhLy_JLabel);
+
+        CAF_TienSuBenhLy_JScrollPane.setMaximumSize(new java.awt.Dimension(400, 100));
+        CAF_TienSuBenhLy_JScrollPane.setMinimumSize(new java.awt.Dimension(400, 100));
+        CAF_TienSuBenhLy_JScrollPane.setPreferredSize(new java.awt.Dimension(400, 100));
 
         CAF_TienSuBenhLy_JTextArea.setColumns(20);
         CAF_TienSuBenhLy_JTextArea.setRows(5);
-        CAF_TienSuBenhLy_JTextArea.setPreferredSize(new java.awt.Dimension(385, 100));
-        AIF_TienSuBenhLy_JL_JTA_JPanel.add(CAF_TienSuBenhLy_JTextArea);
+        CAF_TienSuBenhLy_JTextArea.setMaximumSize(new java.awt.Dimension(400, 100));
+        CAF_TienSuBenhLy_JTextArea.setMinimumSize(new java.awt.Dimension(400, 100));
+        CAF_TienSuBenhLy_JTextArea.setPreferredSize(new java.awt.Dimension(400, 100));
+        CAF_TienSuBenhLy_JScrollPane.setViewportView(CAF_TienSuBenhLy_JTextArea);
 
-        AIF_XacNhan_JButton.setFont(new java.awt.Font("SF Mono SemiBold", 0, 25)); // NOI18N
+        AIF_TienSuBenhLy_JL_JTA_JPanel.add(CAF_TienSuBenhLy_JScrollPane);
+
+        AIF_ThanhChucNang_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        AIF_CapNhat_JButton.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
+        AIF_CapNhat_JButton.setText("Cập nhật");
+        AIF_CapNhat_JButton.setMaximumSize(new java.awt.Dimension(150, 30));
+        AIF_CapNhat_JButton.setMinimumSize(new java.awt.Dimension(150, 30));
+        AIF_CapNhat_JButton.setPreferredSize(new java.awt.Dimension(150, 30));
+        AIF_ThanhChucNang_JPanel.add(AIF_CapNhat_JButton);
+
+        AIF_XacNhan_JButton.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         AIF_XacNhan_JButton.setText("OK");
+        AIF_XacNhan_JButton.setMaximumSize(new java.awt.Dimension(150, 30));
+        AIF_XacNhan_JButton.setMinimumSize(new java.awt.Dimension(150, 30));
+        AIF_XacNhan_JButton.setPreferredSize(new java.awt.Dimension(150, 30));
         AIF_XacNhan_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AIF_XacNhan_JButtonActionPerformed(evt);
             }
         });
+        AIF_ThanhChucNang_JPanel.add(AIF_XacNhan_JButton);
 
-        javax.swing.GroupLayout AIF_IntermidiateContainer_JPanelLayout = new javax.swing.GroupLayout(AIF_IntermidiateContainer_JPanel);
-        AIF_IntermidiateContainer_JPanel.setLayout(AIF_IntermidiateContainer_JPanelLayout);
-        AIF_IntermidiateContainer_JPanelLayout.setHorizontalGroup(
-            AIF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AIF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
-                .addGroup(AIF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AIF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
-                        .addGroup(AIF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(AIF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(AIF_TenTaiKhoan_JL_JTF_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(AIF_HoTen_JL_JTF_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(AIF_Tuoi_JL_JS_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(AIF_KhuVucSinhSong_JL_JCB_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(AIF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
-                                    .addGap(568, 568, 568)
-                                    .addComponent(AIF_XacNhan_JButton))
-                                .addComponent(AIF_Email_JL_JTF_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(AIF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
-                                .addGap(225, 225, 225)
-                                .addComponent(AIF_TaoTaiKhoan_JLabel)))
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(AIF_TienSuBenhLy_JL_JTA_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(AIF_KhuVucSinhSong_JL_JCB_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(AIF_Tuoi_JL_JS_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(AIF_Email_JL_JTF_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(AIF_HoTen_JL_JTF_JPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(AIF_ThanhChucNang_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(AIF_TienSuBenhLy_JL_JTA_JPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(AIF_TenTaiKhoan_JL_JTF_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AIF_TaoTaiKhoan_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
-        AIF_IntermidiateContainer_JPanelLayout.setVerticalGroup(
-            AIF_IntermidiateContainer_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AIF_IntermidiateContainer_JPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(AIF_TaoTaiKhoan_JLabel)
-                .addGap(18, 18, 18)
-                .addComponent(AIF_TenTaiKhoan_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(AIF_HoTen_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(AIF_Email_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(AIF_Tuoi_JL_JS_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(AIF_TaoTaiKhoan_JLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(AIF_TenTaiKhoan_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(AIF_HoTen_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(AIF_Email_JL_JTF_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(AIF_Tuoi_JL_JS_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(AIF_KhuVucSinhSong_JL_JCB_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AIF_TienSuBenhLy_JL_JTA_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AIF_KhuVucSinhSong_JL_JCB_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(AIF_XacNhan_JButton)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AIF_ThanhChucNang_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        getContentPane().add(AIF_IntermidiateContainer_JPanel);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -276,12 +308,13 @@ public class AccountInformationFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AIF_CapNhat_JButton;
     private javax.swing.JPanel AIF_Email_JL_JTF_JPanel;
     private javax.swing.JPanel AIF_HoTen_JL_JTF_JPanel;
-    private javax.swing.JPanel AIF_IntermidiateContainer_JPanel;
     private javax.swing.JPanel AIF_KhuVucSinhSong_JL_JCB_JPanel;
     private javax.swing.JLabel AIF_TaoTaiKhoan_JLabel;
     private javax.swing.JPanel AIF_TenTaiKhoan_JL_JTF_JPanel;
+    private javax.swing.JPanel AIF_ThanhChucNang_JPanel;
     private javax.swing.JPanel AIF_TienSuBenhLy_JL_JTA_JPanel;
     private javax.swing.JPanel AIF_Tuoi_JL_JS_JPanel;
     private javax.swing.JButton AIF_XacNhan_JButton;
@@ -294,6 +327,7 @@ public class AccountInformationFrame extends javax.swing.JFrame {
     private javax.swing.JLabel CAF_TenTaiKhoan_JLabel;
     private javax.swing.JTextField CAF_TenTaiKhoan_JTextField;
     private javax.swing.JLabel CAF_TienSuBenhLy_JLabel;
+    private javax.swing.JScrollPane CAF_TienSuBenhLy_JScrollPane;
     private javax.swing.JTextArea CAF_TienSuBenhLy_JTextArea;
     private javax.swing.JLabel CAF_Tuoi_JLabel;
     private javax.swing.JSpinner CAF_Tuoi_JSpinner;

@@ -138,20 +138,11 @@ public class MainFrame extends javax.swing.JFrame {
         MF_ThanhChucNangTraCuuOnline_JPanel = new javax.swing.JPanel();
         MF_TenThuoc_JLabel = new javax.swing.JLabel();
         MF_TraCuuOnline_JTextField = new javax.swing.JTextField();
+        MF_PhanLoai_JLabel = new javax.swing.JLabel();
+        MF_LoaiTraCuu_JComboBox = new javax.swing.JComboBox<>();
         MF_TraCuuOnline_JButton = new javax.swing.JButton();
         MF_ThongTinTraCuuCoBan_JScrollPane = new javax.swing.JScrollPane();
         MF_ThongTinTraCuuCoBan_JTextArea = new javax.swing.JTextArea();
-        MF_KiemTraTuongTacThuoc_JPanel = new javax.swing.JPanel();
-        MF_NoiDungKiemTraTuongTacThuoc_JScrollPane = new javax.swing.JScrollPane();
-        MF_KhungNoiDungKiemTraTuongTacThuoc_JTextArea = new javax.swing.JTextArea();
-        MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPanel_JPane = new javax.swing.JPanel();
-        MF_TenThuoc1_JLabel = new javax.swing.JLabel();
-        MF_TenThuoc1_JTextField = new javax.swing.JTextField();
-        MF_KiemTra_JButton = new javax.swing.JButton();
-        MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPane2_JPane = new javax.swing.JPanel();
-        MF_TenThuoc2_JLabel = new javax.swing.JLabel();
-        MF_TenThuoc2_JTextField = new javax.swing.JTextField();
-        MF_XoaTatCa_JButton = new javax.swing.JButton();
         MF_Chon_JMenuBar = new javax.swing.JMenuBar();
         MF_CaiDat_VePhanMem_Thoat_JMI_JMenu = new javax.swing.JMenu();
         MF_CaiDat_JMenuItem = new javax.swing.JMenuItem();
@@ -348,6 +339,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         MF_TenThuoc_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         MF_TenThuoc_JLabel.setText("Tên thuốc:");
+        MF_TenThuoc_JLabel.setMaximumSize(new java.awt.Dimension(110, 30));
+        MF_TenThuoc_JLabel.setMinimumSize(new java.awt.Dimension(110, 30));
         MF_TenThuoc_JLabel.setPreferredSize(new java.awt.Dimension(110, 30));
         MF_ThanhChucNangTraCuuOnline_JPanel.add(MF_TenThuoc_JLabel);
 
@@ -359,6 +352,18 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         MF_ThanhChucNangTraCuuOnline_JPanel.add(MF_TraCuuOnline_JTextField);
+
+        MF_PhanLoai_JLabel.setText("Phân loại:");
+        MF_PhanLoai_JLabel.setMaximumSize(new java.awt.Dimension(110, 30));
+        MF_PhanLoai_JLabel.setMinimumSize(new java.awt.Dimension(110, 30));
+        MF_PhanLoai_JLabel.setPreferredSize(new java.awt.Dimension(110, 30));
+        MF_ThanhChucNangTraCuuOnline_JPanel.add(MF_PhanLoai_JLabel);
+
+        MF_LoaiTraCuu_JComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên thuốc", "Hoạt chất" }));
+        MF_LoaiTraCuu_JComboBox.setMaximumSize(new java.awt.Dimension(150, 30));
+        MF_LoaiTraCuu_JComboBox.setMinimumSize(new java.awt.Dimension(150, 30));
+        MF_LoaiTraCuu_JComboBox.setPreferredSize(new java.awt.Dimension(150, 30));
+        MF_ThanhChucNangTraCuuOnline_JPanel.add(MF_LoaiTraCuu_JComboBox);
 
         MF_TraCuuOnline_JButton.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
         MF_TraCuuOnline_JButton.setText("Tra cứu");
@@ -406,64 +411,6 @@ public class MainFrame extends javax.swing.JFrame {
         );
 
         MF_IntermidiateContainer_JTabbedPane.addTab("Tra cứu trực tuyến", MF_TraCuuOnline_JPanel);
-
-        MF_KhungNoiDungKiemTraTuongTacThuoc_JTextArea.setColumns(20);
-        MF_KhungNoiDungKiemTraTuongTacThuoc_JTextArea.setRows(5);
-        MF_NoiDungKiemTraTuongTacThuoc_JScrollPane.setViewportView(MF_KhungNoiDungKiemTraTuongTacThuoc_JTextArea);
-
-        MF_TenThuoc1_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        MF_TenThuoc1_JLabel.setText("Tên thuốc 1:");
-        MF_TenThuoc1_JLabel.setPreferredSize(new java.awt.Dimension(132, 30));
-        MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPanel_JPane.add(MF_TenThuoc1_JLabel);
-
-        MF_TenThuoc1_JTextField.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        MF_TenThuoc1_JTextField.setPreferredSize(new java.awt.Dimension(350, 30));
-        MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPanel_JPane.add(MF_TenThuoc1_JTextField);
-
-        MF_KiemTra_JButton.setText("Kiểm tra");
-        MF_KiemTra_JButton.setPreferredSize(new java.awt.Dimension(110, 30));
-        MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPanel_JPane.add(MF_KiemTra_JButton);
-
-        MF_TenThuoc2_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        MF_TenThuoc2_JLabel.setText("Tên thuốc 2:");
-        MF_TenThuoc2_JLabel.setPreferredSize(new java.awt.Dimension(132, 30));
-        MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPane2_JPane.add(MF_TenThuoc2_JLabel);
-
-        MF_TenThuoc2_JTextField.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        MF_TenThuoc2_JTextField.setPreferredSize(new java.awt.Dimension(350, 30));
-        MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPane2_JPane.add(MF_TenThuoc2_JTextField);
-
-        MF_XoaTatCa_JButton.setText("Xóa");
-        MF_XoaTatCa_JButton.setPreferredSize(new java.awt.Dimension(72, 30));
-        MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPane2_JPane.add(MF_XoaTatCa_JButton);
-
-        javax.swing.GroupLayout MF_KiemTraTuongTacThuoc_JPanelLayout = new javax.swing.GroupLayout(MF_KiemTraTuongTacThuoc_JPanel);
-        MF_KiemTraTuongTacThuoc_JPanel.setLayout(MF_KiemTraTuongTacThuoc_JPanelLayout);
-        MF_KiemTraTuongTacThuoc_JPanelLayout.setHorizontalGroup(
-            MF_KiemTraTuongTacThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MF_KiemTraTuongTacThuoc_JPanelLayout.createSequentialGroup()
-                .addGroup(MF_KiemTraTuongTacThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPanel_JPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPane2_JPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 453, Short.MAX_VALUE))
-            .addGroup(MF_KiemTraTuongTacThuoc_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(MF_NoiDungKiemTraTuongTacThuoc_JScrollPane)
-                .addContainerGap())
-        );
-        MF_KiemTraTuongTacThuoc_JPanelLayout.setVerticalGroup(
-            MF_KiemTraTuongTacThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MF_KiemTraTuongTacThuoc_JPanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPanel_JPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPane2_JPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(MF_NoiDungKiemTraTuongTacThuoc_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        MF_IntermidiateContainer_JTabbedPane.addTab("Kiểm tra tương tác thuốc", MF_KiemTraTuongTacThuoc_JPanel);
 
         MF_Chon_JMenuBar.setBackground(null);
         MF_Chon_JMenuBar.setForeground(null);
@@ -530,220 +477,230 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MF_Thoat_JMenuItemActionPerformed
 
     private void MF_CaiDat_JMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_CaiDat_JMenuItemActionPerformed
-        // TODO add your handling code here:
+        PreferencesFrame pf = new PreferencesFrame(this);
     }//GEN-LAST:event_MF_CaiDat_JMenuItemActionPerformed
 
-    private void MF_BoQua_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_BoQua_JButtonActionPerformed
+    private void MF_GuiYKien_JMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_GuiYKien_JMenuItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MF_BoQua_JButtonActionPerformed
+    }//GEN-LAST:event_MF_GuiYKien_JMenuItemActionPerformed
 
-    private void MF_SuDung1Lan_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_SuDung1Lan_JButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MF_SuDung1Lan_JButtonActionPerformed
+    private void MF_TraCuuOnline_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_TraCuuOnline_JButtonActionPerformed
+        String TenThuocVariableHolder = MF_TraCuuOnline_JTextField.getText();
+        String LoaiTraCuuVariableHolder = MF_LoaiTraCuu_JComboBox.getSelectedItem().toString();
 
-    private void MF_TraCuu_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_TraCuu_JButtonActionPerformed
-        String TenTraCuuVariableHolder = MF_TraCuu_JTextField.getText();
-		
-		if (TenTraCuuVariableHolder.isEmpty()) {
-			JOptionPane.showMessageDialog(this, "Không thể tra cứu với tên thuốc rỗng", "Error", JOptionPane.ERROR_MESSAGE);
-		} else {
-			String directory = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO/MO_" + TenTraCuuVariableHolder + ".json";
-			File f = new File(directory);
+        if (LoaiTraCuuVariableHolder.contentEquals("Tên thuốc")) {
+            LoaiTraCuuVariableHolder = "tenThuoc";
+        } else {
+            LoaiTraCuuVariableHolder = "hoatChat";
+        }
 
-			MF_KhungNoiDungDanhMucThuoc_JPanel.removeAll();
-			LayoutManager lm = MF_KhungNoiDungDanhMucThuoc_JPanel.getLayout();
-			if (lm instanceof GridLayout) {
-				((GridLayout) lm).setColumns(1);
-				((GridLayout) lm).setRows(0);
-				MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
-				MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
-				MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
-			}
+        System.out.println(TenThuocVariableHolder);
 
-			MedicineObject mo = new MedicineObject();
-			mo.readJSON(f.getPath());
-			MedicineItemPanel mip = new MedicineItemPanel(MainFrame.this);
-			mip.loadData(mo);
-			if (lm instanceof GridLayout) {
-				((GridLayout) lm).setColumns(1);
-				((GridLayout) lm).setRows(((GridLayout) lm).getRows() + 1);
-				MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
-				MF_KhungNoiDungDanhMucThuoc_JPanel.add(mip, -1);
-				Dimension d = new Dimension((int) MF_KhungNoiDungDanhMucThuoc_JPanel.getSize().getWidth()
-						, (int) mip.getPreferredSize().getHeight() + 20);
-				MF_KhungNoiDungDanhMucThuoc_JPanel.setPreferredSize(d);
-				MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
-				MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
-			}
+        String responseBody = new String();
+        Map<Object, Object> mp = new HashMap<>();
 
-			JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-			Dimension d = new Dimension(MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize());
-			d.setSize(
-				MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getWidth(), 
-				MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getHeight() + 10
-			);
-			Temporal_Panel.setPreferredSize(d);
-			Temporal_Panel.add(MF_KhungNoiDungDanhMucThuoc_JPanel);
-			MF_NoiDungDanhMucThuoc_JScrollPane.setViewportView(Temporal_Panel);
+        MF_ThongTinTraCuuCoBan_JTextArea.selectAll();
+        MF_ThongTinTraCuuCoBan_JTextArea.replaceSelection("");
 
-			MF_NoiDungDanhMucThuoc_JScrollPane.revalidate();
-			MF_NoiDungDanhMucThuoc_JScrollPane.repaint();
-		}
-    }//GEN-LAST:event_MF_TraCuu_JButtonActionPerformed
+        if (TenThuocVariableHolder.isEmpty() || TenThuocVariableHolder.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Không thể tra cứu với tên thuốc rỗng", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (checkIllegalCharacter(TenThuocVariableHolder, patt)) {
+            JOptionPane.showMessageDialog(this, "Không cho phép tra cứu với các ký tự đặc biệt", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            TenThuocVariableHolder = TenThuocVariableHolder.replace(" ", "-");
+            String apiUrl = "https://drugbank.vn/services/drugbank/api/public/thuoc?page=-1&size=1&"
+            + LoaiTraCuuVariableHolder
+            + "="
+            + TenThuocVariableHolder.toLowerCase()
+            + "&sort=rate%2Cdesc&sort="
+            + LoaiTraCuuVariableHolder
+            + "%2Casc";
+            try {
+                // Tạo một HttpClient
+                HttpClient client = HttpClient.newHttpClient();
+
+                // Tạo một HttpRequest
+                HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(apiUrl))
+                .build();
+
+                // Gửi request và nhận response
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+                // Kiểm tra status code
+                if (response.statusCode() == 200) {
+                    responseBody = response.body();
+                    System.out.println("Response Body:\n" + responseBody);
+
+                } else {
+                    System.err.println("Request failed with status code: " + response.statusCode());
+                }
+
+            } catch (Exception e) {
+                System.err.println("An error occurred: " + e.getMessage());
+                e.printStackTrace();
+            }
+
+            mp.put("Mã", parseDataFromJsonString(responseBody, "id"));
+            mp.put("Tên thuốc", parseDataFromJsonString(responseBody, "tenThuoc"));
+            mp.put("Phân loại", parseDataFromJsonString(responseBody, "phanLoai"));
+            mp.put("Nhóm thuốc", parseDataFromJsonString(responseBody, "nhomThuoc"));
+            mp.put("Hoạt chất", parseDataFromJsonString(responseBody, "hoatChat"));
+            mp.put("Nồng độ", parseDataFromJsonString(responseBody, "nongDo"));
+            mp.put("Tá dược", parseDataFromJsonString(responseBody, "taDuoc"));
+            mp.put("Bào chế", parseDataFromJsonString(responseBody, "baoChe"));
+            mp.put("Tuổi thọ", parseDataFromJsonString(responseBody, "tuoiTho"));
+            mp.put("Công ty sản xuất", parseDataFromJsonString(responseBody, "congTySx"));
+
+            mp.forEach(
+                (k,v) -> {
+                    System.out.println(k + ": " + v);
+                    if (v == null) {
+                        MF_ThongTinTraCuuCoBan_JTextArea.append(k + ": Không có thông tin\n");
+                    } else {
+                        MF_ThongTinTraCuuCoBan_JTextArea.append(k + ": " + v + "\n");
+                    }
+                }
+            );
+
+            String fileNameOri = getDownloadFileName(responseBody);
+
+            if (fileNameOri.contentEquals("No filename")) {
+                System.out.println("No file download");
+                JOptionPane.showMessageDialog(this, "Thuốc này chưa cập nhật HDSD trên CSDL. Vui lòng tìm kiếm trực tuyến", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String downloadURL = "https://cdn.drugbank.vn/" + fileNameOri;
+
+                try {
+                    Path downloadFiledPath = downloadFile(downloadURL, fileNameOri);
+                    if (downloadFiledPath != null) {
+                        openFile(downloadFiledPath.toFile());
+                    }
+                } catch (IOException | InterruptedException ioeie) {
+                    ioeie.printStackTrace();
+                }
+            }
+        }
+    }//GEN-LAST:event_MF_TraCuuOnline_JButtonActionPerformed
 
     private void MF_TraCuuOnline_JTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_TraCuuOnline_JTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MF_TraCuuOnline_JTextFieldActionPerformed
+
+    private void MF_LamMoi_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_LamMoi_JButtonActionPerformed
+        String directory = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO";
+        File f_dir = new File(directory);
+        File[] files = f_dir.listFiles(
+            // filter to select only JSON files with name contain "MO_" prefix
+            (file) -> file.isFile() &&
+            file.getName().endsWith(".json") &&
+            file.getName().startsWith("MO_")
+        );
+
+        MF_KhungNoiDungDanhMucThuoc_JPanel.removeAll();
+        MF_KhungNoiDungDanhMucThuoc_JPanel.setPreferredSize(DMThuocDimension);
+        LayoutManager lm = MF_KhungNoiDungDanhMucThuoc_JPanel.getLayout();
+        if (lm instanceof GridLayout) {
+            ((GridLayout) lm).setColumns(1);
+            ((GridLayout) lm).setRows(0);
+            MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
+            MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
+            MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
+        }
+
+        for (File f: files) {
+            MedicineObject mo = new MedicineObject();
+            mo.readJSON(f.getPath());
+            MedicineItemPanel mip = new MedicineItemPanel(MainFrame.this);
+            mip.loadData(mo);
+            if (lm instanceof GridLayout) {
+                ((GridLayout) lm).setColumns(1);
+                ((GridLayout) lm).setRows(((GridLayout) lm).getRows() + 1);
+                MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
+                MF_KhungNoiDungDanhMucThuoc_JPanel.add(mip, -1);
+                Dimension d = new Dimension((int) DMThuocDimension.getSize().getWidth()
+                    , (int) DMThuocDimension.getSize().getHeight() +
+                    (int) mip.getPreferredSize().getHeight() + 10);
+                MF_KhungNoiDungDanhMucThuoc_JPanel.setPreferredSize(d);
+                MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
+                MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
+            }
+        }
+        JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        Dimension d = new Dimension(MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize());
+        d.setSize(
+            MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getWidth(),
+            MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getHeight() + 10);
+        Temporal_Panel.setPreferredSize(d);
+        Temporal_Panel.add(MF_KhungNoiDungDanhMucThuoc_JPanel);
+        MF_NoiDungDanhMucThuoc_JScrollPane.setViewportView(Temporal_Panel);
+
+        MF_NoiDungDanhMucThuoc_JScrollPane.revalidate();
+        MF_NoiDungDanhMucThuoc_JScrollPane.repaint();
+    }//GEN-LAST:event_MF_LamMoi_JButtonActionPerformed
+
+    private void MF_TraCuu_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_TraCuu_JButtonActionPerformed
+        String TenTraCuuVariableHolder = MF_TraCuu_JTextField.getText();
+
+        if (TenTraCuuVariableHolder.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Không thể tra cứu với tên thuốc rỗng", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String directory = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO/MO_" + TenTraCuuVariableHolder + ".json";
+            File f = new File(directory);
+
+            MF_KhungNoiDungDanhMucThuoc_JPanel.removeAll();
+            LayoutManager lm = MF_KhungNoiDungDanhMucThuoc_JPanel.getLayout();
+            if (lm instanceof GridLayout) {
+                ((GridLayout) lm).setColumns(1);
+                ((GridLayout) lm).setRows(0);
+                MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
+                MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
+                MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
+            }
+
+            MedicineObject mo = new MedicineObject();
+            mo.readJSON(f.getPath());
+            MedicineItemPanel mip = new MedicineItemPanel(MainFrame.this);
+            mip.loadData(mo);
+            if (lm instanceof GridLayout) {
+                ((GridLayout) lm).setColumns(1);
+                ((GridLayout) lm).setRows(((GridLayout) lm).getRows() + 1);
+                MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
+                MF_KhungNoiDungDanhMucThuoc_JPanel.add(mip, -1);
+                Dimension d = new Dimension((int) MF_KhungNoiDungDanhMucThuoc_JPanel.getSize().getWidth()
+                    , (int) mip.getPreferredSize().getHeight() + 20);
+                MF_KhungNoiDungDanhMucThuoc_JPanel.setPreferredSize(d);
+                MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
+                MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
+            }
+
+            JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            Dimension d = new Dimension(MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize());
+            d.setSize(
+                MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getWidth(),
+                MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getHeight() + 10
+            );
+            Temporal_Panel.setPreferredSize(d);
+            Temporal_Panel.add(MF_KhungNoiDungDanhMucThuoc_JPanel);
+            MF_NoiDungDanhMucThuoc_JScrollPane.setViewportView(Temporal_Panel);
+
+            MF_NoiDungDanhMucThuoc_JScrollPane.revalidate();
+            MF_NoiDungDanhMucThuoc_JScrollPane.repaint();
+        }
+    }//GEN-LAST:event_MF_TraCuu_JButtonActionPerformed
 
     private void MF_Them_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_Them_JButtonActionPerformed
         // TODO add your handling code here:
         AddMedicationFrame AMF = new AddMedicationFrame(MainFrame.this);
     }//GEN-LAST:event_MF_Them_JButtonActionPerformed
 
-    private void MF_GuiYKien_JMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_GuiYKien_JMenuItemActionPerformed
+    private void MF_SuDung1Lan_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_SuDung1Lan_JButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MF_GuiYKien_JMenuItemActionPerformed
+    }//GEN-LAST:event_MF_SuDung1Lan_JButtonActionPerformed
 
-    private void MF_LamMoi_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_LamMoi_JButtonActionPerformed
-        String directory = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO";
-		File f_dir = new File(directory);
-		File[] files = f_dir.listFiles(
-            // filter to select only JSON files with name contain "MO_" prefix
-            (file) -> file.isFile() && 
-            file.getName().endsWith(".json") && 
-            file.getName().startsWith("MO_")
-		);
-		
-		MF_KhungNoiDungDanhMucThuoc_JPanel.removeAll();
-		MF_KhungNoiDungDanhMucThuoc_JPanel.setPreferredSize(DMThuocDimension);
-		LayoutManager lm = MF_KhungNoiDungDanhMucThuoc_JPanel.getLayout();
-		if (lm instanceof GridLayout) {
-			((GridLayout) lm).setColumns(1);
-			((GridLayout) lm).setRows(0);
-			MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
-			MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
-			MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
-		}
-		
-		for (File f: files) {
-			MedicineObject mo = new MedicineObject();
-			mo.readJSON(f.getPath());
-			MedicineItemPanel mip = new MedicineItemPanel(MainFrame.this);
-			mip.loadData(mo);
-			if (lm instanceof GridLayout) {
-				((GridLayout) lm).setColumns(1);
-				((GridLayout) lm).setRows(((GridLayout) lm).getRows() + 1);
-				MF_KhungNoiDungDanhMucThuoc_JPanel.setLayout(lm);
-				MF_KhungNoiDungDanhMucThuoc_JPanel.add(mip, -1);
-				Dimension d = new Dimension((int) DMThuocDimension.getSize().getWidth()
-						, (int) DMThuocDimension.getSize().getHeight() + 
-								(int) mip.getPreferredSize().getHeight() + 10);
-				MF_KhungNoiDungDanhMucThuoc_JPanel.setPreferredSize(d);
-				MF_KhungNoiDungDanhMucThuoc_JPanel.revalidate();
-				MF_KhungNoiDungDanhMucThuoc_JPanel.repaint();
-			}
-		}
-		JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		Dimension d = new Dimension(MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize());
-		d.setSize(
-			MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getWidth(), 
-			MF_KhungNoiDungDanhMucThuoc_JPanel.getPreferredSize().getHeight() + 10);
-		Temporal_Panel.setPreferredSize(d);
-		Temporal_Panel.add(MF_KhungNoiDungDanhMucThuoc_JPanel);
-		MF_NoiDungDanhMucThuoc_JScrollPane.setViewportView(Temporal_Panel);
-		
-		MF_NoiDungDanhMucThuoc_JScrollPane.revalidate();
-		MF_NoiDungDanhMucThuoc_JScrollPane.repaint();
-    }//GEN-LAST:event_MF_LamMoi_JButtonActionPerformed
-
-    private void MF_TraCuuOnline_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_TraCuuOnline_JButtonActionPerformed
-        String TenThuocVariableHolder = MF_TraCuuOnline_JTextField.getText();
-		
-		System.out.println(TenThuocVariableHolder);
-		
-		String responseBody = new String();
-		Map<Object, Object> mp = new HashMap<>();
-		
-		MF_ThongTinTraCuuCoBan_JTextArea.selectAll();
-		MF_ThongTinTraCuuCoBan_JTextArea.replaceSelection("");
-		
-		if (TenThuocVariableHolder.isEmpty() || TenThuocVariableHolder.isBlank()) {
-			JOptionPane.showMessageDialog(this, "Không thể tra cứu với tên thuốc rỗng", "Error", JOptionPane.ERROR_MESSAGE);
-		} else if (checkIllegalCharacter(TenThuocVariableHolder, patt)) {
-			JOptionPane.showMessageDialog(this, "Không cho phép tra cứu với các ký tự đặc biệt", "Error", JOptionPane.ERROR_MESSAGE);
-		} else {
-			TenThuocVariableHolder = TenThuocVariableHolder.replace(" ", "-");
-			String apiUrl = "https://drugbank.vn/services/drugbank/api/public/thuoc?page=-1&size=1&tenThuoc=" + TenThuocVariableHolder.toLowerCase() + "&sort=rate%2Cdesc&sort=tenThuoc%2Casc";
-			try {
-				// Tạo một HttpClient
-				HttpClient client = HttpClient.newHttpClient();
-
-				// Tạo một HttpRequest
-				HttpRequest request = HttpRequest.newBuilder()
-						.uri(URI.create(apiUrl))
-						.build();
-
-				// Gửi request và nhận response
-				HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-				// Kiểm tra status code
-				if (response.statusCode() == 200) {
-					responseBody = response.body();
-					System.out.println("Response Body:\n" + responseBody);
-
-
-				} else {
-					System.err.println("Request failed with status code: " + response.statusCode());
-				}
-
-			} catch (Exception e) {
-				System.err.println("An error occurred: " + e.getMessage());
-				e.printStackTrace();
-			}
-			
-			
-			
-			mp.put("Mã", parseDataFromJsonString(responseBody, "id"));
-			mp.put("Tên thuốc", parseDataFromJsonString(responseBody, "tenThuoc"));	
-			mp.put("Phân loại", parseDataFromJsonString(responseBody, "phanLoai"));
-			mp.put("Nhóm thuốc", parseDataFromJsonString(responseBody, "nhomThuoc"));
-			mp.put("Hoạt chất", parseDataFromJsonString(responseBody, "hoatChat"));
-			mp.put("Nồng độ", parseDataFromJsonString(responseBody, "nongDo"));	
-			mp.put("Tá dược", parseDataFromJsonString(responseBody, "taDuoc"));
-			mp.put("Bào chế", parseDataFromJsonString(responseBody, "baoChe"));
-			mp.put("Tuổi thọ", parseDataFromJsonString(responseBody, "tuoiTho"));
-			mp.put("Công ty sản xuất", parseDataFromJsonString(responseBody, "congTySx"));
-	
-			mp.forEach(
-				(k,v) -> {
-					System.out.println(k + ": " + v);
-					if (v == null) {
-						MF_ThongTinTraCuuCoBan_JTextArea.append(k + ": Không có thông tin\n");
-					} else {
-						MF_ThongTinTraCuuCoBan_JTextArea.append(k + ": " + v + "\n");
-					}
-				}	
-			);
-			
-			String fileNameOri = getDownloadFileName(responseBody);
-			
-			if (fileNameOri.contentEquals("No filename")) {
-				System.out.println("No file download");
-				JOptionPane.showMessageDialog(this, "Thuốc này chưa cập nhật HDSD trên CSDL. Vui lòng tìm kiếm trực tuyến", "Warning", JOptionPane.WARNING_MESSAGE);
-			} else {
-				String downloadURL = "https://cdn.drugbank.vn/" + fileNameOri;
-			
-				try {
-					Path downloadFiledPath = downloadFile(downloadURL, fileNameOri);
-					if (downloadFiledPath != null) {
-						openFile(downloadFiledPath.toFile());
-					}
-				} catch (IOException | InterruptedException ioeie) {
-					ioeie.printStackTrace();
-				}
-			}
-		}
-    }//GEN-LAST:event_MF_TraCuuOnline_JButtonActionPerformed
+    private void MF_BoQua_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_BoQua_JButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MF_BoQua_JButtonActionPerformed
 
 	// Hàm tải file từ URL
     private static Path downloadFile(String fileURL, String fileName) throws IOException, InterruptedException {
@@ -966,26 +923,18 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator MF_JSeparator;
     private javax.swing.JPanel MF_KhungNoiDungDanhMucThuoc_JPanel;
     private javax.swing.JPanel MF_KhungNoiDungHomNay_JPanel;
-    private javax.swing.JTextArea MF_KhungNoiDungKiemTraTuongTacThuoc_JTextArea;
     private javax.swing.JPanel MF_KhungNoiDungLichSu_JPanel;
-    private javax.swing.JPanel MF_KiemTraTuongTacThuoc_JPanel;
-    private javax.swing.JButton MF_KiemTra_JButton;
     private javax.swing.JButton MF_LamMoi_JButton;
     private javax.swing.JPanel MF_LichSu_JPanel;
+    private javax.swing.JComboBox<String> MF_LoaiTraCuu_JComboBox;
     private javax.swing.JScrollPane MF_NoiDungDanhMucThuoc_JScrollPane;
     private javax.swing.JScrollPane MF_NoiDungHomNay_JScrollPane;
-    private javax.swing.JScrollPane MF_NoiDungKiemTraTuongTacThuoc_JScrollPane;
     private javax.swing.JScrollPane MF_NoiDungLichSu_JScrollPane;
+    private javax.swing.JLabel MF_PhanLoai_JLabel;
     private javax.swing.JButton MF_SuDung1Lan_JButton;
-    private javax.swing.JLabel MF_TenThuoc1_JLabel;
-    private javax.swing.JTextField MF_TenThuoc1_JTextField;
-    private javax.swing.JLabel MF_TenThuoc2_JLabel;
-    private javax.swing.JTextField MF_TenThuoc2_JTextField;
     private javax.swing.JLabel MF_TenThuoc_JLabel;
     private javax.swing.JPanel MF_ThanhChucNangDanhMucThuoc_JPanel;
     private javax.swing.JPanel MF_ThanhChucNangHomNay_JPanel;
-    private javax.swing.JPanel MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPane2_JPane;
-    private javax.swing.JPanel MF_ThanhChucNangKiemTraTuongTacThuoc_1_JPanel_JPane;
     private javax.swing.JPanel MF_ThanhChucNangLichSu_JPanel;
     private javax.swing.JPanel MF_ThanhChucNangTraCuuOnline_JPanel;
     private javax.swing.JButton MF_Them_JButton;
@@ -1003,7 +952,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem MF_VeCaNhan_JMenuItem;
     private javax.swing.JMenuItem MF_VePhanMem_JMenuItem;
     private javax.swing.JButton MF_XacNhan_JButton;
-    private javax.swing.JButton MF_XoaTatCa_JButton;
     private javax.swing.JButton MF_XuatLichSu_JButton;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
