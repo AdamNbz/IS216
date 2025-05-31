@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import userview.MainFrame;
 
 /**
  *
@@ -86,7 +87,7 @@ public class SettingObject {
 		jo.put("EnableConfirmButton", this.EnableConfirmButton);
 		jo.put("EnabelSkipButton", this.EnabelSkipButton);
 		
-		String filePath = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/SO/SettingObject.json";
+		String filePath = "/home/shanghuang/SMM_STO_" + MainFrame.UserName + "/UO/UserObject.json";
 		try {
 			// Kiểm tra xem file có tồn tại hay không
             File file = new File(filePath);

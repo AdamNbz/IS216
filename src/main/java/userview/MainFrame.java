@@ -42,11 +42,13 @@ import org.json.simple.parser.ParseException;
 public class MainFrame extends javax.swing.JFrame {
 	public String charset = "<>?/.,:\";'{}|\\[\\]\\\\()!@#$%^&*\\-_+=~`";
 	Pattern patt = Pattern.compile("[" + charset + "]");
+	public static String UserName = null;
     /**
      * Creates new form MainFrame
      */
 	private Dimension DMThuocDimension = new Dimension();
-    public MainFrame() {
+    public MainFrame(String UserName) {
+		this.UserName = UserName;
         FlatIntelliJLaf.setup();
 		try {
 			UIManager.setLookAndFeel( new FlatIntelliJLaf() );
@@ -345,7 +347,9 @@ public class MainFrame extends javax.swing.JFrame {
         MF_ThanhChucNangTraCuuOnline_JPanel.add(MF_TenThuoc_JLabel);
 
         MF_TraCuuOnline_JTextField.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        MF_TraCuuOnline_JTextField.setPreferredSize(new java.awt.Dimension(350, 30));
+        MF_TraCuuOnline_JTextField.setMaximumSize(new java.awt.Dimension(300, 30));
+        MF_TraCuuOnline_JTextField.setMinimumSize(new java.awt.Dimension(300, 30));
+        MF_TraCuuOnline_JTextField.setPreferredSize(new java.awt.Dimension(300, 30));
         MF_TraCuuOnline_JTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MF_TraCuuOnline_JTextFieldActionPerformed(evt);
@@ -577,7 +581,7 @@ public class MainFrame extends javax.swing.JFrame {
                 String downloadURL = "https://cdn.drugbank.vn/" + fileNameOri;
 
                 try {
-                    Path downloadFiledPath = downloadFile(downloadURL, fileNameOri);
+                    Path downloadFiledPath = downloadFile(downloadURL, TenThuocVariableHolder);
                     if (downloadFiledPath != null) {
                         openFile(downloadFiledPath.toFile());
                     }
@@ -593,7 +597,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MF_TraCuuOnline_JTextFieldActionPerformed
 
     private void MF_LamMoi_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_LamMoi_JButtonActionPerformed
-        String directory = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO";
+        String directory = "/home/shanghuang/SMM_STO_" + UserName + "/MO";
         File f_dir = new File(directory);
         File[] files = f_dir.listFiles(
             // filter to select only JSON files with name contain "MO_" prefix
@@ -650,7 +654,7 @@ public class MainFrame extends javax.swing.JFrame {
         if (TenTraCuuVariableHolder.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không thể tra cứu với tên thuốc rỗng", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            String directory = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO/MO_" + TenTraCuuVariableHolder + ".json";
+            String directory = "/home/shanghuang/SMM_STO_" + UserName + "/MO/MO_" + TenTraCuuVariableHolder + ".json";
             File f = new File(directory);
 
             MF_KhungNoiDungDanhMucThuoc_JPanel.removeAll();
@@ -696,7 +700,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void MF_Them_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_Them_JButtonActionPerformed
         // TODO add your handling code here:
-        AddMedicationFrame AMF = new AddMedicationFrame(MainFrame.this);
+        AddMedicationFrame AMF = new AddMedicationFrame(MainFrame.this, this.UserName);
     }//GEN-LAST:event_MF_Them_JButtonActionPerformed
 
     private void MF_SuDung1Lan_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_SuDung1Lan_JButtonActionPerformed
@@ -716,7 +720,7 @@ public class MainFrame extends javax.swing.JFrame {
     private static Path downloadFile(String fileURL, String fileName) throws IOException, InterruptedException {
         try {
             URI uri = URI.create(fileURL);
-            Path targetPath = Paths.get(fileName);
+            Path targetPath = Paths.get("/home/shanghuang/SMM_STO_" + UserName + "/OSRO/OSRO_" + fileName);
 
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
@@ -818,7 +822,7 @@ public class MainFrame extends javax.swing.JFrame {
 	}
 	
 	public void refresh_call() {
-		String directory = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO";
+		String directory = "/home/shanghuang/SMM_STO_" + UserName + "/MO";
 		File f_dir = new File(directory);
 		File[] files = f_dir.listFiles(
             // filter to select only JSON files with name contain "MO_" prefix
@@ -915,7 +919,7 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                new MainFrame(UserName).setVisible(true);
             }
         });
     }

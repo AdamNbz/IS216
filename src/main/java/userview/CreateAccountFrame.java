@@ -7,6 +7,7 @@ package userview;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -422,6 +423,8 @@ public class CreateAccountFrame extends javax.swing.JFrame {
 						TienSuVariableHolder, 
 						AgeVariableHolder
 					);
+					createDir();
+					
 					uo.writeJSON();
 					
                     // debug block
@@ -436,6 +439,43 @@ public class CreateAccountFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_CAF_XacNhan_JButtonActionPerformed
 
+	private void createDir() {
+		String parentFolder = "/home/shanghuang/SMM_STO_" + CAF_TenTaiKhoan_JTextField.getText().trim();
+        String[] subFolders = {"UO", "MO", "SO", "30HO", "TO", "RO", "OSRO"};
+
+        // 1. Tạo thư mục gốc STO
+        File stoFolder = new File(parentFolder);
+
+        if (!stoFolder.exists()) {
+            if (stoFolder.mkdirs()) { // Sử dụng mkdirs() để tạo cả thư mục cha (nếu cần)
+                System.out.println("Thư mục " + parentFolder + " đã được tạo.");
+            } else {
+                System.err.println("Không thể tạo thư mục " + parentFolder);
+                return; // Dừng chương trình nếu không tạo được thư mục gốc
+            }
+        } else {
+            System.out.println("Thư mục " + parentFolder + " đã tồn tại.");
+        }
+
+
+        // 2. Tạo các thư mục con bên trong STO
+        for (String subFolder : subFolders) {
+            File folder = new File(stoFolder, subFolder); // Tạo File object cho thư mục con
+
+            if (!folder.exists()) {
+                if (folder.mkdir()) { // Sử dụng mkdir() để tạo một thư mục duy nhất
+                    System.out.println("Thư mục " + subFolder + " đã được tạo trong " + parentFolder);
+                } else {
+                    System.err.println("Không thể tạo thư mục " + subFolder + " trong " + parentFolder);
+                }
+            } else {
+                System.out.println("Thư mục " + subFolder + " đã tồn tại trong " + parentFolder);
+            }
+        }
+
+        System.out.println("Hoàn thành!");
+	}
+	
     private void CAF_TroLai_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CAF_TroLai_JButtonActionPerformed
         // TODO add your handling code here:
         this.af.setVisible(true);

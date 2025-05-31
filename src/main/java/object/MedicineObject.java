@@ -152,7 +152,7 @@ public class MedicineObject {
 		this.DSTanSuatCuThe = DSTanSuatCuThe;
 	}
 	
-	public void writeJSON() {
+	public void writeJSON(String UserName) {
 		JSONObject jo = new JSONObject();
 		jo.put("TenThuoc", this.TenThuoc);
 		jo.put("DonVi", this.DonVi);
@@ -166,10 +166,21 @@ public class MedicineObject {
 		jo.put("SLNhacNho", this.SLNhacNho);
 		jo.put("DSMocThoiGian", this.DSMocThoiGian);
 		jo.put("DSTanSuatCuThe", this.DSTanSuatCuThe);
+		
+		String filePath = "/home/shanghuang/SMM_STO_" + UserName + "/MO/MO_" + this.TenThuoc + ".json";
 		try {
-			FileWriter file = new FileWriter("/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO/MO_" + this.TenThuoc + ".json");
-			file.write(jo.toJSONString());
-			file.close();
+			// Kiểm tra xem file có tồn tại hay không
+            File file = new File(filePath);
+            if (!file.exists()) {
+                // Tạo file nếu nó không tồn tại
+                file.createNewFile();
+                System.out.println("File mới đã được tạo: " + filePath);
+            }
+
+            FileWriter fileWriter = new FileWriter(filePath);
+            fileWriter.write(jo.toJSONString());
+            fileWriter.close();
+            System.out.println("Đã ghi dữ liệu vào file: " + filePath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

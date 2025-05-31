@@ -164,18 +164,18 @@ public class MedicineItemPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_MIP_Edit_JButtonActionPerformed
 
     private void MIP_Delete_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIP_Delete_JButtonActionPerformed
-        String filePath = "/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/MO/MO_" + MIP_TenThuoc_JLabel.getText() + ".json" ;
+        String filePath = "/home/shanghuang/SMM_STO_" + mf.UserName + "/MO/MO_" + MIP_TenThuoc_JLabel.getText() + ".json" ;
 		File fileToDelete = new File(filePath);
 		if (fileToDelete.exists()) { // Kiểm tra xem file có tồn tại hay không
             boolean isDeleted = fileToDelete.delete(); // Xóa file
 
             if (isDeleted) {
-                System.out.println("File '" + filePath + "' đã được xóa thành công.");
+                System.out.println("File " + filePath + " đã được xóa thành công.");
             } else {
-                System.err.println("Không thể xóa file '" + filePath + "'.");
+                System.err.println("Không thể xóa file " + filePath + ".");
             }
         } else {
-            System.err.println("File '" + filePath + "' không tồn tại.");
+            System.err.println("File " + filePath + " không tồn tại.");
         }
 		this.mf.refresh_call();
     }//GEN-LAST:event_MIP_Delete_JButtonActionPerformed
@@ -183,7 +183,7 @@ public class MedicineItemPanel extends javax.swing.JPanel {
     private void MIP_Refill_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MIP_Refill_JButtonActionPerformed
 		int SL = Integer.parseInt(JOptionPane.showInputDialog(this, "Nhập số lượng muốn bổ sung: ", "Lựa chọn ngày trong tuần", JOptionPane.QUESTION_MESSAGE, null, null, String.valueOf(0)).toString());
 		this.mo.refill(SL);
-		this.mo.writeJSON();
+		this.mo.writeJSON(mf.UserName);
 		this.mf.refresh_call();
     }//GEN-LAST:event_MIP_Refill_JButtonActionPerformed
 

@@ -4,6 +4,7 @@
  */
 package object;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -95,10 +96,21 @@ public class UserObject {
 		jo.put("TienSuBenhLy", this.TienSuBenhLy);
 		jo.put("Tuoi", this.Tuoi);
 		
+		String filePath = "/home/shanghuang/SMM_STO_" + this.IdenName + "/UO/UserObject.json";
+		
 		try {
-			FileWriter file = new FileWriter("/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/USR/UserObject.json");
-			file.write(jo.toJSONString());
-			file.close();
+			// Kiểm tra xem file có tồn tại hay không
+            File file = new File(filePath);
+            if (!file.exists()) {
+                // Tạo file nếu nó không tồn tại
+                file.createNewFile();
+                System.out.println("File mới đã được tạo: " + filePath);
+            }
+
+            FileWriter fileWriter = new FileWriter(filePath);
+            fileWriter.write(jo.toJSONString());
+            fileWriter.close();
+            System.out.println("Đã ghi dữ liệu vào file: " + filePath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

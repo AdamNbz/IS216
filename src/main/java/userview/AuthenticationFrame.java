@@ -26,6 +26,7 @@ public class AuthenticationFrame extends javax.swing.JFrame {
     int DEBUG = 1;
 	public String charset = "<>?/.,:\";'{}|\\[\\]\\\\()!@#$%^&*\\-_+=~`";
 	Pattern patt = Pattern.compile("[" + charset + "]");
+	private String Username = null;
     /**
      * Creates new form AuthenticationFrame
      */
@@ -293,7 +294,9 @@ public class AuthenticationFrame extends javax.swing.JFrame {
 					} else {
 						// success display
 						JOptionPane.showMessageDialog(this, "Đăng nhập thành công", "Success", JOptionPane.INFORMATION_MESSAGE);
-						MainFrame mf = new MainFrame();
+						this.Username = TenDangNhapVariableHolder;
+						
+						MainFrame mf = new MainFrame(this.Username);
 						this.dispose();
 
 						// debug block

@@ -44,7 +44,7 @@ public class PreferencesFrame extends javax.swing.JFrame {
 	
 	public void JSONLoader() {
 		SettingObject so = new SettingObject();
-		so.readJSON("/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/SO/SettingObject.json");
+		so.readJSON("/home/shanghuang/SMM_STO_" + MainFrame.UserName + "/SO/SettingObject.json");
 		PF_TuDongMoKhiDangNhap_JToggleButton.setSelected(so.isAutoStartUp());
 		PF_TuDongXoaLichSu_JToggleButton.setSelected(so.isAutoClearHistory());
 		PF_ThongBaoSoLuongThuocThap_JToggleButton.setSelected(so.isNotiOnLowLevel());

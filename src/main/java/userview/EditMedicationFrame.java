@@ -698,7 +698,7 @@ public class EditMedicationFrame extends javax.swing.JFrame {
 				SLNhacNhoVariableHolder, 
 				MocThoiGianVariableHolder
 		);
-		mo.writeJSON();
+		mo.writeJSON(MainFrame.UserName);
 		
 		this.mf.setVisible(true);
 		this.dispose();

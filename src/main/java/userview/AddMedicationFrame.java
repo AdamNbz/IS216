@@ -29,12 +29,14 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 	Pattern patt = Pattern.compile("[" + charset + "]");
 	int DEBUG = 0;
 	String Specific_data = null;
+	public static String UserName = null;
 	
     /**
      * Creates new form AddingMedFrame
      */
-    public AddMedicationFrame(MainFrame mf) {
+    public AddMedicationFrame(MainFrame mf, String UserName) {
 		this.mf = mf;
+		this.UserName = UserName;
         FlatIntelliJLaf.setup();
 		try {
 			UIManager.setLookAndFeel( new FlatIntelliJLaf() );
@@ -66,42 +68,6 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 		final Pattern UNIT_REGEX = Pattern.compile("^\\s*(\\d+(\\.\\d+)?)\\s*(viên|chiếc|tuýp|gói|lọ|vỉ|ống|chai|m[gG]|g|ml|cc)\\s*$", Pattern.CASE_INSENSITIVE);
 		return UNIT_REGEX.matcher(unit).matches();
 	}
-	
-	private Connection connect() {
-        // connection parameter
-        String dbURL = "jdbc:oracle:thin:@192.168.124.180:32772:XE";
-        String driver = "oracle.jdbc.OracleDriver";
-        Connection con = null;
-        
-        // catching error in connection
-        try {
-            // class loader
-            Class.forName(driver);
-            
-            // connection
-            con = DriverManager.getConnection(dbURL, "c##shanghuang", "181105");
-
-            // debug block
-            if (con != null) {
-                if (DEBUG == 1) {
-                    System.out.println("Kết nối đến cơ sử dữ liệu thành công");
-                }
-            }
-        } catch(SQLException se) { 
-            // sql exception
-            System.out.println(se.getMessage());
-        } catch (ClassNotFoundException ex) { 
-            // class exception
-            Logger.getLogger(AddMedicationFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        // Return connection
-        if (con != null) {
-            return con;
-        } else {
-            return null;
-        }
-    }
 	
 	public boolean checkIllegalCharacter(String inp, Pattern pat) {
 		Matcher match = pat.matcher(inp);
@@ -663,7 +629,7 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 				SLNhacNhoVariableHolder, 
 				MocThoiGianVariableHolder
 		);
-		mo.writeJSON();
+		mo.writeJSON(this.UserName);
 		
 		this.mf.setVisible(true);
 		this.dispose();
@@ -866,7 +832,7 @@ public class AddMedicationFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddMedicationFrame(mf).setVisible(true);
+                new AddMedicationFrame(mf, UserName).setVisible(true);
             }
         });
     }

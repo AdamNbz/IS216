@@ -41,7 +41,7 @@ public class AccountInformationFrame extends javax.swing.JFrame {
 	
 	private void loadData() {
 		UserObject uo = new UserObject();
-		uo.readJSON("/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/Sample_Test_Folder/USR/UserObject.json");
+		uo.readJSON("/home/shanghuang/SMM_STO_" + mf.UserName + "/UO/UserObject.json");
 		AIF_TenTaiKhoan_JTextField.setText(uo.getIdenName());
 		AIF_HoTen_JTextField.setText(uo.getUserName());
 		AIF_Email_JTextField.setText(uo.getEmail());
