@@ -65,7 +65,6 @@ userview/ForgotPasswordFrame$5.class
 userview/AddMedicationFrame$5.class
 userview/AddMedicationFrame$11.class
 userview/AddMedicationFrame$2.class
-elementpanel/InnerTodeyItemPanel.class
 userview/MainFrame$7.class
 elementpanel/TimeStoneAdditionPanel$3.class
 userview/MainFrame$12.class
@@ -96,6 +95,7 @@ userview/AddMedicationFrame$3.class
 elementpanel/MedicineItemPanel$2.class
 userview/AddMedicationFrame$12.class
 userview/PreferencesFrame$2.class
+elementpanel/InnerTodayItemPanel.class
 elementpanel/TimeStoneAdditionPanel$4.class
 userview/MainFrame$2.class
 userview/CreateAccountFrame$5.class

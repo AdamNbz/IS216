@@ -106,11 +106,11 @@ public class MainFrame extends javax.swing.JFrame {
 		
 		MF_KhungNoiDungHomNay_JPanel.removeAll();
         MF_KhungNoiDungHomNay_JPanel.setPreferredSize(DMThuocDimension);
-        LayoutManager lm = MF_KhungNoiDungHomNay_JPanel.getLayout();
-        if (lm instanceof GridLayout) {
-            ((GridLayout) lm).setColumns(1);
-            ((GridLayout) lm).setRows(0);
-            MF_KhungNoiDungHomNay_JPanel.setLayout(lm);
+        LayoutManager lmkndhn = MF_KhungNoiDungHomNay_JPanel.getLayout();
+        if (lmkndhn instanceof GridLayout) {
+            ((GridLayout) lmkndhn).setColumns(1);
+            ((GridLayout) lmkndhn).setRows(0);
+            MF_KhungNoiDungHomNay_JPanel.setLayout(lmkndhn);
             MF_KhungNoiDungHomNay_JPanel.revalidate();
             MF_KhungNoiDungHomNay_JPanel.repaint();
         }
@@ -200,7 +200,36 @@ public class MainFrame extends javax.swing.JFrame {
 			
 			for (TodayListItemObject tlio : entry.getValue()) {
 				InnerTodayItemPanel itip = new InnerTodayItemPanel();
+				itip.setData(tlio);
+				
+				// after load data to the inner panel, start add it to the tip panel
+				LayoutManager lmtip = tip.getLayout();
+				if (lmtip instanceof GridLayout) {
+					((GridLayout) lmtip).setColumns(1);
+					((GridLayout) lmtip).setRows(((GridLayout) lmtip).getRows() + 1);
+					tip.setLayout(lmtip);
+					tip.add(itip, -1);
+					Dimension d = new Dimension((int) tip.getPreferredSize().getWidth()
+						, (int) tip.getPreferredSize().getHeight() +
+						(int) itip.getPreferredSize().getHeight() + 10);
+					tip.setPreferredSize(d);
+					tip.revalidate();
+					tip.repaint();
+				}				
 			}
+			
+			// then add a cover flow layout panel on all of it for scrolling 
+			JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			Dimension d = new Dimension(MF_KhungNoiDungHomNay_JPanel.getPreferredSize());
+			d.setSize(
+				MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getWidth(),
+				MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getHeight() + 10);
+			Temporal_Panel.setPreferredSize(d);
+			Temporal_Panel.add(MF_KhungNoiDungHomNay_JPanel);
+			MF_NoiDungHomNay_JScrollPane.setViewportView(Temporal_Panel);
+
+			MF_NoiDungHomNay_JScrollPane.revalidate();
+			MF_NoiDungHomNay_JScrollPane.repaint();
         }
 	}
 

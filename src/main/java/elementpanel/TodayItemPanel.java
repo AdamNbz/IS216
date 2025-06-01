@@ -52,6 +52,7 @@ public class TodayItemPanel extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(1041, 110));
         setMinimumSize(new java.awt.Dimension(1041, 110));
         setPreferredSize(new java.awt.Dimension(1041, 110));
+        setLayout(new java.awt.GridLayout(1, 1));
 
         TIP_UpperPanel_JPanel.setMaximumSize(new java.awt.Dimension(1029, 70));
         TIP_UpperPanel_JPanel.setMinimumSize(new java.awt.Dimension(1029, 70));
@@ -70,22 +71,7 @@ public class TodayItemPanel extends javax.swing.JPanel {
         TIP_JSeperator.setPreferredSize(new java.awt.Dimension(1029, 10));
         TIP_UpperPanel_JPanel.add(TIP_JSeperator);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(TIP_UpperPanel_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(TIP_UpperPanel_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
+        add(TIP_UpperPanel_JPanel);
     }// </editor-fold>//GEN-END:initComponents
 
 
