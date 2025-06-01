@@ -12,6 +12,7 @@ import object.MedicineObject;
 import userview.EditMedicationFrame;
 import userview.MainFrame;
 
+
 /**
  *
  * @author shanghuang
@@ -79,12 +80,13 @@ public class MedicineItemPanel extends javax.swing.JPanel {
         MIP_Info_JPanel.setPreferredSize(new java.awt.Dimension(1029, 54));
         MIP_Info_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
-        MIP_Left_JPanel.setMaximumSize(new java.awt.Dimension(750, 40));
-        MIP_Left_JPanel.setMinimumSize(new java.awt.Dimension(750, 40));
-        MIP_Left_JPanel.setPreferredSize(new java.awt.Dimension(750, 40));
+        MIP_Left_JPanel.setMaximumSize(new java.awt.Dimension(840, 40));
+        MIP_Left_JPanel.setMinimumSize(new java.awt.Dimension(840, 40));
+        MIP_Left_JPanel.setPreferredSize(new java.awt.Dimension(840, 40));
         MIP_Left_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 5));
 
         MIP_DViThuoc_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
+        MIP_DViThuoc_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MIP_DViThuoc_JLabel.setText("DonViThuoc");
         MIP_DViThuoc_JLabel.setToolTipText("Đơn vị thuốc");
         MIP_DViThuoc_JLabel.setMaximumSize(new java.awt.Dimension(150, 30));
@@ -93,14 +95,16 @@ public class MedicineItemPanel extends javax.swing.JPanel {
         MIP_Left_JPanel.add(MIP_DViThuoc_JLabel);
 
         MIP_GCThuoc_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
+        MIP_GCThuoc_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MIP_GCThuoc_JLabel.setText("GhiChuThuoc");
-        MIP_GCThuoc_JLabel.setToolTipText("Ghi chú sử dụng thuốc");
-        MIP_GCThuoc_JLabel.setMaximumSize(new java.awt.Dimension(300, 30));
-        MIP_GCThuoc_JLabel.setMinimumSize(new java.awt.Dimension(300, 30));
-        MIP_GCThuoc_JLabel.setPreferredSize(new java.awt.Dimension(300, 30));
+        MIP_GCThuoc_JLabel.setToolTipText(MIP_GCThuoc_JLabel.getText());
+        MIP_GCThuoc_JLabel.setMaximumSize(new java.awt.Dimension(400, 30));
+        MIP_GCThuoc_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
+        MIP_GCThuoc_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
         MIP_Left_JPanel.add(MIP_GCThuoc_JLabel);
 
         MIP_UuTien_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
+        MIP_UuTien_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MIP_UuTien_JLabel.setText("UuTien");
         MIP_UuTien_JLabel.setToolTipText("Mức độ ưu tiên thông báo");
         MIP_UuTien_JLabel.setMaximumSize(new java.awt.Dimension(180, 30));
@@ -109,6 +113,7 @@ public class MedicineItemPanel extends javax.swing.JPanel {
         MIP_Left_JPanel.add(MIP_UuTien_JLabel);
 
         MIP_SL_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
+        MIP_SL_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MIP_SL_JLabel.setText("SL");
         MIP_SL_JLabel.setToolTipText("Số lượng thuốc hiện có");
         MIP_SL_JLabel.setMaximumSize(new java.awt.Dimension(90, 30));
@@ -118,14 +123,18 @@ public class MedicineItemPanel extends javax.swing.JPanel {
 
         MIP_Info_JPanel.add(MIP_Left_JPanel);
 
-        MIP_Right_JPanel.setMaximumSize(new java.awt.Dimension(280, 40));
-        MIP_Right_JPanel.setMinimumSize(new java.awt.Dimension(280, 40));
-        MIP_Right_JPanel.setPreferredSize(new java.awt.Dimension(280, 40));
+        MIP_Right_JPanel.setMaximumSize(new java.awt.Dimension(200, 40));
+        MIP_Right_JPanel.setMinimumSize(new java.awt.Dimension(200, 40));
+        MIP_Right_JPanel.setPreferredSize(new java.awt.Dimension(200, 40));
         MIP_Right_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 5));
 
-        MIP_Edit_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/edit.png"))); // NOI18N
+        MIP_Edit_JButton.setIcon(new javax.swing.ImageIcon("/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/image/edit.png")
+        );
         MIP_Edit_JButton.setToolTipText("Chỉnh sửa thuốc");
         MIP_Edit_JButton.setBorder(null);
+        MIP_Edit_JButton.setMaximumSize(new java.awt.Dimension(30, 30));
+        MIP_Edit_JButton.setMinimumSize(new java.awt.Dimension(30, 30));
+        MIP_Edit_JButton.setPreferredSize(new java.awt.Dimension(30, 30));
         MIP_Edit_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MIP_Edit_JButtonActionPerformed(evt);
@@ -133,9 +142,12 @@ public class MedicineItemPanel extends javax.swing.JPanel {
         });
         MIP_Right_JPanel.add(MIP_Edit_JButton);
 
-        MIP_Delete_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/delete.png"))); // NOI18N
+        MIP_Delete_JButton.setIcon(new javax.swing.ImageIcon("/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/image/delete.png"));
         MIP_Delete_JButton.setToolTipText("Xóa thuốc");
         MIP_Delete_JButton.setBorder(null);
+        MIP_Delete_JButton.setMaximumSize(new java.awt.Dimension(30, 30));
+        MIP_Delete_JButton.setMinimumSize(new java.awt.Dimension(30, 30));
+        MIP_Delete_JButton.setPreferredSize(new java.awt.Dimension(30, 30));
         MIP_Delete_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MIP_Delete_JButtonActionPerformed(evt);
@@ -143,9 +155,12 @@ public class MedicineItemPanel extends javax.swing.JPanel {
         });
         MIP_Right_JPanel.add(MIP_Delete_JButton);
 
-        MIP_Refill_JButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/refill.png"))); // NOI18N
+        MIP_Refill_JButton.setIcon(new javax.swing.ImageIcon("/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/image/refill.png"));
         MIP_Refill_JButton.setToolTipText("Bổ sung số lượng thuốc");
         MIP_Refill_JButton.setBorder(null);
+        MIP_Refill_JButton.setMaximumSize(new java.awt.Dimension(30, 30));
+        MIP_Refill_JButton.setMinimumSize(new java.awt.Dimension(30, 30));
+        MIP_Refill_JButton.setPreferredSize(new java.awt.Dimension(30, 30));
         MIP_Refill_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MIP_Refill_JButtonActionPerformed(evt);

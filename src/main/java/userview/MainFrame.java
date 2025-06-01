@@ -4,7 +4,9 @@
  */
 package userview;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import elementpanel.InnerTodayItemPanel;
 import elementpanel.MedicineItemPanel;
+import elementpanel.TodayItemPanel;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,9 +21,14 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,6 +38,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.UIManager;
 import object.MedicineObject;
+import object.TodayListItemObject;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -65,6 +73,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.setVisible(true);
         this.setFrameInCenter();
         this.refresh_call();
+		this.loadTodayUseList();
     }
     
     public void setFrameInCenter() {
@@ -80,24 +89,120 @@ public class MainFrame extends javax.swing.JFrame {
 		return match.find();
 	}
 	
-	private static String translate(String langFrom, String langTo, String text) throws IOException {
-        // INSERT YOU URL HERE
-        String urlStr = "https://script.google.com/macros/s/AKfycbwJYV251eyXSf0eSZbXnMSJzqks3wpxRqy2AgtyNlrqY6tAuDp4XTzjEHlL8ZdcBIbY/exec" +
-                "?q=" + URLEncoder.encode(text, "UTF-8") +
-                "&target=" + langTo +
-                "&source=" + langFrom;
-        URL url = new URL(urlStr);
-        StringBuilder response = new StringBuilder();
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestProperty("User-Agent", "Mozilla/5.0");
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+	private void loadTodayUseList() {
+		Date NgHienTai = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
+		LocalDate localDate = NgHienTai.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		int dayOfMonth = localDate.getDayOfMonth();
+		int dayOfWeekValue = localDate.getDayOfWeek().getValue() + 1;
+		
+		String directory = "/home/shanghuang/SMM_STO_" + UserName + "/MO";
+        File f_dir = new File(directory);
+        File[] files = f_dir.listFiles(
+            // filter to select only JSON files with name contain "MO_" prefix
+            (file) -> file.isFile() &&
+            file.getName().endsWith(".json") &&
+            file.getName().startsWith("MO_")
+        );
+		
+		MF_KhungNoiDungHomNay_JPanel.removeAll();
+        MF_KhungNoiDungHomNay_JPanel.setPreferredSize(DMThuocDimension);
+        LayoutManager lm = MF_KhungNoiDungHomNay_JPanel.getLayout();
+        if (lm instanceof GridLayout) {
+            ((GridLayout) lm).setColumns(1);
+            ((GridLayout) lm).setRows(0);
+            MF_KhungNoiDungHomNay_JPanel.setLayout(lm);
+            MF_KhungNoiDungHomNay_JPanel.revalidate();
+            MF_KhungNoiDungHomNay_JPanel.repaint();
         }
-        in.close();
-        return response.toString();
-    }
+		List<TodayListItemObject> ltlio = new ArrayList<>();
+		
+		for (File f: files) {
+            MedicineObject mo = new MedicineObject();
+            mo.readJSON(f.getPath());
+			
+			if (mo.getTanSuatChung().contentEquals("Mỗi ngày")) {
+				for (List<Object> lo : mo.getDSMocThoiGian()) {
+					ltlio.add(
+						new TodayListItemObject(
+							Integer.parseInt(lo.get(0).toString()),
+							Integer.parseInt(lo.get(1).toString()),
+							lo.get(2).toString(),
+							Integer.parseInt(lo.get(3).toString()),
+							mo.getTenThuoc(),
+							mo.getGhiChu()
+						)
+					);
+				}
+			} else if (mo.getTanSuatChung().contentEquals("Ngày trong tuần")) {
+				if (!mo.getDSTanSuatCuThe().isEmpty()) { // thoa man danh sach khong null
+					if (mo.getDSTanSuatCuThe().contains(dayOfWeekValue)) {
+						for (List<Object> lo : mo.getDSMocThoiGian()) {
+							ltlio.add(
+								new TodayListItemObject(
+									Integer.parseInt(lo.get(0).toString()),
+									Integer.parseInt(lo.get(1).toString()),
+									lo.get(2).toString(),
+									Integer.parseInt(lo.get(3).toString()),
+									mo.getTenThuoc(),
+									mo.getGhiChu()
+								)
+							);
+						}
+					}
+				}
+			} else if (mo.getTanSuatChung().contentEquals("Ngày trong tháng")) {
+				if (!mo.getDSTanSuatCuThe().isEmpty()) { // thoa man danh sach khong null
+					if (mo.getDSTanSuatCuThe().contains(dayOfMonth)) {
+						for (List<Object> lo : mo.getDSMocThoiGian()) {
+							ltlio.add(
+								new TodayListItemObject(
+									Integer.parseInt(lo.get(0).toString()),
+									Integer.parseInt(lo.get(1).toString()),
+									lo.get(2).toString(),
+									Integer.parseInt(lo.get(3).toString()),
+									mo.getTenThuoc(),
+									mo.getGhiChu()
+								)
+							);
+						}
+					}
+				}
+			}
+        }
+		
+		Collections.sort(ltlio);
+		
+		for (TodayListItemObject tlio : ltlio) {
+			System.out.println(tlio);
+		}
+		
+		Map<String, List<TodayListItemObject>> msltlio = new LinkedHashMap<>();
+		for (TodayListItemObject tlio : ltlio) {
+            String time = tlio.getTimeString();
+            msltlio.computeIfAbsent(time, k -> new ArrayList<>()).add(tlio);
+        }
+		
+		// 5. In ra các mốc thời gian và danh sách thuốc tương ứng
+        System.out.println("Các mốc thời gian và danh sách thuốc:");
+        for (Map.Entry<String, List<TodayListItemObject>> entry : msltlio.entrySet()) {
+            String time = entry.getKey();
+            List<TodayListItemObject> thuocList = entry.getValue();
+
+            System.out.println(time + ":");
+            for (TodayListItemObject thuoc : thuocList) {
+                System.out.println("  - " + thuoc.getTenThuoc() + " (" + thuoc.getLieuSuDung() + ")"); // In tên thuốc và liều dùng
+            }
+        }
+		
+		for (Map.Entry<String, List<TodayListItemObject>> entry : msltlio.entrySet()) {
+			TodayItemPanel tip = new TodayItemPanel();
+            tip.setData(entry.getKey().toString());
+			
+			for (TodayListItemObject tlio : entry.getValue()) {
+				InnerTodayItemPanel itip = new InnerTodayItemPanel();
+			}
+        }
+	}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -164,17 +269,7 @@ public class MainFrame extends javax.swing.JFrame {
         MF_NoiDungHomNay_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         MF_NoiDungHomNay_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        javax.swing.GroupLayout MF_KhungNoiDungHomNay_JPanelLayout = new javax.swing.GroupLayout(MF_KhungNoiDungHomNay_JPanel);
-        MF_KhungNoiDungHomNay_JPanel.setLayout(MF_KhungNoiDungHomNay_JPanelLayout);
-        MF_KhungNoiDungHomNay_JPanelLayout.setHorizontalGroup(
-            MF_KhungNoiDungHomNay_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1053, Short.MAX_VALUE)
-        );
-        MF_KhungNoiDungHomNay_JPanelLayout.setVerticalGroup(
-            MF_KhungNoiDungHomNay_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
-        );
-
+        MF_KhungNoiDungHomNay_JPanel.setLayout(new java.awt.GridLayout(0, 1, 10, 10));
         MF_NoiDungHomNay_JScrollPane.setViewportView(MF_KhungNoiDungHomNay_JPanel);
 
         MF_ThanhChucNangHomNay_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 5));
@@ -216,6 +311,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(MF_ThanhChucNangHomNay_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        // Code for increase scroll speed
+        MF_NoiDungHomNay_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
 
         MF_IntermidiateContainer_JTabbedPane.addTab("Hôm nay", MF_HomNay_JPanel);
 
@@ -290,6 +388,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        // Code for increase scroll speed
+        MF_NoiDungDanhMucThuoc_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
+
         MF_IntermidiateContainer_JTabbedPane.addTab("Danh mục thuốc", MF_DanhMucThuoc_JPanel);
 
         MF_NoiDungLichSu_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -334,6 +435,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(MF_ThanhChucNangLichSu_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        // Code for increase scroll speed
+        MF_NoiDungLichSu_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
 
         MF_IntermidiateContainer_JTabbedPane.addTab("Lịch sử", MF_LichSu_JPanel);
 
@@ -413,6 +517,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(MF_ThongTinTraCuuCoBan_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        // Code for increase scroll speed
+        MF_ThongTinTraCuuCoBan_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
 
         MF_IntermidiateContainer_JTabbedPane.addTab("Tra cứu trực tuyến", MF_TraCuuOnline_JPanel);
 
@@ -573,6 +680,7 @@ public class MainFrame extends javax.swing.JFrame {
             );
 
             String fileNameOri = getDownloadFileName(responseBody);
+			fileNameOri = fileNameOri.replace(" ", "%20");
 
             if (fileNameOri.contentEquals("No filename")) {
                 System.out.println("No file download");

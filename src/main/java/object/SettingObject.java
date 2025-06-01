@@ -87,7 +87,7 @@ public class SettingObject {
 		jo.put("EnableConfirmButton", this.EnableConfirmButton);
 		jo.put("EnabelSkipButton", this.EnabelSkipButton);
 		
-		String filePath = "/home/shanghuang/SMM_STO_" + MainFrame.UserName + "/UO/UserObject.json";
+		String filePath = "/home/shanghuang/SMM_STO_" + MainFrame.UserName + "/SO/SettingObject.json";
 		try {
 			// Kiểm tra xem file có tồn tại hay không
             File file = new File(filePath);

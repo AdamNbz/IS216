@@ -28,7 +28,7 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 	public String charset = "<>?/.,:\";'{}|\\[\\]\\\\()!@#$%^&*\\-_+=~`";
 	Pattern patt = Pattern.compile("[" + charset + "]");
 	int DEBUG = 0;
-	String Specific_data = null;
+	String Specific_data = "2";
 	public static String UserName = null;
 	
     /**

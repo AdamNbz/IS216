@@ -5,7 +5,6 @@ userview/ForgotPasswordFrame$4.class
 elementpanel/MedicineItemPanel.class
 userview/EditMedicationFrame$10.class
 userview/EditMedicationFrame$9.class
-elementpanel/TodayEntryPanel.class
 userview/AddMedicationFrame$6.class
 userview/MainFrame$9.class
 userview/AddMedicationFrame$9.class
@@ -13,6 +12,7 @@ userview/ForgotPasswordFrame$1.class
 elementpanel/TimeStoneAdditionPanel$2.class
 supervisorview/MainSupervisorFrame.class
 userview/EditMedicationFrame$13.class
+object/TodayListItemObject.class
 userview/EditMedicationFrame.class
 userview/AuthenticationFrame$3.class
 userview/HistoryEntryPanel.class
@@ -65,12 +65,14 @@ userview/ForgotPasswordFrame$5.class
 userview/AddMedicationFrame$5.class
 userview/AddMedicationFrame$11.class
 userview/AddMedicationFrame$2.class
+elementpanel/InnerTodeyItemPanel.class
 userview/MainFrame$7.class
 elementpanel/TimeStoneAdditionPanel$3.class
 userview/MainFrame$12.class
 userview/ForgotPasswordFrame$2.class
 userview/AddMedicationFrame$17.class
 userview/AddMedicationFrame$14.class
+elementpanel/TodayItemPanel.class
 userview/AddMedicationFrame$8.class
 userview/ApplicationInformationFrame.class
 userview/EditMedicationFrame$7.class
