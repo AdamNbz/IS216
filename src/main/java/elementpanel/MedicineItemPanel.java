@@ -54,7 +54,6 @@ public class MedicineItemPanel extends javax.swing.JPanel {
         MIP_Left_JPanel = new javax.swing.JPanel();
         MIP_DViThuoc_JLabel = new javax.swing.JLabel();
         MIP_GCThuoc_JLabel = new javax.swing.JLabel();
-        MIP_UuTien_JLabel = new javax.swing.JLabel();
         MIP_SL_JLabel = new javax.swing.JLabel();
         MIP_Right_JPanel = new javax.swing.JPanel();
         MIP_Edit_JButton = new javax.swing.JButton();
@@ -102,15 +101,6 @@ public class MedicineItemPanel extends javax.swing.JPanel {
         MIP_GCThuoc_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
         MIP_GCThuoc_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
         MIP_Left_JPanel.add(MIP_GCThuoc_JLabel);
-
-        MIP_UuTien_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
-        MIP_UuTien_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MIP_UuTien_JLabel.setText("UuTien");
-        MIP_UuTien_JLabel.setToolTipText("Mức độ ưu tiên thông báo");
-        MIP_UuTien_JLabel.setMaximumSize(new java.awt.Dimension(180, 30));
-        MIP_UuTien_JLabel.setMinimumSize(new java.awt.Dimension(180, 30));
-        MIP_UuTien_JLabel.setPreferredSize(new java.awt.Dimension(180, 30));
-        MIP_Left_JPanel.add(MIP_UuTien_JLabel);
 
         MIP_SL_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 18)); // NOI18N
         MIP_SL_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -210,11 +200,6 @@ public class MedicineItemPanel extends javax.swing.JPanel {
 		MIP_DViThuoc_JLabel.setText(mo.getDonVi());
 		
 		MIP_GCThuoc_JLabel.setText(mo.getGhiChu());
-		if (mo.isUuTienThongBao() == true) {
-			MIP_UuTien_JLabel.setText("High priority");
-		} else {
-			MIP_UuTien_JLabel.setText("Low priority");
-		}
 
 		MIP_SL_JLabel.setText(String.valueOf(mo.getSLHienCo()));
 	}
@@ -234,6 +219,5 @@ public class MedicineItemPanel extends javax.swing.JPanel {
     private javax.swing.JPanel MIP_Right_JPanel;
     private javax.swing.JLabel MIP_SL_JLabel;
     private javax.swing.JLabel MIP_TenThuoc_JLabel;
-    private javax.swing.JLabel MIP_UuTien_JLabel;
     // End of variables declaration//GEN-END:variables
 }

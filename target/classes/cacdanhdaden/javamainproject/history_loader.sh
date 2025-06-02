@@ -34,17 +34,17 @@ if [ ! -f "$LOGFILE" ]; then
 fi
 
 # Ghi log dạng JSON (append)
-jq --arg thuoc "$THUOC" \
-   --arg time "$GIO:$PHUT $AMPM" \
-   --arg lieu "$LIEU" \
-   --arg status "$STATUS" \
-   --arg note "$GHI_CHU" \
-   --arg ts "$TIMESTAMP" \
-   '. += [{"thuoc":$thuoc,"time":$time,"lieu":$lieu,"status":$status,"note":$note,"timestamp":$ts}]' \
+jq --arg TenThuoc "$THUOC" \
+   --arg MocThoiGian "$GIO:$PHUT $AMPM" \
+   --arg LieuSuDung "$LIEU" \
+   --arg TrangThai "$STATUS" \
+   --arg GhiChu "$GHI_CHU" \
+   --arg ThoiGian "$TIMESTAMP" \
+   '. += [{"TenThuoc":$TenThuoc,"MocThoiGian":$MocThoiGian,"LieuSuDung":$LieuSuDung,"TrangThai":$TrangThai,"GhiChu":$GhiChu,"ThoiGian":$ThoiGian}]' \
    "$LOGFILE" > "${LOGFILE}.tmp" && mv "${LOGFILE}.tmp" "$LOGFILE"
 
 # Lọc lại log chỉ giữ các bản ghi trong 30 ngày gần nhất
 CUTOFF_DATE=$(date -d "30 days ago" +"%Y-%m-%d %H:%M:%S")
 jq --arg cutoff "$CUTOFF_DATE" '
-  map(select(.timestamp >= $cutoff))
+  map(select(.ThoiGian >= $cutoff))
 ' "$LOGFILE" > "${LOGFILE}.tmp" && mv "${LOGFILE}.tmp" "$LOGFILE"

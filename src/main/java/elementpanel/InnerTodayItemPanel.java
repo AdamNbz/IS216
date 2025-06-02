@@ -55,7 +55,6 @@ public class InnerTodayItemPanel extends javax.swing.JPanel {
         ITIP_LieuSuDung_JLabel = new javax.swing.JLabel();
         ITIP_GhiChu_JLabel = new javax.swing.JLabel();
         ITIP_Gio_JLabel = new javax.swing.JLabel();
-        ITIP_Select_Panel = new javax.swing.JToggleButton();
 
         setMaximumSize(new java.awt.Dimension(1017, 104));
         setMinimumSize(new java.awt.Dimension(1017, 104));
@@ -71,9 +70,9 @@ public class InnerTodayItemPanel extends javax.swing.JPanel {
 
         ITIP_LowerPanel_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        ITIP_Info_JPanel.setMaximumSize(new java.awt.Dimension(836, 42));
-        ITIP_Info_JPanel.setMinimumSize(new java.awt.Dimension(836, 42));
-        ITIP_Info_JPanel.setPreferredSize(new java.awt.Dimension(827, 42));
+        ITIP_Info_JPanel.setMaximumSize(new java.awt.Dimension(900, 42));
+        ITIP_Info_JPanel.setMinimumSize(new java.awt.Dimension(900, 42));
+        ITIP_Info_JPanel.setPreferredSize(new java.awt.Dimension(900, 42));
         ITIP_Info_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         ITIP_LieuSuDung_JLabel.setText("Liều");
@@ -96,12 +95,6 @@ public class InnerTodayItemPanel extends javax.swing.JPanel {
 
         ITIP_LowerPanel_JPanel.add(ITIP_Info_JPanel);
 
-        ITIP_Select_Panel.setText("Select");
-        ITIP_Select_Panel.setMaximumSize(new java.awt.Dimension(170, 42));
-        ITIP_Select_Panel.setMinimumSize(new java.awt.Dimension(170, 42));
-        ITIP_Select_Panel.setPreferredSize(new java.awt.Dimension(170, 42));
-        ITIP_LowerPanel_JPanel.add(ITIP_Select_Panel);
-
         add(ITIP_LowerPanel_JPanel);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -112,7 +105,6 @@ public class InnerTodayItemPanel extends javax.swing.JPanel {
     private javax.swing.JPanel ITIP_Info_JPanel;
     private javax.swing.JLabel ITIP_LieuSuDung_JLabel;
     private javax.swing.JPanel ITIP_LowerPanel_JPanel;
-    private javax.swing.JToggleButton ITIP_Select_Panel;
     private javax.swing.JLabel ITIP_TenThuoc_JLabel;
     // End of variables declaration//GEN-END:variables
 }

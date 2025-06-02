@@ -277,8 +277,7 @@ public class MainFrame extends javax.swing.JFrame {
         MF_NoiDungHomNay_JScrollPane = new javax.swing.JScrollPane();
         MF_KhungNoiDungHomNay_JPanel = new javax.swing.JPanel();
         MF_ThanhChucNangHomNay_JPanel = new javax.swing.JPanel();
-        MF_BoQua_JButton = new javax.swing.JButton();
-        MF_XacNhan_JButton = new javax.swing.JButton();
+        MF_InstantUse_JButton = new javax.swing.JButton();
         MF_DanhMucThuoc_JPanel = new javax.swing.JPanel();
         MF_NoiDungDanhMucThuoc_JScrollPane = new javax.swing.JScrollPane();
         MF_KhungNoiDungDanhMucThuoc_JPanel = new javax.swing.JPanel();
@@ -338,16 +337,16 @@ public class MainFrame extends javax.swing.JFrame {
         MF_ThanhChucNangHomNay_JPanel.setMinimumSize(new java.awt.Dimension(1053, 45));
         MF_ThanhChucNangHomNay_JPanel.setPreferredSize(new java.awt.Dimension(1053, 45));
 
-        MF_BoQua_JButton.setText("Bỏ qua");
-        MF_BoQua_JButton.addActionListener(new java.awt.event.ActionListener() {
+        MF_InstantUse_JButton.setText("Dùng tức thì");
+        MF_InstantUse_JButton.setMaximumSize(new java.awt.Dimension(250, 30));
+        MF_InstantUse_JButton.setMinimumSize(new java.awt.Dimension(250, 30));
+        MF_InstantUse_JButton.setPreferredSize(new java.awt.Dimension(250, 30));
+        MF_InstantUse_JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MF_BoQua_JButtonActionPerformed(evt);
+                MF_InstantUse_JButtonActionPerformed(evt);
             }
         });
-        MF_ThanhChucNangHomNay_JPanel.add(MF_BoQua_JButton);
-
-        MF_XacNhan_JButton.setText("Xác nhận");
-        MF_ThanhChucNangHomNay_JPanel.add(MF_XacNhan_JButton);
+        MF_ThanhChucNangHomNay_JPanel.add(MF_InstantUse_JButton);
 
         javax.swing.GroupLayout MF_HomNay_JPanelLayout = new javax.swing.GroupLayout(MF_HomNay_JPanel);
         MF_HomNay_JPanel.setLayout(MF_HomNay_JPanelLayout);
@@ -595,7 +594,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
         MF_CaiDat_VePhanMem_Thoat_JMI_JMenu.add(MF_CaiDat_JMenuItem);
 
-        MF_VePhanMem_JMenuItem.setText("Về phần mềm");
+        MF_VePhanMem_JMenuItem.setText("Hướng dẫn sử dụng");
         MF_CaiDat_VePhanMem_Thoat_JMI_JMenu.add(MF_VePhanMem_JMenuItem);
 
         MF_VeCaNhan_JMenuItem.setText("Về cá nhân");
@@ -867,14 +866,14 @@ public class MainFrame extends javax.swing.JFrame {
         AddMedicationFrame AMF = new AddMedicationFrame(MainFrame.this, this.UserName);
     }//GEN-LAST:event_MF_Them_JButtonActionPerformed
 
-    private void MF_BoQua_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_BoQua_JButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MF_BoQua_JButtonActionPerformed
-
     private void MF_VeCaNhan_JMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_VeCaNhan_JMenuItemActionPerformed
         // TODO add your handling code here:
 		AccountInformationFrame aif = new AccountInformationFrame(this);
     }//GEN-LAST:event_MF_VeCaNhan_JMenuItemActionPerformed
+
+    private void MF_InstantUse_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_InstantUse_JButtonActionPerformed
+        InstantUseFrame iuf = new InstantUseFrame(this, UserName);
+    }//GEN-LAST:event_MF_InstantUse_JButtonActionPerformed
 
 	// Hàm tải file từ URL
     private static Path downloadFile(String fileURL, String fileName) throws IOException, InterruptedException {
@@ -1086,13 +1085,13 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MF_BaoCaoThoiQuen_JButton;
-    private javax.swing.JButton MF_BoQua_JButton;
     private javax.swing.JMenuItem MF_CaiDat_JMenuItem;
     private javax.swing.JMenu MF_CaiDat_VePhanMem_Thoat_JMI_JMenu;
     private javax.swing.JMenuBar MF_Chon_JMenuBar;
     private javax.swing.JPanel MF_DanhMucThuoc_JPanel;
     private javax.swing.JMenuItem MF_GuiYKien_JMenuItem;
     private javax.swing.JPanel MF_HomNay_JPanel;
+    private javax.swing.JButton MF_InstantUse_JButton;
     private javax.swing.JTabbedPane MF_IntermidiateContainer_JTabbedPane;
     private javax.swing.JSeparator MF_JSeparator;
     private javax.swing.JPanel MF_KhungNoiDungDanhMucThuoc_JPanel;
@@ -1124,7 +1123,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField MF_TraCuu_JTextField;
     private javax.swing.JMenuItem MF_VeCaNhan_JMenuItem;
     private javax.swing.JMenuItem MF_VePhanMem_JMenuItem;
-    private javax.swing.JButton MF_XacNhan_JButton;
     private javax.swing.JButton MF_XuatLichSu_JButton;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;

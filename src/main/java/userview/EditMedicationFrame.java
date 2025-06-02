@@ -61,9 +61,6 @@ public class EditMedicationFrame extends javax.swing.JFrame {
 		EMF_GhiChu_JTextField.setText(mo.getGhiChu());
 		EMF_TanSuatSuDung_JComboBox.setSelectedItem(mo.getTanSuatChung());
 		Specific_data = mo.getTanSuatCuThe();
-		EMF_UuTienThongBao_JToggleButton.setSelected(mo.isUuTienThongBao());
-		EMF_TuDongXacNhanSuDung_JToggleButton.setSelected(mo.isTuDongXacNhan());
-		EMF_KhoangThoiGianLapThongBao_JSpinner.setValue(mo.getKhoangThongBao());
 		EMF_HienCo_JSpinner.setValue(mo.getSLHienCo());
 		EMF_NhacNho_JSpinner.setValue(mo.getSLNhacNho());
 		
@@ -180,15 +177,6 @@ public class EditMedicationFrame extends javax.swing.JFrame {
         EMF_TanSuatSuDung_JLabel = new javax.swing.JLabel();
         EMF_TanSuatSuDung_JComboBox = new javax.swing.JComboBox<>();
         EMF_TanSuatSuDung_JButton = new javax.swing.JButton();
-        EMF_UuTienThongBao_JPanel = new javax.swing.JPanel();
-        EMF_UuTienThongBao_JLabel = new javax.swing.JLabel();
-        EMF_UuTienThongBao_JToggleButton = new javax.swing.JToggleButton();
-        EMF_TuDongXacNhanSuDung_JPanel = new javax.swing.JPanel();
-        EMF_TuDongXacNhanSuDung_JLabel = new javax.swing.JLabel();
-        EMF_TuDongXacNhanSuDung_JToggleButton = new javax.swing.JToggleButton();
-        EMF_KhoangThoiGianLapThongBao_JPanel = new javax.swing.JPanel();
-        EMF_KhoangThoiGianLapThongBao_JLabel = new javax.swing.JLabel();
-        EMF_KhoangThoiGianLapThongBao_JSpinner = new javax.swing.JSpinner();
         EMF_QuanLySoLuongThuoc_JPanel = new javax.swing.JPanel();
         EMF_QuanLySoLuongThuoc_JLabel = new javax.swing.JLabel();
         EMF_HienCo_JLabel = new javax.swing.JLabel();
@@ -242,7 +230,7 @@ public class EditMedicationFrame extends javax.swing.JFrame {
         EMF_NoiDungThemThuoc_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         EMF_NoiDungThemThuoc_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        EMF_KhungNoiDungThuoc_JPanel.setLayout(new java.awt.GridLayout(9, 1, 5, 5));
+        EMF_KhungNoiDungThuoc_JPanel.setLayout(new java.awt.GridLayout(6, 1, 5, 5));
 
         EMF_Ten_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
@@ -343,86 +331,6 @@ public class EditMedicationFrame extends javax.swing.JFrame {
         EMF_TanSuatSuDung_JPanel.add(EMF_TanSuatSuDung_JButton);
 
         EMF_KhungNoiDungThuoc_JPanel.add(EMF_TanSuatSuDung_JPanel);
-
-        EMF_UuTienThongBao_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
-
-        EMF_UuTienThongBao_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        EMF_UuTienThongBao_JLabel.setText("Đặt mức độ ưu tiên thông báo cao hơn:");
-        EMF_UuTienThongBao_JLabel.setMaximumSize(new java.awt.Dimension(410, 30));
-        EMF_UuTienThongBao_JLabel.setMinimumSize(new java.awt.Dimension(410, 30));
-        EMF_UuTienThongBao_JLabel.setPreferredSize(new java.awt.Dimension(410, 30));
-        EMF_UuTienThongBao_JPanel.add(EMF_UuTienThongBao_JLabel);
-
-        EMF_UuTienThongBao_JToggleButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        EMF_UuTienThongBao_JToggleButton.setText("Y/N");
-        EMF_UuTienThongBao_JToggleButton.setMaximumSize(new java.awt.Dimension(70, 30));
-        EMF_UuTienThongBao_JToggleButton.setMinimumSize(new java.awt.Dimension(70, 30));
-        EMF_UuTienThongBao_JToggleButton.setPreferredSize(new java.awt.Dimension(70, 30));
-        EMF_UuTienThongBao_JToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EMF_UuTienThongBao_JToggleButtonActionPerformed(evt);
-            }
-        });
-        EMF_UuTienThongBao_JPanel.add(EMF_UuTienThongBao_JToggleButton);
-
-        EMF_KhungNoiDungThuoc_JPanel.add(EMF_UuTienThongBao_JPanel);
-
-        EMF_TuDongXacNhanSuDung_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
-
-        EMF_TuDongXacNhanSuDung_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        EMF_TuDongXacNhanSuDung_JLabel.setText("Tự động xác nhận sử dụng thuốc:");
-        EMF_TuDongXacNhanSuDung_JLabel.setMaximumSize(new java.awt.Dimension(410, 30));
-        EMF_TuDongXacNhanSuDung_JLabel.setMinimumSize(new java.awt.Dimension(410, 30));
-        EMF_TuDongXacNhanSuDung_JLabel.setPreferredSize(new java.awt.Dimension(410, 30));
-        EMF_TuDongXacNhanSuDung_JPanel.add(EMF_TuDongXacNhanSuDung_JLabel);
-
-        EMF_TuDongXacNhanSuDung_JToggleButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        EMF_TuDongXacNhanSuDung_JToggleButton.setText("Y/N");
-        EMF_TuDongXacNhanSuDung_JToggleButton.setMaximumSize(new java.awt.Dimension(70, 30));
-        EMF_TuDongXacNhanSuDung_JToggleButton.setMinimumSize(new java.awt.Dimension(70, 30));
-        EMF_TuDongXacNhanSuDung_JToggleButton.setPreferredSize(new java.awt.Dimension(70, 30));
-        EMF_TuDongXacNhanSuDung_JToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EMF_TuDongXacNhanSuDung_JToggleButtonActionPerformed(evt);
-            }
-        });
-        EMF_TuDongXacNhanSuDung_JPanel.add(EMF_TuDongXacNhanSuDung_JToggleButton);
-
-        EMF_KhungNoiDungThuoc_JPanel.add(EMF_TuDongXacNhanSuDung_JPanel);
-
-        EMF_KhoangThoiGianLapThongBao_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
-
-        EMF_KhoangThoiGianLapThongBao_JLabel.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        EMF_KhoangThoiGianLapThongBao_JLabel.setText("Khoảng thời gian lặp thông báo: ");
-        EMF_KhoangThoiGianLapThongBao_JLabel.setMaximumSize(new java.awt.Dimension(410, 30));
-        EMF_KhoangThoiGianLapThongBao_JLabel.setMinimumSize(new java.awt.Dimension(410, 30));
-        EMF_KhoangThoiGianLapThongBao_JLabel.setPreferredSize(new java.awt.Dimension(410, 30));
-        EMF_KhoangThoiGianLapThongBao_JPanel.add(EMF_KhoangThoiGianLapThongBao_JLabel);
-
-        EMF_KhoangThoiGianLapThongBao_JSpinner.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
-        EMF_KhoangThoiGianLapThongBao_JSpinner.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        EMF_KhoangThoiGianLapThongBao_JSpinner.setFocusable(false);
-        EMF_KhoangThoiGianLapThongBao_JSpinner.setMaximumSize(new java.awt.Dimension(70, 30));
-        EMF_KhoangThoiGianLapThongBao_JSpinner.setMinimumSize(new java.awt.Dimension(70, 30));
-        EMF_KhoangThoiGianLapThongBao_JSpinner.setPreferredSize(new java.awt.Dimension(70, 30));
-        EMF_KhoangThoiGianLapThongBao_JSpinner.setRequestFocusEnabled(false);
-        EMF_KhoangThoiGianLapThongBao_JSpinner.setValue(5);
-        EMF_KhoangThoiGianLapThongBao_JSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                EMF_KhoangThoiGianLapThongBao_JSpinnerStateChanged(evt);
-            }
-        });
-        SpinnerNumberModel KhoangThoiGianLapThongBao_model = new SpinnerNumberModel(5, 5, 60, 5);
-        EMF_KhoangThoiGianLapThongBao_JSpinner.setModel(KhoangThoiGianLapThongBao_model);
-        EMF_KhoangThoiGianLapThongBao_JPanel.add(EMF_KhoangThoiGianLapThongBao_JSpinner);
-        JComponent editor_KhoangThoiGianLapThongBao = EMF_KhoangThoiGianLapThongBao_JSpinner.getEditor();
-        JFormattedTextField tf_KhoangThoiGianLapThongBao = ((JSpinner.DefaultEditor) editor_KhoangThoiGianLapThongBao).getTextField();
-        tf_KhoangThoiGianLapThongBao.setEditable(false);
-        tf_KhoangThoiGianLapThongBao.setColumns(3);
-        tf_KhoangThoiGianLapThongBao.setHorizontalAlignment(JTextField.CENTER);
-        EMF_KhoangThoiGianLapThongBao_JSpinner.setSize(64, 32);
-
-        EMF_KhungNoiDungThuoc_JPanel.add(EMF_KhoangThoiGianLapThongBao_JPanel);
 
         EMF_QuanLySoLuongThuoc_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
@@ -631,19 +539,6 @@ public class EditMedicationFrame extends javax.swing.JFrame {
 		String TanSuatChungVariableHolder = EMF_TanSuatSuDung_JComboBox.getSelectedItem().toString();
 		String TanSuatCuTheVariableHolder = Specific_data;
 		
-		boolean UuTienThongBaoVariableHolder = false;
-		if (EMF_UuTienThongBao_JToggleButton.isEnabled() == true) {
-			UuTienThongBaoVariableHolder = EMF_UuTienThongBao_JToggleButton.isSelected();
-		}
-		
-		boolean AutoConfirmVariableHolder = false;
-		if (EMF_TuDongXacNhanSuDung_JToggleButton.isEnabled() == true) {
-			AutoConfirmVariableHolder = EMF_TuDongXacNhanSuDung_JToggleButton.isSelected();
-		}
-		
-		int KhoangThongBaoVariableHolder = Integer.parseInt(
-				EMF_KhoangThoiGianLapThongBao_JSpinner.getValue().toString()
-		);
 		int SLHienCoVariableHolder = Integer.parseInt(
 				EMF_HienCo_JSpinner.getValue().toString()
 		);
@@ -672,9 +567,6 @@ public class EditMedicationFrame extends javax.swing.JFrame {
 			System.out.println(GhiChuVariableHolder);
 			System.out.println(TanSuatChungVariableHolder);
 			System.out.println(TanSuatCuTheVariableHolder);
-			System.out.println(UuTienThongBaoVariableHolder);
-			System.out.println(AutoConfirmVariableHolder);
-			System.out.println(KhoangThongBaoVariableHolder);
 			System.out.println(SLHienCoVariableHolder);
 			System.out.println(SLNhacNhoVariableHolder);
 			
@@ -691,9 +583,6 @@ public class EditMedicationFrame extends javax.swing.JFrame {
 				GhiChuVariableHolder, 
 				TanSuatChungVariableHolder, 
 				TanSuatCuTheVariableHolder, 
-				UuTienThongBaoVariableHolder,
-				AutoConfirmVariableHolder, 
-				KhoangThongBaoVariableHolder, 
 				SLHienCoVariableHolder, 
 				SLNhacNhoVariableHolder, 
 				MocThoiGianVariableHolder
@@ -710,14 +599,6 @@ public class EditMedicationFrame extends javax.swing.JFrame {
 				EMF_Ten_JTextField.setText("");
 		}
     }//GEN-LAST:event_EMF_Ten_JTextFieldActionPerformed
-
-    private void EMF_UuTienThongBao_JToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMF_UuTienThongBao_JToggleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EMF_UuTienThongBao_JToggleButtonActionPerformed
-
-    private void EMF_TuDongXacNhanSuDung_JToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EMF_TuDongXacNhanSuDung_JToggleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EMF_TuDongXacNhanSuDung_JToggleButtonActionPerformed
 
     private void EMF_MocThoiGianSuDungThuoc_Them_JButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EMF_MocThoiGianSuDungThuoc_Them_JButtonMouseClicked
       	TimeStoneAdditionPanel JP = new TimeStoneAdditionPanel(EMF_KhungNoiDungThuoc_JPanel);
@@ -755,29 +636,14 @@ public class EditMedicationFrame extends javax.swing.JFrame {
     private void EMF_TanSuatSuDung_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EMF_TanSuatSuDung_JComboBoxItemStateChanged
         // TODO add your handling code here:
 		EMF_TanSuatSuDung_JButton.setEnabled(false);
-		EMF_UuTienThongBao_JToggleButton.setSelected(false);
-		EMF_TuDongXacNhanSuDung_JToggleButton.setSelected(false);
-		EMF_KhoangThoiGianLapThongBao_JSpinner.setValue(5);
         if (EMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Mỗi ngày")) {
             EMF_TanSuatSuDung_JButton.setEnabled(false);
-			EMF_UuTienThongBao_JToggleButton.setEnabled(true);
-			EMF_TuDongXacNhanSuDung_JToggleButton.setEnabled(true);
-			EMF_KhoangThoiGianLapThongBao_JSpinner.setEnabled(true);
         } else if (EMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tuần")) {
 			EMF_TanSuatSuDung_JButton.setEnabled(true);
-			EMF_UuTienThongBao_JToggleButton.setEnabled(true);
-			EMF_TuDongXacNhanSuDung_JToggleButton.setEnabled(true);
-			EMF_KhoangThoiGianLapThongBao_JSpinner.setEnabled(true);
         } else if (EMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Ngày trong tháng")) {
 			EMF_TanSuatSuDung_JButton.setEnabled(true);
-			EMF_UuTienThongBao_JToggleButton.setEnabled(true);
-			EMF_TuDongXacNhanSuDung_JToggleButton.setEnabled(true);
-			EMF_KhoangThoiGianLapThongBao_JSpinner.setEnabled(true);
         } else if (EMF_TanSuatSuDung_JComboBox.getSelectedItem().equals("Khi cần thiết")) {
             EMF_TanSuatSuDung_JButton.setEnabled(false);
-			EMF_UuTienThongBao_JToggleButton.setEnabled(false);
-			EMF_TuDongXacNhanSuDung_JToggleButton.setEnabled(false);
-			EMF_KhoangThoiGianLapThongBao_JSpinner.setEnabled(false);
         }
     }//GEN-LAST:event_EMF_TanSuatSuDung_JComboBoxItemStateChanged
 
@@ -794,13 +660,6 @@ public class EditMedicationFrame extends javax.swing.JFrame {
 			EMF_GhiChu_JTextField.setText("");
 		}
     }//GEN-LAST:event_EMF_GhiChu_JTextFieldActionPerformed
-
-    private void EMF_KhoangThoiGianLapThongBao_JSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_EMF_KhoangThoiGianLapThongBao_JSpinnerStateChanged
-        if (Integer.parseInt(EMF_KhoangThoiGianLapThongBao_JSpinner.getValue().toString()) < 0) {
-			JOptionPane.showMessageDialog(this, "Khoảng thời gian phải là số dương. Vui lòng chọn lại", "Error", JOptionPane.ERROR_MESSAGE);
-			EMF_KhoangThoiGianLapThongBao_JSpinner.setValue(5);
-		}
-    }//GEN-LAST:event_EMF_KhoangThoiGianLapThongBao_JSpinnerStateChanged
 
     private void EMF_HienCo_JSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_EMF_HienCo_JSpinnerStateChanged
         if (Integer.parseInt(EMF_HienCo_JSpinner.getValue().toString()) < 0) {
@@ -933,9 +792,6 @@ public class EditMedicationFrame extends javax.swing.JFrame {
     private javax.swing.JLabel EMF_HienCo_JLabel;
     private javax.swing.JSpinner EMF_HienCo_JSpinner;
     private javax.swing.JButton EMF_Huy_JButton;
-    private javax.swing.JLabel EMF_KhoangThoiGianLapThongBao_JLabel;
-    private javax.swing.JPanel EMF_KhoangThoiGianLapThongBao_JPanel;
-    private javax.swing.JSpinner EMF_KhoangThoiGianLapThongBao_JSpinner;
     private javax.swing.JPanel EMF_KhungNoiDungThuoc_JPanel;
     private javax.swing.JLabel EMF_LieuSuDung_JLabel;
     private javax.swing.JSpinner EMF_LieuSuDung_JSpinner;
@@ -958,11 +814,5 @@ public class EditMedicationFrame extends javax.swing.JFrame {
     private javax.swing.JPanel EMF_Ten_JPanel;
     private javax.swing.JTextField EMF_Ten_JTextField;
     private javax.swing.JPanel EMF_ThanhChucNang_JPanel;
-    private javax.swing.JLabel EMF_TuDongXacNhanSuDung_JLabel;
-    private javax.swing.JPanel EMF_TuDongXacNhanSuDung_JPanel;
-    private javax.swing.JToggleButton EMF_TuDongXacNhanSuDung_JToggleButton;
-    private javax.swing.JLabel EMF_UuTienThongBao_JLabel;
-    private javax.swing.JPanel EMF_UuTienThongBao_JPanel;
-    private javax.swing.JToggleButton EMF_UuTienThongBao_JToggleButton;
     // End of variables declaration//GEN-END:variables
 }

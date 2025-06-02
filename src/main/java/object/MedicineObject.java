@@ -16,8 +16,7 @@ import org.json.simple.parser.ParseException;
  */
 public class MedicineObject {
 	private String TenThuoc, DonVi, GhiChu, TanSuatChung, TanSuatCuThe;
-	private boolean UuTienThongBao, TuDongXacNhan;
-	private int KhoangThongBao, SLHienCo, SLNhacNho;
+	private int SLHienCo, SLNhacNho;
 	private List<List<Object>> DSMocThoiGian; 
 	private List<Object> DSTanSuatCuThe;
 	
@@ -27,9 +26,6 @@ public class MedicineObject {
 		this.GhiChu = null;
 		this.TanSuatChung = null;
 		this.TanSuatCuThe = null;
-		this.UuTienThongBao = false;
-		this.TuDongXacNhan = false;
-		this.KhoangThongBao = 5;
 		this.SLHienCo = 1;
 		this.SLNhacNho = 1;
 		this.DSMocThoiGian = new ArrayList<>(0);
@@ -38,8 +34,7 @@ public class MedicineObject {
 
 	public MedicineObject(
 		String TenThuoc, String DonVi, String GhiChu, String TanSuatChung, String TanSuatCuThe, 
-		boolean UuTienThongBao, boolean TuDongXacNhan, 
-		int KhoangThongBao, int SLHienCo, int SLNhacNho, 
+		int SLHienCo, int SLNhacNho, 
 		List<List<Object>> DSMocThoiGian
 	) {
 		this.TenThuoc = TenThuoc;
@@ -47,9 +42,6 @@ public class MedicineObject {
 		this.GhiChu = GhiChu;
 		this.TanSuatChung = TanSuatChung;
 		this.TanSuatCuThe = TanSuatCuThe;
-		this.UuTienThongBao = UuTienThongBao;
-		this.TuDongXacNhan = TuDongXacNhan;
-		this.KhoangThongBao = KhoangThongBao;
 		this.SLHienCo = SLHienCo;
 		this.SLNhacNho = SLNhacNho;
 		this.DSMocThoiGian = DSMocThoiGian;
@@ -96,30 +88,6 @@ public class MedicineObject {
 		this.TanSuatCuThe = TanSuatCuThe;
 	}
 
-	public boolean isUuTienThongBao() {
-		return UuTienThongBao;
-	}
-
-	public void setUuTienThongBao(boolean UuTienThongBao) {
-		this.UuTienThongBao = UuTienThongBao;
-	}
-
-	public boolean isTuDongXacNhan() {
-		return TuDongXacNhan;
-	}
-
-	public void setTuDongXacNhan(boolean TuDongXacNhan) {
-		this.TuDongXacNhan = TuDongXacNhan;
-	}
-
-	public int getKhoangThongBao() {
-		return KhoangThongBao;
-	}
-
-	public void setKhoangThongBao(int KhoangThongBao) {
-		this.KhoangThongBao = KhoangThongBao;
-	}
-
 	public int getSLHienCo() {
 		return SLHienCo;
 	}
@@ -159,9 +127,6 @@ public class MedicineObject {
 		jo.put("GhiChu", this.GhiChu);
 		jo.put("TanSuatChung", this.TanSuatChung);
 		jo.put("TanSuatCuThe", this.TanSuatCuThe);
-		jo.put("UuTienThongBao", this.UuTienThongBao);
-		jo.put("TuDongXacNhan", this.TuDongXacNhan);
-		jo.put("KhoangThongBao", this.KhoangThongBao);
 		jo.put("SLHienCo", this.SLHienCo);
 		jo.put("SLNhacNho", this.SLNhacNho);
 		jo.put("DSMocThoiGian", this.DSMocThoiGian);
@@ -196,9 +161,6 @@ public class MedicineObject {
 			this.GhiChu = (String) jo.get("GhiChu");
 			this.TanSuatChung = (String) jo.get("TanSuatChung");
 			this.TanSuatCuThe = (String) jo.get("TanSuatCuThe");
-			this.UuTienThongBao = (boolean) jo.get("UuTienThongBao");
-			this.TuDongXacNhan = (boolean) jo.get("TuDongXacNhan");
-			this.KhoangThongBao = Integer.parseInt(String.valueOf(jo.get("KhoangThongBao")));
 			this.SLHienCo = Integer.parseInt(String.valueOf(jo.get("SLHienCo")));
 			this.SLNhacNho = Integer.parseInt(String.valueOf(jo.get("SLNhacNho")));
 			this.DSMocThoiGian = (List<List<Object>>) jo.get("DSMocThoiGian");
@@ -258,9 +220,6 @@ public class MedicineObject {
 		System.out.println(this.GhiChu);
 		System.out.println(this.TanSuatChung);
 		System.out.println(this.TanSuatCuThe);
-		System.out.println(this.UuTienThongBao);
-		System.out.println(this.TuDongXacNhan);
-		System.out.println(this.KhoangThongBao);
 		System.out.println(this.SLHienCo);
 		System.out.println(this.SLNhacNho);
 		System.out.println("---");

@@ -46,7 +46,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MF_VePhanMem_JMenuItem">
               <Properties>
-                <Property name="text" type="java.lang.String" value="V&#x1ec1; ph&#x1ea7;n m&#x1ec1;m"/>
+                <Property name="text" type="java.lang.String" value="H&#x1b0;&#x1edb;ng d&#x1eab;n s&#x1eed; d&#x1ee5;ng"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MF_VeCaNhan_JMenuItem">
@@ -213,18 +213,22 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="MF_BoQua_JButton">
+                <Component class="javax.swing.JButton" name="MF_InstantUse_JButton">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="B&#x1ecf; qua"/>
+                    <Property name="text" type="java.lang.String" value="D&#xf9;ng t&#x1ee9;c th&#xec;"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[250, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[250, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[250, 30]"/>
+                    </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MF_BoQua_JButtonActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MF_InstantUse_JButtonActionPerformed"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="MF_XacNhan_JButton">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="X&#xe1;c nh&#x1ead;n"/>
-                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
