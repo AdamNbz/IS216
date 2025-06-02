@@ -52,7 +52,7 @@ public class TodayItemPanel extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(1041, 110));
         setMinimumSize(new java.awt.Dimension(1041, 110));
         setPreferredSize(new java.awt.Dimension(1041, 110));
-        setLayout(new java.awt.GridLayout(1, 1));
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
         TIP_UpperPanel_JPanel.setMaximumSize(new java.awt.Dimension(1029, 70));
         TIP_UpperPanel_JPanel.setMinimumSize(new java.awt.Dimension(1029, 70));

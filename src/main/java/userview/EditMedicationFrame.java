@@ -22,7 +22,7 @@ import object.MedicineObject;
 
 /**
  *
- * @author Tina
+ * @author Hinno
  */
 public class EditMedicationFrame extends javax.swing.JFrame {
 	private static MedicineItemPanel mip;

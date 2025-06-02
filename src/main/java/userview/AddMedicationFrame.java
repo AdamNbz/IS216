@@ -21,7 +21,7 @@ import object.MedicineObject;
 
 /**
  *
- * @author Tina
+ * @author Hinno
  */
 public class AddMedicationFrame extends javax.swing.JFrame {
 	public static MainFrame mf;

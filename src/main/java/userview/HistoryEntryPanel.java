@@ -6,7 +6,7 @@ package userview;
 
 /**
  *
- * @author shanghuang
+ * @author Hinno
  */
 public class HistoryEntryPanel extends javax.swing.JPanel {
 

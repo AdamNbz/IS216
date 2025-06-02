@@ -37,6 +37,7 @@ public class InnerTodayItemPanel extends javax.swing.JPanel {
 		ITIP_TenThuoc_JLabel.setText(tlio.getTenThuoc());
 		ITIP_LieuSuDung_JLabel.setText(String.valueOf(tlio.getLieuSuDung())); 
 		ITIP_GhiChu_JLabel.setText(tlio.getGhiChu());
+		ITIP_Gio_JLabel.setText(tlio.getTimeString());
 	}
 
 	/**
@@ -53,13 +54,15 @@ public class InnerTodayItemPanel extends javax.swing.JPanel {
         ITIP_Info_JPanel = new javax.swing.JPanel();
         ITIP_LieuSuDung_JLabel = new javax.swing.JLabel();
         ITIP_GhiChu_JLabel = new javax.swing.JLabel();
+        ITIP_Gio_JLabel = new javax.swing.JLabel();
         ITIP_Select_Panel = new javax.swing.JToggleButton();
 
-        setMaximumSize(new java.awt.Dimension(1029, 100));
+        setMaximumSize(new java.awt.Dimension(1017, 104));
         setMinimumSize(new java.awt.Dimension(1017, 104));
         setLayout(new java.awt.GridLayout(2, 1, 5, 0));
 
-        ITIP_TenThuoc_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ITIP_TenThuoc_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 3, 36)); // NOI18N
+        ITIP_TenThuoc_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ITIP_TenThuoc_JLabel.setText("Tên thuốc");
         ITIP_TenThuoc_JLabel.setMaximumSize(new java.awt.Dimension(1017, 30));
         ITIP_TenThuoc_JLabel.setMinimumSize(new java.awt.Dimension(1017, 30));
@@ -85,6 +88,12 @@ public class InnerTodayItemPanel extends javax.swing.JPanel {
         ITIP_GhiChu_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
         ITIP_Info_JPanel.add(ITIP_GhiChu_JLabel);
 
+        ITIP_Gio_JLabel.setText("Giờ");
+        ITIP_Gio_JLabel.setMaximumSize(new java.awt.Dimension(150, 30));
+        ITIP_Gio_JLabel.setMinimumSize(new java.awt.Dimension(150, 30));
+        ITIP_Gio_JLabel.setPreferredSize(new java.awt.Dimension(150, 30));
+        ITIP_Info_JPanel.add(ITIP_Gio_JLabel);
+
         ITIP_LowerPanel_JPanel.add(ITIP_Info_JPanel);
 
         ITIP_Select_Panel.setText("Select");
@@ -99,6 +108,7 @@ public class InnerTodayItemPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ITIP_GhiChu_JLabel;
+    private javax.swing.JLabel ITIP_Gio_JLabel;
     private javax.swing.JPanel ITIP_Info_JPanel;
     private javax.swing.JLabel ITIP_LieuSuDung_JLabel;
     private javax.swing.JPanel ITIP_LowerPanel_JPanel;

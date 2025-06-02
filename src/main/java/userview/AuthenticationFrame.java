@@ -49,15 +49,6 @@ public class AuthenticationFrame extends javax.swing.JFrame {
 		AF_TenDangNhap_JTF_JL_JPanel.putClientProperty(FlatClientProperties.STYLE, "arc: 10" );
 		AF_KhongTaiKhoan_DangNhap_JL_JB_JPanel.putClientProperty(FlatClientProperties.STYLE, "arc: 10" );
         this.setVisible(true);
-        this.setFrameInCenter();
-    }
-    
-    public void setFrameInCenter() {
-        final Toolkit toolkit = Toolkit.getDefaultToolkit();
-        final Dimension screenSize = toolkit.getScreenSize();
-        final int x = (screenSize.width - this.getWidth()) / 2;
-        final int y = (screenSize.height - this.getHeight()) / 2;
-        this.setLocation(x, y);
     }
 
     /**

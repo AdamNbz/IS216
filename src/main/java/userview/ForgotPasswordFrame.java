@@ -27,7 +27,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 /**
  *
- * @author shanghuang
+ * @author Hinno
  */
 public class ForgotPasswordFrame extends javax.swing.JFrame {
     int DEBUG = 1;

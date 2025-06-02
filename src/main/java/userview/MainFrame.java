@@ -45,7 +45,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 /**
  *
- * @author shanghuang
+ * @author Hinno
  */
 public class MainFrame extends javax.swing.JFrame {
 	public String charset = "<>?/.,:\";'{}|\\[\\]\\\\()!@#$%^&*\\-_+=~`";
@@ -71,7 +71,6 @@ public class MainFrame extends javax.swing.JFrame {
 		UIManager.put( "ScrollPane.TextComponent.arc", 50 );
         initComponents();
         this.setVisible(true);
-        this.setFrameInCenter();
         this.refresh_call();
 		this.loadTodayUseList();
     }
@@ -104,8 +103,6 @@ public class MainFrame extends javax.swing.JFrame {
             file.getName().startsWith("MO_")
         );
 		
-		MF_KhungNoiDungHomNay_JPanel.removeAll();
-        MF_KhungNoiDungHomNay_JPanel.setPreferredSize(DMThuocDimension);
         LayoutManager lmkndhn = MF_KhungNoiDungHomNay_JPanel.getLayout();
         if (lmkndhn instanceof GridLayout) {
             ((GridLayout) lmkndhn).setColumns(1);
@@ -193,45 +190,76 @@ public class MainFrame extends javax.swing.JFrame {
                 System.out.println("  - " + thuoc.getTenThuoc() + " (" + thuoc.getLieuSuDung() + ")"); // In tên thuốc và liều dùng
             }
         }
-		
-		for (Map.Entry<String, List<TodayListItemObject>> entry : msltlio.entrySet()) {
-			TodayItemPanel tip = new TodayItemPanel();
-            tip.setData(entry.getKey().toString());
-			
-			for (TodayListItemObject tlio : entry.getValue()) {
-				InnerTodayItemPanel itip = new InnerTodayItemPanel();
-				itip.setData(tlio);
 				
-				// after load data to the inner panel, start add it to the tip panel
-				LayoutManager lmtip = tip.getLayout();
-				if (lmtip instanceof GridLayout) {
-					((GridLayout) lmtip).setColumns(1);
-					((GridLayout) lmtip).setRows(((GridLayout) lmtip).getRows() + 1);
-					tip.setLayout(lmtip);
-					tip.add(itip, -1);
-					Dimension d = new Dimension((int) tip.getPreferredSize().getWidth()
-						, (int) tip.getPreferredSize().getHeight() +
-						(int) itip.getPreferredSize().getHeight() + 10);
-					tip.setPreferredSize(d);
-					tip.revalidate();
-					tip.repaint();
-				}				
-			}
-			
-			// then add a cover flow layout panel on all of it for scrolling 
-			JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-			Dimension d = new Dimension(MF_KhungNoiDungHomNay_JPanel.getPreferredSize());
-			d.setSize(
-				MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getWidth(),
-				MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getHeight() + 10);
-			Temporal_Panel.setPreferredSize(d);
-			Temporal_Panel.add(MF_KhungNoiDungHomNay_JPanel);
-			MF_NoiDungHomNay_JScrollPane.setViewportView(Temporal_Panel);
+		for (TodayListItemObject tlio : ltlio) {
+			InnerTodayItemPanel itip = new InnerTodayItemPanel();
+			itip.setData(tlio);
 
-			MF_NoiDungHomNay_JScrollPane.revalidate();
-			MF_NoiDungHomNay_JScrollPane.repaint();
-        }
+			if (lmkndhn instanceof GridLayout) {
+				((GridLayout) lmkndhn).setColumns(1);
+				((GridLayout) lmkndhn).setRows(((GridLayout) lmkndhn).getRows() + 1);
+				MF_KhungNoiDungHomNay_JPanel.setLayout(lmkndhn);
+				Dimension d = new Dimension(
+					(int) MF_KhungNoiDungHomNay_JPanel.getSize().getWidth()
+					, 
+					(int) MF_KhungNoiDungHomNay_JPanel.getSize().getHeight() + 
+					(int) itip.getPreferredSize().getHeight() * 2 + 
+					30
+				);
+
+				if (isAreaGreaterThan(d, MF_KhungNoiDungHomNay_JPanel.getPreferredSize())) {
+					MF_KhungNoiDungHomNay_JPanel.setPreferredSize(new Dimension(0, 0));
+					MF_KhungNoiDungHomNay_JPanel.setMaximumSize(d);
+					MF_KhungNoiDungHomNay_JPanel.setMinimumSize(d);
+					MF_KhungNoiDungHomNay_JPanel.setPreferredSize(d);
+				} 
+				MF_KhungNoiDungHomNay_JPanel.add(itip, -1);
+				MF_KhungNoiDungHomNay_JPanel.revalidate();
+				MF_KhungNoiDungHomNay_JPanel.repaint();
+			}		
+		}
+		MF_KhungNoiDungHomNay_JPanel.setMaximumSize(
+			new Dimension(
+				(int) MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getWidth(),
+				(int) MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getHeight() +
+				MF_KhungNoiDungHomNay_JPanel.getComponentCount() * 50
+			)
+		);
+		MF_KhungNoiDungHomNay_JPanel.setMinimumSize(
+			new Dimension(
+				(int) MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getWidth(),
+				(int) MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getHeight() +
+				MF_KhungNoiDungHomNay_JPanel.getComponentCount() * 50
+			)
+		);
+		MF_KhungNoiDungHomNay_JPanel.setPreferredSize(
+			new Dimension(
+				(int) MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getWidth(),
+				(int) MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getHeight() +
+				MF_KhungNoiDungHomNay_JPanel.getComponentCount() * 50
+			)
+		);
+		
+		// then add a cover flow layout panel on all of it for scrolling 
+		JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		Dimension d = new Dimension(MF_KhungNoiDungHomNay_JPanel.getPreferredSize());
+		d.setSize(
+			MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getWidth(),
+			MF_KhungNoiDungHomNay_JPanel.getPreferredSize().getHeight() + 30);
+		Temporal_Panel.setMaximumSize(d);
+		Temporal_Panel.setMinimumSize(d);
+		Temporal_Panel.setPreferredSize(d);
+		Temporal_Panel.add(MF_KhungNoiDungHomNay_JPanel);
+		MF_NoiDungHomNay_JScrollPane.setViewportView(Temporal_Panel);
+		MF_NoiDungHomNay_JScrollPane.revalidate();
+		MF_NoiDungHomNay_JScrollPane.repaint();
 	}
+	
+	public static boolean isAreaGreaterThan(Dimension d1, Dimension d2) {
+        long area1 = (long) d1.width * d1.height;
+        long area2 = (long) d2.width * d2.height;
+        return area1 > area2;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -250,7 +278,6 @@ public class MainFrame extends javax.swing.JFrame {
         MF_KhungNoiDungHomNay_JPanel = new javax.swing.JPanel();
         MF_ThanhChucNangHomNay_JPanel = new javax.swing.JPanel();
         MF_BoQua_JButton = new javax.swing.JButton();
-        MF_SuDung1Lan_JButton = new javax.swing.JButton();
         MF_XacNhan_JButton = new javax.swing.JButton();
         MF_DanhMucThuoc_JPanel = new javax.swing.JPanel();
         MF_NoiDungDanhMucThuoc_JScrollPane = new javax.swing.JScrollPane();
@@ -297,11 +324,19 @@ public class MainFrame extends javax.swing.JFrame {
 
         MF_NoiDungHomNay_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         MF_NoiDungHomNay_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        MF_NoiDungHomNay_JScrollPane.setMaximumSize(new java.awt.Dimension(1065, 580));
+        MF_NoiDungHomNay_JScrollPane.setMinimumSize(new java.awt.Dimension(1065, 580));
+        MF_NoiDungHomNay_JScrollPane.setPreferredSize(new java.awt.Dimension(1065, 580));
 
+        MF_KhungNoiDungHomNay_JPanel.setMaximumSize(new java.awt.Dimension(1065, 580));
+        MF_KhungNoiDungHomNay_JPanel.setMinimumSize(new java.awt.Dimension(1065, 580));
+        MF_KhungNoiDungHomNay_JPanel.setPreferredSize(new java.awt.Dimension(1065, 580));
         MF_KhungNoiDungHomNay_JPanel.setLayout(new java.awt.GridLayout(0, 1, 10, 10));
         MF_NoiDungHomNay_JScrollPane.setViewportView(MF_KhungNoiDungHomNay_JPanel);
 
-        MF_ThanhChucNangHomNay_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 5));
+        MF_ThanhChucNangHomNay_JPanel.setMaximumSize(new java.awt.Dimension(1053, 45));
+        MF_ThanhChucNangHomNay_JPanel.setMinimumSize(new java.awt.Dimension(1053, 45));
+        MF_ThanhChucNangHomNay_JPanel.setPreferredSize(new java.awt.Dimension(1053, 45));
 
         MF_BoQua_JButton.setText("Bỏ qua");
         MF_BoQua_JButton.addActionListener(new java.awt.event.ActionListener() {
@@ -311,14 +346,6 @@ public class MainFrame extends javax.swing.JFrame {
         });
         MF_ThanhChucNangHomNay_JPanel.add(MF_BoQua_JButton);
 
-        MF_SuDung1Lan_JButton.setText("Sử dụng 1 lần");
-        MF_SuDung1Lan_JButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MF_SuDung1Lan_JButtonActionPerformed(evt);
-            }
-        });
-        MF_ThanhChucNangHomNay_JPanel.add(MF_SuDung1Lan_JButton);
-
         MF_XacNhan_JButton.setText("Xác nhận");
         MF_ThanhChucNangHomNay_JPanel.add(MF_XacNhan_JButton);
 
@@ -326,18 +353,18 @@ public class MainFrame extends javax.swing.JFrame {
         MF_HomNay_JPanel.setLayout(MF_HomNay_JPanelLayout);
         MF_HomNay_JPanelLayout.setHorizontalGroup(
             MF_HomNay_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MF_HomNay_JPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(MF_ThanhChucNangHomNay_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(304, 304, 304))
-            .addComponent(MF_NoiDungHomNay_JScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(MF_NoiDungHomNay_JScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(MF_HomNay_JPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(MF_ThanhChucNangHomNay_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         MF_HomNay_JPanelLayout.setVerticalGroup(
             MF_HomNay_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MF_HomNay_JPanelLayout.createSequentialGroup()
                 .addComponent(MF_NoiDungHomNay_JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(MF_ThanhChucNangHomNay_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(MF_ThanhChucNangHomNay_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -840,10 +867,6 @@ public class MainFrame extends javax.swing.JFrame {
         AddMedicationFrame AMF = new AddMedicationFrame(MainFrame.this, this.UserName);
     }//GEN-LAST:event_MF_Them_JButtonActionPerformed
 
-    private void MF_SuDung1Lan_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_SuDung1Lan_JButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MF_SuDung1Lan_JButtonActionPerformed
-
     private void MF_BoQua_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_BoQua_JButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MF_BoQua_JButtonActionPerformed
@@ -1082,7 +1105,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane MF_NoiDungHomNay_JScrollPane;
     private javax.swing.JScrollPane MF_NoiDungLichSu_JScrollPane;
     private javax.swing.JLabel MF_PhanLoai_JLabel;
-    private javax.swing.JButton MF_SuDung1Lan_JButton;
     private javax.swing.JLabel MF_TenThuoc_JLabel;
     private javax.swing.JPanel MF_ThanhChucNangDanhMucThuoc_JPanel;
     private javax.swing.JPanel MF_ThanhChucNangHomNay_JPanel;
