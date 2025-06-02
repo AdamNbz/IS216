@@ -4,17 +4,60 @@
  */
 package userview;
 
+import com.formdev.flatlaf.FlatClientProperties;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.io.FileNotFoundException;
+import javax.swing.UIManager;
+import object.SettingObject;
+
 /**
  *
- * @author Tina
+ * @author Hinno
  */
 public class PreferencesFrame extends javax.swing.JFrame {
-
+	public static MainFrame mf;
     /**
      * Creates new form PreferencesFrame
      */
-    public PreferencesFrame() {
+    public PreferencesFrame(MainFrame mf) {
+        this.mf = mf;
+        FlatIntelliJLaf.setup();
+		try {
+			UIManager.setLookAndFeel( new FlatIntelliJLaf() );
+		} catch( Exception ex ) {
+			System.err.println( "Failed to initialize LaF" );
+		}
+		UIManager.put( "Button.arc", 50 );
+		UIManager.put( "Component.arc", 50 );
+		UIManager.put( "ProgressBar.arc", 50 );
+		UIManager.put( "TextComponent.arc", 50 );
+		UIManager.put( "TextArea.border", 50 );
+		UIManager.put( "ScrollPane.TextComponent.arc", 50 );
         initComponents();
+		JSONLoader();
+		this.setFrameInCenter();
+        this.setVisible(true);
+    }
+	
+	public void JSONLoader() {
+		SettingObject so = new SettingObject();
+		so.readJSON("/home/shanghuang/SMM_STO_" + MainFrame.UserName + "/SO/SettingObject.json");
+		PF_TuDongMoKhiDangNhap_JToggleButton.setSelected(so.isAutoStartUp());
+		PF_TuDongXoaLichSu_JToggleButton.setSelected(so.isAutoClearHistory());
+		PF_ThongBaoSoLuongThuocThap_JToggleButton.setSelected(so.isNotiOnLowLevel());
+		PF_DongY_JToggleButton.setSelected(so.isEnableConfirmButton());
+		PF_BoQua_JToggleButton.setSelected(so.isEnabelSkipButton());
+	}
+	
+	public void setFrameInCenter() {
+        final Toolkit toolkit = Toolkit.getDefaultToolkit();
+        final Dimension screenSize = toolkit.getScreenSize();
+        final int x = (screenSize.width - this.getWidth()) / 2;
+        final int y = (screenSize.height - this.getHeight()) / 2;
+        this.setLocation(x, y);
     }
 
     /**
@@ -36,9 +79,6 @@ public class PreferencesFrame extends javax.swing.JFrame {
         PF_ThongBaoSoLuongThuocThap_JPanel = new javax.swing.JPanel();
         PF_ThongBaoSoLuongThuocThap_JLabel = new javax.swing.JLabel();
         PF_ThongBaoSoLuongThuocThap_JToggleButton = new javax.swing.JToggleButton();
-        PF_ThongBaoSoLuongThuocThap_JPane = new javax.swing.JPanel();
-        PF_AmThanhThongBao_JLabel = new javax.swing.JLabel();
-        PF_AmThanhThongBao_JToggleButton = new javax.swing.JToggleButton();
         PF_CacNutThongBao_JPanel = new javax.swing.JPanel();
         PF_CacNutThongBao_JLabel = new javax.swing.JLabel();
         PF_DongY_JPanel = new javax.swing.JPanel();
@@ -49,316 +89,154 @@ public class PreferencesFrame extends javax.swing.JFrame {
         PF_BoQua_JToggleButton = new javax.swing.JToggleButton();
         PF_LuuCaiDat_JButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(Color.decode("#7f8c8d"));
+        setMaximumSize(new java.awt.Dimension(565, 550));
+        setMinimumSize(new java.awt.Dimension(565, 550));
+        setPreferredSize(new java.awt.Dimension(565, 550));
+        getContentPane().setLayout(new java.awt.GridLayout(8, 1, 5, 5));
 
+        PF_CatDat_JLabel.setBackground(new Color(0,0,0,0));
         PF_CatDat_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        PF_CatDat_JLabel.setForeground(Color.decode("#7f8c8d"));
+        PF_CatDat_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PF_CatDat_JLabel.setText("Cài đặt");
+        getContentPane().add(PF_CatDat_JLabel);
 
-        PF_TuDongMoKhiDangNhap_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        PF_TuDongMoKhiDangNhap_JLabel.setText("Tự động mở khi đăng nhập");
+        PF_TuDongMoKhiDangNhap_JPanel.setBackground(new Color(0,0,0,0));
+        PF_TuDongMoKhiDangNhap_JPanel.setForeground(Color.decode("#7f8c8d"));
+        PF_TuDongMoKhiDangNhap_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        PF_TuDongMoKhiDangNhap_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        PF_TuDongMoKhiDangNhap_JLabel.setText("Tự động mở khi bật nguồn");
+        PF_TuDongMoKhiDangNhap_JLabel.setMaximumSize(new java.awt.Dimension(420, 30));
+        PF_TuDongMoKhiDangNhap_JLabel.setMinimumSize(new java.awt.Dimension(420, 30));
+        PF_TuDongMoKhiDangNhap_JLabel.setPreferredSize(new java.awt.Dimension(420, 30));
+        PF_TuDongMoKhiDangNhap_JPanel.add(PF_TuDongMoKhiDangNhap_JLabel);
 
         PF_TuDongMoKhiDangNhap_JToggleButton.setText("Y/N");
-        PF_TuDongMoKhiDangNhap_JToggleButton.setMaximumSize(new java.awt.Dimension(110, 23));
-        PF_TuDongMoKhiDangNhap_JToggleButton.setMinimumSize(new java.awt.Dimension(110, 23));
-        PF_TuDongMoKhiDangNhap_JToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PF_TuDongMoKhiDangNhap_JToggleButtonActionPerformed(evt);
-            }
-        });
+        PF_TuDongMoKhiDangNhap_JToggleButton.setMaximumSize(new java.awt.Dimension(130, 30));
+        PF_TuDongMoKhiDangNhap_JToggleButton.setMinimumSize(new java.awt.Dimension(130, 30));
+        PF_TuDongMoKhiDangNhap_JToggleButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        PF_TuDongMoKhiDangNhap_JPanel.add(PF_TuDongMoKhiDangNhap_JToggleButton);
 
-        javax.swing.GroupLayout PF_TuDongMoKhiDangNhap_JPanelLayout = new javax.swing.GroupLayout(PF_TuDongMoKhiDangNhap_JPanel);
-        PF_TuDongMoKhiDangNhap_JPanel.setLayout(PF_TuDongMoKhiDangNhap_JPanelLayout);
-        PF_TuDongMoKhiDangNhap_JPanelLayout.setHorizontalGroup(
-            PF_TuDongMoKhiDangNhap_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_TuDongMoKhiDangNhap_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PF_TuDongMoKhiDangNhap_JLabel)
-                .addGap(1, 130, Short.MAX_VALUE)
-                .addComponent(PF_TuDongMoKhiDangNhap_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PF_TuDongMoKhiDangNhap_JPanelLayout.setVerticalGroup(
-            PF_TuDongMoKhiDangNhap_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_TuDongMoKhiDangNhap_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PF_TuDongMoKhiDangNhap_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PF_TuDongMoKhiDangNhap_JLabel)
-                    .addComponent(PF_TuDongMoKhiDangNhap_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        getContentPane().add(PF_TuDongMoKhiDangNhap_JPanel);
 
-        PF_TuDongMoKhiDangNhap_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {PF_TuDongMoKhiDangNhap_JLabel, PF_TuDongMoKhiDangNhap_JToggleButton});
+        PF_TuDongXoaLichSu_JPanel.setBackground(new Color(0,0,0,0));
+        PF_TuDongXoaLichSu_JPanel.setForeground(Color.decode("#7f8c8d"));
+        PF_TuDongXoaLichSu_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        PF_TuDongXoaLichSu_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        PF_TuDongXoaLichSu_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PF_TuDongXoaLichSu_JLabel.setText("Tự động xóa lịch sử");
+        PF_TuDongXoaLichSu_JLabel.setMaximumSize(new java.awt.Dimension(420, 30));
+        PF_TuDongXoaLichSu_JLabel.setMinimumSize(new java.awt.Dimension(420, 30));
+        PF_TuDongXoaLichSu_JLabel.setPreferredSize(new java.awt.Dimension(420, 30));
+        PF_TuDongXoaLichSu_JPanel.add(PF_TuDongXoaLichSu_JLabel);
 
         PF_TuDongXoaLichSu_JToggleButton.setText("Y/N");
-        PF_TuDongXoaLichSu_JToggleButton.setMaximumSize(new java.awt.Dimension(110, 23));
-        PF_TuDongXoaLichSu_JToggleButton.setMinimumSize(new java.awt.Dimension(110, 23));
-        PF_TuDongXoaLichSu_JToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PF_TuDongXoaLichSu_JToggleButtonActionPerformed(evt);
-            }
-        });
+        PF_TuDongXoaLichSu_JToggleButton.setMaximumSize(new java.awt.Dimension(130, 30));
+        PF_TuDongXoaLichSu_JToggleButton.setMinimumSize(new java.awt.Dimension(130, 30));
+        PF_TuDongXoaLichSu_JToggleButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        PF_TuDongXoaLichSu_JPanel.add(PF_TuDongXoaLichSu_JToggleButton);
 
-        javax.swing.GroupLayout PF_TuDongXoaLichSu_JPanelLayout = new javax.swing.GroupLayout(PF_TuDongXoaLichSu_JPanel);
-        PF_TuDongXoaLichSu_JPanel.setLayout(PF_TuDongXoaLichSu_JPanelLayout);
-        PF_TuDongXoaLichSu_JPanelLayout.setHorizontalGroup(
-            PF_TuDongXoaLichSu_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_TuDongXoaLichSu_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PF_TuDongXoaLichSu_JLabel)
-                .addGap(1, 215, Short.MAX_VALUE)
-                .addComponent(PF_TuDongXoaLichSu_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PF_TuDongXoaLichSu_JPanelLayout.setVerticalGroup(
-            PF_TuDongXoaLichSu_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_TuDongXoaLichSu_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PF_TuDongXoaLichSu_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PF_TuDongXoaLichSu_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PF_TuDongXoaLichSu_JLabel))
-                .addContainerGap())
-        );
+        getContentPane().add(PF_TuDongXoaLichSu_JPanel);
 
-        PF_TuDongXoaLichSu_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {PF_TuDongXoaLichSu_JLabel, PF_TuDongXoaLichSu_JToggleButton});
+        PF_ThongBaoSoLuongThuocThap_JPanel.setBackground(new Color(0,0,0,0));
+        PF_ThongBaoSoLuongThuocThap_JPanel.setForeground(Color.decode("#7f8c8d"));
+        PF_ThongBaoSoLuongThuocThap_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        PF_ThongBaoSoLuongThuocThap_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        PF_ThongBaoSoLuongThuocThap_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PF_ThongBaoSoLuongThuocThap_JLabel.setText("Thông báo số lượng thuốc thấp");
         PF_ThongBaoSoLuongThuocThap_JLabel.setToolTipText("");
+        PF_ThongBaoSoLuongThuocThap_JLabel.setMaximumSize(new java.awt.Dimension(420, 30));
+        PF_ThongBaoSoLuongThuocThap_JLabel.setMinimumSize(new java.awt.Dimension(420, 30));
+        PF_ThongBaoSoLuongThuocThap_JLabel.setPreferredSize(new java.awt.Dimension(420, 30));
+        PF_ThongBaoSoLuongThuocThap_JPanel.add(PF_ThongBaoSoLuongThuocThap_JLabel);
 
         PF_ThongBaoSoLuongThuocThap_JToggleButton.setText("Y/N");
-        PF_ThongBaoSoLuongThuocThap_JToggleButton.setMaximumSize(new java.awt.Dimension(110, 23));
-        PF_ThongBaoSoLuongThuocThap_JToggleButton.setMinimumSize(new java.awt.Dimension(110, 23));
-        PF_ThongBaoSoLuongThuocThap_JToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PF_ThongBaoSoLuongThuocThap_JToggleButtonActionPerformed(evt);
-            }
-        });
+        PF_ThongBaoSoLuongThuocThap_JToggleButton.setMaximumSize(new java.awt.Dimension(130, 30));
+        PF_ThongBaoSoLuongThuocThap_JToggleButton.setMinimumSize(new java.awt.Dimension(130, 30));
+        PF_ThongBaoSoLuongThuocThap_JToggleButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        PF_ThongBaoSoLuongThuocThap_JPanel.add(PF_ThongBaoSoLuongThuocThap_JToggleButton);
 
-        javax.swing.GroupLayout PF_ThongBaoSoLuongThuocThap_JPanelLayout = new javax.swing.GroupLayout(PF_ThongBaoSoLuongThuocThap_JPanel);
-        PF_ThongBaoSoLuongThuocThap_JPanel.setLayout(PF_ThongBaoSoLuongThuocThap_JPanelLayout);
-        PF_ThongBaoSoLuongThuocThap_JPanelLayout.setHorizontalGroup(
-            PF_ThongBaoSoLuongThuocThap_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_ThongBaoSoLuongThuocThap_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PF_ThongBaoSoLuongThuocThap_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PF_ThongBaoSoLuongThuocThap_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PF_ThongBaoSoLuongThuocThap_JPanelLayout.setVerticalGroup(
-            PF_ThongBaoSoLuongThuocThap_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_ThongBaoSoLuongThuocThap_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PF_ThongBaoSoLuongThuocThap_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PF_ThongBaoSoLuongThuocThap_JLabel)
-                    .addComponent(PF_ThongBaoSoLuongThuocThap_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        getContentPane().add(PF_ThongBaoSoLuongThuocThap_JPanel);
 
-        PF_ThongBaoSoLuongThuocThap_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {PF_ThongBaoSoLuongThuocThap_JLabel, PF_ThongBaoSoLuongThuocThap_JToggleButton});
+        PF_CacNutThongBao_JPanel.setBackground(new Color(0,0,0,0));
+        PF_CacNutThongBao_JPanel.setForeground(Color.decode("#7f8c8d"));
+        PF_CacNutThongBao_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        PF_AmThanhThongBao_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        PF_AmThanhThongBao_JLabel.setText("Âm thanh của thông báo");
-
-        PF_AmThanhThongBao_JToggleButton.setText("Y/N");
-        PF_AmThanhThongBao_JToggleButton.setMaximumSize(new java.awt.Dimension(110, 23));
-        PF_AmThanhThongBao_JToggleButton.setMinimumSize(new java.awt.Dimension(110, 23));
-        PF_AmThanhThongBao_JToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PF_AmThanhThongBao_JToggleButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout PF_ThongBaoSoLuongThuocThap_JPaneLayout = new javax.swing.GroupLayout(PF_ThongBaoSoLuongThuocThap_JPane);
-        PF_ThongBaoSoLuongThuocThap_JPane.setLayout(PF_ThongBaoSoLuongThuocThap_JPaneLayout);
-        PF_ThongBaoSoLuongThuocThap_JPaneLayout.setHorizontalGroup(
-            PF_ThongBaoSoLuongThuocThap_JPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_ThongBaoSoLuongThuocThap_JPaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PF_AmThanhThongBao_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PF_AmThanhThongBao_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PF_ThongBaoSoLuongThuocThap_JPaneLayout.setVerticalGroup(
-            PF_ThongBaoSoLuongThuocThap_JPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_ThongBaoSoLuongThuocThap_JPaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PF_ThongBaoSoLuongThuocThap_JPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PF_AmThanhThongBao_JLabel)
-                    .addComponent(PF_AmThanhThongBao_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
-        PF_ThongBaoSoLuongThuocThap_JPaneLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {PF_AmThanhThongBao_JLabel, PF_AmThanhThongBao_JToggleButton});
-
-        PF_CacNutThongBao_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        PF_CacNutThongBao_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PF_CacNutThongBao_JLabel.setText("Các nút thông báo");
+        PF_CacNutThongBao_JLabel.setMaximumSize(new java.awt.Dimension(420, 30));
+        PF_CacNutThongBao_JLabel.setMinimumSize(new java.awt.Dimension(420, 30));
+        PF_CacNutThongBao_JLabel.setPreferredSize(new java.awt.Dimension(420, 30));
+        PF_CacNutThongBao_JPanel.add(PF_CacNutThongBao_JLabel);
 
-        javax.swing.GroupLayout PF_CacNutThongBao_JPanelLayout = new javax.swing.GroupLayout(PF_CacNutThongBao_JPanel);
-        PF_CacNutThongBao_JPanel.setLayout(PF_CacNutThongBao_JPanelLayout);
-        PF_CacNutThongBao_JPanelLayout.setHorizontalGroup(
-            PF_CacNutThongBao_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_CacNutThongBao_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PF_CacNutThongBao_JLabel)
-                .addContainerGap())
-        );
-        PF_CacNutThongBao_JPanelLayout.setVerticalGroup(
-            PF_CacNutThongBao_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_CacNutThongBao_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PF_CacNutThongBao_JLabel)
-                .addContainerGap())
-        );
+        getContentPane().add(PF_CacNutThongBao_JPanel);
 
-        PF_DongY_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        PF_DongY_JPanel.setBackground(new Color(0,0,0,0));
+        PF_DongY_JPanel.setForeground(Color.decode("#7f8c8d"));
+        PF_DongY_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
+        PF_DongY_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PF_DongY_JLabel.setText("Đồng ý");
+        PF_DongY_JLabel.setMaximumSize(new java.awt.Dimension(420, 30));
+        PF_DongY_JLabel.setMinimumSize(new java.awt.Dimension(420, 30));
+        PF_DongY_JLabel.setPreferredSize(new java.awt.Dimension(420, 30));
+        PF_DongY_JPanel.add(PF_DongY_JLabel);
 
         PF_DongY_JToggleButton.setText("Y/N");
-        PF_DongY_JToggleButton.setMaximumSize(new java.awt.Dimension(110, 23));
-        PF_DongY_JToggleButton.setMinimumSize(new java.awt.Dimension(110, 23));
+        PF_DongY_JToggleButton.setMaximumSize(new java.awt.Dimension(130, 30));
+        PF_DongY_JToggleButton.setMinimumSize(new java.awt.Dimension(130, 30));
+        PF_DongY_JToggleButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        PF_DongY_JPanel.add(PF_DongY_JToggleButton);
 
-        javax.swing.GroupLayout PF_DongY_JPanelLayout = new javax.swing.GroupLayout(PF_DongY_JPanel);
-        PF_DongY_JPanel.setLayout(PF_DongY_JPanelLayout);
-        PF_DongY_JPanelLayout.setHorizontalGroup(
-            PF_DongY_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_DongY_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PF_DongY_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PF_DongY_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PF_DongY_JPanelLayout.setVerticalGroup(
-            PF_DongY_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_DongY_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PF_DongY_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PF_DongY_JLabel)
-                    .addComponent(PF_DongY_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        getContentPane().add(PF_DongY_JPanel);
 
-        PF_DongY_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {PF_DongY_JLabel, PF_DongY_JToggleButton});
+        PF_BoQua_JPanel.setBackground(new Color(0,0,0,0));
+        PF_BoQua_JPanel.setForeground(Color.decode("#7f8c8d"));
+        PF_BoQua_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        PF_BoQua_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        PF_BoQua_JLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PF_BoQua_JLabel.setText("Bỏ qua");
+        PF_BoQua_JLabel.setMaximumSize(new java.awt.Dimension(420, 30));
+        PF_BoQua_JLabel.setMinimumSize(new java.awt.Dimension(420, 30));
+        PF_BoQua_JLabel.setPreferredSize(new java.awt.Dimension(420, 30));
+        PF_BoQua_JPanel.add(PF_BoQua_JLabel);
 
         PF_BoQua_JToggleButton.setText("Y/N");
-        PF_BoQua_JToggleButton.setMaximumSize(new java.awt.Dimension(110, 23));
-        PF_BoQua_JToggleButton.setMinimumSize(new java.awt.Dimension(110, 23));
-        PF_BoQua_JToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PF_BoQua_JToggleButtonActionPerformed(evt);
-            }
-        });
+        PF_BoQua_JToggleButton.setMaximumSize(new java.awt.Dimension(130, 30));
+        PF_BoQua_JToggleButton.setMinimumSize(new java.awt.Dimension(130, 30));
+        PF_BoQua_JToggleButton.setPreferredSize(new java.awt.Dimension(130, 30));
+        PF_BoQua_JPanel.add(PF_BoQua_JToggleButton);
 
-        javax.swing.GroupLayout PF_BoQua_JPanelLayout = new javax.swing.GroupLayout(PF_BoQua_JPanel);
-        PF_BoQua_JPanel.setLayout(PF_BoQua_JPanelLayout);
-        PF_BoQua_JPanelLayout.setHorizontalGroup(
-            PF_BoQua_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_BoQua_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PF_BoQua_JLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PF_BoQua_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PF_BoQua_JPanelLayout.setVerticalGroup(
-            PF_BoQua_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PF_BoQua_JPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PF_BoQua_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PF_BoQua_JToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PF_BoQua_JLabel))
-                .addContainerGap())
-        );
+        getContentPane().add(PF_BoQua_JPanel);
 
-        PF_BoQua_JPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {PF_BoQua_JLabel, PF_BoQua_JToggleButton});
-
+        PF_LuuCaiDat_JButton.setBackground(Color.decode("#7f8c8d"));
         PF_LuuCaiDat_JButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         PF_LuuCaiDat_JButton.setText("Lưu cài đặt");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PF_TuDongMoKhiDangNhap_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(PF_TuDongXoaLichSu_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(PF_ThongBaoSoLuongThuocThap_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(PF_ThongBaoSoLuongThuocThap_JPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(PF_DongY_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(PF_BoQua_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(196, 196, 196)
-                                .addComponent(PF_CatDat_JLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(PF_CacNutThongBao_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(PF_LuuCaiDat_JButton)
-                .addGap(181, 181, 181))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PF_CatDat_JLabel)
-                .addGap(18, 18, 18)
-                .addComponent(PF_TuDongMoKhiDangNhap_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PF_TuDongXoaLichSu_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PF_ThongBaoSoLuongThuocThap_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PF_ThongBaoSoLuongThuocThap_JPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PF_CacNutThongBao_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PF_DongY_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PF_BoQua_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PF_LuuCaiDat_JButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        PF_LuuCaiDat_JButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PF_LuuCaiDat_JButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(PF_LuuCaiDat_JButton);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PF_TuDongMoKhiDangNhap_JToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_TuDongMoKhiDangNhap_JToggleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PF_TuDongMoKhiDangNhap_JToggleButtonActionPerformed
-
-    private void PF_TuDongXoaLichSu_JToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_TuDongXoaLichSu_JToggleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PF_TuDongXoaLichSu_JToggleButtonActionPerformed
-
-    private void PF_AmThanhThongBao_JToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_AmThanhThongBao_JToggleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PF_AmThanhThongBao_JToggleButtonActionPerformed
-
-    private void PF_ThongBaoSoLuongThuocThap_JToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_ThongBaoSoLuongThuocThap_JToggleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PF_ThongBaoSoLuongThuocThap_JToggleButtonActionPerformed
-
-    private void PF_BoQua_JToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_BoQua_JToggleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PF_BoQua_JToggleButtonActionPerformed
+    private void PF_LuuCaiDat_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PF_LuuCaiDat_JButtonActionPerformed
+        SettingObject so = new SettingObject(
+				PF_TuDongMoKhiDangNhap_JToggleButton.isSelected(),
+				PF_TuDongXoaLichSu_JToggleButton.isSelected(),
+				PF_ThongBaoSoLuongThuocThap_JToggleButton.isSelected(),
+				PF_DongY_JToggleButton.isSelected(),
+				PF_BoQua_JToggleButton.isSelected()
+		);
+		so.writeJSON();
+		this.mf.setVisible(true);
+		this.dispose();
+    }//GEN-LAST:event_PF_LuuCaiDat_JButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,14 +269,12 @@ public class PreferencesFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PreferencesFrame().setVisible(true);
+                new PreferencesFrame(mf).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel PF_AmThanhThongBao_JLabel;
-    private javax.swing.JToggleButton PF_AmThanhThongBao_JToggleButton;
     private javax.swing.JLabel PF_BoQua_JLabel;
     private javax.swing.JPanel PF_BoQua_JPanel;
     private javax.swing.JToggleButton PF_BoQua_JToggleButton;
@@ -410,7 +286,6 @@ public class PreferencesFrame extends javax.swing.JFrame {
     private javax.swing.JToggleButton PF_DongY_JToggleButton;
     private javax.swing.JButton PF_LuuCaiDat_JButton;
     private javax.swing.JLabel PF_ThongBaoSoLuongThuocThap_JLabel;
-    private javax.swing.JPanel PF_ThongBaoSoLuongThuocThap_JPane;
     private javax.swing.JPanel PF_ThongBaoSoLuongThuocThap_JPanel;
     private javax.swing.JToggleButton PF_ThongBaoSoLuongThuocThap_JToggleButton;
     private javax.swing.JLabel PF_TuDongMoKhiDangNhap_JLabel;

@@ -104,6 +104,8 @@ public class MainSupervisorFrame extends javax.swing.JFrame {
         MF_TenThuoc_JLabel = new javax.swing.JLabel();
         MF_TraCuuOnline_JTextField = new javax.swing.JTextField();
         MF_TraCuuOnline_JButton = new javax.swing.JButton();
+        MF_Xoa_JButton = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         MF_Chon_JMenuBar = new javax.swing.JMenuBar();
         MF_CaiDat_VePhanMem_Thoat_JMI_JMenu = new javax.swing.JMenu();
         MF_Thoat_JMenuItem = new javax.swing.JMenuItem();
@@ -164,7 +166,7 @@ public class MainSupervisorFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGap(0, 612, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,7 +307,7 @@ public class MainSupervisorFrame extends javax.swing.JFrame {
             MF_KhungNoiDungDanhMucThuoc_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MF_KhungNoiDungDanhMucThuoc_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jSplitPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE)
+                .addComponent(jSplitPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1146, Short.MAX_VALUE)
                 .addContainerGap())
         );
         MF_KhungNoiDungDanhMucThuoc_JPanelLayout.setVerticalGroup(
@@ -358,7 +360,7 @@ public class MainSupervisorFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MF_IntermidiateContainer_JTabbedPane.addTab("Báo cáo thói quen người dùng", MF_DanhMucThuoc_JPanel);
+        MF_IntermidiateContainer_JTabbedPane.addTab("Thống kê thói quen người dùng", MF_DanhMucThuoc_JPanel);
 
         MF_NoiDungTraCuuOnline_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         MF_NoiDungTraCuuOnline_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -367,7 +369,7 @@ public class MainSupervisorFrame extends javax.swing.JFrame {
         MF_KhungNoiDungTraCuuOnline_JPanel.setLayout(MF_KhungNoiDungTraCuuOnline_JPanelLayout);
         MF_KhungNoiDungTraCuuOnline_JPanelLayout.setHorizontalGroup(
             MF_KhungNoiDungTraCuuOnline_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1030, Short.MAX_VALUE)
+            .addGap(0, 1134, Short.MAX_VALUE)
         );
         MF_KhungNoiDungTraCuuOnline_JPanelLayout.setVerticalGroup(
             MF_KhungNoiDungTraCuuOnline_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -397,21 +399,22 @@ public class MainSupervisorFrame extends javax.swing.JFrame {
         MF_TraCuuOnline_JButton.setPreferredSize(new java.awt.Dimension(107, 30));
         MF_ThanhChucNangTraCuuOnline_JPanel.add(MF_TraCuuOnline_JButton);
 
+        MF_Xoa_JButton.setFont(new java.awt.Font("SF Mono", 0, 18)); // NOI18N
+        MF_Xoa_JButton.setText("Xóa");
+        MF_Xoa_JButton.setPreferredSize(new java.awt.Dimension(107, 30));
+        MF_ThanhChucNangTraCuuOnline_JPanel.add(MF_Xoa_JButton);
+
         javax.swing.GroupLayout MF_TraCuuOnline_JPanelLayout = new javax.swing.GroupLayout(MF_TraCuuOnline_JPanel);
         MF_TraCuuOnline_JPanel.setLayout(MF_TraCuuOnline_JPanelLayout);
         MF_TraCuuOnline_JPanelLayout.setHorizontalGroup(
             MF_TraCuuOnline_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MF_TraCuuOnline_JPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MF_TraCuuOnline_JPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(MF_TraCuuOnline_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MF_TraCuuOnline_JPanelLayout.createSequentialGroup()
-                        .addComponent(MF_ThanhChucNangTraCuuOnline_JPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(MF_TraCuuOnline_JPanelLayout.createSequentialGroup()
-                        .addGroup(MF_TraCuuOnline_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(MF_JSeparator)
-                            .addComponent(MF_NoiDungTraCuuOnline_JScrollPane))
-                        .addContainerGap())))
+                .addGroup(MF_TraCuuOnline_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(MF_ThanhChucNangTraCuuOnline_JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MF_JSeparator)
+                    .addComponent(MF_NoiDungTraCuuOnline_JScrollPane))
+                .addContainerGap())
         );
         MF_TraCuuOnline_JPanelLayout.setVerticalGroup(
             MF_TraCuuOnline_JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,6 +429,19 @@ public class MainSupervisorFrame extends javax.swing.JFrame {
         );
 
         MF_IntermidiateContainer_JTabbedPane.addTab("Tra cứu thông tin người dùng", MF_TraCuuOnline_JPanel);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1158, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 709, Short.MAX_VALUE)
+        );
+
+        MF_IntermidiateContainer_JTabbedPane.addTab("Danh sách phản hồi", jPanel3);
 
         MF_Chon_JMenuBar.setBackground(null);
         MF_Chon_JMenuBar.setForeground(null);
@@ -450,7 +466,9 @@ public class MainSupervisorFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MF_IntermidiateContainer_JTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(MF_IntermidiateContainer_JTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -530,8 +548,6 @@ public class MainSupervisorFrame extends javax.swing.JFrame {
     private javax.swing.JSeparator MF_JSeparator;
     private javax.swing.JPanel MF_KhungNoiDungDanhMucThuoc_JPanel;
     private javax.swing.JPanel MF_KhungNoiDungHomNay_JPanel;
-    private javax.swing.JPanel MF_KhungNoiDungHomNay_JPanel1;
-    private javax.swing.JPanel MF_KhungNoiDungHomNay_JPanel2;
     private javax.swing.JPanel MF_KhungNoiDungTraCuuOnline_JPanel;
     private javax.swing.JScrollPane MF_NoiDungTraCuuOnline_JScrollPane;
     private javax.swing.JLabel MF_TenThuoc_JLabel;
@@ -542,6 +558,7 @@ public class MainSupervisorFrame extends javax.swing.JFrame {
     private javax.swing.JButton MF_TraCuuOnline_JButton;
     private javax.swing.JPanel MF_TraCuuOnline_JPanel;
     private javax.swing.JTextField MF_TraCuuOnline_JTextField;
+    private javax.swing.JButton MF_Xoa_JButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -556,24 +573,15 @@ public class MainSupervisorFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JSplitPane jSplitPane3;
-    private javax.swing.JSplitPane jSplitPane4;
     private javax.swing.JSplitPane jSplitPane5;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     // End of variables declaration//GEN-END:variables
 }

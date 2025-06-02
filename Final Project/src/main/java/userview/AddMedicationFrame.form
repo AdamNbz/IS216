@@ -2,7 +2,7 @@
 
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -27,10 +27,12 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="AMF_NoiDungThemThuoc_JScrollPane" max="32767" attributes="0"/>
-                  <Component id="AMF_ThanhChucNang_JPanel" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="AMF_ThanhChucNang_JPanel" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="AMF_NoiDungThemThuoc_JScrollPane" pref="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -40,7 +42,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="AMF_ThanhChucNang_JPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="AMF_NoiDungThemThuoc_JScrollPane" pref="504" max="32767" attributes="0"/>
+              <Component id="AMF_NoiDungThemThuoc_JScrollPane" pref="520" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -49,53 +51,45 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="AMF_ThanhChucNang_JPanel">
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="AMF_Huy_JButton" min="-2" pref="83" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                  <Component id="AMF_ThemDonThuocMoi_JLabel" min="-2" pref="397" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="AMF_Them_JButton" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="AMF_ThemDonThuocMoi_JLabel" linkSize="12" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
-                      <Component id="AMF_Them_JButton" linkSize="12" min="-2" pref="54" max="-2" attributes="0"/>
-                      <Component id="AMF_Huy_JButton" linkSize="12" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="AMF_ThemDonThuocMoi_JLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="SF Mono" size="36" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Th&#xea;m &#x111;&#x1a1;n thu&#x1ed1;c m&#x1edb;i"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="AMF_Huy_JButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SF Mono" size="24" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="H&#x1ee7;y"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 40]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 40]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 40]"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_Huy_JButtonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="AMF_ThemDonThuocMoi_JLabel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SF Mono" size="36" style="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Th&#xea;m &#x111;&#x1a1;n thu&#x1ed1;c m&#x1edb;i"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[425, 40]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[425, 40]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[425, 40]"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="AMF_Them_JButton">
           <Properties>
@@ -103,6 +97,15 @@
               <Font name="SF Mono" size="24" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 40]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 40]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[120, 40]"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_Them_JButtonActionPerformed"/>
@@ -112,6 +115,9 @@
     </Container>
     <Container class="javax.swing.JScrollPane" name="AMF_NoiDungThemThuoc_JScrollPane">
       <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
         <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
         <Property name="verticalScrollBarPolicy" type="int" value="22"/>
       </Properties>
@@ -122,35 +128,15 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
             <Property name="columns" type="int" value="1"/>
+            <Property name="horizontalGap" type="int" value="5"/>
             <Property name="rows" type="int" value="9"/>
+            <Property name="verticalGap" type="int" value="5"/>
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="AMF_Ten_JPanel">
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_Ten_JLabel" min="-2" pref="59" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="AMF_Ten_JTextField" min="-2" pref="385" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="AMF_Ten_JLabel" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_Ten_JTextField" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                <Property name="alignment" type="int" value="0"/>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="AMF_Ten_JLabel">
@@ -159,12 +145,31 @@
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="T&#xea;n:"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="AMF_Ten_JTextField">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SF Mono" size="18" style="0"/>
+                    </Property>
+                    <Property name="toolTipText" type="java.lang.String" value="Kh&#xf4;ng &#x111;i&#x1ec1;n &#x111;&#x1a1;n v&#x1ecb; v&#xe0;o t&#xea;n thu&#x1ed1;c&#xa;Vi&#x1ebf;t li&#x1ec1;n t&#xea;n thu&#x1ed1;c (kh&#xf4;ng d&#x1ea5;u c&#xe1;ch &quot; &quot;)"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[385, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[385, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[385, 30]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -175,30 +180,8 @@
             </Container>
             <Container class="javax.swing.JPanel" name="AMF_DonVi_JPanel">
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_DonVi_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="AMF_DonVi_JTextField" min="-2" pref="385" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="AMF_DonVi_JTextField" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_DonVi_JLabel" linkSize="8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                <Property name="alignment" type="int" value="0"/>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="AMF_DonVi_JLabel">
@@ -207,6 +190,15 @@
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="&#x110;&#x1a1;n v&#x1ecb;:"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="AMF_DonVi_JTextField">
@@ -214,36 +206,26 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[385, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[385, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[385, 30]"/>
+                    </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_DonVi_JTextFieldActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="AMF_GhiChu_JPanel">
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_GhiChu_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="AMF_GhiChu_JTextField" min="-2" pref="385" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="AMF_GhiChu_JTextField" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_GhiChu_JLabel" linkSize="9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                <Property name="alignment" type="int" value="0"/>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="AMF_GhiChu_JLabel">
@@ -252,6 +234,15 @@
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Ghi ch&#xfa;:"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="AMF_GhiChu_JTextField">
@@ -259,39 +250,26 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[385, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[385, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[385, 30]"/>
+                    </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_GhiChu_JTextFieldActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="AMF_TanSuatSuDung_JPanel">
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_TanSuatSuDung_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="AMF_TanSuatSuDung_JComboBox" pref="330" max="32767" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="AMF_TanSuatSuDung_JButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="AMF_TanSuatSuDung_JComboBox" linkSize="11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_TanSuatSuDung_JLabel" linkSize="11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_TanSuatSuDung_JButton" linkSize="11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                <Property name="alignment" type="int" value="0"/>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="AMF_TanSuatSuDung_JLabel">
@@ -300,6 +278,15 @@
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="T&#x1ea7;n su&#x1ea5;t s&#x1eed; d&#x1ee5;ng thu&#x1ed1;c:"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[270, 30]"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="AMF_TanSuatSuDung_JComboBox">
@@ -315,9 +302,18 @@
                         <StringItem index="3" value="Khi c&#x1ea7;n thi&#x1ebf;t"/>
                       </StringArray>
                     </Property>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[250, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[250, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[250, 30]"/>
+                    </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_TanSuatSuDung_JComboBoxActionPerformed"/>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="AMF_TanSuatSuDung_JComboBoxItemStateChanged"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -326,6 +322,15 @@
                 <Component class="javax.swing.JButton" name="AMF_TanSuatSuDung_JButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="..."/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[40, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[40, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[40, 30]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_TanSuatSuDung_JButtonActionPerformed"/>
@@ -335,30 +340,8 @@
             </Container>
             <Container class="javax.swing.JPanel" name="AMF_UuTienThongBao_JPanel">
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_UuTienThongBao_JLabel" min="-2" pref="420" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="AMF_UuTienThongBao_JToggleButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="AMF_UuTienThongBao_JLabel" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_UuTienThongBao_JToggleButton" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                <Property name="alignment" type="int" value="0"/>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="AMF_UuTienThongBao_JLabel">
@@ -367,6 +350,15 @@
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="&#x110;&#x1eb7;t m&#x1ee9;c &#x111;&#x1ed9; &#x1b0;u ti&#xea;n th&#xf4;ng b&#xe1;o cao h&#x1a1;n:"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[410, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[410, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[410, 30]"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JToggleButton" name="AMF_UuTienThongBao_JToggleButton">
@@ -375,6 +367,15 @@
                       <Font name="Segoe UI" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Y/N"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_UuTienThongBao_JToggleButtonActionPerformed"/>
@@ -384,30 +385,8 @@
             </Container>
             <Container class="javax.swing.JPanel" name="AMF_TuDongXacNhanSuDung_JPanel">
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_TuDongXacNhanSuDung_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="AMF_TuDongXacNhanSuDung_JToggleButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="AMF_TuDongXacNhanSuDung_JLabel" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_TuDongXacNhanSuDung_JToggleButton" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                <Property name="alignment" type="int" value="0"/>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="AMF_TuDongXacNhanSuDung_JLabel">
@@ -416,6 +395,15 @@
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="T&#x1ef1; &#x111;&#x1ed9;ng x&#xe1;c nh&#x1ead;n s&#x1eed; d&#x1ee5;ng thu&#x1ed1;c:"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[410, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[410, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[410, 30]"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JToggleButton" name="AMF_TuDongXacNhanSuDung_JToggleButton">
@@ -424,6 +412,15 @@
                       <Font name="Segoe UI" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Y/N"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_TuDongXacNhanSuDung_JToggleButtonActionPerformed"/>
@@ -431,41 +428,66 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Container class="javax.swing.JPanel" name="AMF_KhoangThoiGianLapThongBao_JPanel">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                <Property name="alignment" type="int" value="0"/>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="AMF_KhoangThoiGianLapThongBao_JLabel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SF Mono" size="18" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Kho&#x1ea3;ng th&#x1edd;i gian l&#x1eb7;p th&#xf4;ng b&#xe1;o: "/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[410, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[410, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[410, 30]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSpinner" name="AMF_KhoangThoiGianLapThongBao_JSpinner">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="SF Mono" size="18" style="0"/>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Default Cursor"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
+                    <Property name="requestFocusEnabled" type="boolean" value="false"/>
+                    <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="5" type="code"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_KhoangThoiGianLapThongBao_JSpinnerStateChanged"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_KhoangThoiGianLapThongBao = AMF_KhoangThoiGianLapThongBao_JSpinner.getEditor();&#xa;JFormattedTextField tf_KhoangThoiGianLapThongBao = ((JSpinner.DefaultEditor) editor_KhoangThoiGianLapThongBao).getTextField();&#xa;tf_KhoangThoiGianLapThongBao.setEditable(false);&#xa;tf_KhoangThoiGianLapThongBao.setColumns(3);&#xa;tf_KhoangThoiGianLapThongBao.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_KhoangThoiGianLapThongBao_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel KhoangThoiGianLapThongBao_model = new SpinnerNumberModel(5, 5, 60, 5);&#xa;AMF_KhoangThoiGianLapThongBao_JSpinner.setModel(KhoangThoiGianLapThongBao_model);"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
             <Container class="javax.swing.JPanel" name="AMF_QuanLySoLuongThuoc_JPanel">
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_QuanLySoLuongThuoc_JLabel" min="-2" pref="259" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="AMF_HienCo_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="AMF_HienCo_JSpinner" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Component id="AMF_NhacNho_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_NhacNho_JSpinner" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="AMF_NhacNho_JLabel" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_HienCo_JLabel" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_QuanLySoLuongThuoc_JLabel" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_HienCo_JSpinner" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_NhacNho_JSpinner" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                <Property name="alignment" type="int" value="0"/>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="AMF_QuanLySoLuongThuoc_JLabel">
@@ -474,6 +496,15 @@
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; s&#x1ed1; l&#x1b0;&#x1ee3;ng thu&#x1ed1;c:"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[315, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[315, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[315, 30]"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="AMF_HienCo_JLabel">
@@ -482,6 +513,15 @@
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Hi&#x1ec7;n c&#xf3;"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="AMF_HienCo_JSpinner">
@@ -493,10 +533,26 @@
                       <Color id="Default Cursor"/>
                     </Property>
                     <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
+                    <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="1" type="code"/>
+                    </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_HienCo_JSpinnerStateChanged"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js11 = AMF_HienCo_JSpinner.getEditor();&#xa;JFormattedTextField tf_js11 = ((JSpinner.DefaultEditor) editor_js11).getTextField();&#xa;tf_js11.setEditable(false);&#xa;tf_js11.setColumns(3);&#xa;tf_js11.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_HienCo_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_HienCo = AMF_HienCo_JSpinner.getEditor();&#xa;JFormattedTextField tf_HienCo = ((JSpinner.DefaultEditor) editor_HienCo).getTextField();&#xa;tf_HienCo.setEditable(false);&#xa;tf_HienCo.setColumns(3);&#xa;tf_HienCo.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_HienCo_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel HienCo_model = new SpinnerNumberModel(1, 1, 100, 1);&#xa;AMF_HienCo_JSpinner.setModel(HienCo_model);"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="AMF_NhacNho_JLabel">
@@ -505,6 +561,15 @@
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Nh&#x1eaf;c nh&#x1edf;"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="AMF_NhacNho_JSpinner">
@@ -516,119 +581,34 @@
                       <Color id="Default Cursor"/>
                     </Property>
                     <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[70, 30]"/>
+                    </Property>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js12 = AMF_NhacNho_JSpinner.getEditor();&#xa;JFormattedTextField tf_js12 = ((JSpinner.DefaultEditor) editor_js12).getTextField();&#xa;tf_js12.setEditable(false);&#xa;tf_js12.setColumns(3);&#xa;tf_js12.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_NhacNho_JSpinner.setSize(64, 32);"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="AMF_KhoangThoiGianLapThongBao_JPanel">
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_KhoangThoiGianLapThongBao_JLabel" min="-2" pref="357" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="AMF_KhoangThoiGianLapThongBao_JToggleButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_KhoangThoiGianLapThongBao_JSpinner" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="AMF_KhoangThoiGianLapThongBao_JToggleButton" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_KhoangThoiGianLapThongBao_JLabel" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_KhoangThoiGianLapThongBao_JSpinner" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="AMF_KhoangThoiGianLapThongBao_JLabel">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SF Mono" size="18" style="0"/>
+                    <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="1" type="code"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Kho&#x1ea3;ng th&#x1edd;i gian l&#x1eb7;p th&#xf4;ng b&#xe1;o: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JToggleButton" name="AMF_KhoangThoiGianLapThongBao_JToggleButton">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="18" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Y/N"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AMF_KhoangThoiGianLapThongBao_JToggleButtonActionPerformed"/>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_NhacNho_JSpinnerStateChanged"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JSpinner" name="AMF_KhoangThoiGianLapThongBao_JSpinner">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SF Mono" size="18" style="0"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Default Cursor"/>
-                    </Property>
-                    <Property name="focusable" type="boolean" value="false"/>
-                    <Property name="requestFocusEnabled" type="boolean" value="false"/>
-                  </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js10 = AMF_KhoangThoiGianLapThongBao_JSpinner.getEditor();&#xa;JFormattedTextField tf_js10 = ((JSpinner.DefaultEditor) editor_js10).getTextField();&#xa;tf_js10.setEditable(false);&#xa;tf_js10.setColumns(3);&#xa;tf_js10.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_KhoangThoiGianLapThongBao_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_NhacNho = AMF_NhacNho_JSpinner.getEditor();&#xa;JFormattedTextField tf_NhacNho = ((JSpinner.DefaultEditor) editor_NhacNho).getTextField();&#xa;tf_NhacNho.setEditable(false);&#xa;tf_NhacNho.setColumns(3);&#xa;tf_NhacNho.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_NhacNho_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel NhacNho_model = new SpinnerNumberModel(1, 1, 100, 1);&#xa;AMF_NhacNho_JSpinner.setModel(NhacNho_model);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="AMF_MocThoiGianSuDungThuoc_JPanel">
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_MocThoiGianSuDungThuoc_Them_JButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Component id="AMF_MocThoiGianSuDungThuoc_Gio_JSpinner" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="AMF_MocThoiGianSuDungThuoc_Phut_JSpinner" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="AMF_AM_PM_JComboBox" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="AMF_LieuSuDung_JLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AMF_LieuSuDung_JSpinner" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="AMF_AM_PM_JComboBox" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_LieuSuDung_JLabel" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_MocThoiGianSuDungThuoc_Phut_JSpinner" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_LieuSuDung_JSpinner" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_MocThoiGianSuDungThuoc_Gio_JSpinner" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="AMF_MocThoiGianSuDungThuoc_Them_JButton" linkSize="6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
+                <Property name="alignment" type="int" value="0"/>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JButton" name="AMF_MocThoiGianSuDungThuoc_Them_JButton">
@@ -637,6 +617,15 @@
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AMF_MocThoiGianSuDungThuoc_Them_JButtonMouseClicked"/>
@@ -651,10 +640,23 @@
                       <Color id="Default Cursor"/>
                     </Property>
                     <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_MocThoiGianSuDungThuoc_Gio_JSpinnerStateChanged"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js7 = AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.getEditor();&#xa;JFormattedTextField tf_js7 = ((JSpinner.DefaultEditor) editor_js7).getTextField();&#xa;tf_js7.setEditable(false);&#xa;tf_js7.setColumns(3);&#xa;tf_js7.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_Gio = AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.getEditor();&#xa;JFormattedTextField tf_Gio = ((JSpinner.DefaultEditor) editor_Gio).getTextField();&#xa;tf_Gio.setEditable(false);&#xa;tf_Gio.setColumns(3);&#xa;tf_Gio.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel Gio_model = new SpinnerNumberModel(0, 0, 12, 1);&#xa;AMF_MocThoiGianSuDungThuoc_Gio_JSpinner.setModel(Gio_model);"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="AMF_MocThoiGianSuDungThuoc_Phut_JSpinner">
@@ -666,10 +668,23 @@
                       <Color id="Default Cursor"/>
                     </Property>
                     <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_MocThoiGianSuDungThuoc_Phut_JSpinnerStateChanged"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js8 = AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.getEditor();&#xa;JFormattedTextField tf_js8 = ((JSpinner.DefaultEditor) editor_js8).getTextField();&#xa;tf_js8.setEditable(false);&#xa;tf_js8.setColumns(3);&#xa;tf_js8.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_Phut = AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.getEditor();&#xa;JFormattedTextField tf_Phut = ((JSpinner.DefaultEditor) editor_Phut).getTextField();&#xa;tf_Phut.setEditable(false);&#xa;tf_Phut.setColumns(3);&#xa;tf_Phut.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel Phut_model = new SpinnerNumberModel(0, 0, 60, 1);&#xa;AMF_MocThoiGianSuDungThuoc_Phut_JSpinner.setModel(Phut_model);"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="AMF_AM_PM_JComboBox">
@@ -683,6 +698,15 @@
                         <StringItem index="1" value="PM"/>
                       </StringArray>
                     </Property>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -694,6 +718,15 @@
                       <Font name="SF Mono" size="18" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Li&#x1ec1;u s&#x1eed; d&#x1ee5;ng"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[140, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[140, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[180, 30]"/>
+                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="AMF_LieuSuDung_JSpinner">
@@ -705,10 +738,26 @@
                       <Color id="Default Cursor"/>
                     </Property>
                     <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[90, 30]"/>
+                    </Property>
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
+                    <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="1" type="code"/>
+                    </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="AMF_LieuSuDung_JSpinnerStateChanged"/>
+                  </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_js9 = AMF_LieuSuDung_JSpinner.getEditor();&#xa;JFormattedTextField tf_js9 = ((JSpinner.DefaultEditor) editor_js9).getTextField();&#xa;tf_js9.setEditable(false);&#xa;tf_js9.setColumns(3);&#xa;tf_js9.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_LieuSuDung_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="JComponent editor_LieuSuDung = AMF_LieuSuDung_JSpinner.getEditor();&#xa;JFormattedTextField tf_LieuSuDung = ((JSpinner.DefaultEditor) editor_LieuSuDung).getTextField();&#xa;tf_LieuSuDung.setEditable(false);&#xa;tf_LieuSuDung.setColumns(3);&#xa;tf_LieuSuDung.setHorizontalAlignment(JTextField.CENTER);&#xa;AMF_LieuSuDung_JSpinner.setSize(64, 32);"/>
+                    <AuxValue name="JavaCodeGenerator_ListenersCodePost" type="java.lang.String" value="SpinnerNumberModel LieuSuDung_model = new SpinnerNumberModel(1, 1, 100, 1);&#xa;AMF_LieuSuDung_JSpinner.setModel(LieuSuDung_model);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
