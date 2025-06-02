@@ -15,7 +15,7 @@ import object.SettingObject;
 
 /**
  *
- * @author Tina
+ * @author Hinno
  */
 public class PreferencesFrame extends javax.swing.JFrame {
 	public static MainFrame mf;
