@@ -6,6 +6,8 @@ package userview;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,6 +15,11 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.UIManager;
 import object.MedicineObject;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  *
@@ -208,9 +215,85 @@ public class InstantUseFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_IUF_TroVe_JButtonActionPerformed
 
     private void IUF_XacNhan_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IUF_XacNhan_JButtonActionPerformed
-        this.mf.setVisible(true);
+        String TenThuocVariableHolder = IUF_TenThuoc_JComboBox.getSelectedItem().toString();
+		String GhiChuVariableHolder = IUF_GhiChu_JTextField.getText();
+		int LieuSuDungVariableHolder = Integer.parseInt(IUF_LieuSuDung_JTextField.getText());
+		String ThoiGianVariableHolder = IUF_ThoiGian_JTextField.getText();
+		String NgaySuDungVariableHolder = IUF_NgaySuDung_JTextField.getText();
+		
+		// Tạo object với thứ tự trường cố định
+        java.util.LinkedHashMap<String, Object> jo = new java.util.LinkedHashMap<>();
+        jo.put("TenThuoc", TenThuocVariableHolder);
+        jo.put("MocThoiGian", ThoiGianVariableHolder);
+        jo.put("LieuSuDung", String.valueOf(LieuSuDungVariableHolder));
+        jo.put("TrangThai", "skip"); // hoặc "confirm" nếu cần
+        jo.put("GhiChu", GhiChuVariableHolder);
+        jo.put("ThoiGian", NgaySuDungVariableHolder);
+
+        String filePath = "/home/shanghuang/SMM_STO_" + UserName + "/30HO/notify_log.json";
+
+        appendLogWithJq(
+            filePath,
+            TenThuocVariableHolder,
+            ThoiGianVariableHolder,
+            String.valueOf(LieuSuDungVariableHolder),
+            "confirm", // hoặc "confirm"
+            GhiChuVariableHolder,
+            NgaySuDungVariableHolder
+        );
+		
+		this.mf.setVisible(true);
 		this.dispose();
     }//GEN-LAST:event_IUF_XacNhan_JButtonActionPerformed
+
+    private void appendLogWithJq(String filePath, String tenThuoc, String mocThoiGian, String lieuSuDung, String trangThai, String ghiChu, String thoiGian) {
+        /*
+        jq --arg TenThuoc "ace" \
+			--arg MocThoiGian "9:50 PM" \
+			--arg LieuSuDung "2" \
+			--arg TrangThai "confirm" \
+			--arg GhiChu "abced" \
+			--arg ThoiGian "2025-06-03 21:50:15" \
+			'. += [{"TenThuoc":$TenThuoc,"MocThoiGian":$MocThoiGian,"LieuSuDung":$LieuSuDung,"TrangThai":$TrangThai,"GhiChu":$GhiChu,
+		 "ThoiGian":$ThoiGian}]' \
+			"" > "" && mv "/home/shanghuang/SMM_STO_tnkl123456/30HO/notify_log.json.tmp" "/home/shanghuang/SMM_STO_tnkl123456/30HO/notify_log.json"
+         * 
+         */
+
+
+        try {
+
+            // do as the jq command above, the file is known to be already created
+            // No need to check if the file exists or not, jq will handle it
+
+            String command = "jq --arg TenThuoc \"" + tenThuoc + "\" "
+			+ "--arg MocThoiGian \"" + mocThoiGian + "\" "
+			+ "--arg LieuSuDung \"" + lieuSuDung + "\" "
+			+ "--arg TrangThai \"" + trangThai + "\" "
+			+ "--arg GhiChu \"" + ghiChu + "\" "
+			+ "--arg ThoiGian \"" + thoiGian + " " + mocThoiGian + "\" "
+			+ "'. += [{\"TenThuoc\":$TenThuoc,\"MocThoiGian\":$MocThoiGian,\"LieuSuDung\":$LieuSuDung,\"TrangThai\":$TrangThai,\"GhiChu\":$GhiChu,\"ThoiGian\":$ThoiGian}]' "
+			+ "\"" + filePath + "\" > \"" + filePath + ".tmp\" "
+			+ " && mv \"" + filePath + ".tmp\" \"" + filePath + "\"";
+
+            // process the command
+            ProcessBuilder processBuilder = new ProcessBuilder("bash", "-c", command);
+            processBuilder.redirectErrorStream(true);
+            Process process = processBuilder.start();
+            // Đọc output (nếu cần debug)
+            java.io.InputStream is = process.getInputStream();
+            java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+            String output = s.hasNext() ? s.next() : "";
+            int exitCode = process.waitFor();
+            if (exitCode != 0) {
+                System.err.println("jq append failed: " + output);
+            } else {
+                System.out.println("Log appended successfully.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    }
 
 	private void loadData() {
 		String UserNameFolder = "/home/shanghuang/SMM_STO_" + this.UserName;
@@ -263,7 +346,7 @@ public class InstantUseFrame extends javax.swing.JFrame {
 		
 		mo.readJSON(MedicineFilePath);
 		
-		IUF_GhiChu_JTextField.setText(mo.getDonVi());
+		IUF_GhiChu_JTextField.setText(mo.getGhiChu());
 		
     }//GEN-LAST:event_IUF_TenThuoc_JComboBoxActionPerformed
 

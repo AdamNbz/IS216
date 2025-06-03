@@ -55,13 +55,13 @@
         <Container class="javax.swing.JPanel" name="ITIP_Info_JPanel">
           <Properties>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[836, 42]"/>
+              <Dimension value="[900, 42]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[836, 42]"/>
+              <Dimension value="[900, 42]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[827, 42]"/>
+              <Dimension value="[900, 42]"/>
             </Property>
           </Properties>
 

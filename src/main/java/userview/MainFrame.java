@@ -6,7 +6,6 @@ package userview;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import elementpanel.InnerTodayItemPanel;
 import elementpanel.MedicineItemPanel;
-import elementpanel.TodayItemPanel;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
@@ -73,6 +72,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.setVisible(true);
         this.refresh_call();
 		this.loadTodayUseList();
+		this.loadHistory();
     }
     
     public void setFrameInCenter() {
@@ -86,6 +86,34 @@ public class MainFrame extends javax.swing.JFrame {
 	public boolean checkIllegalCharacter(String inp, Pattern pat) {
 		Matcher match = pat.matcher(inp);
 		return match.find();
+	}
+	
+	private void loadHistory() {
+		String directory = "/home/shanghuang/SMM_STO_" + UserName + "/30HO/notify_log.json";
+        File file = new File(directory);
+        if (!file.exists() || file.length() == 0) {
+            System.out.println("Không có lịch sử sử dụng thuốc.");
+            return;
+        }
+        try {
+            JSONParser parser = new JSONParser();
+            JSONArray arr = (JSONArray) parser.parse(new java.io.FileReader(file));
+            for (Object obj : arr) {
+                JSONObject jo = (JSONObject) obj;
+                // Đảm bảo đúng thứ tự trường khi lấy dữ liệu
+                String tenThuoc = (String) jo.get("TenThuoc");
+                String mocThoiGian = (String) jo.get("MocThoiGian");
+                String lieuSuDung = (String) jo.get("LieuSuDung");
+                String trangThai = (String) jo.get("TrangThai");
+                String ghiChu = (String) jo.get("GhiChu");
+                String thoiGian = (String) jo.get("ThoiGian");
+
+                // Ví dụ: In ra console, bạn có thể thay bằng hiển thị lên giao diện
+                System.out.printf("Tên thuốc: %s, Mốc: %s, Liều: %s, Trạng thái: %s, Ghi chú: %s, Thời gian: %s%n",tenThuoc, mocThoiGian, lieuSuDung, trangThai, ghiChu, thoiGian);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 	}
 	
 	private void loadTodayUseList() {

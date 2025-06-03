@@ -9,21 +9,24 @@ PHUT="$3"
 AMPM="$4"
 LIEU="$5"
 GHI_CHU="$6"
-SAVE_FOLDER=""
 LOGFILE="/home/shanghuang/$7/30HO/notify_log.json"
 
-zenity --question \
-  --width=400 \
-  --height=200 \
-  --title="Nhắc uống thuốc" \
-  --ok-label="Xác nhận" \
-  --cancel-label="Bỏ qua" \
-  --text="$GIO:$PHUT $AMPM\n$THUOC ($LIEU viên)\n$GHI_CHU"
-
-if [ $? -eq 0 ]; then
-    STATUS="confirm"
-else
+if [ "$8" = "skip" ]; then
     STATUS="skip"
+else
+    zenity --question \
+      --width=400 \
+      --height=200 \
+      --title="Nhắc uống thuốc" \
+      --ok-label="Xác nhận" \
+      --cancel-label="Bỏ qua" \
+      --text="$GIO:$PHUT $AMPM\n$THUOC ($LIEU viên)\n$GHI_CHU"
+
+    if [ $? -eq 0 ]; then
+        STATUS="confirm"
+    else
+        STATUS="skip"
+    fi
 fi
 
 TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")

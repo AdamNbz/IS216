@@ -9,7 +9,7 @@ FOLDER_FORMAT="SMM_STO_*"
 MEDICINE_FOLDER_FORMAT="MO"
 DISPLAY_ENV="DISPLAY=:0"
 CRONFILE="/tmp/today_crontab.txt"
-
+> "$CRONFILE"
 # cd to the folder with the format SMM_STO_
 for folder in $(ls $DATA_LOCATION); do
     # Check if the folder matches the format SMM_STO_*
@@ -61,12 +61,27 @@ for folder in $(ls $DATA_LOCATION); do
                     if echo "$DSTAN_SUAT_CU_THE" | jq ". | index($current_day)" | grep -qv null; then
                         add_entry=true
                     fi
+                elif [[ "$TAN_SUAT_CHUNG" == "Khi cần thiết" ]]; then
+                    add_entry=false
+                fi
+
+                # Check to remove any entry that passed the current time
+                current_time=$(date +%H:%M)
+                entry_time=$(printf "%02d:%02d" "$GIO24" "$PHUT")
+                if [[ "$GIO24" -lt $(date +%H) || ( "$GIO24" -eq $(date +%H) && "$PHUT" -lt $(date +%M) ) ]]; then
+                    add_entry=false
+                    
+                    # check if tan suat chung is "Khi cần thiết" and if so not add into the crontab and skip the history_loader.sh
+                    if [[ "$TAN_SUAT_CHUNG" == "Khi cần thiết" ]]; then
+                        add_entry=false
+                    else 
+                        /bin/bash /home/shanghuang/Documents/Study\ Vault/Subject\ Documentation/IS216/Practice\ documentations/Code\ Section/JavaMainProject/JavaMainProject/src/main/java/cacdanhdaden/javamainproject/history_loader.sh "$TEN_THUOC" "$GIO" "$PHUT" "$AMPM" "$LIEU" "$GHI_CHU" "$folder" skip
+                    fi
                 fi
 
                 # create the crontab entry
                 if $add_entry; then
-                    notify_text="$GIO:$PHUT $AMPM - $TEN_THUOC ($lieu viên): $GHI_CHU"
-                    cron_entry="$GIO24 $PHUT * * * $DISPLAY_ENV /bin/bash $BASE_LOCATION/src/main/java/cacdanhdaden/javamainproject/history_loader.sh \"$TEN_THUOC\" \"$GIO\" \"$PHUT\" \"$AMPM\" \"$LIEU\" \"$GHI_CHU\" \"$folder\""
+                    cron_entry="$PHUT $GIO24 * * * $DISPLAY_ENV /bin/bash \"/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/cacdanhdaden/javamainproject/history_loader.sh\" \"$TEN_THUOC\" \"$GIO\" \"$PHUT\" \"$AMPM\" \"$LIEU\" \"$GHI_CHU\" \"$folder\""
                     echo "$cron_entry" >> "$CRONFILE"
                 fi
             done
@@ -74,6 +89,20 @@ for folder in $(ls $DATA_LOCATION); do
     fi
 done
 
-crontab -r 
-crontab "$CRONFILE"
+# Lưu crontab hiện tại (nếu có) và lọc bỏ các dòng liên quan đến history_loader.sh
+crontab -l 2>/dev/null | grep -v history_loader.sh | grep -v today_crontab_tag > /tmp/old_cron.txt
 
+# Thêm lại dòng tự động chạy crontab_loader.sh mỗi ngày (nếu chưa có)
+if ! grep -q "crontab_loader.sh" /tmp/old_cron.txt; then
+    echo "@reboot /bin/bash \"/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/cacdanhdaden/javamainproject/crontab_loader.sh\"" >> /tmp/old_cron.txt
+    echo "0 0 * * * /bin/bash \"/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/cacdanhdaden/javamainproject/crontab_loader.sh\"" >> /tmp/old_cron.txt
+fi
+
+# Thêm các dòng thông báo thuốc mới
+cat "$CRONFILE" >> /tmp/old_cron.txt
+
+cat /tmp/old_cron.txt
+# Nạp lại crontab
+crontab /tmp/old_cron.txt
+rm /tmp/old_cron.txt
+crontab -l 
