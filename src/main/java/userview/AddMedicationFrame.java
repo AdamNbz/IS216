@@ -515,6 +515,10 @@ public class AddMedicationFrame extends javax.swing.JFrame {
 		mo.writeJSON(this.UserName);
 		
 		this.mf.setVisible(true);
+        this.mf.resetTodayUseList();
+        this.mf.loadTodayUseList();
+        this.mf.resetHistory();
+        this.mf.loadHistory();
 		this.dispose();
     }//GEN-LAST:event_AMF_Them_JButtonActionPerformed
 

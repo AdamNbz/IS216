@@ -4,6 +4,8 @@
  */
 package elementpanel;
 
+import object.HistoryListItemObject;
+
 /**
  *
  * @author shanghuang
@@ -16,6 +18,14 @@ public class InnerHistoryItemPanel extends javax.swing.JPanel {
 	public InnerHistoryItemPanel() {
 		initComponents();
 	}
+	
+	public void setData(HistoryListItemObject hlio) {
+		IHIP_TenThuoc_JLabel.setText(hlio.getTenThuoc());
+		IHIP_TrangThai_JLabel.setText(hlio.getTrangThai());
+		IHIP_LieuSuDung_JLabel.setText(hlio.getLieuSuDung());
+		IHIP_GhiChu_JLabel.setText(hlio.getGhiChu());
+		IDIP_ThoiGian_JLabel.setText(hlio.getThoiGian());
+	}
 
 	/**
 	 * This method is called from within the constructor to initialize the form.
@@ -26,19 +36,72 @@ public class InnerHistoryItemPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        IHIP_UpperPanel_JPanel = new javax.swing.JPanel();
+        IHIP_TenThuoc_JLabel = new javax.swing.JLabel();
+        IHIP_TrangThai_JLabel = new javax.swing.JLabel();
+        IHIP_LowerPanel_JPanel = new javax.swing.JPanel();
+        IHIP_LieuSuDung_JLabel = new javax.swing.JLabel();
+        IHIP_GhiChu_JLabel = new javax.swing.JLabel();
+        IDIP_ThoiGian_JLabel = new javax.swing.JLabel();
+
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
+        setMaximumSize(new java.awt.Dimension(1017, 104));
+        setMinimumSize(new java.awt.Dimension(1017, 104));
+        setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1017, 104));
+        setLayout(new java.awt.GridLayout(2, 1));
+
+        IHIP_UpperPanel_JPanel.setLayout(new java.awt.GridLayout(1, 0));
+
+        IHIP_TenThuoc_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 3, 36)); // NOI18N
+        IHIP_TenThuoc_JLabel.setText("Tên thuốc");
+        IHIP_TenThuoc_JLabel.setMaximumSize(new java.awt.Dimension(800, 30));
+        IHIP_TenThuoc_JLabel.setMinimumSize(new java.awt.Dimension(800, 30));
+        IHIP_TenThuoc_JLabel.setPreferredSize(new java.awt.Dimension(800, 30));
+        IHIP_UpperPanel_JPanel.add(IHIP_TenThuoc_JLabel);
+
+        IHIP_TrangThai_JLabel.setFont(new java.awt.Font("SF Mono SemiBold", 0, 24)); // NOI18N
+        IHIP_TrangThai_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        IHIP_TrangThai_JLabel.setText("Trạng thái");
+        IHIP_TrangThai_JLabel.setMaximumSize(new java.awt.Dimension(200, 30));
+        IHIP_TrangThai_JLabel.setMinimumSize(new java.awt.Dimension(200, 30));
+        IHIP_TrangThai_JLabel.setPreferredSize(new java.awt.Dimension(200, 30));
+        IHIP_UpperPanel_JPanel.add(IHIP_TrangThai_JLabel);
+
+        add(IHIP_UpperPanel_JPanel);
+
+        IHIP_LowerPanel_JPanel.setLayout(new java.awt.GridLayout(1, 0));
+
+        IHIP_LieuSuDung_JLabel.setText("Liều");
+        IHIP_LieuSuDung_JLabel.setMaximumSize(new java.awt.Dimension(200, 30));
+        IHIP_LieuSuDung_JLabel.setMinimumSize(new java.awt.Dimension(200, 30));
+        IHIP_LieuSuDung_JLabel.setPreferredSize(new java.awt.Dimension(200, 30));
+        IHIP_LowerPanel_JPanel.add(IHIP_LieuSuDung_JLabel);
+
+        IHIP_GhiChu_JLabel.setText("Ghi chú");
+        IHIP_GhiChu_JLabel.setMaximumSize(new java.awt.Dimension(400, 30));
+        IHIP_GhiChu_JLabel.setMinimumSize(new java.awt.Dimension(400, 30));
+        IHIP_GhiChu_JLabel.setPreferredSize(new java.awt.Dimension(400, 30));
+        IHIP_LowerPanel_JPanel.add(IHIP_GhiChu_JLabel);
+
+        IDIP_ThoiGian_JLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        IDIP_ThoiGian_JLabel.setText("Thời gian");
+        IDIP_ThoiGian_JLabel.setMaximumSize(new java.awt.Dimension(300, 30));
+        IDIP_ThoiGian_JLabel.setMinimumSize(new java.awt.Dimension(300, 30));
+        IDIP_ThoiGian_JLabel.setPreferredSize(new java.awt.Dimension(300, 30));
+        IHIP_LowerPanel_JPanel.add(IDIP_ThoiGian_JLabel);
+
+        add(IHIP_LowerPanel_JPanel);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IDIP_ThoiGian_JLabel;
+    private javax.swing.JLabel IHIP_GhiChu_JLabel;
+    private javax.swing.JLabel IHIP_LieuSuDung_JLabel;
+    private javax.swing.JPanel IHIP_LowerPanel_JPanel;
+    private javax.swing.JLabel IHIP_TenThuoc_JLabel;
+    private javax.swing.JLabel IHIP_TrangThai_JLabel;
+    private javax.swing.JPanel IHIP_UpperPanel_JPanel;
     // End of variables declaration//GEN-END:variables
 }

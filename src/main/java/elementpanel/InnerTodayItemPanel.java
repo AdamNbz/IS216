@@ -56,6 +56,7 @@ public class InnerTodayItemPanel extends javax.swing.JPanel {
         ITIP_GhiChu_JLabel = new javax.swing.JLabel();
         ITIP_Gio_JLabel = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 255)));
         setMaximumSize(new java.awt.Dimension(1017, 104));
         setMinimumSize(new java.awt.Dimension(1017, 104));
         setLayout(new java.awt.GridLayout(2, 1, 5, 0));
@@ -70,15 +71,15 @@ public class InnerTodayItemPanel extends javax.swing.JPanel {
 
         ITIP_LowerPanel_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        ITIP_Info_JPanel.setMaximumSize(new java.awt.Dimension(900, 42));
-        ITIP_Info_JPanel.setMinimumSize(new java.awt.Dimension(900, 42));
-        ITIP_Info_JPanel.setPreferredSize(new java.awt.Dimension(900, 42));
-        ITIP_Info_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        ITIP_Info_JPanel.setMaximumSize(new java.awt.Dimension(1010, 42));
+        ITIP_Info_JPanel.setMinimumSize(new java.awt.Dimension(1010, 42));
+        ITIP_Info_JPanel.setPreferredSize(new java.awt.Dimension(1010, 42));
+        ITIP_Info_JPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         ITIP_LieuSuDung_JLabel.setText("Liều");
-        ITIP_LieuSuDung_JLabel.setMaximumSize(new java.awt.Dimension(100, 30));
-        ITIP_LieuSuDung_JLabel.setMinimumSize(new java.awt.Dimension(100, 30));
-        ITIP_LieuSuDung_JLabel.setPreferredSize(new java.awt.Dimension(100, 30));
+        ITIP_LieuSuDung_JLabel.setMaximumSize(new java.awt.Dimension(300, 30));
+        ITIP_LieuSuDung_JLabel.setMinimumSize(new java.awt.Dimension(300, 30));
+        ITIP_LieuSuDung_JLabel.setPreferredSize(new java.awt.Dimension(300, 30));
         ITIP_Info_JPanel.add(ITIP_LieuSuDung_JLabel);
 
         ITIP_GhiChu_JLabel.setText("Ghi chú");

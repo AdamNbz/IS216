@@ -4,11 +4,17 @@
  */
 package userview;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.itextpdf.text.*;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.pdf.*;
+import elementpanel.InnerHistoryItemPanel;
 import elementpanel.InnerTodayItemPanel;
 import elementpanel.MedicineItemPanel;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -18,6 +24,7 @@ import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -29,6 +36,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -36,6 +45,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.UIManager;
+import object.HistoryListItemObject;
 import object.MedicineObject;
 import object.TodayListItemObject;
 import org.json.simple.JSONArray;
@@ -88,13 +98,57 @@ public class MainFrame extends javax.swing.JFrame {
 		return match.find();
 	}
 	
-	private void loadHistory() {
+	public void loadHistory() {
+	
 		String directory = "/home/shanghuang/SMM_STO_" + UserName + "/30HO/notify_log.json";
         File file = new File(directory);
         if (!file.exists() || file.length() == 0) {
             System.out.println("Không có lịch sử sử dụng thuốc.");
             return;
         }
+		
+		int totalItem = 0;
+		
+		try {
+			JSONParser parser = new JSONParser();
+			JSONArray arr = (JSONArray) parser.parse(new java.io.FileReader(file));
+			System.out.println(arr.size());
+			totalItem = arr.size();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		MF_KhungNoiDungLichSu_JPanel.removeAll();
+		LayoutManager lm_kndls = MF_KhungNoiDungLichSu_JPanel.getLayout();
+
+		if (lm_kndls instanceof GridLayout) {
+			((GridLayout) lm_kndls).setColumns(1);
+			((GridLayout) lm_kndls).setRows(
+				totalItem
+			);
+			System.out.println(
+				((GridLayout) lm_kndls).getColumns() + " " +
+				((GridLayout) lm_kndls).getRows()
+			);
+			MF_KhungNoiDungLichSu_JPanel.setLayout(lm_kndls);
+			MF_KhungNoiDungLichSu_JPanel.revalidate();
+			MF_KhungNoiDungLichSu_JPanel.repaint();
+		}
+		InnerHistoryItemPanel temp_ihip = new InnerHistoryItemPanel();
+		
+		Dimension newDimension = new Dimension(
+			(int) MF_KhungNoiDungLichSu_JPanel.getPreferredSize().getWidth(),
+			(int) (
+				(int) MF_KhungNoiDungLichSu_JPanel.getPreferredSize().getHeight() +
+				totalItem * (temp_ihip).getPreferredSize().getHeight() +
+				10 * (totalItem + 1)
+			)
+		);
+		
+		MF_KhungNoiDungLichSu_JPanel.setMaximumSize(newDimension);
+		MF_KhungNoiDungLichSu_JPanel.setMinimumSize(newDimension);
+		MF_KhungNoiDungLichSu_JPanel.setPreferredSize(newDimension);
+		
         try {
             JSONParser parser = new JSONParser();
             JSONArray arr = (JSONArray) parser.parse(new java.io.FileReader(file));
@@ -107,16 +161,43 @@ public class MainFrame extends javax.swing.JFrame {
                 String trangThai = (String) jo.get("TrangThai");
                 String ghiChu = (String) jo.get("GhiChu");
                 String thoiGian = (String) jo.get("ThoiGian");
-
-                // Ví dụ: In ra console, bạn có thể thay bằng hiển thị lên giao diện
-                System.out.printf("Tên thuốc: %s, Mốc: %s, Liều: %s, Trạng thái: %s, Ghi chú: %s, Thời gian: %s%n",tenThuoc, mocThoiGian, lieuSuDung, trangThai, ghiChu, thoiGian);
-            }
+				
+				HistoryListItemObject hlio = new HistoryListItemObject(
+					tenThuoc,
+					mocThoiGian,
+					lieuSuDung,
+					trangThai,
+					ghiChu,
+					thoiGian
+				);
+				
+				System.out.printf("Tên thuốc: %s, Mốc: %s, Liều: %s, Trạng thái: %s, Ghi chú: %s, Thời gian: %s%n",tenThuoc, mocThoiGian, lieuSuDung, trangThai, ghiChu, thoiGian);
+				
+				InnerHistoryItemPanel ihip = new InnerHistoryItemPanel();
+				ihip.setData(hlio);
+				
+				MF_KhungNoiDungLichSu_JPanel.add(ihip, -1);
+				MF_KhungNoiDungLichSu_JPanel.revalidate();
+				MF_KhungNoiDungLichSu_JPanel.repaint();
+			}
+			
+			// then add a cover flow layout panel on all of it for scrolling 
+			JPanel Temporal_Panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+			Dimension d = new Dimension(MF_KhungNoiDungLichSu_JPanel.getPreferredSize());
+			d.setSize(
+				MF_KhungNoiDungLichSu_JPanel.getPreferredSize().getWidth(),
+				MF_KhungNoiDungLichSu_JPanel.getPreferredSize().getHeight() + 20);
+			Temporal_Panel.setMaximumSize(d);
+			Temporal_Panel.setMinimumSize(d);
+			Temporal_Panel.setPreferredSize(d);
+			Temporal_Panel.add(MF_KhungNoiDungLichSu_JPanel);
+			MF_NoiDungLichSu_JScrollPane.setViewportView(Temporal_Panel);
         } catch (Exception e) {
             e.printStackTrace();
         }
 	}
 	
-	private void loadTodayUseList() {
+	public void loadTodayUseList() {
 		Date NgHienTai = Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant());
 		LocalDate localDate = NgHienTai.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 		int dayOfMonth = localDate.getDayOfMonth();
@@ -281,8 +362,47 @@ public class MainFrame extends javax.swing.JFrame {
 		MF_NoiDungHomNay_JScrollPane.setViewportView(Temporal_Panel);
 		MF_NoiDungHomNay_JScrollPane.revalidate();
 		MF_NoiDungHomNay_JScrollPane.repaint();
+
+        // Code for increase scroll speed
+        MF_NoiDungHomNay_JScrollPane.getVerticalScrollBar().setUnitIncrement(20);
+
+        // add block to call for crontab_loader.sh
+        try {
+            // use process builder to run the script
+            // for safety
+            ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", "bash \"/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/cacdanhdaden/javamainproject/crontab_loader.sh\"");
+            pb.inheritIO(); // inherit IO to see the output in console
+            Process process = pb.start();
+            int exitCode = process.waitFor();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
 	}
 	
+    public void resetTodayUseList() {
+        MF_KhungNoiDungHomNay_JPanel.removeAll();
+        LayoutManager lm = MF_KhungNoiDungHomNay_JPanel.getLayout();
+        if (lm instanceof GridLayout) {
+            ((GridLayout) lm).setColumns(1);
+            ((GridLayout) lm).setRows(0);
+            MF_KhungNoiDungHomNay_JPanel.setLayout(lm);
+            MF_KhungNoiDungHomNay_JPanel.revalidate();
+            MF_KhungNoiDungHomNay_JPanel.repaint();
+        }
+    }
+
+    public void resetHistory() {
+        MF_KhungNoiDungLichSu_JPanel.removeAll();
+        LayoutManager lm = MF_KhungNoiDungLichSu_JPanel.getLayout();
+        if (lm instanceof GridLayout) {
+            ((GridLayout) lm).setColumns(1);
+            ((GridLayout) lm).setRows(0);
+            MF_KhungNoiDungLichSu_JPanel.setLayout(lm);
+            MF_KhungNoiDungLichSu_JPanel.revalidate();
+            MF_KhungNoiDungLichSu_JPanel.repaint();
+        }
+    }
+
 	public static boolean isAreaGreaterThan(Dimension d1, Dimension d2) {
         long area1 = (long) d1.width * d1.height;
         long area2 = (long) d2.width * d2.height;
@@ -348,6 +468,12 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quản lý dược phẩm cá nhân");
         setResizable(false);
+
+        MF_IntermidiateContainer_JTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                MF_IntermidiateContainer_JTabbedPaneStateChanged(evt);
+            }
+        });
 
         MF_NoiDungHomNay_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         MF_NoiDungHomNay_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -479,7 +605,10 @@ public class MainFrame extends javax.swing.JFrame {
         MF_NoiDungLichSu_JScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         MF_NoiDungLichSu_JScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        MF_KhungNoiDungLichSu_JPanel.setLayout(new java.awt.GridLayout(1, 1));
+        MF_KhungNoiDungLichSu_JPanel.setMaximumSize(new java.awt.Dimension(1053, 576));
+        MF_KhungNoiDungLichSu_JPanel.setMinimumSize(new java.awt.Dimension(1053, 576));
+        MF_KhungNoiDungLichSu_JPanel.setPreferredSize(new java.awt.Dimension(1053, 576));
+        MF_KhungNoiDungLichSu_JPanel.setLayout(new java.awt.GridLayout(0, 1, 10, 10));
         MF_NoiDungLichSu_JScrollPane.setViewportView(MF_KhungNoiDungLichSu_JPanel);
 
         MF_ThanhChucNangLichSu_JPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 5));
@@ -492,12 +621,27 @@ public class MainFrame extends javax.swing.JFrame {
         MF_ThanhChucNangLichSu_JPanel.add(MF_TraCuuThuocSuDung_JTextField);
 
         MF_TraCuuThuocSuDung_JButton.setText("Tra cứu");
+        MF_TraCuuThuocSuDung_JButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MF_TraCuuThuocSuDung_JButtonActionPerformed(evt);
+            }
+        });
         MF_ThanhChucNangLichSu_JPanel.add(MF_TraCuuThuocSuDung_JButton);
 
         MF_XuatLichSu_JButton.setText("Xuất lịch sử");
+        MF_XuatLichSu_JButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MF_XuatLichSu_JButtonActionPerformed(evt);
+            }
+        });
         MF_ThanhChucNangLichSu_JPanel.add(MF_XuatLichSu_JButton);
 
         MF_BaoCaoThoiQuen_JButton.setText("Báo cáo thói quen");
+        MF_BaoCaoThoiQuen_JButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MF_BaoCaoThoiQuen_JButtonActionPerformed(evt);
+            }
+        });
         MF_ThanhChucNangLichSu_JPanel.add(MF_BaoCaoThoiQuen_JButton);
 
         javax.swing.GroupLayout MF_LichSu_JPanelLayout = new javax.swing.GroupLayout(MF_LichSu_JPanel);
@@ -623,6 +767,11 @@ public class MainFrame extends javax.swing.JFrame {
         MF_CaiDat_VePhanMem_Thoat_JMI_JMenu.add(MF_CaiDat_JMenuItem);
 
         MF_VePhanMem_JMenuItem.setText("Hướng dẫn sử dụng");
+        MF_VePhanMem_JMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MF_VePhanMem_JMenuItemActionPerformed(evt);
+            }
+        });
         MF_CaiDat_VePhanMem_Thoat_JMI_JMenu.add(MF_VePhanMem_JMenuItem);
 
         MF_VeCaNhan_JMenuItem.setText("Về cá nhân");
@@ -902,6 +1051,109 @@ public class MainFrame extends javax.swing.JFrame {
     private void MF_InstantUse_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_InstantUse_JButtonActionPerformed
         InstantUseFrame iuf = new InstantUseFrame(this, UserName);
     }//GEN-LAST:event_MF_InstantUse_JButtonActionPerformed
+
+    private void MF_XuatLichSu_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_XuatLichSu_JButtonActionPerformed
+        String jsonfilePath = "/home/shanghuang/SMM_STO_" + UserName + "/30HO/notify_log.json";
+		String pdffilePath = "/home/shanghuang/SMM_STO_" + UserName + "/history.pdf";
+		
+        // add condition to create the file if it does not exist
+        if (!Files.exists(Paths.get(jsonfilePath))) {
+            JOptionPane.showMessageDialog(this, "File lịch sử không tồn tại: " + jsonfilePath, "Error", JOptionPane.ERROR_MESSAGE);
+            File file = new File(jsonfilePath);
+            try {
+                if (file.createNewFile()) {
+                    System.out.println("File đã được tạo: " + jsonfilePath);
+                } else {
+                    System.out.println("Không thể tạo file: " + jsonfilePath);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return; // dừng hàm nếu file không tồn tại
+        } 
+		
+		try {
+			JSONParser jp = new JSONParser();
+			JSONArray ja = (JSONArray) jp.parse(new FileReader(jsonfilePath));
+			
+			Document document = new Document();
+			PdfWriter.getInstance(document, new FileOutputStream(pdffilePath));
+			document.open();
+
+            // Thêm tiêu đề và định dạng
+            String fontPath = "/usr/share/fonts/adobe-source-code-pro-fonts/SourceCodePro-Regular.otf"; // Đường dẫn đến font Times New Roman
+			BaseFont bf = BaseFont.createFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            Font font = new Font(bf, 12, Font.NORMAL);
+
+
+
+			Paragraph title = new Paragraph("Lịch sử sử dụng thuốc", font);
+			title.setAlignment(Element.ALIGN_CENTER);
+			document.add(title);
+			document.add(new Paragraph(" ")); // dòng trắng
+			
+			PdfPTable table = new PdfPTable(6); // 6 cột
+			table.setWidthPercentage(100);
+			table.setWidths(new float[]{2, 2, 1, 1, 3, 2});
+			
+			String[] headers = {"TenThuoc", "MocThoiGian", "LieuSuDung", "TrangThai", "GhiChu", "ThoiGian"};
+			for (String h : headers) {
+				PdfPCell cell = new PdfPCell(new Phrase(h, font));
+				cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+				table.addCell(cell);
+			}
+			
+			for (Object obj : ja) {
+				JSONObject jo = (JSONObject) obj;
+				table.addCell(new Phrase((String) jo.get("TenThuoc"), font));
+                table.addCell(new Phrase((String) jo.get("MocThoiGian"), font));
+                table.addCell(new Phrase((String) jo.get("LieuSuDung"), font));
+                table.addCell(new Phrase((String) jo.get("TrangThai"), font));
+                table.addCell(new Phrase((String) jo.get("GhiChu"), font));
+                table.addCell(new Phrase((String) jo.get("ThoiGian"), font));
+				
+			}
+			document.add(table);
+			document.close();
+			System.out.println("Đã xuất lịch sử ra file PDF: " + pdffilePath);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			openFile((Path.of(pdffilePath).toFile()));
+		} catch (IOException ex) {
+			Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+		}
+    }//GEN-LAST:event_MF_XuatLichSu_JButtonActionPerformed
+
+    private void MF_IntermidiateContainer_JTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MF_IntermidiateContainer_JTabbedPaneStateChanged
+//        if (
+//			MF_IntermidiateContainer_JTabbedPane.getTitleAt(
+//				MF_IntermidiateContainer_JTabbedPane.getSelectedIndex()
+//			).contentEquals("Hôm nay")
+//		) {
+//			loadTodayUseList();
+//		} else if (
+//			MF_IntermidiateContainer_JTabbedPane.getTitleAt(
+//				MF_IntermidiateContainer_JTabbedPane.getSelectedIndex()
+//			).contentEquals("Lịch sử")
+//		) {
+//			loadHistory();
+//		}
+    }//GEN-LAST:event_MF_IntermidiateContainer_JTabbedPaneStateChanged
+
+    private void MF_TraCuuThuocSuDung_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_TraCuuThuocSuDung_JButtonActionPerformed
+        
+    }//GEN-LAST:event_MF_TraCuuThuocSuDung_JButtonActionPerformed
+
+    private void MF_BaoCaoThoiQuen_JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_BaoCaoThoiQuen_JButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MF_BaoCaoThoiQuen_JButtonActionPerformed
+
+    private void MF_VePhanMem_JMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MF_VePhanMem_JMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MF_VePhanMem_JMenuItemActionPerformed
 
 	// Hàm tải file từ URL
     private static Path downloadFile(String fileURL, String fileName) throws IOException, InterruptedException {

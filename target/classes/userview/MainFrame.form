@@ -48,6 +48,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="H&#x1b0;&#x1edb;ng d&#x1eab;n s&#x1eed; d&#x1ee5;ng"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MF_VePhanMem_JMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MF_VeCaNhan_JMenuItem">
               <Properties>
@@ -121,6 +124,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="MF_IntermidiateContainer_JTabbedPane">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="MF_IntermidiateContainer_JTabbedPaneStateChanged"/>
+      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -434,7 +440,9 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                     <Property name="columns" type="int" value="1"/>
+                    <Property name="horizontalGap" type="int" value="5"/>
                     <Property name="rows" type="int" value="1"/>
+                    <Property name="verticalGap" type="int" value="5"/>
                   </Layout>
                 </Container>
               </SubComponents>
@@ -464,16 +472,25 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tra c&#x1ee9;u"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MF_TraCuuThuocSuDung_JButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="MF_XuatLichSu_JButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t l&#x1ecb;ch s&#x1eed;"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MF_XuatLichSu_JButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="MF_BaoCaoThoiQuen_JButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="B&#xe1;o c&#xe1;o th&#xf3;i quen"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MF_BaoCaoThoiQuen_JButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

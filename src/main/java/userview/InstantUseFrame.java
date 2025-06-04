@@ -243,6 +243,9 @@ public class InstantUseFrame extends javax.swing.JFrame {
         );
 		
 		this.mf.setVisible(true);
+
+        this.mf.resetHistory();
+		this.mf.loadHistory();
 		this.dispose();
     }//GEN-LAST:event_IUF_XacNhan_JButtonActionPerformed
 
