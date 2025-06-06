@@ -1,21 +1,21 @@
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/cacdanhdaden/javamainproject/JavaMainProject.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/elementpanel/InnerTodayItemPanel.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/elementpanel/MedicineItemPanel.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/elementpanel/TimeStoneAdditionPanel.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/elementpanel/TodayItemPanel.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/object/EmailUtil.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/object/MedicineObject.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/object/SettingObject.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/object/TodayListItemObject.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/object/UserObject.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/supervisorview/MainSupervisorFrame.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/userview/AccountInformationFrame.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/userview/AddMedicationFrame.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/userview/ApplicationInformationFrame.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/userview/AuthenticationFrame.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/userview/CreateAccountFrame.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/userview/EditMedicationFrame.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/userview/ForgotPasswordFrame.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/userview/HistoryEntryPanel.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/userview/MainFrame.java
-/home/shanghuang/Documents/Study Vault/Subject Documentation/IS216/Practice documentations/Code Section/JavaMainProject/JavaMainProject/src/main/java/userview/PreferencesFrame.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/cacdanhdaden/javamainproject/JavaMainProject.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/elementpanel/InnerTodayItemPanel.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/elementpanel/MedicineItemPanel.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/elementpanel/TimeStoneAdditionPanel.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/elementpanel/TodayItemPanel.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/object/EmailUtil.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/object/MedicineObject.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/object/SettingObject.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/object/TodayListItemObject.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/object/UserObject.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/supervisorview/MainSupervisorFrame.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/userview/AccountInformationFrame.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/userview/AddMedicationFrame.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/userview/ApplicationInformationFrame.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/userview/AuthenticationFrame.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/userview/CreateAccountFrame.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/userview/EditMedicationFrame.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/userview/ForgotPasswordFrame.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/userview/HistoryEntryPanel.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/userview/MainFrame.java
+/Users/home/Documents/GitHub/IS216/Final Project/src/main/java/userview/PreferencesFrame.java
